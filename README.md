@@ -1,6 +1,6 @@
 # README
 
-Things you may want to cover:
+App current setting:
 
 * Ruby version: 3.1.2
 
