@@ -6,7 +6,7 @@ class CreateConfessions < ActiveRecord::Migration[7.0]
     create_table :confessions do |t|
       # content:rich_text
       t.text :tag
-      t.boolean :anonymous
+      t.boolean :anonymous, default: false
       t.references :user, null: false, foreign_key: true
 
       t.timestamps

@@ -5,7 +5,7 @@ class CreatePayments < ActiveRecord::Migration[7.0]
   def change
     create_table :payments do |t|
       t.decimal :amount, null: false, scale: 2, precision: 10
-      t.boolean :status
+      t.boolean :status, default: false
       t.datetime :deleted_at
 
       t.timestamps
