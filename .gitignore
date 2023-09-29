@@ -33,3 +33,7 @@
 .env
 
 Gemfile.lock
+
+/db/schema.rb
+
+/test/*
