@@ -13,13 +13,20 @@ default: &default
   adapter: mysql2
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password:
-  socket: /tmp/mysql.sock
+  host: <%= ENV["HOST_MYSQL"] %>
+  port: <%= ENV["PORT_MYSQL"] %>
+  username: <%= ENV["USERNAME_MYSQL"] %>
+  password: <%= ENV["PASSWORD_MYSQL"] %>
+  # socket:  /var/run/mysqld/mysqld.sock
 
 development:
   <<: *default
   database: rails_7_safe_place_development
+
+staging:
+  <<: *default
+  database: rails_7_safe_place_staging
+
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -53,3 +60,5 @@ production:
   database: rails_7_safe_place_production
   username: rails_7_safe_place
   password: <%= ENV["RAILS_7_SAFE_PLACE_DATABASE_PASSWORD"] %>
+
+
