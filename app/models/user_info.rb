@@ -25,4 +25,6 @@
 #
 class UserInfo < ApplicationRecord
   belongs_to :user
+
+  enum gender: { male: 'Male', female: 'Female', non_binary: 'Non-binary', other: 'Other' }
 end

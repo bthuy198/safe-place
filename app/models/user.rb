@@ -42,4 +42,6 @@ class User < ApplicationRecord
   has_many :schedules, dependent: :nullify
   has_many :session_states, dependent: :destroy
   has_one :user_info, dependent: :destroy
+
+  enum status: { available: 'Available', unavailable: 'Unavailable', await: 'Await' }
 end
