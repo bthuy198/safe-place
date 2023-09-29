@@ -19,6 +19,6 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class PodcastAlbum < ApplicationRecord
-  belongs_to :users
+  belongs_to :user
   has_many :podcasts, dependent: :destroy
 end

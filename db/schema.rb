@@ -63,7 +63,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_29_045200) do
 
   create_table "bookmarks", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.boolean "bookmark"
-    t.boolean "anonymuos"
+    t.boolean "anonymous"
     t.bigint "user_id", null: false
     t.string "bookmarkable_type", null: false
     t.bigint "bookmarkable_id", null: false
@@ -74,7 +74,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_29_045200) do
   end
 
   create_table "comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.boolean "anonymuos"
+    t.boolean "anonymous"
     t.bigint "user_id", null: false
     t.string "commentable_type", null: false
     t.bigint "commentable_id", null: false
@@ -146,7 +146,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_29_045200) do
 
   create_table "likes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.boolean "like"
-    t.boolean "anonymuos"
+    t.boolean "anonymous"
     t.bigint "user_id", null: false
     t.string "likeable_type", null: false
     t.bigint "likeable_id", null: false

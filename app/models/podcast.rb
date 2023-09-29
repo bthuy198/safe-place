@@ -23,7 +23,7 @@
 #  fk_rails_...  (podcast_album_id => podcast_albums.id)
 #
 class Podcast < ApplicationRecord
-  belongs_to :podcast_albums
+  belongs_to :podcast_album
   has_many :likes, as: :likeable, dependent: :destroy
   has_many :bookmarks, as: :bookmarkable, dependent: :destroy
 end

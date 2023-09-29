@@ -3,7 +3,7 @@
 # Table name: bookmarks
 #
 #  id                :bigint           not null, primary key
-#  anonymuos         :boolean
+#  anonymous         :boolean
 #  bookmark          :boolean
 #  bookmarkable_type :string(255)      not null
 #  created_at        :datetime         not null

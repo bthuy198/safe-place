@@ -5,7 +5,7 @@
 # Table name: likes
 #
 #  id            :bigint           not null, primary key
-#  anonymuos     :boolean
+#  anonymous     :boolean
 #  like          :boolean
 #  likeable_type :string(255)      not null
 #  created_at    :datetime         not null

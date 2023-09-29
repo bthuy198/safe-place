@@ -20,7 +20,7 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Confession < ApplicationRecord
-  belongs_to :users
+  belongs_to :user
   has_rich_text :content
   has_many :bookmarks, as: :bookmarkable, dependent: :destroy
   has_many :likes, as: :likeable, dependent: :destroy
