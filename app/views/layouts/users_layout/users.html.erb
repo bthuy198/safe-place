@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Rails7SafePlace</title>
+    <title>Safe Place</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,8 +10,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= render "layouts/users_layout/partials/header"%>
+  <body id="body" class="d-flex flex-column min-vh-100">
     <%= render "shared/flash"%>
     <%= yield %>
     <%= render "layouts/users_layout/partials/footer"%>
