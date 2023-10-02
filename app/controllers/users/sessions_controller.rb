@@ -3,6 +3,7 @@
 module Users
   # Class SessionsController for Users
   class SessionsController < Devise::SessionsController
+    layout 'blank_layout/blank'
     # before_action :configure_sign_in_params, only: [:create]
 
     # GET /resource/sign_in
