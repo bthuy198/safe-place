@@ -11,11 +11,16 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',
-    registrations: 'users/registrations',
-    passwords: 'users/passwords'
+    registrations: 'users/registrations'
   }
 
-  get 'home', to: 'users_layout#home'
+  get 'home', to: 'users/users_pages#home'
+  get 'contact', to: 'users/users_pages#contact'
+  get 'about_app', to: 'users/users_pages#about_app'
+  get 'term', to: 'users/users_pages#term'
+  get 'about_us', to: 'users/users_pages#about_us'
+  get 'support', to: 'users/users_pages#support'
+  get 'mobile_app', to: 'users/users_pages#mobile_app'
 
   namespace 'users' do
     resources :user_info
