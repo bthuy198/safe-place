@@ -5,9 +5,9 @@
 # Table name: schedules
 #
 #  id           :bigint           not null, primary key
-#  date         :date
-#  end_time     :datetime
-#  start_time   :datetime
+#  date         :date             not null
+#  end_time     :datetime         not null
+#  start_time   :datetime         not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  counselor_id :bigint           not null

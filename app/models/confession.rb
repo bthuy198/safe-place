@@ -5,7 +5,7 @@
 # Table name: confessions
 #
 #  id         :bigint           not null, primary key
-#  anonymous  :boolean
+#  anonymous  :boolean          default(FALSE)
 #  tag        :text(65535)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

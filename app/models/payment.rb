@@ -7,7 +7,7 @@
 #  id         :bigint           not null, primary key
 #  amount     :decimal(10, 2)   not null
 #  deleted_at :datetime
-#  status     :boolean
+#  status     :boolean          default(FALSE)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
