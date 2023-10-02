@@ -11,9 +11,15 @@ Rails.application.routes.draw do
 
   scope module: 'devise' do
     devise_for :users, controllers: {
-    sessions: 'devise/users/sessions',
-    registrations: 'devise/users/registrations'
-  }
+      sessions: 'devise/users/sessions',
+      registrations: 'devise/users/registrations'
+    }
+  end
+  devise_scope :user do
+    get 'sign_in', to: 'devise/users/sessions#new'
+    post 'sign_in', to: 'devise/users/sessions#create'
+    delete 'sign_out', to: 'devise/users/sessions#destroy'
+    get 'sign_up', to: 'devise/users/registrations#new'
   end
 
   get 'home', to: 'users/users_pages#home'
