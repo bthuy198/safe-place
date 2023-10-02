@@ -9,8 +9,10 @@ Rails.application.routes.draw do
     passwords: 'users/passwords'
   }
 
-  namespace :users do
-    resources :users
+  get 'home', to: 'users_layout#home'
+
+  namespace 'users' do
+    resources :user_info
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

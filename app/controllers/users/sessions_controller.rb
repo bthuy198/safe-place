@@ -20,7 +20,7 @@ module Users
     # end
 
     def after_sign_in_path_for(_resource)
-      users_users_path
+      home_path
     end
 
     def after_sign_out_path_for(_resource)
