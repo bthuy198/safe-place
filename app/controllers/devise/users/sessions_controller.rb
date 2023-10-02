@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+module Devise
 module Users
   # Class SessionsController for Users
   class SessionsController < Devise::SessionsController
@@ -36,4 +37,5 @@ module Users
     #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
     # end
   end
+end
 end

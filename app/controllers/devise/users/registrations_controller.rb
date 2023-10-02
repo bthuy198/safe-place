@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+module Devise
 module Users
   # Class RegistrationsController for Users
   class RegistrationsController < Devise::RegistrationsController
@@ -73,4 +74,5 @@ module Users
       params.require(:user).permit(:email, :password, :password_confirmation, :current_password, :user_name)
     end
   end
+end
 end

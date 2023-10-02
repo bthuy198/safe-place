@@ -9,10 +9,12 @@ Rails.application.routes.draw do
     get 'dashboard', to: 'pages#dashboard'
   end
 
-  devise_for :users, controllers: {
-    sessions: 'users/sessions',
-    registrations: 'users/registrations'
+  scope module: 'devise' do
+    devise_for :users, controllers: {
+    sessions: 'devise/users/sessions',
+    registrations: 'devise/users/registrations'
   }
+  end
 
   get 'home', to: 'users/users_pages#home'
   get 'contact', to: 'users/users_pages#contact'
