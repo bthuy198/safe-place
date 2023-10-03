@@ -3,7 +3,7 @@
 module Devise
   module Users
     class ConfirmationsController < Devise::ConfirmationsController
-      layout 'blank_layout/blank'
+      layout 'blank_layout/user_blank'
       # GET /resource/confirmation/new
       # def new
       #   super

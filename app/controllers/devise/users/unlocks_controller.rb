@@ -3,7 +3,7 @@
 module Devise
   module Users
 class UnlocksController < Devise::UnlocksController
-  layout 'blank_layout/blank'
+  layout 'blank_layout/user_blank'
   # GET /resource/unlock/new
   # def new
   #   super

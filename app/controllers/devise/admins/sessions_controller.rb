@@ -4,7 +4,7 @@ module Devise
   module Admins
     # class SessionsController for Admins
     class SessionsController < Devise::SessionsController
-      layout 'blank_layout/blank'
+      layout 'blank_layout/admin_blank'
       # before_action :configure_sign_in_params, only: [:create]
 
       # GET /resource/sign_in

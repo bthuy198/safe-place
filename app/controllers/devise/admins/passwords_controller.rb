@@ -3,7 +3,7 @@
 module Devise
   module Admins
 class PasswordsController < Devise::PasswordsController
-  layout 'blank_layout/blank'
+  layout 'blank_layout/admin_blank'
   # GET /resource/password/new
   # def new
   #   super
