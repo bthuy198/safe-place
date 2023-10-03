@@ -2,8 +2,7 @@
 
 module Users
   # class UsersPagesController
-  class UsersInfosController < UsersLayoutController
-    before_action :authenticate_user!
+  class UserInfosController < UsersLayoutController
 
     def show
       @user = current_user
@@ -19,7 +18,7 @@ module Users
       @user = current_user
       @user_info = @user.user_info
       if @user.update(user_params)
-        redirect_to users_users_infos_path, notice: 'User infomation updated successfully'
+        redirect_to users_user_infos_path, notice: 'User infomation updated successfully'
       else
         render 'edit'
       end
