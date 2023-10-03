@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'about_us', to: 'users/pages#about_us'
   get 'support', to: 'users/pages#support'
   get 'mobile_app', to: 'users/pages#mobile_app'
+
   root 'users/pages#home'
 
   scope module: 'devise' do
@@ -28,9 +29,6 @@ Rails.application.routes.draw do
 
   namespace :admins do
     get 'dashboard', to: 'pages#dashboard'
-  end
-  authenticated :admin do
-    root to: 'pages#dashboard', as: :authenticated_admin
   end
 
   namespace 'users' do
