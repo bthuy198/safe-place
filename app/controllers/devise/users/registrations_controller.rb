@@ -56,6 +56,7 @@ module Devise
 
       # The path used after sign up.
       def after_sign_up_path_for(_resource)
+        sign_out(_resource)
         new_user_session_path
       end
 
