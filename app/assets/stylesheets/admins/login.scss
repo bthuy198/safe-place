@@ -1,28 +1,28 @@
-.container {
+.login__container {
   font-family: "League Spartan", sans-serif;
   margin-top: 5%;
 }
 
-.form-title {
+.form__title {
   color: #1F7564;
   font-size: 50;
   font-weight: bold;
   margin-bottom: 20px;
 }
 
-.card {
+.login__card {
   border: 1px solid #1F7564;
   border-radius: 3px;
   background-color: #fff;
   color: #1F7564;
 }
 
-.card-body {
+.login__card-body {
   padding: 30px;
   color: #1F7564;
 }
 
-.label {
+.login__label {
   font-size: 20;
   font-weight: bold;
 }
@@ -32,14 +32,14 @@
   border-color: #1f7564;
 }
 
-.form-control {
+.login__form-control {
   border-radius: 3px;
   border: 1px solid #ccc;
   padding: 10px;
   color: #1F7564;
 }
 
-.btn {
+.btn__login {
   border-radius: 15px;
   font-size: 16px;
   font-weight: bold;

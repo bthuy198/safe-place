@@ -59,4 +59,6 @@ class User < ApplicationRecord
   has_one :user_info, dependent: :destroy
 
   enum status: { available: 'available', unavailable: 'unavailable', await: 'await' }
+
+  accepts_nested_attributes_for :user_info
 end
