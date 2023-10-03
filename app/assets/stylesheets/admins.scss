@@ -1,6 +1,10 @@
 .list_dropdown{
   transform: translate3d(0px, 58px, 0px) !important;
   border-radius : 0px;
+  background-color: #f4f3ef;
+}
+.show{
+  background-color: #f4f3ef !important;
 }
 
 .color_admins {
@@ -9,7 +13,6 @@
 
 .page_content{
   width: 100% !important;
-
 }
 
 .color_header{
@@ -29,6 +32,10 @@
   font-size: x-large;
   padding: .5rem 1rem;
   height: 57px;
+}
+
+.sidenav a:hover {
+  color: black !important;
 }
 
 .nav_side{
@@ -84,6 +91,15 @@
   padding: 20px;
 }
 
+.item_down{
+  background-color: #f4f3ef !important;
+}
+
+.item_down :hover{
+  background-color: #f4f3ef !important;
+  color: black !important;
+}
+
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
@@ -95,4 +111,19 @@
   .nav_side {
     display: none;
   }
+}
+
+@keyframes slideOut {
+  0% {
+    width: 22%; 
+  }
+  22% {
+    width: 0;
+  }
+}
+
+
+
+#sidebar-wrapper {
+  animation: slideOut 0.5s ease-out; 
 }
