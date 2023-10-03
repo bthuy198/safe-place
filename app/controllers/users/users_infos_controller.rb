@@ -2,8 +2,7 @@
 
 module Users
   # class UsersPagesController
-  class UsersInfosController < ApplicationController
-    layout 'users_layout/users'
+  class UsersInfosController < UsersLayoutController
     before_action :authenticate_user!
 
     def show
