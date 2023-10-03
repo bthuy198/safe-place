@@ -14,3 +14,4 @@ AllCops:
     - 'db/migrate/20230929033800_create_active_storage_tables.active_storage.rb'
     - 'db/migrate/20230929042053_create_courses.rb'
     - 'lib/tasks/auto_annotate_models.rake'
+    - 'config/routes.rb'

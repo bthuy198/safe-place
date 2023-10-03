@@ -1,26 +1,41 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'home', to: 'users/pages#home'
+  get 'contact', to: 'users/pages#contact'
+  get 'about_app', to: 'users/pages#about_app'
+  get 'term', to: 'users/pages#term'
+  get 'about_us', to: 'users/pages#about_us'
+  get 'support', to: 'users/pages#support'
+  get 'mobile_app', to: 'users/pages#mobile_app'
 
-  devise_for :admins, controllers: {
-    sessions: 'admins/sessions'
-  }
+  root 'users/pages#home'
+
+  scope module: 'devise' do
+    devise_for :admins, controllers: {
+      sessions: 'devise/admins/sessions'
+    }
+    devise_for :users, controllers: {
+      sessions: 'devise/users/sessions',
+      registrations: 'devise/users/registrations'
+    }
+  end
+  devise_scope :user do
+    get 'sign_in', to: 'devise/users/sessions#new'
+    post 'sign_in', to: 'devise/users/sessions#create'
+    delete 'sign_out', to: 'devise/users/sessions#destroy'
+    get 'sign_up', to: 'devise/users/registrations#new'
+  end
+
   namespace :admins do
     get 'dashboard', to: 'pages#dashboard'
   end
-
-  devise_for :users, controllers: {
-    sessions: 'users/sessions',
-    registrations: 'users/registrations',
-    passwords: 'users/passwords'
-  }
-
-  get 'home', to: 'users_layout#home'
 
   namespace 'users' do
     resources :user_info
   end
 
+  resources :admins
   
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
