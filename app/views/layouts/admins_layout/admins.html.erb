@@ -1,29 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <title>Safe Place - Admin</title>
+    <title>Rails7SafePlace</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "admins", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= link_to "Root", root_path %>
-    <%= render 'shared/flash' %>
-    <div class="d-flex" id="wrapper">
+    <%# <%= render 'shared/flash' %> 
+
+
+    <div class="d-flex color_admins" id="wrapper">
+
       <%= render 'layouts/admins_layout/partials/leftmenu' %>
-      <!-- Page content wrapper-->
-      <div id="page-content-wrapper">
-        <!-- Top navigation-->
-        <%= render 'layouts/admins_layout/partials/header' %>
-        <!-- Page content-->
-        <div class="container-fluid">
-          <%= yield %>
-        </div>
-      </div>
+
+            <!-- Page content wrapper-->
+            <div id="page-content-wrapper" class="page_content">
+                <!-- Top navigation-->
+                <%= render 'layouts/admins_layout/partials/header' %>
+                <!-- Page content-->
+                <div class="container-fluid">
+                  <%= yield %>
+                </div>
+            </div>
     </div>
+
   </body>
 </html>
