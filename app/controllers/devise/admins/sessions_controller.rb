@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
+module Devise
 class Admins::SessionsController < Devise::SessionsController
+  layout 'blank_layout/blank'
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -33,4 +35,5 @@ class Admins::SessionsController < Devise::SessionsController
     new_admin_session_path
   end
 
+end
 end
