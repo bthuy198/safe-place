@@ -14,10 +14,12 @@ footer {
   color: var(--color-text-header);
   line-height: var(--line-height-body);
   font-family: var(--font-family-sans);
+  margin-bottom: 24px;
 
   h3 {
     font-size: var(--font-size-l);
     font-weight: bolder;
+    margin-bottom: 12px;
   }
 
   a {
@@ -26,12 +28,31 @@ footer {
     font-weight: bolder;
     text-decoration: none;
     transition: color 200ms;
+    line-height: 2;
 
     &:hover,
     &:focus,
     &:active {
       color: var(--color-primary);
     }
+  }
+
+  a.facebook {
+    &:hover,
+    &:focus,
+    &:active {
+      color: var(--color-blue);
+    }
+    margin-top: 12px;
+  }
+
+  a.youtube {
+    &:hover,
+    &:focus,
+    &:active {
+      color: var(--color-red);
+    }
+    margin-top: 12px;
   }
 
   img,
