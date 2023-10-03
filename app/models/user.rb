@@ -59,4 +59,10 @@ class User < ApplicationRecord
   has_one :user_info, dependent: :destroy
 
   enum status: { available: 'available', unavailable: 'unavailable', await: 'await' }
+
+  paginates_per 10
+
+  acts_as_paranoid
+
+  accepts_nested_attributes_for :user_info, allow_destroy: true
 end

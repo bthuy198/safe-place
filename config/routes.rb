@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-
   devise_for :admins, controllers: {
     sessions: 'admins/sessions'
   }
@@ -34,8 +33,11 @@ Rails.application.routes.draw do
     resources :user_info
   end
 
+  namespace 'admins' do
+    resources :users
+  end
+
   resources :admins
-  
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
