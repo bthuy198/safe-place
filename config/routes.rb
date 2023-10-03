@@ -1,14 +1,20 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  devise_for :admins, controllers: {
-    sessions: 'admins/sessions'
-  }
-  namespace :admins do
-    get 'dashboard', to: 'pages#dashboard'
-  end
+  get 'home', to: 'users/pages#home'
+  get 'contact', to: 'users/pages#contact'
+  get 'about_app', to: 'users/pages#about_app'
+  get 'term', to: 'users/pages#term'
+  get 'about_us', to: 'users/pages#about_us'
+  get 'support', to: 'users/pages#support'
+  get 'mobile_app', to: 'users/pages#mobile_app'
+
+  root 'users/pages#home'
 
   scope module: 'devise' do
+    devise_for :admins, controllers: {
+      sessions: 'devise/admins/sessions'
+    }
     devise_for :users, controllers: {
       sessions: 'devise/users/sessions',
       registrations: 'devise/users/registrations'
@@ -21,23 +27,13 @@ Rails.application.routes.draw do
     get 'sign_up', to: 'devise/users/registrations#new'
   end
 
-  get 'home', to: 'users/users_pages#home'
-  get 'contact', to: 'users/users_pages#contact'
-  get 'about_app', to: 'users/users_pages#about_app'
-  get 'term', to: 'users/users_pages#term'
-  get 'about_us', to: 'users/users_pages#about_us'
-  get 'support', to: 'users/users_pages#support'
-  get 'mobile_app', to: 'users/users_pages#mobile_app'
+  namespace :admins do
+    get 'dashboard', to: 'pages#dashboard'
+  end
 
   namespace 'users' do
     resources :user_info
   end
-
-  namespace 'admins' do
-    resources :users
-  end
-
-  resources :admins
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

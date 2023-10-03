@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=League+Spartan');
 @import "bootstrap";
 @import "font-awesome";
 @import "actiontext";
-@import "login_admin/login_admin";
+@import "admins/login";
 @import "users/login";
 @import url('https://fonts.googleapis.com/css?family=League+Spartan');
 @import "style";
-@import "admins/user_admin"
+@import "admins/user_admin";
+@import "users/style";

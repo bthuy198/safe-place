@@ -2,7 +2,7 @@
 
 module Devise
   module Users
-  # Class RegistrationsController for Users
+    # Class RegistrationsController for Users
     class RegistrationsController < Devise::RegistrationsController
       layout 'blank_layout/blank'
       # before_action :configure_sign_up_params, only: [:create]

@@ -3,6 +3,8 @@
 //= link_tree ../../javascript .js
 //= link_tree ../../../vendor/javascript .js
 
+//= link jquery.js
+//= link jquery_ujs.js
 //= link bootstrap.js
 //= link popper.js
 

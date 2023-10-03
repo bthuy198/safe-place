@@ -1,7 +1,8 @@
+# frozen_string_literal: true
 
 module Admins
-    class PagesController < Admins::AdminsController
-      def dashboard; end
-    end
+  # class PagesController
+  class PagesController < AdminsLayoutController
+    def dashboard; end
   end
-  
+end

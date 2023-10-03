@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Users
-  # class UsersPagesController
-  class UsersPagesController < ApplicationController
+  # class PagesController
+  class PagesController < ApplicationController
     layout 'users_layout/users'
 
     def home; end
