@@ -20,22 +20,48 @@
 </nav>
 
 <script>
-    // function CloseMenu(){
-    //     let menu = document.getElementById("sidebar-wrapper")
-    //     if (menu) {
-    //         let displayValue = window.getComputedStyle(menu).getPropertyValue("display");
-    //         if (displayValue != 'none')
-    //         {
-    //             menu.style.display = "none";
-    //         }
-    //         else menu.style.display = "block";
-    //     }
-    // }
+    function CloseMenu(){
+        let menu = document.getElementById("sidebar-wrapper")
+        if (menu) {
+            let displayValue = window.getComputedStyle(menu).getPropertyValue("display");
+            if (displayValue != 'none')
+            {
+                menu.style.display = "none";
+            }
+            else menu.style.display = "block";
+        }
+    }
 
-   
+//    function CloseMenu() {
+//     let menu = document.getElementById("sidebar-wrapper");
+//     if (menu) {
+//         let displayValue = window.getComputedStyle(menu).getPropertyValue("display");
+//         let width = menu.offsetWidth;
+//         if (width !== 0) {
+//             // Nếu menu đang hiển thị, thì thụt vào trong
+//             menu.style.animation = "slideOut 0.5s ease-out";
+//             menu.style.animationFillMode = "forwards"; // Giữ lại trạng thái cuối cùng của animation
+//             menu.style.width = "0"; // Kích thước cuối cùng của menu khi thụt vào trong
 
+//             // Ẩn các thẻ con của menu
+//             let menuItems = menu.querySelectorAll(".nav-item");
+//             menuItems.forEach(function (item) {
+//                 item.style.display = "none";
+//             });
+//         } else {
+//             // Nếu menu đã ẩn hoàn toàn, thì hiển thị lại
+//             menu.style.animation = "slideIn 0.5s ease-out";
+//             menu.style.animationFillMode = "forwards"; // Giữ lại trạng thái cuối cùng của animation
+//             menu.style.width = "22%"; // Kích thước ban đầu của menu
 
-    
+//             // Hiển thị lại các thẻ con của menu
+//             let menuItems = menu.querySelectorAll(".nav-item");
+//             menuItems.forEach(function (item) {
+//                 item.style.display = "block";
+//             });
+//         }
+//     }
+// }
 
 
 </script>
