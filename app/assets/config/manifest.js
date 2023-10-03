@@ -5,3 +5,8 @@
 
 //= link bootstrap.js
 //= link popper.js
+
+//= link Signika-Bold.woff
+//= link Signika-Light.woff
+//= link Signika-Regular.woff
+//= link Signika-SemiBold.woff

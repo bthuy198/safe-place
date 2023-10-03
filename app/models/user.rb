@@ -45,7 +45,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :lockable, :timeoutable, :trackable
-         #,:confirmable,
+  # ,:confirmable,
   has_many :conversations, as: :conversationable, dependent: :nullify
   has_many :bookmarks, dependent: :destroy
   has_many :likes, dependent: :destroy

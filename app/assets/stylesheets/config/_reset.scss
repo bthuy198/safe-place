@@ -1,0 +1,43 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-y: scroll;
+  height: 100%;
+}
+
+footer {
+  background-color: var(--color-background);
+  color: var(--color-text-header);
+  line-height: var(--line-height-body);
+  font-family: var(--font-family-sans);
+
+  h3 {
+    font-size: var(--font-size-l);
+    font-weight: bolder;
+  }
+
+  a {
+    color: var(--color-text-body);
+    font-size: var(--font-size-s);
+    font-weight: bolder;
+    text-decoration: none;
+    transition: color 200ms;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: var(--color-primary);
+    }
+  }
+
+  img,
+  picture,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+}
