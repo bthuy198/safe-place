@@ -10864,10 +10864,21 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
   }
 }
 
+
 .list_dropdown{
   transform: translate3d(0px, 58px, 0px) !important;
   border-radius : 0px;
 }
+
+.color_admins {
+  background-color: #f4f3ef;
+}
+
+.color_header{
+  background-color: #f4f3ef !important;
+}
+
+
 
 // Css left menu 
 /* The side navigation menu */

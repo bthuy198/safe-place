@@ -1,37 +1,4 @@
 @import "bootstrap";
 @import "actiontext";
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css");
 
-.card {
-    border-radius: 10px;
-    background-color: #fff;
-  }
-
-  .card-header {
-    background-color: #000;
-    color: #fff;
-    font-size: 18px;
-    font-weight: bold;
-  }
-
-  .card-body {
-    padding: 20px;
-  }
-
-  .form-control {
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    padding: 10px;
-  }
-
-  .btn {
-    border-radius: 5px;
-    background-color: #000;
-    color: #fff;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 10px 10px;
-  }
-
-  .btn-primary {
-    background-color: #ff0000;
-  }
