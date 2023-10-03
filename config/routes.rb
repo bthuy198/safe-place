@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-
   get 'home', to: 'users/pages#home'
   get 'contact', to: 'users/pages#contact'
   get 'about_app', to: 'users/pages#about_app'

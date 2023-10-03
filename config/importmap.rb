@@ -13,5 +13,5 @@ pin '@rails/actiontext', to: 'actiontext.js'
 
 pin 'jquery'
 pin 'jquery_ujs'
-pin "bootstrap", to: "bootstrap.js", preload: true
-pin "popper", to: "popper.js", preload: true
+pin 'bootstrap', to: 'bootstrap.js', preload: true
+pin 'popper', to: 'popper.js', preload: true
