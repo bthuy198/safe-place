@@ -1,0 +1,33 @@
+<div class="card w-80 mb-3 mt-3">
+  <div class="card-body">
+    <h5 class="card-title">Search room</h5>
+    <button data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <%= link_to "Add room",new_admins_room_path, data:{turbo_frame: "add_room"} %>
+    </button>
+  </div>
+</div>
+
+<div class="card w-80">
+  <div class="card-body">
+    <h5 class="card-title">List rooms</h5>
+    <p class="card-text">
+    <%= render "admins/rooms/partials/room_table", rooms: @rooms %>
+    </p>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= turbo_frame_tag "add_room" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
