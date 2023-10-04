@@ -13,25 +13,42 @@ body {
   padding-right: 0 !important;
 }
 
-div.custom-upper-body {
-  flex-grow: 1;
-}
+div {
+  &.custom-upper-body {
+    flex-grow: 1;
+  }
 
-div.custom-board {
-  position: relative;
+  &.custom-board {
+    position: relative;
+  }
+
+  &.centered-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &.c-board {
+      height: 70vh;
+    }
+
+    &.c-main {
+      height: 65vh;
+    }
+  }
+
+  &.custom-main {
+    position: relative;
+  }
 }
 
 turbo-frame#board {
   position: absolute;
   margin-top: 10px;
-}
-
-div.custom-main {
-  position: relative;
+  width: 100%;
 }
 
 turbo-frame#main {
   position: absolute;
+  width: 97.3%;
   top: 70px;
 }
 

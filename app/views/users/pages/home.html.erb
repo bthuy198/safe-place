@@ -2,13 +2,17 @@
   <div class="row">
     <div class="col-md-3 custom-board">
       <%= turbo_frame_tag "board" do %>
-        Placeholder for Confession index views
+        <div class="centered-container c-board">
+          <i class="fa-solid fa-spinner fa-spin-pulse fa-2xl"></i>
+        </div>
       <% end %>
     </div>
     <div class="col-md-9 custom-main">
       <%= render "users/shared/navbar" %>
       <%= turbo_frame_tag "main", src: users_podcasts_path, loading: :lazy do %>
-        Placeholder for main index views
+        <div class="centered-container c-main">
+          <i class="fa-solid fa-spinner fa-spin-pulse fa-2xl"></i>
+        </div>
       <% end %>
     </div>
   </div>
