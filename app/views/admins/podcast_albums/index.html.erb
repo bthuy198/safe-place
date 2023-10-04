@@ -1,0 +1,42 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="container-fluid">
+  <div class="row card text-green" style="margin-top: 50px; border-radius: 15px">
+    <div class="card-body row" style="padding: 30px">
+    <div class="col-6">
+      <h1>Podcast albums</h1>
+    </div>
+    <div class="col-4">
+      <div class="input-group">
+        <div class="form-outline">
+          <input type="search" id="form1" class="form-control" placeholder="Search" style="border-bottom-right-radius: 0; border-top-right-radius: 0 " />
+        </div>
+        <button type="button" class="btn btn-primary bg-green border-green" >
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </div>
+    <div class="col-2">
+      <button class="btn btn-primary bg-green border-green"><i class="fa-solid fa-plus"></i> New Album</button>
+    </div>
+    </div>
+  </div>
+  <div id="podcast_albums" class="card" style="margin-top: 50px; border-radius: 15px">
+    <div class="card-body">
+    <%= render 'admins/podcast_albums/partials/album_table', podcast_albums: @podcast_albums %>
+    </div>
+  </div>
+</div>
+<%= link_to "New podcast album", new_admins_podcast_album_path %>
+
+<style>
+  .bg-green{
+      background-color: #1F7564;
+  }
+  .border-green{
+      border-color: #1F7564;
+  }
+  .text-green{
+      color: #1F7564;
+  }
+</style>
