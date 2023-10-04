@@ -27,12 +27,18 @@
                 <br>
             </div>
             <div class="col-lg-2">
-                <div class="row">
-                    <div class="col-lg-3">
-                        <i class="fa-brands fa-facebook fa-2xl"></i>
-                    </div>
-                    <div class="col-lg-3">
-                        <i class="fa-brands fa-square-youtube fa-2xl"></i>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <%= link_to root_path, class: "facebook" do %>
+                                <i class="fa-brands fa-facebook fa-2xl"></i>
+                            <% end %>
+                        </div>
+                        <div class="col-sm-3">
+                            <%= link_to root_path, class: "youtube" do %>
+                                <i class="fa-brands fa-square-youtube fa-2xl"></i>
+                            <% end %>
+                        </div>
                     </div>
                 </div>
             </div>

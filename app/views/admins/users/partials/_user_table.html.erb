@@ -1,0 +1,34 @@
+<table class = 'table mx-auto table-condensed text-center align-middle'>
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Profile Name</th>
+      <th scope="col">Date of Birth</th>
+      <th scope="col">Phone Number</th>
+      <th scope="col">Anonymous</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% users.each do |user| %>
+      <tr id="user-<%= user.id %>">
+        <td><%= user.id %></td>
+        <% if !user.user_info.nil? %>
+          <td><%= link_to user.user_info.profile_name, admins_user_path(user), class: "text-decoration-none text-dark" %></td>
+          <td><%= user.user_info.date_of_birth %></td>
+        <% else %>
+          <td></td>
+          <td></td>
+        <% end %>
+        <td><%= user.phone_number %></td>
+        <td>
+          <%= check_box_tag "user_anonymous_#{user.id}", "1", user.anonymous, class: "anonymous-switch" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="d-flex justify-content-end" id="paginate-element">
+  <%= paginate users, theme: 'bootstrap-5' %>
+</div>
+
+
