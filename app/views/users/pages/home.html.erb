@@ -1,14 +1,23 @@
-<div class="container-fluid">
+<div class="container-fluid custom-upper-body">
   <div class="row">
-    <div class="col-md-3" id="board">
+    <div class="col-md-3 custom-board">
       <%= turbo_frame_tag "board" do %>
         Placeholder for Confession index views
       <% end %>
     </div>
-    <div class="col-md-9" id="main">
+    <div class="col-md-9 custom-main">
       <%= render "users/shared/navbar" %>
       <%= turbo_frame_tag "main", src: users_podcasts_path, loading: :lazy do %>
         Placeholder for main index views
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 custom-media">
+      <%= turbo_frame_tag "media" do %>
+        Placeholder for Media player
       <% end %>
     </div>
   </div>

@@ -14,15 +14,6 @@
   <body id="body" class="d-flex flex-column min-vh-100">
     <%= render "shared/flash"%>
     <%= yield %>
-    <div class="mt-auto container-fluid">
-      <div class="row">
-        <div class="col-md-12" id="media">
-          <%= turbo_frame_tag "media" do %>
-            Placeholder for Media player
-          <% end %>
-        </div>
-      </div>
-      <%= render "layouts/users_layout/partials/footer"%>
-    </div>
+    <%= render "layouts/users_layout/partials/footer"%>
   </body>
 </html>

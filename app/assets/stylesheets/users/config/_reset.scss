@@ -9,70 +9,24 @@ html {
   height: 100%;
 }
 
-footer {
-  background-color: var(--color-background);
-  color: var(--color-text-header);
-  line-height: var(--line-height-body);
-  font-family: var(--font-family-sans);
-  margin-bottom: 24px;
-
-  h3 {
-    font-size: var(--font-size-l);
-    font-weight: bolder;
-    margin-top: 12px;
-  }
-
-  a {
-    color: var(--color-text-body);
-    font-size: var(--font-size-s);
-    font-weight: bolder;
-    text-decoration: none;
-    transition: color 200ms;
-    line-height: 2;
-
-    &:hover,
-    &:focus,
-    &:active {
-      color: var(--color-primary);
-    }
-
-    &.facebook {
-      &:hover,
-      &:focus,
-      &:active {
-        color: var(--color-blue);
-      }
-      margin-top: 12px;
-    }
-
-    &.youtube {
-      &:hover,
-      &:focus,
-      &:active {
-        color: var(--color-red);
-      }
-      margin-top: 12px;
-    }
-  }
-
-  img,
-  picture,
-  svg {
-    display: block;
-    max-width: 100%;
-  }
-
-  span.spacing {
-    display: inline-block;
-    margin: 12px;
-  }
-}
-
 body {
   padding-right: 0 !important;
 }
 
-div#main {
+div.custom-upper-body {
+  flex-grow: 1;
+}
+
+div.custom-board {
+  position: relative;
+}
+
+turbo-frame#board {
+  position: absolute;
+  margin-top: 10px;
+}
+
+div.custom-main {
   position: relative;
 }
 
@@ -141,11 +95,62 @@ nav {
     margin-left: 12px;
   }
 }
-div#board {
-  position: relative;
-}
 
-turbo-frame#board {
-  position: absolute;
-  margin-top: 10px;
+footer {
+  background-color: var(--color-background);
+  color: var(--color-text-header);
+  line-height: var(--line-height-body);
+  font-family: var(--font-family-sans);
+  margin-bottom: 24px;
+
+  h3 {
+    font-size: var(--font-size-l);
+    font-weight: bolder;
+    margin-top: 12px;
+  }
+
+  a {
+    color: var(--color-text-body);
+    font-size: var(--font-size-s);
+    font-weight: bolder;
+    text-decoration: none;
+    transition: color 200ms;
+    line-height: 2;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: var(--color-primary);
+    }
+
+    &.facebook {
+      &:hover,
+      &:focus,
+      &:active {
+        color: var(--color-blue);
+      }
+      margin-top: 12px;
+    }
+
+    &.youtube {
+      &:hover,
+      &:focus,
+      &:active {
+        color: var(--color-red);
+      }
+      margin-top: 12px;
+    }
+  }
+
+  img,
+  picture,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  span.spacing {
+    display: inline-block;
+    margin: 12px;
+  }
 }
