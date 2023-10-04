@@ -1,0 +1,21 @@
+<div class="card w-80 mb-3 mt-3">
+  <div class="card-body">
+    <h5 class="card-title">Search user</h5>
+    <%= search_form_for @q, url:admins_users_path, class: 'd-flex' do |f| %>
+      <div class="input-group mb-3">
+        <%= f.search_field :user_info_profile_name_cont, class: 'form-control me-2', placeholder: 'Search name users' %>
+        <%= f.search_field :phone_number_cont, class: 'form-control me-2', placeholder: 'Search phone' %>
+        <%= f.submit 'Search', class: 'btn btn-outline-success', type: 'submit' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="card w-80">
+  <div class="card-body">
+    <h5 class="card-title">List Users</h5>
+    <p class="card-text">
+    <%= render "admins/users/partials/user_table", users: @users %>
+    </p>    
+  </div>
+</div>

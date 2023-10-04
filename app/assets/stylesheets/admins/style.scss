@@ -1,13 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=League+Spartan');
 @import "admins/login";
 
-.list_dropdown {
+.list_dropdown{
   transform: translate3d(0px, 58px, 0px) !important;
   border-radius : 0px;
   background-color: #f4f3ef;
 }
-
-.show {
+.show{
   background-color: #f4f3ef !important;
 }
 
@@ -15,13 +14,14 @@
   background-color: #f4f3ef;
 }
 
-.page_content {
+.page_content{
   width: 100% !important;
 }
 
-.color_header {
+.color_header{
   background-color: #f4f3ef !important;
   width: 100% !important;
+
 }
 
 .dropdown-menu {
@@ -31,7 +31,7 @@
   background-color: #f4f3ef;
 }
 
-.top_admin_page {
+.top_admin_page{
   font-size: x-large;
   padding: .5rem 1rem;
   height: 57px;
@@ -41,7 +41,7 @@
   color: black !important;
 }
 
-.nav_side {
+.nav_side{
   width: 22%;
 }
 
@@ -74,11 +74,11 @@
   padding: 20px;
 }
 
-.item_down {
+.item_down{
   background-color: #f4f3ef !important;
 }
 
-.item_down :hover {
+.item_down :hover{
   background-color: #f4f3ef !important;
   color: black !important;
 }
@@ -103,6 +103,8 @@
 //     width: 0;
 //   }
 // }
+
+
 
 #sidebar-wrapper {
   animation: slideOut 0.5s ease-out;
