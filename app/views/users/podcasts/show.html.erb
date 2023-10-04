@@ -1,0 +1,30 @@
+<%= turbo_frame_tag "main" do %>
+  <div class="container-fluid" >
+    <div class="row" style="margin-right: 0px;">
+        <div class="card" style="height: 65vh;">
+          <div class="card-body">
+             <div class="row">
+              <div class="col-4">
+                <div class="card">
+                  <div class="card-body">
+                    <% @podcast_albums.each do |podcast_album| %>
+                      <%= render "podcast_album", podcast_album: podcast_album%>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+              <div class="col-8">
+                 <div class="d-flex align-items-center flex-column justify-content-between" >
+                      <div style="height: 17vh;">
+                            <h2>Podcasts are not just voices; they are emotions and knowledge shared through sound. When you upload a podcast, you are sharing a part of yourself with the world.</h2>
+                      </div>          
+                      <div><%= link_to "Create podcast", new_users_podcasts_path, class: "btn btn-primary", data: {turbo_frame: "_top"}%></div>
+                  </div>
+              </div>
+             </div>
+          </div>
+        </div>
+    </div>
+  </div>
+<% end %>
+

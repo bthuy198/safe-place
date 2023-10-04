@@ -7,7 +7,7 @@
     </div>
     <div class="col-md-9" id="main">
       <%= render "users/shared/navbar" %>
-      <%= turbo_frame_tag "main" do %>
+      <%= turbo_frame_tag "main", src: users_podcasts_path, loading: :lazy do %>
         Placeholder for main index views
       <% end %>
     </div>
