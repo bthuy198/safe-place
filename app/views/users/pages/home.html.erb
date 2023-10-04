@@ -1,7 +1,9 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-3">
-      Placeholder for Confession index views
+    <div class="col-md-3" id="board">
+      <%= turbo_frame_tag "board" do %>
+        Placeholder for Confession index views
+      <% end %>
     </div>
     <div class="col-md-9" id="main">
       <%= render "users/shared/navbar" %>

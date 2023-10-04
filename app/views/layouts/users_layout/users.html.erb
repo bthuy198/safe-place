@@ -16,8 +16,10 @@
     <%= yield %>
     <div class="mt-auto container-fluid">
       <div class="row">
-        <div class="col-md-12">
-          Placeholder for Media player
+        <div class="col-md-12" id="media">
+          <%= turbo_frame_tag "media" do %>
+            Placeholder for Media player
+          <% end %>
         </div>
       </div>
       <%= render "layouts/users_layout/partials/footer"%>
