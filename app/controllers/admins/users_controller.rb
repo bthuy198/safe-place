@@ -56,6 +56,12 @@ module Admins
       end
     end
 
+    def toggle_anonymous
+      @user = User.find(params[:id])
+      @user.update(anonymous: params[:anonymous])
+      render json: { message: "The 'Anonymous' status has been successfully updated." }
+    end
+
     private
 
     def set_user

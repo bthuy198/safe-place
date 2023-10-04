@@ -29,6 +29,11 @@ Rails.application.routes.draw do
 
   namespace :admins do
     get 'dashboard', to: 'pages#dashboard'
+    resources :users do
+      member do
+        patch 'toggle_anonymous', to: 'users#toggle_anonymous'
+      end
+    end
   end
 
   namespace 'users' do
