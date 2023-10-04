@@ -1,39 +1,35 @@
 <% user_type = {"User"=>"User", "Counselor"=>"Counselor"} %>
-<div class="container-fluid form-user">
-<%= form_with(model: [:admins,user] ) do |form| %>
-  <% if user.errors.any? %>
-    <ul>
-      <% user.errors.each do |err| %>
-        <li><%= content_tag(:div, err.message, class: "alert alert-info")%></li>
-      <% end %>
-    </ul>
-  <% end %>
-  <div class="row mb-5">
-    <div class="col">
-      <%= form.label :user_name, "User Name" %>
-      <%= form.text_field :user_name, class: 'form-control' %>
-    </div>
-        <div class="col">
-      <%= form.label :email, "Email" %>
-      <%= form.email_field :email, class: 'form-control' %>
-    </div>
-  </div>
-  <div class="row mb-5">
-    <div class="col">
-      <%= form.label :phone_number, "Phone" %>
-      <%= form.number_field :phone_number, class: 'form-control' %>
-    </div>
-    <div class="col">
-      <%= form.label :type, "Type" %>
-      <%= form.select :type, user_type,{}, class: 'form-select'%>
-    </div>
-    <div class="col">
-      <%= form.label :status, "Status" %>
-      <%= form.select :status, User.statuses,{}, class: 'form-select', "aria-label":"Default select example" %>
-    </div>
-  </div>
+<div class="form-user">
+  <%= form_with(model: [:admins,user] ) do |form| %>
+    <% if user.errors.any? %>
+      <ul>
+        <% user.errors.each do |err| %>
+          <li><%= content_tag(:div, err.message, class: "alert alert-info")%></li>
+        <% end %>
+      </ul>
+    <% end %>
     <%= form.fields_for :user_info do |user_info_fields| %>
-      <div class="row mb-5">
+      <div class="row mb-1 gy-2 gx-3 align-items-center">
+        <div class="col">
+          <%= form.label :user_name, "UserName" %>
+          <%= form.text_field :user_name, class: 'form-control' %>
+        </div>
+        <div class="col">
+          <%= form.label :email, "Email" %>
+          <%= form.email_field :email, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="row mb-1 gy-2 gx-3 align-items-center">
+        <div class="col">
+          <%= user_info_fields.label :profile_name,"Name" %>
+          <%= user_info_fields.text_field :profile_name, class: 'form-control' %>
+        </div>
+        <div class="col">
+          <%= form.label :phone_number, "Phone" %>
+          <%= form.number_field :phone_number, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="row mb-1 gy-2 gx-3 align-items-center">
         <div class="col">
           <%= user_info_fields.label :date_of_birth, "Birthday" %>
           <%= user_info_fields.date_field :date_of_birth, class: 'form-control' %>
@@ -43,19 +39,25 @@
           <%= user_info_fields.select :gender, UserInfo.genders, {}, class: 'form-select', "aria-label":"Default select example" %>
         </div>
       </div>
-      <div class="row mb-5">
+      <div class="row mb-1 gy-2 gx-3 align-items-center">
         <div class="col">
-          <%= user_info_fields.label :profile_name %>
-          <%= user_info_fields.text_field :profile_name, class: 'form-control' %>
+          <%= form.label :type, "Type" %>
+          <%= form.select :type, user_type,{}, class: 'form-select'%>
         </div>
+        <div class="col">
+          <%= form.label :status, "Status" %>
+          <%= form.select :status, User.statuses,{}, class: 'form-select', "aria-label":"Default select example" %>
+        </div>
+      </div>
+      <div class="row mb-1 gy-2 gx-3 align-items-center">
         <div class="col">
           <%= user_info_fields.label :address %>
           <%= user_info_fields.text_field :address, class: 'form-control' %>
         </div>
       </div>
     <% end %>
-  <div class="form-actions">
-    <%= form.submit "Submit", class: "btn btn-success btn-lg" %>
-  </div>
-<% end %>
+    <div class="form-actions text-center">
+      <%= form.submit "Submit", class: "btn btn-success btn-lg m-3 btn-submit" %>
+    </div>
+  <% end %>
 </div>
