@@ -1,0 +1,89 @@
+
+// .user_info__label {
+//     color: #1A1A1A;
+// }
+.edit_user__card {
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.user_info__card {
+    border: none;
+    margin-top: 30px;
+}
+
+.user_info__body{
+    padding: 0;
+    margin: 0;
+}
+
+.user_info__label {
+    font-size: 20px;
+}
+
+.user_info__text {
+    font-size: 20px;
+}
+.text-support {
+    font-size: 20px;
+    font-weight: bold;
+}
+.head-title {
+    color: #1F7564; 
+    font-size: 50px; 
+    font-weight: bold;
+}
+.head-label {
+    color: #1F7564; 
+    font-size: 24px; 
+    font-weight: bold; 
+    margin-top: 25px;
+}
+
+.btn-edit{
+    padding: 4px 40px;
+    margin-bottom: 20px;
+    border-radius: 17px ;
+    font-size: 18px;
+    border: 1.5px solid #000000;
+    color: #1F7564;
+    &:hover {
+        background-color: #1F7564; 
+        color: aliceblue;
+      }
+}
+
+.btn__send-request {
+    background-color: #1F7564;
+    color: #FFFFFF;
+    padding: 15px 0px;
+    margin-bottom: 20px;
+    &:hover {
+        background-color: #1F7564; 
+        color: aliceblue;
+      }
+}
+
+.btn__customer-care {
+    background-color: #EBFFF9;
+    color: #1F7564;
+    padding: 15px 0px;
+    margin-bottom: 10px;
+    &:hover {
+        background-color: #EBFFF9; 
+        color: #1F7564;
+      }
+}
+
+.btn__log-out {
+    background-color: #FFFFFF;
+    padding: 5px 140px;
+    font-size: 18px;
+    margin-top: 40px;
+    margin-bottom: 60px;
+    color: #1F7564;
+    &:hover {
+        background-color: #1F7564; 
+        color: #FFFFFF;
+      }
+}
