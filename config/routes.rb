@@ -13,11 +13,15 @@ Rails.application.routes.draw do
 
   scope module: 'devise' do
     devise_for :admins, controllers: {
+      passwords: 'devise/admins/passwords',
       sessions: 'devise/admins/sessions'
     }
     devise_for :users, controllers: {
+      confirmations: 'devise/users/confirmations',
+      passwords: 'devise/users/passwords',
+      registrations: 'devise/users/registrations',
       sessions: 'devise/users/sessions',
-      registrations: 'devise/users/registrations'
+      unlocks: 'devise/users/unlocks'
     }
   end
   devise_scope :user do
@@ -33,7 +37,7 @@ Rails.application.routes.draw do
   end
 
   namespace 'users' do
-    resources :user_info
+    resource :user_infos
   end
 
   

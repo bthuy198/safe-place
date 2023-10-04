@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=League+Spartan');
+@import "admins/login";
+
 .list_dropdown{
   transform: translate3d(0px, 58px, 0px) !important;
   border-radius : 0px;
@@ -84,10 +87,9 @@
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
-
 }
 
-@media (max-width: 870px){
+@media (max-width: 870px) {
   .nav_side {
     display: none;
   }
@@ -108,10 +110,10 @@
   animation: slideOut 0.5s ease-out;
 }
 
-.btn_dashboard{
+.btn_dashboard {
   top: 0;
 }
 
-.btn_dropdown{
-border-radius: 0px;
+.btn_dropdown {
+  border-radius: 0px;
 }

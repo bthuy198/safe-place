@@ -73,4 +73,5 @@ class User < ApplicationRecord
   def self.ransackable_associations(auth_object = nil)
     ["bookmarks", "comments", "confessions", "conversations", "enrollments", "likes", "podcast_albums", "rooms", "schedules", "session_states", "user_info"]
   end
+
 end

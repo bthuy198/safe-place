@@ -28,31 +28,31 @@ footer {
     font-weight: bolder;
     text-decoration: none;
     transition: color 200ms;
-    display: block;
+    line-height: 2;
 
     &:hover,
     &:focus,
     &:active {
       color: var(--color-primary);
     }
-  }
 
-  a.facebook {
-    &:hover,
-    &:focus,
-    &:active {
-      color: var(--color-blue);
+    &.facebook {
+      &:hover,
+      &:focus,
+      &:active {
+        color: var(--color-blue);
+      }
+      margin-top: 12px;
     }
-    margin-top: 12px;
-  }
 
-  a.youtube {
-    &:hover,
-    &:focus,
-    &:active {
-      color: var(--color-red);
+    &.youtube {
+      &:hover,
+      &:focus,
+      &:active {
+        color: var(--color-red);
+      }
+      margin-top: 12px;
     }
-    margin-top: 12px;
   }
 
   img,
@@ -60,5 +60,10 @@ footer {
   svg {
     display: block;
     max-width: 100%;
+  }
+
+  span.spacing {
+    display: inline-block;
+    margin: 12px;
   }
 }
