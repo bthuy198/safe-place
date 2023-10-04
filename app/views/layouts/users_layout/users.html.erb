@@ -14,6 +14,13 @@
   <body id="body" class="d-flex flex-column min-vh-100">
     <%= render "shared/flash"%>
     <%= yield %>
-    <%= render "layouts/users_layout/partials/footer"%>
+    <div class="mt-auto container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          Placeholder for Media player
+        </div>
+      </div>
+      <%= render "layouts/users_layout/partials/footer"%>
+    </div>
   </body>
 </html>
