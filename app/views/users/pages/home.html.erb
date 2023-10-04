@@ -1,1 +1,15 @@
-<h1>This is User Home Page</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3" id="board">
+      <%= turbo_frame_tag "board" do %>
+        Placeholder for Confession index views
+      <% end %>
+    </div>
+    <div class="col-md-9" id="main">
+      <%= render "users/shared/navbar" %>
+      <%= turbo_frame_tag "main" do %>
+        Placeholder for main index views
+      <% end %>
+    </div>
+  </div>
+</div>

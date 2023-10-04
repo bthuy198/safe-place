@@ -19,7 +19,7 @@ footer {
   h3 {
     font-size: var(--font-size-l);
     font-weight: bolder;
-    margin-bottom: 12px;
+    margin-top: 12px;
   }
 
   a {
@@ -66,4 +66,86 @@ footer {
     display: inline-block;
     margin: 12px;
   }
+}
+
+body {
+  padding-right: 0 !important;
+}
+
+div#main {
+  position: relative;
+}
+
+turbo-frame#main {
+  position: absolute;
+  top: 70px;
+}
+
+nav {
+  position: absolute !important;
+  top: 0;
+  right: 0;
+  background-color: var(--color-primary);
+  border-radius: 10px 10px 0 0;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+
+  a {
+    color: var(--color-white);
+    transition: color 200ms;
+    margin-left: 4px;
+    margin-right: 4px;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: var(--color-glint);
+    }
+
+    &.custom-signin-btn {
+      color: var(--color-text-pink);
+      font-size: var(--font-size-l);
+      font-weight: bolder;
+      border-radius: 30px;
+      padding: 4px 20px;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: var(--color-primary);
+      }
+    }
+
+    &.custom-signup-btn {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      font-size: var(--font-size-l);
+      font-weight: bolder;
+      border-radius: 30px;
+      padding: 4px 20px;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: var(--color-text-pink);
+      }
+    }
+  }
+
+  button.navbar-toggler {
+    border-radius: 25px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-white);
+    padding: 8px 12px;
+    margin-left: 12px;
+  }
+}
+div#board {
+  position: relative;
+}
+
+turbo-frame#board {
+  position: absolute;
+  margin-top: 10px;
 }
