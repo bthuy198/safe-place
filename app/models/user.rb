@@ -57,6 +57,7 @@ class User < ApplicationRecord
   has_many :schedules, dependent: :nullify
   has_many :session_states, dependent: :destroy
   has_one :user_info, dependent: :destroy
+  validates :user_name, uniqueness: { message: 'has already taken' }
 
   enum status: { available: 'available', unavailable: 'unavailable', await: 'await' }
 
