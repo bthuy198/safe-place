@@ -5,18 +5,28 @@ module Devise
     # Class RegistrationsController for Users
     class RegistrationsController < Devise::RegistrationsController
       layout 'blank_layout/blank'
+
       # before_action :configure_sign_up_params, only: [:create]
       # before_action :configure_account_update_params, only: [:update]
 
       # GET /resource/sign_up
-      # def new
-      #   super
-      # end
+      def new
+        @user = User.new
+
+      end
 
       # POST /resource
-      # def create
-      #   super
-      # end
+      def create
+        user = User.new(user_params)
+
+        return redirect_to new_user_registration_path, alert: user.errors.full_messages unless user.save
+
+        user_info = UserInfo.new(user: user)
+        user_info.assign_attributes(user_info_params)
+        return redirect_to new_user_registration_path unless user_info.save
+
+        redirect_to new_user_session_path
+      end
 
       # GET /resource/edit
       # def edit
@@ -60,20 +70,18 @@ module Devise
         new_user_session_path
       end
 
+      def user_params
+        params.require(:user).permit(:email, :password, :user_name)
+      end
+
+      def user_info_params
+        params[:user].require(:user_info).permit(:address, :date_of_birth, :profile_name, :gender)
+      end
       # The path used after sign up for inactive accounts.
       # def after_inactive_sign_up_path_for(resource)
       #   super(resource)
       # end
 
-      private
-
-      def sign_up_params
-        params.require(:user).permit(:email, :password, :password_confirmation, :user_name)
-      end
-
-      def account_update_params
-        params.require(:user).permit(:email, :password, :password_confirmation, :current_password, :user_name)
-      end
     end
   end
 end

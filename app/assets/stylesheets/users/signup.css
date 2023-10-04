@@ -14,12 +14,12 @@ form {
     background-color: #1f7564;
     border-color: white;
     border-radius: 1.5rem;
-    font-size: 3.5vh;
+    font-size: 3vh;
 }
 
 .input-signup {
-    height: 7vh;
-    border-radius: 02px;
+    height: 4vh;
+    border-radius: 2px;
     border-color: #1f7564;
 }
 
