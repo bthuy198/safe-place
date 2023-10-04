@@ -60,4 +60,6 @@ class User < ApplicationRecord
   validates :user_name, uniqueness: { message: 'has already taken' }
 
   enum status: { available: 'available', unavailable: 'unavailable', await: 'await' }
+
+  accepts_nested_attributes_for :user_info
 end

@@ -36,17 +36,6 @@
           <%= info.date_field :date_of_birth, autofocus: true, autocomplete: "email", class: 'form-control input-signup', placeholder: 'Enter your date of birth' %>
         </div>
         <div class="mb-3">
-          <%= f.label :password, "Create a password", class: "form-label text-color-green fw-bold fs-4" %>
-          <% if @minimum_password_length %>
-            <em class="text-color-green fw-bold fs-4">(<%= @minimum_password_length %> characters minimum)</em>
-          <% end %><br />
-          <%= f.password_field :password, autocomplete: "new-password", class: 'form-control input-signup', placeholder: 'Create a password' %>
-        </div>
-        <div class="mb-3">
-          <%= f.label :user_name, "What's your username?", class: "form-label text-color-green fw-bold fs-4" %><br />
-          <%= f.text_field :user_name, autocomplete: "user_name", class: 'form-control input-signup', placeholder: 'Enter your username' %>
-        </div>
-        <div class="mb-3">
           <%= info.label :gender, "What's your gender?", class: "form-label text-color-green fw-bold fs-4" %><br />
           <div class="row">
           <% UserInfo.genders.keys.each do |g| %>
@@ -58,6 +47,17 @@
           </div>
         </div>
         <% end %>
+        <div class="mb-3">
+          <%= f.label :password, "Create a password", class: "form-label text-color-green fw-bold fs-4" %>
+          <% if @minimum_password_length %>
+            <em class="text-color-green fw-bold fs-4">(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password", class: 'form-control input-signup', placeholder: 'Create a password' %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :user_name, "What's your username?", class: "form-label text-color-green fw-bold fs-4" %><br />
+          <%= f.text_field :user_name, autocomplete: "user_name", class: 'form-control input-signup', placeholder: 'Enter your username' %>
+        </div>
         <div class="text-center mb-3">
           <%= f.submit "Sign up", class: 'btn btn-success btn-lg w-100 h-100 btn-submit fw-bold' %>
           <p class="text-center text-color-green fw-medium">Have an account? <%= link_to 'Log in', new_session_path(resource_name), class: "text-color-green fw-bold" %></p>

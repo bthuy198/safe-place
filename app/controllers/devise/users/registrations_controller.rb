@@ -12,19 +12,13 @@ module Devise
       # GET /resource/sign_up
       def new
         @user = User.new
-
+        @user.build_user_info
       end
 
       # POST /resource
       def create
         user = User.new(user_params)
-
         return redirect_to new_user_registration_path, alert: user.errors.full_messages unless user.save
-
-        user_info = UserInfo.new(user: user)
-        user_info.assign_attributes(user_info_params)
-        return redirect_to new_user_registration_path unless user_info.save
-
         redirect_to new_user_session_path
       end
 
@@ -56,7 +50,7 @@ module Devise
 
       # If you have extra params to permit, append them to the sanitizer.
       # def configure_sign_up_params
-      #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
+      #   devise_parameter_sanitizer.permit(:sign_up, keys: [:user_name, user_info_attributes: [:address, :date_of_birth, :profile_name, :gender]])
       # end
 
       # If you have extra params to permit, append them to the sanitizer.
@@ -71,11 +65,7 @@ module Devise
       end
 
       def user_params
-        params.require(:user).permit(:email, :password, :user_name)
-      end
-
-      def user_info_params
-        params[:user].require(:user_info).permit(:address, :date_of_birth, :profile_name, :gender)
+        params.require(:user).permit(:email, :password, :user_name, user_info_attributes: %i[address date_of_birth profile_name gender])
       end
       # The path used after sign up for inactive accounts.
       # def after_inactive_sign_up_path_for(resource)
