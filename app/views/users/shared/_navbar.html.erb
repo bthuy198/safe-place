@@ -1,8 +1,8 @@
 <nav class="navbar fixed-top">
     <div class="container-fluid d-flex">
         <span>
-            <a href="#"><i class="fa-solid fa-chevron-left"></i></a>
-            <a href="#"><i class="fa-solid fa-chevron-right"></i></a>
+            <a href="#" onclick="moveBackward()" ><i class="fa-solid fa-chevron-left"></i></a>
+            <a href="#" onclick="moveForward()" ><i class="fa-solid fa-chevron-right"></i></a>
             <a href="#">Placeholder change language</a>
         </span>
         <% if !user_signed_in? %>
@@ -61,3 +61,4 @@
         <% end %>
     </div>
 </nav>
+<%= javascript_include_tag 'users/moving' %>
