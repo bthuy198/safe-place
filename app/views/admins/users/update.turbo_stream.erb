@@ -1,0 +1,6 @@
+<% if @user.type == 'User' %>
+  <%= turbo_stream.replace "user-#{@user.id}", partial: "admins/users/partials/user", locals: { user: @user } %>
+<% else %>
+  <%= turbo_stream.remove "user-#{@user.id}" %>
+<% end %>
+<%= turbo_stream.update "modal_for_user", "Success Edit" %>

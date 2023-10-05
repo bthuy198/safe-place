@@ -1,0 +1,6 @@
+<% if @user.type == 'User' %>
+  <%= turbo_stream.prepend "users-tbody", partial: "admins/users/partials/user", locals: { user: @user } %>
+<% else %>
+  <%= turbo_stream.prepend "counselors-tbody", partial: "admins/counselors/partials/counselor", locals: { counselor: @user } %>
+<% end %>
+<%= turbo_stream.update "modal_for_user", "Success Create!" %>
