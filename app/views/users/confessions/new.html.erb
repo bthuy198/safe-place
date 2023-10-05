@@ -1,9 +1,11 @@
-<h1>New confession</h1>
+<%= turbo_frame_tag "board" do %>
+  <h1>New confession</h1>
 
-<%= render "users/confessions/form", confession: @confession, url: users_confessions_path %>
+  <%= render "users/confessions/form", confession: @confession, url: users_confessions_path %>
 
-<br>
+  <br>
 
-<div>
-  <%= link_to "Back to confessions", users_confessions_path %>
-</div>
+  <div>
+    <%= link_to "Back to confessions", users_confessions_path %>
+  </div>
+<% end %>
