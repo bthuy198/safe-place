@@ -64,12 +64,31 @@ div {
     display: flex;
     justify-content: center;
     align-items: center;
+    &.centered_confession_frame {
+      height: 25vh;
+    }
+
     &.centered_board {
       height: 50vh;
     }
 
     &.centered_main {
       height: 65vh;
+    }
+  }
+}
+
+turbo-frame#new_confession_frame {
+  display: inline-block;
+  width: 100%;
+  padding: 10px;
+  div {
+    &.new_confession {
+      padding: 10px;
+      border: var(--border);
+      border-radius: var(--border-radius);
+      height: 20vh;
+      overflow: auto;
     }
   }
 }
@@ -83,7 +102,9 @@ turbo-frame#board {
       padding: 10px;
       border: var(--border);
       border-radius: var(--border-radius);
-      height: 50vh;
+      height: 80vh;
+      overflow: auto;
+      word-wrap: break-word;
     }
   }
 }

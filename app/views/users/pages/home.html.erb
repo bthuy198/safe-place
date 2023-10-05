@@ -8,6 +8,11 @@
           <li><a href=#><i class="fa-solid fa-book fa-lg"></i>My courses</a><a href=#><i class="fa-solid fa-plus"></i></a></li>
         </ul>
       </div>
+      <%= turbo_frame_tag "new_confession_frame", src: new_users_confession_path, loading: :lazy do %>
+        <div class="centered_container centered_confession_frame">
+          <i class="fa-solid fa-spinner fa-spin-pulse fa-2xl"></i>
+        </div>
+      <% end %>
       <%= turbo_frame_tag "board", src: users_confessions_path, loading: :lazy do %>
         <div class="centered_container centered_board">
           <i class="fa-solid fa-spinner fa-spin-pulse fa-2xl"></i>
