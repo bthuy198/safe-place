@@ -1,1 +1,2 @@
-$("<%= escape_javascript(render 'admins/podcast_albums/partials/album_table', @podcast_album) %>").appendTo("#album_table");
+$("<%= j render 'admins/podcast_albums/partials/podcast_album', podcast_album: @podcast_album %>").appendTo("#album_table");
+$('#modalCreateAlbum').modal('hide');

@@ -1,29 +1,11 @@
-<table class = 'table mx-auto table-condensed text-center align-middle text-green' id="album_table">
-  <thead>
-  <tr class="table-light">
-    <th scope="col">ID</th>
-    <th scope="col">Album Name</th>
-    <th scope="col">Username</th>
-    <th scope="col">Updated At</th>
-    <th scope="col" colspan="2"></th>
-  </tr>
-  </thead>
-  <tbody>
-  <% podcast_albums.each do |album| %>
+<% podcast_albums.each do |album| %>
   <%# binding.pry %>
-    <tr id="album-<%= album.id %>">
-      <td><%= album.id %></td>
-      <td><%= album.name %></td>
-      <td><%= album.user.user_name %></td>
-      <td><%= album.updated_at %></td>
-      <td><%= link_to "Edit", edit_admins_podcast_album_path(album) %></td>
-      <td><%= link_to "Delete", admins_podcast_album_path(album) %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
-<!--<div class="d-flex justify-content-end" id="paginate-element">-->
-  <%#= paginate users, theme: 'bootstrap-5' %>
-<!--</div>-->
-
-
+  <tr id="album-<%= album.id %>">
+    <td><%= album.id %></td>
+    <td><%= album.name %></td>
+    <td><%= album.user.user_name %></td>
+    <td><%= album.updated_at %></td>
+    <td><%= link_to "Edit", edit_admins_podcast_album_path(album), remote: true, class: 'button_hover btn btn-primary bg_green border_green update_class' %></td>
+    <td><%= link_to 'Destroy', admins_podcast_album_path(album), method: :delete, data: { confirm: "Destroy album '#{album.name}'?" }, remote: :true, class: "destroy_class btn btn-danger" %></td>
+  </tr>
+<% end %>

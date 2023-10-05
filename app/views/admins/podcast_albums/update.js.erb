@@ -1,0 +1,4 @@
+$('.update_class').bind('ajax:success', function() {
+    $(this).replaceWith("<%=j render 'admins/podcast_albums/partials/podcast_album', podcast_album: @podcast_album %>");
+    $("#modalUpdateAlbum").modal('hide');
+});

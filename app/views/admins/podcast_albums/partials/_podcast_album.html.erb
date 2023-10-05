@@ -1,0 +1,9 @@
+<tr id="album-<%= podcast_album.id %>">
+  <td><%= podcast_album.id %></td>
+  <td><%= podcast_album.name %></td>
+  <td><%= podcast_album.user.user_name %></td>
+  <td><%= podcast_album.updated_at %></td>
+  <td><%= link_to "Edit", edit_admins_podcast_album_path(podcast_album), remote: true, class: 'button_hover btn btn-primary bg_green border_green update-class' %></td>
+  <td><%= link_to 'Destroy', admins_podcast_album_path(podcast_album), method: :delete, data: { confirm: "Destroy album '#{podcast_album.name}'?" }, remote: :true, class: "destroy-class btn btn-danger" %></td>
+
+</tr>

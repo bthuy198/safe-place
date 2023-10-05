@@ -12,23 +12,35 @@ class PodcastAlbumsController < AdminsLayoutController
   end
 
   # GET /podcast_albums/1 or /podcast_albums/1.json
-  def show; end
+  def show
+  end
 
   # GET /podcast_albums/new
   def new
     @podcast_album = PodcastAlbum.new
+    respond_to do |format|
+      format.html
+      format.js
+      format.json { render json: @podcast_album }
+    end
   end
 
   # GET /podcast_albums/1/edit
-  def edit; end
+  def edit
+    # @podcast_album = PodcastAlbum.find(params[:id])
+    respond_to do |format|
+      format.js
+    end
+  end
 
   # POST /podcast_albums or /podcast_albums.json
   def create
     @podcast_album = PodcastAlbum.new(podcast_album_params)
 
     respond_to do |format|
+      # debugger
       if @podcast_album.save
-        format.html { redirect_to admins_podcast_albums_url(@podcast_album), notice: 'Podcast album was successfully created.' }
+        format.html { redirect_to @podcast_album, notice: 'Podcast album was successfully created.' }
         format.js {}
         format.json { render :show, status: :created, location: @podcast_album }
       else
@@ -42,7 +54,8 @@ class PodcastAlbumsController < AdminsLayoutController
   def update
     respond_to do |format|
       if @podcast_album.update(podcast_album_params)
-        format.html { redirect_to podcast_album_url(@podcast_album), notice: 'Podcast album was successfully updated.' }
+        format.html { redirect_to admins_podcast_albums_url, notice: 'Podcast album was successfully updated.' }
+        format.js {}
         format.json { render :show, status: :ok, location: @podcast_album }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,11 +66,12 @@ class PodcastAlbumsController < AdminsLayoutController
 
   # DELETE /podcast_albums/1 or /podcast_albums/1.json
   def destroy
+    @podcast_album = PodcastAlbum.find(params[:id])
     @podcast_album.destroy
-
     respond_to do |format|
-      format.html { redirect_to podcast_albums_url, notice: 'Podcast album was successfully destroyed.' }
+      format.html { redirect_to admins_podcast_albums_url, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
+      format.js   { render layout: false }
     end
   end
 

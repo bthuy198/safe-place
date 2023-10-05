@@ -21,4 +21,5 @@
 class PodcastAlbum < ApplicationRecord
   belongs_to :user
   has_many :podcasts, dependent: :destroy
+  max_paginates_per 10
 end

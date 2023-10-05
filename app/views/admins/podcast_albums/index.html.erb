@@ -21,16 +21,29 @@
   <div id="podcast_albums" class="card" style="margin-top: 50px; border-radius: 15px">
     <div class="card-body">
       <h1 class="text_green">Podcast albums</h1>
-    <%= render 'admins/podcast_albums/partials/album_table', podcast_albums: @podcast_albums %>
+      <table class = 'table mx-auto table-condensed text-center align-middle text-green'>
+        <thead>
+        <tr class="table-light">
+          <th scope="col">ID</th>
+          <th scope="col">Album Name</th>
+          <th scope="col">Username</th>
+          <th scope="col">Updated At</th>
+          <th scope="col" colspan="2"></th>
+        </tr>
+        </thead>
+        <tbody id="album_table">
+        <%= render 'admins/podcast_albums/partials/album_table', podcast_albums: @podcast_albums %>
+        </tbody>
+      </table>
+<!--      <br>-->
+<!--      <div class="pagination justify-content-center">-->
+        <%#= paginate @podcast_albums %>
+<!--      </div>-->
     </div>
   </div>
 </div>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button>
 
-<!-- Modal -->
+<!-- Modal create-->
 <div id="modalCreateAlbum" class="modal hide fade">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
@@ -38,11 +51,18 @@
         <h5 class="modal-title text_green">Create</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <%= render 'admins/podcast_albums/partials/form',content_type: 'text/html', podcast_album: @podcast_album, users: @users %>
+      <%= render 'admins/podcast_albums/partials/form', podcast_album: @podcast_album %>
     </div>
   </div>
 </div>
-<%= link_to "New podcast album", new_admins_podcast_album_path %>
+
+<!-- Modal edit-->
+<div id="modalUpdateAlbum" class="modal hide fade">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+    </div>
+  </div>
+</div>
 
 <style>
   .bg_green{
@@ -54,7 +74,7 @@
   .text_green{
       color: #1F7564;
   }
-  .button_hover:hover {
+  .button_hover:hover, .button_hover:active, .button_hover:focus {
       background-color: #175549;
       border-color: #175549;
   }
