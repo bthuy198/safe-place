@@ -15,7 +15,7 @@
     <div class="card-body">
       <div class="card-title card-title-user d-flex justify-content-between align-items-center ">
         <h1>List Users</h1>
-        <%= link_to "New User", new_admins_user_path, class:"btn btn-edit" %>
+        <%= link_to "New User", new_admins_user_path, class:"btn btn-edit button_new_user" %>
       </div>
       <p class="card-text">
         <%= render "admins/users/partials/user_table", users: @users %>

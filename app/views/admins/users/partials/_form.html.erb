@@ -1,13 +1,6 @@
 <% user_type = {"User"=>"User", "Counselor"=>"Counselor"} %>
 <div class="form-user">
   <%= form_with(model: [:admins,user] ) do |form| %>
-    <% if user.errors.any? %>
-      <ul>
-        <% user.errors.each do |err| %>
-          <li><%= content_tag(:div, err.message, class: "alert alert-info")%></li>
-        <% end %>
-      </ul>
-    <% end %>
     <%= form.fields_for :user_info do |user_info_fields| %>
       <div class="row mb-1 gy-2 gx-3 align-items-center">
         <div class="col">

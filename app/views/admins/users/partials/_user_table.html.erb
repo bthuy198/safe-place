@@ -8,13 +8,14 @@
         <th scope="col">Date of Birth</th>
         <th scope="col">Phone Number</th>
         <th scope="col">Anonymous</th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
       <% users.each do |user| %>
         <tr id="user-<%= user.id %>" data-anonymous="<%= user.anonymous ? '1' : '0' %>" >
           <td><%= user.id %></td>
-          <td><%= link_to user.user_name, admins_user_path(user), class: "text-decoration-none text-dark" %></td>
+          <td><%= link_to user.user_name, admins_user_path(user), class:"" %></td>
           <td><%= user.user_info ? user.user_info.profile_name : "" %></td>
           <td><%= user.user_info ? user.user_info.date_of_birth : "" %></td>
           <td><%= user.phone_number %></td>
@@ -23,6 +24,10 @@
               <%= check_box_tag "user_anonymous_#{user.id}", "1", user.anonymous, class: "form-check-input anonymous-switch", id: "user_anonymous_#{user.id}" %>
               <label class="form-check-label" for="user_anonymous_<%= user.id %>"></label>
             </div>
+          </td>
+          <td>
+            <%= link_to "Edit", edit_admins_user_path(user), class: "btn btn-edit btn-success text-white button_edit_user" %>
+            <%= link_to "Delete", admins_user_path(id: user.id, page: params[:page]), data: {turbo_method: :delete} , class: "btn btn-edit btn-warning text-white button_delete_user" %>
           </td>
         </tr>
       <% end %>
