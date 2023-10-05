@@ -6,10 +6,11 @@
 #
 #  id           :bigint           not null, primary key
 #  name         :string(255)
+#  status       :string(255)
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  counselor_id :bigint           not null
-#  user_id      :bigint           not null
+#  user_id      :bigint
 #
 # Indexes
 #

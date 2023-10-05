@@ -37,7 +37,7 @@
         </div>
         <div class="mb-3">
           <%= info.label :gender, "What's your gender?", class: "form-label text-color-green fw-bold fs-4" %><br />
-          <div class='d-flex justify-content-between'>
+          <div class="d-flex justify-content-between">
           <% UserInfo.genders.keys.each do |g| %>
             <div>
               <%= info.radio_button :gender, g, class: "specifyColor" %>

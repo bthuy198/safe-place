@@ -35,10 +35,9 @@
         <%= render 'admins/podcast_albums/partials/album_table', podcast_albums: @podcast_albums %>
         </tbody>
       </table>
-<!--      <br>-->
-<!--      <div class="pagination justify-content-center">-->
-        <%#= paginate @podcast_albums %>
-<!--      </div>-->
+      <div class="d-flex justify-content-end" id="paginate-element">
+        <%= paginate @podcast_albums, theme: 'bootstrap-5' %>
+      </div>
     </div>
   </div>
 </div>

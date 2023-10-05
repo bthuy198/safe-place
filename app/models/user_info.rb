@@ -6,6 +6,7 @@
 #
 #  id            :bigint           not null, primary key
 #  address       :string(255)
+#  avatar        :string(255)
 #  date_of_birth :date
 #  deleted_at    :datetime
 #  gender        :string(255)
@@ -28,7 +29,7 @@ class UserInfo < ApplicationRecord
 
   enum gender: { male: 'Male', female: 'Female', non_binary: 'Non-binary', other: 'Other' }
 
-  def self.ransackable_attributes(auth_object = nil)
-    ["address", "created_at", "date_of_birth", "deleted_at", "gender", "id", "profile_name", "updated_at", "user_id"]
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[address created_at date_of_birth deleted_at gender id profile_name updated_at user_id]
   end
 end

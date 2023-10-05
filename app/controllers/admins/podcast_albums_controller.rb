@@ -6,7 +6,7 @@ class PodcastAlbumsController < AdminsLayoutController
 
   # GET /podcast_albums or /podcast_albums.json
   def index
-    @podcast_albums = PodcastAlbum.all
+    @podcast_albums = PodcastAlbum.page params[:page]
     @users = User.all
     @podcast_album = PodcastAlbum.new
   end

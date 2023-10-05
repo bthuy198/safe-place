@@ -35,11 +35,16 @@ Rails.application.routes.draw do
     get 'dashboard', to: 'pages#dashboard'
     resources :users
     resources :podcast_albums
+    resources :rooms
   end
 
   namespace 'users' do
     resource :user_infos
+    resource :podcasts
+    resource :podcast_albums
   end
+
+ 
 
   
 
