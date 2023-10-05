@@ -12,11 +12,6 @@ module Admins
       @users = @q.result(distinct: true).order(id: :desc).page params[:page]
     end
 
-    def index_counselors
-      @q = User.where(type: :Counselor).includes(:user_info).ransack(params[:q])
-      @counselors = @q.result(distinct: true).order(id: :desc).page params[:page]
-    end
-
     def show; end
 
     def new
