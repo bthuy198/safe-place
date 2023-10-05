@@ -18,6 +18,7 @@ module Devise
       def create
         user = User.new(user_params)
         return redirect_to new_user_registration_path, alert: user.errors.full_messages unless user.save
+
         redirect_to new_user_session_path
       end
 
@@ -64,13 +65,13 @@ module Devise
       end
 
       def user_params
-        params.require(:user).permit(:email, :password, :user_name, user_info_attributes: %i[address date_of_birth profile_name gender])
+        params.require(:user).permit(:email, :password, :user_name,
+                                     user_info_attributes: %i[address date_of_birth profile_name gender])
       end
       # The path used after sign up for inactive accounts.
       # def after_inactive_sign_up_path_for(resource)
       #   super(resource)
       # end
-
     end
   end
 end

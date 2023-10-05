@@ -2,5 +2,5 @@
 
 # class UsersLayoutController
 class UsersLayoutController < ApplicationController
-  layout 'users_layout/users'   
+  layout 'users_layout/users'
 end

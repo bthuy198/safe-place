@@ -59,8 +59,8 @@ end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
-  gem 'web-console', '~> 4.2.1'
   gem 'pry'
+  gem 'web-console', '~> 4.2.1'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
@@ -81,13 +81,13 @@ end
 
 gem 'acts_as_hashids', '~> 0.2.0'
 gem 'bootstrap', '~> 5.3.1'
+gem 'bootstrap5-kaminari-views', '~> 0.0.1'
 gem 'carrierwave', '~> 3.0.3'
 gem 'devise', '~> 4.9.2'
 gem 'fog-aws', '~> 3.20.0'
 gem 'font-awesome-sass', '~> 6.4.2'
 gem 'jquery-rails', '~> 4.6.0'
 gem 'kaminari', '~> 1.2.2'
-gem 'bootstrap5-kaminari-views', '~> 0.0.1'
 gem 'mini_magick', '~> 4.12.0'
 gem 'paranoia', '~> 2.6.2'
 gem 'pundit', '~> 2.3.1'
