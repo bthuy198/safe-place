@@ -32,10 +32,13 @@ module Admins
 
       respond_to do |format|
         if @user.save
-          format.html { redirect_to @user.type == 'User' ? admins_user_url(@user) : admins_counselor_url(@user), notice: 'User was successfully created.' }
+          format.html do
+            redirect_to @user.type == 'User' ? admins_user_url(@user) : admins_counselor_url(@user),
+                        notice: 'User was successfully created.'
+          end
         else
-          flash[:alert] = @user.errors.full_messages
-          format.html { render :new, status: :unprocessable_entity }
+          flash[:alert] = @user.errors.full_messages.join(', ')
+          format.html { redirect_to new_admins_user_path }
         end
       end
     end
@@ -43,7 +46,10 @@ module Admins
     def update
       respond_to do |format|
         if @user.update(user_params)
-          format.html { redirect_to @user.type == 'User' ? admins_user_url(@user) : admins_counselor_url(@user), notice: 'User was successfully updated.' }
+          format.html do
+            redirect_to @user.type == 'User' ? admins_user_url(@user) : admins_counselor_url(@user),
+                        notice: 'User was successfully updated.'
+          end
         else
           flash[:alert] = @user.errors.full_messages
           format.html { render :edit, status: :unprocessable_entity }
