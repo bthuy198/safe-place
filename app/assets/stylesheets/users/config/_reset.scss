@@ -19,13 +19,11 @@ div {
   }
 
   &.custom_board {
-    position: relative;
-    padding-right: 0;
+    padding: 0;
   }
 
   &.custom_menu {
-    margin-top: 10px;
-    margin-right: 10px;
+    margin: 10px;
     font-family: var(--font-family-sans);
     color: var(--color-primary);
     font-weight: bolder;
@@ -77,9 +75,17 @@ div {
 }
 
 turbo-frame#board {
-  position: absolute;
-  margin-top: 10px;
-  width: 95.7%;
+  display: inline-block;
+  width: 100%;
+  padding: 10px;
+  div {
+    &.confessions_board {
+      padding: 10px;
+      border: var(--border);
+      border-radius: var(--border-radius);
+      height: 50vh;
+    }
+  }
 }
 
 turbo-frame#main {
