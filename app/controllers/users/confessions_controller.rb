@@ -21,11 +21,14 @@ module Users
       @confession = Confession.new(confession_params)
       @confession.user_id = current_user.id
       @confession.anonymous = current_user.anonymous
-      respond_to do |format|
-        if @confession.save
-          format.html { redirect_to users_confessions_path, notice: 'Confession was successfully created.' }
+      if @confession.save
+        respond_to do |format|
+          format.turbo_stream { flash.now[:notice] = 'Confession was successfully created.' }
           format.json { render :show, status: :created, location: @confession }
-        else
+        end
+        Turbo::StreamsChannel.broadcast_append_later_to("confessions_index_channel", target: "confessions", partial: "users/confessions/confession", locals: { confession: @confession })
+      else
+        respond_to do |format|
           format.html { render :new, status: :unprocessable_entity }
           format.json { render json: @confession.errors, status: :unprocessable_entity }
         end
