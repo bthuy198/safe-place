@@ -1,16 +1,49 @@
 .profile-card {
+  height: 100vh;
   font-family: "League Spartan", sans-serif;
   font-size: 20px;
   font-weight: 500;
 
+  .max_width_80 {
+    max-width: 80%;
+  }
+
+  .button_new_user {
+    border: 1.5px solid #1f7564;
+  }
+
+  .button_edit_user {
+    --bs-btn-bg: #1c794eb0;
+    min-width: 8em;
+    margin: 2px;
+  }
+
+  .button_delete_user {
+    &:hover {
+      background-color: #ffc10799 !important;
+    }
+    min-width: 8em;
+    margin: 2px;
+  }
+
   .btn-edit {
     padding: 4px 40px;
-    border-radius: 17px;
-    border: 1.5px solid #000000;
+    border-radius: 17px solid #1f7564;
     color: #1f7564;
     &:hover {
       background-color: #1f7564;
       color: aliceblue;
+    }
+  }
+
+  .nav.nav-tabs {
+    .active {
+      background-color: #40c39936;
+    }
+    a {
+      color: #1f7564;
+      font-size: 1.25rem;
+      font-weight: 600;
     }
   }
 
@@ -46,6 +79,9 @@
   }
 
   .card_title_with_chevron {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     a {
       color: #1f7564;
       margin-left: 2rem;

@@ -1,0 +1,41 @@
+<div class="table-responsive">
+  <table class = 'table mx-auto table-condensed align-middle user-table'>
+    <thead class="align-middle">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">User Name</th>
+        <th scope="col">Profile Name</th>
+        <th scope="col">Date of Birth</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">Anonymous</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% counselors.each do |counselor| %>
+        <tr id="counselor-<%= counselor.id %>" data-anonymous="<%= counselor.anonymous ? '1' : '0' %>" >
+          <td><%= counselor.id %></td>
+          <td><%= link_to counselor.user_name, admins_counselor_path(counselor), class:"fw-medium text-decoration-none text-black" %></td>
+          <td><%= counselor.user_info ? counselor.user_info.profile_name : "" %></td>
+          <td><%= counselor.user_info ? counselor.user_info.date_of_birth : "" %></td>
+          <td><%= counselor.phone_number %></td>
+          <td>
+            <div class="form-check form-switch" >
+              <%= check_box_tag "user_anonymous_#{counselor.id}", "1", counselor.anonymous, class: "form-check-input anonymous-switch", id: "user_anonymous_#{counselor.id}" %>
+              <label class="form-check-label" for="user_anonymous_<%= counselor.id %>"></label>
+            </div>
+          </td>
+          <td>
+            <%= link_to "Edit", edit_admins_counselor_path(counselor), class: "btn btn-edit btn-success text-white button_edit_user" %>
+            <%= link_to "Delete", admins_counselor_path(id: counselor.id, page: params[:page]), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} , class: "btn btn-edit btn-warning text-white button_delete_user" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div class="d-flex justify-content-end mt-1" id="paginate-counselor-table">
+  <nav aria-label="Page navigation example">
+    <%= paginate counselors, theme: 'bootstrap-5', window: 1 %>
+  </nav>
+</div>
