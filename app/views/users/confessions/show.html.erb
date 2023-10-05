@@ -1,10 +1,12 @@
 <%= turbo_frame_tag "board" do %>
-  <%= render @confession %>
+  <div class="confessions_board">
+    <%= render @confession %>
 
-  <div>
-    <%= link_to "Edit this confession", edit_users_confession_path(@confession) %> |
-    <%= link_to "Back to confessions", users_confessions_path %>
+    <div>
+      <%= link_to "Edit this confession", edit_users_confession_path(@confession) %> |
+      <%= link_to "Back to confessions", users_confessions_path %>
 
-    <%= button_to "Destroy this confession", users_confession_path(@confession), method: :delete %>
+      <%= button_to "Destroy this confession", users_confession_path(@confession), method: :delete %>
+    </div>
   </div>
 <% end %>

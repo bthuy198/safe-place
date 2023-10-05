@@ -1,16 +1,4 @@
 <%= form_with(model: confession, url: url, id: "#{dom_id(confession)}_form") do |form| %>
-  <% if confession.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(confession.errors.count, "error") %> prohibited this school from being saved:</h2>
-
-      <ul>
-        <% confession.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div>
     <%= form.label :tag, style: "display: block" %>
     <%= form.text_field :tag %>

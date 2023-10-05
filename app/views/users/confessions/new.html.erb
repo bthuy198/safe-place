@@ -1,5 +1,6 @@
 <%= turbo_frame_tag "new_confession_frame" do %>
   <div class="new_confession">
+    <h3>Confession Board</h3>
     <%= render "users/confessions/form", confession: @confession, url: users_confessions_path %>
   </div>
 <% end %>
