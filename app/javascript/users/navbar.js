@@ -23,3 +23,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     mq.addEventListener('change', handleViewportChange);
 });
+
+document.addEventListener("turbo:frame-missing", function(event) {
+  event.preventDefault();
+  event.target.remove();
+});
