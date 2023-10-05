@@ -1,15 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=League+Spartan');
+@import "admins/login";
+@import "admins/user_admin";
+
 .list_dropdown {
   transform: translate3d(0px, 58px, 0px) !important;
-  border-radius: 0px;
+  border-radius : 0px;
   background-color: #f4f3ef;
 }
+
 .show {
   background-color: #f4f3ef !important;
 }
 
 .color_admins {
   background-color: #f4f3ef;
-  min-height: 100vh;
 }
 
 .page_content {
@@ -30,7 +34,7 @@
 
 .top_admin_page {
   font-size: x-large;
-  padding: 0.5rem 1rem;
+  padding: .5rem 1rem;
   height: 57px;
 }
 
@@ -67,7 +71,7 @@
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
-  transition: margin-left 0.5s;
+  transition: margin-left .5s;
   padding: 20px;
 }
 
@@ -82,12 +86,8 @@
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
-  .sidenav {
-    padding-top: 15px;
-  }
-  .sidenav a {
-    font-size: 18px;
-  }
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
 }
 
 @media (max-width: 870px) {
@@ -115,10 +115,4 @@
 
 .btn_dropdown {
   border-radius: 0px;
-}
-
-.container_form_user {
-  display: flex;
-  justify-content: center;
-  padding: 5rem 8rem;
 }

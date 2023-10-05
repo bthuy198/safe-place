@@ -8,10 +8,13 @@ module Admins
     DEFAULT_PASSWORD = '123456'
 
     def index
-      @users = User.includes(:user_info).order(id: :desc).page(params[:page])
+      @q = User.includes(:user_info).ransack(params[:q])
+      @users = @q.result(distinct: true).order(id: :desc).page params[:page]
     end
 
     def show; end
+
+
 
     def new
       @user = User.new

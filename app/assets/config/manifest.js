@@ -3,6 +3,9 @@
 //= link_tree ../../javascript .js
 //= link_tree ../../../vendor/javascript .js
 
+//= link users/style.css
+//= link admins/style.css
+
 //= link jquery.js
 //= link jquery_ujs.js
 //= link bootstrap.js

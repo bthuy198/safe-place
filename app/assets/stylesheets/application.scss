@@ -1,10 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=League+Spartan');
 @import "bootstrap";
 @import "font-awesome";
 @import "actiontext";
-@import "admins/login";
-@import "users/login";
-@import url('https://fonts.googleapis.com/css?family=League+Spartan');
-@import "style";
-@import "admins/user_admin";
-@import "users/style";
+@import "components/flash";
+@import "config/animations";

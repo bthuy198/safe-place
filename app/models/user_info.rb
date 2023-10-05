@@ -27,4 +27,8 @@ class UserInfo < ApplicationRecord
   belongs_to :user
 
   enum gender: { male: 'Male', female: 'Female', non_binary: 'Non-binary', other: 'Other' }
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["address", "created_at", "date_of_birth", "deleted_at", "gender", "id", "profile_name", "updated_at", "user_id"]
+  end
 end

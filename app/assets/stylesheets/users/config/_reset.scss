@@ -9,6 +9,145 @@ html {
   height: 100%;
 }
 
+body {
+  padding-right: 0 !important;
+}
+
+div {
+  &.custom-upper-body {
+    flex-grow: 1;
+  }
+
+  &.custom-board {
+    position: relative;
+    padding-right: 0;
+  }
+
+  &.custom-menu {
+    margin-top: 10px;
+    font-family: var(--font-family-sans);
+    color: var(--color-primary);
+    font-weight: bolder;
+    line-height: 2;
+    border: var(--border);
+    border-radius: 10px;
+    ul {
+      list-style-type: none;
+      margin-bottom: 0;
+      li {
+        margin: 10px 0;
+        a {
+          color: var(--color-primary);
+          text-decoration: none;
+          transition: color 200ms;
+          &:hover,
+          &:focus,
+          &:active {
+            color: var(--color-text-pink);
+          }
+        }
+        i {
+          margin-right: 10px;
+          &.fa-plus {
+            margin-top: 8px;
+            float: right;
+          }
+        }
+      }
+    }
+  }
+
+  &.centered-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &.c-board {
+      height: 50vh;
+    }
+
+    &.c-main {
+      height: 65vh;
+    }
+  }
+
+  &.custom-main {
+    position: relative;
+  }
+}
+
+turbo-frame#board {
+  position: absolute;
+  margin-top: 10px;
+  width: 95.7%;
+}
+
+turbo-frame#main {
+  position: absolute;
+  width: 97.3%;
+  top: 10vh;
+}
+
+nav {
+  position: absolute !important;
+  top: 0;
+  right: 0;
+  background-color: var(--color-primary);
+  border-radius: 10px 10px 0 0;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+
+  a {
+    color: var(--color-white);
+    transition: color 200ms;
+    margin-left: 4px;
+    margin-right: 4px;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: var(--color-glint);
+    }
+
+    &.custom-signin-btn {
+      color: var(--color-text-pink);
+      font-size: var(--font-size-l);
+      font-weight: bolder;
+      border-radius: 30px;
+      padding: 4px 20px;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: var(--color-primary);
+      }
+    }
+
+    &.custom-signup-btn {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      font-size: var(--font-size-l);
+      font-weight: bolder;
+      border-radius: 30px;
+      padding: 4px 20px;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: var(--color-text-pink);
+      }
+    }
+  }
+
+  button.navbar-toggler {
+    border-radius: 25px;
+    background-color: var(--color-white);
+    border: var(--border);
+    padding: 8px 12px;
+    margin-left: 12px;
+  }
+}
+
 footer {
   background-color: var(--color-background);
   color: var(--color-text-header);
@@ -19,7 +158,7 @@ footer {
   h3 {
     font-size: var(--font-size-l);
     font-weight: bolder;
-    margin-bottom: 12px;
+    margin-top: 12px;
   }
 
   a {
@@ -28,31 +167,31 @@ footer {
     font-weight: bolder;
     text-decoration: none;
     transition: color 200ms;
-    display: block;
+    line-height: 2;
 
     &:hover,
     &:focus,
     &:active {
       color: var(--color-primary);
     }
-  }
 
-  a.facebook {
-    &:hover,
-    &:focus,
-    &:active {
-      color: var(--color-blue);
+    &.facebook {
+      &:hover,
+      &:focus,
+      &:active {
+        color: var(--color-blue);
+      }
+      margin-top: 12px;
     }
-    margin-top: 12px;
-  }
 
-  a.youtube {
-    &:hover,
-    &:focus,
-    &:active {
-      color: var(--color-red);
+    &.youtube {
+      &:hover,
+      &:focus,
+      &:active {
+        color: var(--color-red);
+      }
+      margin-top: 12px;
     }
-    margin-top: 12px;
   }
 
   img,
@@ -60,5 +199,10 @@ footer {
   svg {
     display: block;
     max-width: 100%;
+  }
+
+  span.spacing {
+    display: inline-block;
+    margin: 12px;
   }
 }

@@ -1,49 +1,50 @@
-// .container {
-//   font-family: "League Spartan", sans-serif;
-//   margin-top: 5%;
-// }
 
-// .form-title {
-//   color: #1F7564;
-//   font-size: 50;
-//   font-weight: bold;
-//   margin-bottom: 20px;
-// }
+.login__container {
+  font-family: "League Spartan", sans-serif;
+  margin-top: 5%;
+}
 
-// .card {
-//   border: 1px solid #1F7564;
-//   border-radius: 3px;
-//   background-color: #fff;
-//   color: #1F7564;
-// }
+.form__title {
+  color: #1F7564;
+  font-size: 50;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
 
-// .card-body {
-//   padding: 30px;
-//   color: #1F7564;
-// }
+.login__card {
+  border: 1px solid #1F7564;
+  border-radius: 3px;
+  background-color: #fff;
+  color: #1F7564;
+}
 
-// .label {
-//   font-size: 20;
-//   font-weight: bold;
-// }
+.login__card-body {
+  padding: 30px;
+  color: #1F7564;
+}
 
-// .form-check-input:checked {
-//   background-color: #1f7564;
-//   border-color: #1f7564;
-// }
+.login__label {
+  font-size: 20;
+  font-weight: bold;
+}
 
-// .form-control {
-//   border-radius: 3px;
-//   border: 1px solid #ccc;
-//   padding: 10px;
-//   color: #1F7564;
-// }
+.form-check-input:checked {
+  background-color: #1f7564;
+  border-color: #1f7564;
+}
 
-// .btn {
-//   border-radius: 15px;
-//   font-size: 16px;
-//   font-weight: bold;
-//   padding: 10px 125px;
-//   margin-top: 20px;
-//   margin-bottom: 45px;
-// }
+.login__form-control {
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  color: #1F7564;
+}
+
+.btn__login {
+  border-radius: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 125px;
+  margin-top: 20px;
+  margin-bottom: 45px;
+}
