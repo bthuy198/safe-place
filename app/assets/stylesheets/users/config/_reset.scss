@@ -205,4 +205,12 @@ footer {
     display: inline-block;
     margin: 12px;
   }
+
+  div.justify_content {
+    display: flex;
+    justify-content: center;
+    div {
+      width: 20%;
+    }
+  }
 }
