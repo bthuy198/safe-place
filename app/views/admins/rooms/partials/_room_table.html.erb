@@ -1,0 +1,30 @@
+<table class = 'table mx-auto table-condensed text-center align-middle'>
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Room Name</th>
+      <th scope="col">User in room</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% rooms.each do |room| %>
+      <tr id="room-<%= room.id %>">
+        <td><%= room.id %></td>
+        <td>
+          <%= room.name%>
+        </td>
+        <% if !room.user_id.nil? %>
+          <td><%= room.user.user_name %></td>
+        <% else %>
+          <td></td>
+        <% end %>
+        <td>Disable</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="d-flex justify-content-end" id="paginate-element">
+  <%= paginate rooms, theme: 'bootstrap-5' %>
+</div>

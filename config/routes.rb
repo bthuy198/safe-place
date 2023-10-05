@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   namespace :admins do
     get 'dashboard', to: 'pages#dashboard'
     resources :users
+    resources :rooms
   end
 
   namespace 'users' do
@@ -41,6 +42,8 @@ Rails.application.routes.draw do
     resource :podcasts
     resource :podcast_albums
   end
+
+ 
 
   
 
