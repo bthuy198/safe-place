@@ -1,12 +1,13 @@
 <div style="height: 100vh" class = "row justify-content-center mt-3 profile-card ">
   <div class="col">
     <div class="card">
-      <h1 class="card-title" style ="color: #1F7564; font-size: 20; font-weight: bold; margin: 20px;">Edit User</h1>
+      <div class="card_title_with_chevron" style="display: flex; flex-direction: row; align-items: center;">
+        <a href="#" onclick="moveBackward()"><i class="fa-solid fa-chevron-left"></i></a>
+        <h1 class="text-center" >Edit User</h1>
+      </div>
       <div class="row justify-content-center card-body pt-0">
-        <div class="card" style="max-width: 95%;">
-          <div class="card-body">
-            <%= render "admins/users/partials/form", user: @user %>
-          </div>
+        <div style="max-width: 95%;">
+          <%= render "admins/users/partials/form", user: @user %>
         </div>
       </div>
     </div>
