@@ -109,7 +109,7 @@
   }
 }
 
-#paginate-user-table {
+#paginate-user-table,#paginate-counselor-table {
   a {
     color: #1f7564;
   }
@@ -119,4 +119,10 @@
     border-color: #1f7564;
     color: white;
   }
+}
+
+.button_hidden {
+  border: none;
+  background: none;
+  padding: 0;
 }

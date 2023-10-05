@@ -36,6 +36,7 @@ module Admins
             redirect_to @user.type == 'User' ? admins_user_url(@user) : admins_counselor_url(@user),
                         notice: 'User was successfully created.'
           end
+          format.turbo_stream
         else
           flash[:alert] = @user.errors.full_messages.join(', ')
           format.html { redirect_to new_admins_user_path }
@@ -50,8 +51,9 @@ module Admins
             redirect_to @user.type == 'User' ? admins_user_url(@user) : admins_counselor_url(@user),
                         notice: 'User was successfully updated.'
           end
+          format.turbo_stream
         else
-          flash[:alert] = @user.errors.full_messages
+          flash[:alert] = @user.errors.full_messages.join(', ')
           format.html { render :edit, status: :unprocessable_entity }
         end
       end

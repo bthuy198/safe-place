@@ -42,4 +42,6 @@
 class Counselor < User
   has_many :schedules, dependent: :destroy
   has_many :rooms, dependent: :destroy
+
+  paginates_per 10
 end

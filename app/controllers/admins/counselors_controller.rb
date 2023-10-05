@@ -23,9 +23,12 @@ module Admins
 
       respond_to do |format|
         if @counselor.save
-          format.html { redirect_to @counselor.type == 'User' ? admins_user_url(@counselor) : admins_counselor_url(@counselor), notice: 'counselor was successfully created.' }
+          format.html do
+            redirect_to @counselor.type == 'User' ? admins_user_url(@counselor) : admins_counselor_url(@counselor),
+                        notice: 'counselor was successfully created.'
+          end
         else
-          flash[:alert] = @counselor.errors.full_messages
+          flash[:alert] = @counselor.errors.full_messages.join(', ')
           format.html { render :new, status: :unprocessable_entity }
         end
       end
@@ -35,9 +38,13 @@ module Admins
       respond_to do |format|
         if @counselor.update(counselor_params)
 
-          format.html { redirect_to @counselor.type == 'User' ? admins_user_url(@counselor) : admins_counselor_url(@counselor), notice: 'counselor was successfully updated.' }
+          format.html do
+            redirect_to @counselor.type == 'User' ? admins_user_url(@counselor) : admins_counselor_url(@counselor),
+                        notice: 'counselor was successfully updated.'
+          end
+          format.turbo_stream
         else
-          flash[:alert] = @counselor.errors.full_messages
+          flash[:alert] = @counselor.errors.full_messages.join(', ')
           format.html { render :edit, status: :unprocessable_entity }
         end
       end
@@ -71,7 +78,7 @@ module Admins
     end
 
     def counselor_params
-      params.require(:counselor).permit(:email, :anonymous, :password, :phone_number, :status, :type, :counselor_name,
+      params.require(:counselor).permit(:email, :anonymous, :password, :phone_number, :status, :type, :user_name,
                                         user_info_attributes: %i[address date_of_birth gender profile_name])
     end
   end
