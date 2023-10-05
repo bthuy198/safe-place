@@ -8,13 +8,16 @@ module Admins
     DEFAULT_PASSWORD = '123456'
 
     def index
-      @q = User.includes(:user_info).ransack(params[:q])
+      @q = User.where(type: :User).includes(:user_info).ransack(params[:q])
       @users = @q.result(distinct: true).order(id: :desc).page params[:page]
     end
 
+    def index_counselors
+      @q = User.where(type: :Counselor).includes(:user_info).ransack(params[:q])
+      @counselors = @q.result(distinct: true).order(id: :desc).page params[:page]
+    end
+
     def show; end
-
-
 
     def new
       @user = User.new
@@ -29,11 +32,10 @@ module Admins
 
       respond_to do |format|
         if @user.save
-          format.html { redirect_to admins_user_url(@user), notice: 'User was successfully created.' }
-          format.json { render :show, status: :created, location: @user }
+          format.html { redirect_to @user.type == 'User' ? admins_user_url(@user) : admins_counselor_url(@user), notice: 'User was successfully created.' }
         else
+          flash[:alert] = @user.errors.full_messages
           format.html { render :new, status: :unprocessable_entity }
-          format.json { render json: @user.errors, status: :unprocessable_entity }
         end
       end
     end
@@ -41,11 +43,10 @@ module Admins
     def update
       respond_to do |format|
         if @user.update(user_params)
-          format.html { redirect_to admins_user_url(@user), notice: 'User was successfully updated.' }
-          format.json { render :show, status: :ok, location: @user }
+          format.html { redirect_to @user.type == 'User' ? admins_user_url(@user) : admins_counselor_url(@user), notice: 'User was successfully updated.' }
         else
+          flash[:alert] = @user.errors.full_messages
           format.html { render :edit, status: :unprocessable_entity }
-          format.json { render json: @user.errors, status: :unprocessable_entity }
         end
       end
     end
@@ -54,7 +55,7 @@ module Admins
       @user.destroy
 
       respond_to do |format|
-        format.html { redirect_to admins_users_url, notice: 'User was successfully destroyed.' }
+        format.html { redirect_to admins_users_url(page: params[:page]), notice: 'User was successfully destroyed.' }
         format.json { head :no_content }
       end
     end

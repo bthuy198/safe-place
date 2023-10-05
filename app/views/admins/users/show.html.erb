@@ -2,7 +2,7 @@
   <div class="col">
     <div class="card">
       <div class="card_title_with_chevron">
-        <a href="#" onclick="moveBackward()"><i class="fa-solid fa-chevron-left"></i></a>
+        <a href="<%= admins_users_path %>"><i class="fa-solid fa-chevron-left"></i></a>
         <h1 class="text-center" >User Profile</h1>
       </div>
       <div class="row justify-content-center card-body">
@@ -45,6 +45,15 @@
           </div>
           <div class="row">
             <div class="col-sm-6">
+              <p class="text-muted mb-0">Type</p>
+            </div>
+            <div class="col-sm-6">
+              <p class="mb-0"><%= @user.type%></p>
+            </div>
+            <hr>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
               <p class="text-muted mb-0">Phone number</p>
             </div>
             <div class="col-sm-6">
@@ -79,10 +88,9 @@
             </div>
             <hr>
           </div>
-          <br>
-          <%= link_to "Edit profile", edit_admins_user_path(@user), class:"btn btn-outline-secondary btn-edit"%>
         </div>
       </div>
     </div>
   </div>
 </div>
+<%= javascript_include_tag 'users/moving' %>
