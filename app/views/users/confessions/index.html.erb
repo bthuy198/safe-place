@@ -1,0 +1,12 @@
+<h1>Confessions</h1>
+
+<div id="confessions">
+  <% @confessions.each do |confession| %>
+    <%= render confession %>
+    <p>
+      <%= link_to "Show this confession", users_confession_path(confession) %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New confession", new_users_confession_path %>

@@ -1,0 +1,10 @@
+<h1>Editing confession</h1>
+
+<%= render "users/confessions/form", confession: @confession, url: users_confession_path(@confession) %>
+
+<br>
+
+<div>
+  <%= link_to "Show this confession", users_confession_path(@confession) %> |
+  <%= link_to "Back to confessions", users_confessions_path %>
+</div>
