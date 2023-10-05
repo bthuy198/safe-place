@@ -1,17 +1,17 @@
-<%= form_with(model: podcast_album) do |form| %>
-  <% if podcast_album.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(podcast_album.errors.count, "error") %> prohibited this podcast_album from being saved:</h2>
-
-      <ul>
-        <% podcast_album.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<%= form_for @podcast_album, url: admins_podcast_albums_path, html: { method: :post }, remote: true do |form| %>
+  <div class="modal-body">
+    <div class="form-group">
+      <%= form.label :name, class: 'form-label' %>
+      <%= form.text_field :name, class: 'form-control' %>
     </div>
-  <% end %>
-
-  <div>
-    <%= form.submit %>
+    <div class="form-group">
+      <%= form.label :user_id, 'Select User', class: 'form-label' %>
+      <%= form.select :user_id, @users.map { |t| [t.user_name, t.id]}, {}, class: "form-select" %>
+    </div>
   </div>
+<div class="modal-footer">
+  <div class="form-group justify-content-center">
+    <%= form.submit "New Album", class: "btn btn-primary button_border bg_green border_green button_hover"%>
+  </div>
+</div>
 <% end %>

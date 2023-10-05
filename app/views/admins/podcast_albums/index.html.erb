@@ -1,42 +1,69 @@
 <p style="color: green"><%= notice %></p>
 
 <div class="container-fluid">
-  <div class="row card text-green" style="margin-top: 50px; border-radius: 15px">
-    <div class="card-body row" style="padding: 30px">
-    <div class="col-6">
-      <h1>Podcast albums</h1>
-    </div>
-    <div class="col-4">
-      <div class="input-group">
-        <div class="form-outline">
-          <input type="search" id="form1" class="form-control" placeholder="Search" style="border-bottom-right-radius: 0; border-top-right-radius: 0 " />
+  <div class="card text-green" style="margin-top: 50px; border-radius: 15px">
+    <div class="card-body" style="padding: 30px">
+      <div class="row">
+    <div class="col-8">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+        <div class="input-group-append">
+          <button type="button" class="btn btn-outline-primary button_hover text_green border_green" style="border-bottom-left-radius: 0; border-top-left-radius: 0">SEARCH</button>
         </div>
-        <button type="button" class="btn btn-primary bg-green border-green" >
-          <i class="fas fa-search"></i>
-        </button>
       </div>
     </div>
     <div class="col-2">
-      <button class="btn btn-primary bg-green border-green"><i class="fa-solid fa-plus"></i> New Album</button>
+      <button class="btn btn-primary bg_green border_green button_hover" id='btnShowCreateModal'><i class="fa-solid fa-plus"></i> New Album</button>
+    </div>
     </div>
     </div>
   </div>
   <div id="podcast_albums" class="card" style="margin-top: 50px; border-radius: 15px">
     <div class="card-body">
+      <h1 class="text_green">Podcast albums</h1>
     <%= render 'admins/podcast_albums/partials/album_table', podcast_albums: @podcast_albums %>
+    </div>
+  </div>
+</div>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div id="modalCreateAlbum" class="modal hide fade">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text_green">Create</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <%= render 'admins/podcast_albums/partials/form',content_type: 'text/html', podcast_album: @podcast_album, users: @users %>
     </div>
   </div>
 </div>
 <%= link_to "New podcast album", new_admins_podcast_album_path %>
 
 <style>
-  .bg-green{
+  .bg_green{
       background-color: #1F7564;
   }
-  .border-green{
+  .border_green{
       border-color: #1F7564;
   }
-  .text-green{
+  .text_green{
       color: #1F7564;
   }
+  .button_hover:hover {
+      background-color: #175549;
+      border-color: #175549;
+  }
+  .button_border{
+      border-radius: 30px;
+  }
 </style>
+<script type="module">
+    $('#btnShowCreateModal').on('click', () => {
+        $('#modalCreateAlbum').modal('show');
+    })
+</script>

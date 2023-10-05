@@ -7,6 +7,8 @@ class PodcastAlbumsController < AdminsLayoutController
   # GET /podcast_albums or /podcast_albums.json
   def index
     @podcast_albums = PodcastAlbum.all
+    @users = User.all
+    @podcast_album = PodcastAlbum.new
   end
 
   # GET /podcast_albums/1 or /podcast_albums/1.json
@@ -26,7 +28,8 @@ class PodcastAlbumsController < AdminsLayoutController
 
     respond_to do |format|
       if @podcast_album.save
-        format.html { redirect_to podcast_album_url(@podcast_album), notice: 'Podcast album was successfully created.' }
+        format.html { redirect_to admins_podcast_albums_url(@podcast_album), notice: 'Podcast album was successfully created.' }
+        format.js {}
         format.json { render :show, status: :created, location: @podcast_album }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -67,7 +70,7 @@ class PodcastAlbumsController < AdminsLayoutController
 
   # Only allow a list of trusted parameters through.
   def podcast_album_params
-    params.fetch(:podcast_album, {})
+    params.require(:podcast_album).permit(:name, :user_id)
   end
 end
 end
