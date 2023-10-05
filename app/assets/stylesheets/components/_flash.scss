@@ -1,4 +1,10 @@
+#body {
+  position: relative;
+}
+
 .flash {
+  position: absolute;
+  top: 10px;
   &__value {
     animation: appear-then-fade 5s both;
   }
