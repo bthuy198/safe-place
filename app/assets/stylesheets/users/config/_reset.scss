@@ -57,7 +57,7 @@ div {
   }
 
   &.custom_main {
-    position: relative;
+    padding: 0 10px 10px 10px;
   }
 
   &.centered_container {
@@ -89,20 +89,16 @@ turbo-frame#board {
 }
 
 turbo-frame#main {
-  position: absolute;
-  width: 97.3%;
-  top: 10vh;
+  display: inline-block;
+  width: 100%;
 }
 
 nav {
-  position: absolute !important;
   top: 0;
   right: 0;
   background-color: var(--color-primary);
   border-radius: 10px 10px 0 0;
   margin-top: 10px;
-  margin-right: 10px;
-  margin-left: 10px;
 
   a {
     color: var(--color-white);
