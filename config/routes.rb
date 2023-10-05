@@ -33,11 +33,16 @@ Rails.application.routes.draw do
 
   namespace :admins do
     get 'dashboard', to: 'pages#dashboard'
+    resources :users
   end
 
   namespace 'users' do
     resource :user_infos
+    resource :podcasts
+    resource :podcast_albums
   end
+
+  
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

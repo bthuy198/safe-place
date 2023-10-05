@@ -1,1 +1,35 @@
-<h1>This is User Home Page</h1>
+<div class="container-fluid custom-upper-body">
+  <div class="row">
+    <div class="col-md-3 custom-board">
+      <div class="custom-menu">
+        <ul>
+          <li><a href=<%= root_path %>><i class="fa-solid fa-house fa-lg"></i>Home</a></li>
+          <li><a href=#><i class="fa-solid fa-magnifying-glass fa-lg"></i>Search</a></li>
+          <li><a href=#><i class="fa-solid fa-book fa-lg"></i>My courses</a><a href=#><i class="fa-solid fa-plus"></i></a></li>
+        </ul>
+      </div>
+      <%= turbo_frame_tag "board" do %>
+        <div class="centered-container c-board">
+          <i class="fa-solid fa-spinner fa-spin-pulse fa-2xl"></i>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-9 custom-main">
+      <%= render "users/shared/navbar" %>
+      <%= turbo_frame_tag "main", src: users_podcasts_path, loading: :lazy do %>
+        <div class="centered-container c-main">
+          <i class="fa-solid fa-spinner fa-spin-pulse fa-2xl"></i>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 custom-media">
+      <%= turbo_frame_tag "media" do %>
+        Placeholder for Media player
+      <% end %>
+    </div>
+  </div>
+</div>

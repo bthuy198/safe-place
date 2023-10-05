@@ -61,5 +61,18 @@ class User < ApplicationRecord
 
   enum status: { available: 'available', unavailable: 'unavailable', await: 'await' }
 
-  accepts_nested_attributes_for :user_info
+  paginates_per 10
+
+  acts_as_paranoid
+
+  accepts_nested_attributes_for :user_info, allow_destroy: true
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["anonymous", "confirmation_sent_at", "confirmation_token", "confirmed_at", "created_at", "current_sign_in_at", "current_sign_in_ip", "deleted_at", "email", "encrypted_password", "failed_attempts", "id", "last_sign_in_at", "last_sign_in_ip", "locked_at", "phone_number", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "status", "type", "unconfirmed_email", "unlock_token", "updated_at", "user_name"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["bookmarks", "comments", "confessions", "conversations", "enrollments", "likes", "podcast_albums", "rooms", "schedules", "session_states", "user_info"]
+  end
+
 end
