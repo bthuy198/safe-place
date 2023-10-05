@@ -1,7 +1,7 @@
-<div class="container-fluid custom-upper-body">
+<div class="container-fluid custom_body">
   <div class="row">
-    <div class="col-md-3 custom-board">
-      <div class="custom-menu">
+    <div class="col-md-3 custom_board">
+      <div class="custom_menu">
         <ul>
           <li><a href=<%= root_path %>><i class="fa-solid fa-house fa-lg"></i>Home</a></li>
           <li><a href=#><i class="fa-solid fa-magnifying-glass fa-lg"></i>Search</a></li>
@@ -9,15 +9,15 @@
         </ul>
       </div>
       <%= turbo_frame_tag "board" do %>
-        <div class="centered-container c-board">
+        <div class="centered_container centered_main">
           <i class="fa-solid fa-spinner fa-spin-pulse fa-2xl"></i>
         </div>
       <% end %>
     </div>
-    <div class="col-md-9 custom-main">
+    <div class="col-md-9 custom_main">
       <%= render "users/shared/navbar" %>
       <%= turbo_frame_tag "main", src: users_podcasts_path, loading: :lazy do %>
-        <div class="centered-container c-main">
+        <div class="centered_container centered_main">
           <i class="fa-solid fa-spinner fa-spin-pulse fa-2xl"></i>
         </div>
       <% end %>

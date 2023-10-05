@@ -14,23 +14,23 @@ body {
 }
 
 div {
-  &.custom-upper-body {
+  &.custom_body {
     flex-grow: 1;
   }
 
-  &.custom-board {
+  &.custom_board {
     position: relative;
     padding-right: 0;
   }
 
-  &.custom-menu {
+  &.custom_menu {
     margin-top: 10px;
     font-family: var(--font-family-sans);
     color: var(--color-primary);
     font-weight: bolder;
-    line-height: 2;
+    line-height: var(--line-height-main);
     border: var(--border);
-    border-radius: 10px;
+    border-radius: var(--border-radius);
     ul {
       list-style-type: none;
       margin-bottom: 0;
@@ -43,7 +43,7 @@ div {
           &:hover,
           &:focus,
           &:active {
-            color: var(--color-text-pink);
+            color: var(--color-pink);
           }
         }
         i {
@@ -57,21 +57,21 @@ div {
     }
   }
 
-  &.centered-container {
+  &.custom_main {
+    position: relative;
+  }
+
+  &.centered_container {
     display: flex;
     justify-content: center;
     align-items: center;
-    &.c-board {
+    &.centered_board {
       height: 50vh;
     }
 
-    &.c-main {
+    &.centered_main {
       height: 65vh;
     }
-  }
-
-  &.custom-main {
-    position: relative;
   }
 }
 
@@ -109,21 +109,7 @@ nav {
       color: var(--color-glint);
     }
 
-    &.custom-signin-btn {
-      color: var(--color-text-pink);
-      font-size: var(--font-size-l);
-      font-weight: bolder;
-      border-radius: 30px;
-      padding: 4px 20px;
-
-      &:hover,
-      &:focus,
-      &:active {
-        color: var(--color-primary);
-      }
-    }
-
-    &.custom-signup-btn {
+    &.custom_signup {
       background-color: var(--color-primary);
       color: var(--color-white);
       font-size: var(--font-size-l);
@@ -134,7 +120,21 @@ nav {
       &:hover,
       &:focus,
       &:active {
-        color: var(--color-text-pink);
+        color: var(--color-pink);
+      }
+    }
+
+    &.custom_signin {
+      color: var(--color-pink);
+      font-size: var(--font-size-l);
+      font-weight: bolder;
+      border-radius: 30px;
+      padding: 4px 20px;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: var(--color-primary);
       }
     }
   }
@@ -149,8 +149,8 @@ nav {
 }
 
 footer {
-  background-color: var(--color-background);
-  color: var(--color-text-header);
+  background-color: var(--color-primary-bg);
+  color: var(--color-black);
   line-height: var(--line-height-body);
   font-family: var(--font-family-sans);
   margin-bottom: 24px;
@@ -162,12 +162,12 @@ footer {
   }
 
   a {
-    color: var(--color-text-body);
+    color: var(--color-gray);
     font-size: var(--font-size-s);
     font-weight: bolder;
     text-decoration: none;
     transition: color 200ms;
-    line-height: 2;
+    line-height: var(--line-height-main);
 
     &:hover,
     &:focus,
@@ -179,7 +179,7 @@ footer {
       &:hover,
       &:focus,
       &:active {
-        color: var(--color-blue);
+        color: var(--color-facebook-blue);
       }
       margin-top: 12px;
     }
@@ -188,7 +188,7 @@ footer {
       &:hover,
       &:focus,
       &:active {
-        color: var(--color-red);
+        color: var(--color-youtube-red);
       }
       margin-top: 12px;
     }
