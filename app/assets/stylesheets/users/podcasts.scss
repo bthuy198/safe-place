@@ -1,0 +1,138 @@
+
+.podcast_form_container{
+    .form_podcast_label {
+      font-size: 20px;
+    }
+    .form_podcast_textfield {
+      font-size: 20px;
+    }
+    .button_close {
+      font-size: 18px; 
+      margin: 10px 5px 25px 25px;
+    }
+    .button_add{
+      background-color: #1F7564; 
+      color: #fff; 
+      border: 2px solid #1F7564; 
+      font-size: 18px; 
+    }
+}
+
+.show_podcast_album {
+  margin: 5px;
+  .album_image {
+    border-radius: 5px;
+    width:70px;
+  }
+  .album_name{
+    font-size: 20px;
+  }
+  .album_date{
+    font-size: 18px;
+  }
+  i {
+    width: 25px;
+  }
+}
+
+.show_podcast_detail {
+  .scrolling-container {
+    display: flex; /* Hiển thị các podcast cạnh nhau */
+    overflow-x: auto; /* Tạo thanh cuộn ngang khi cần */
+    white-space: nowrap; /* Ngăn chuyển dòng cho các podcast */
+    max-width: 100%; /* Đảm bảo container không vượt quá kích thước màn hình */
+    .col-3 {
+      width: 25%; /* Hiển thị 4 podcast mỗi lần */
+      padding: 10px; /* Điều chỉnh khoảng cách giữa các podcast */
+      box-sizing: border-box; /* Đảm bảo padding không làm tăng kích thước thực của mỗi podcast */
+    }
+  }
+  .item {
+    margin-right: 10px;
+    .podcast_image {
+      border-radius: 7px;
+      width: 180px;
+      height: 150px;
+    }
+    .podcast_name {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 3px;
+    }
+    .podcast_author {
+      font-size: 20px;
+      color: gray;
+      margin-bottom: 3px;
+    }
+    .album_name {
+      font-size: 20px;
+      color: gray;
+      margin-bottom: 3px;
+    }
+  }
+}
+
+
+.podcast_album_form {
+  margin-top: 5%;
+  .podcast_album_label {
+      font-size: 20px;
+  }
+  .podcast_album_text{
+      margin: 5px 25px;
+  }
+  .button_add {
+      background-color: #1F7564; 
+      color: #fff; 
+      width: 200px
+  }
+}
+
+.show_podcast {
+  .row {
+    .card_index{
+      height: 65vh;
+      .body_index{
+        padding-right: 20px;
+        .card_album{
+          .body_album {
+            max-height: 60vh; 
+            overflow-y: scroll;
+          }
+        }
+      }
+    }
+    .button_create_podcast {
+      margin: 15px 0px;
+    }
+    #recent_podcasts_frame {
+      display: flex;
+      overflow-x: auto; 
+      white-space: nowrap; 
+      .row.show_podcast_detail {
+        width: 50%;
+        .col-3 {
+          width: 25%;
+        }
+      }
+    }
+  }
+}
+
+.button_show_podcast {
+  text-decoration: none;
+}
+
+.form_title {
+  color: #1F7564;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.form_title_podcast {
+  color: #1F7564;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 25px;
+}
+

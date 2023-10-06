@@ -1,3 +1,4 @@
 <%= turbo_stream.append 'collection_name', partial: 'podcast_album', locals: { podcast_album: @podcast_album } %>
+<%= turbo_stream.append 'albums', partial: 'podcast_album', locals: { podcast_album: @podcast_album } %>
 
 <%= turbo_stream.update PodcastAlbum.new, "" %>

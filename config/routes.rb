@@ -39,8 +39,8 @@ Rails.application.routes.draw do
 
   namespace 'users' do
     resource :user_infos
-    resource :podcasts
-    resource :podcast_albums
+    resources :podcasts
+    resources :podcast_albums
     resources :confessions
   end
 
