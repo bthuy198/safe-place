@@ -1,15 +1,15 @@
-<%= form_with(model: confession, url: url, id: "#{dom_id(confession)}_form") do |form| %>
+<%= form_with(model: confession, url: url, id: "#{dom_id(confession)}_form", class: "confession_form") do |form| %>
   <div>
-    <%= form.label :tag, style: "display: block" %>
-    <%= form.text_field :tag %>
-  </div>
-
-    <div>
-    <%= form.label :content, style: "display: block" %>
+    <%= form.label :content %>
     <%= form.rich_text_area :content %>
   </div>
 
+  <div class="form-floating">
+    <%= form.text_field :tag, class: "form-control", id: "tag", placeholder: "Input your tags here" %>
+    <%= form.label :tag, for: "tag" %>
+  </div>
+
   <div>
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-light custom_btn" %>
   </div>
 <% end %>

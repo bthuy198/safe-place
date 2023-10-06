@@ -9,13 +9,10 @@
         <div class="modal-content">
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="confessionFormModalLabel">Write your confession here</h1>
+            <button type="button" class="btn btn-secondary modal_close_btn" data-bs-dismiss="modal">Close</button>
           </div>
           <div class="modal-body">
             <%= render "users/confessions/form", confession: @confession, url: users_confessions_path %>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>

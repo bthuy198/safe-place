@@ -5,6 +5,12 @@
 <% else %>
   <%= turbo_stream.replace "#{dom_id(Confession.new)}_form" do %>
     <%= render "users/confessions/form", confession: Confession.new, url: users_confessions_path %>
+    <script>
+      var buttons = document.querySelectorAll(".modal_close_btn");
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].click();
+      }
+    </script>
   <% end %>
 <% end %>
 <%= render_turbo_stream_flash_messages %>
