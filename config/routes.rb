@@ -39,13 +39,17 @@ Rails.application.routes.draw do
         patch 'toggle_anonymous', to: 'users#toggle_anonymous'
       end
     end
+    resources :rooms
   end
 
   namespace 'users' do
     resource :user_infos
     resource :podcasts
     resource :podcast_albums
+    resources :confessions
   end
+
+
 
 
 

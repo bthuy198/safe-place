@@ -1,0 +1,9 @@
+<div style="margin: 17vh 10vh; background-color: #fff; padding: 5vh">
+    <h1>New room</h1>
+    <%= turbo_frame_tag "add_room" do %>
+        <%= render "admins/rooms/partials/form", room: @room %>
+    
+    <% end %>
+    
+</div>
+

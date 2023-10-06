@@ -3,7 +3,6 @@
 module Users
   # class UsersPagesController
   class UserInfosController < UsersLayoutController
-
     def show
       @user = current_user
       @user_info = @user.user_info
@@ -30,6 +29,5 @@ module Users
       params.require(:user).permit(:user_name, :email, :phone_number,
                                    user_info_attributes: %i[gender date_of_birth address])
     end
-
   end
 end

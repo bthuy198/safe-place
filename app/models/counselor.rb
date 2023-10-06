@@ -38,6 +38,7 @@
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #  index_users_on_unlock_token          (unlock_token) UNIQUE
+#  index_users_on_user_name             (user_name) UNIQUE
 #
 class Counselor < User
   has_many :schedules, dependent: :destroy

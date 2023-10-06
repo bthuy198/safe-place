@@ -5,7 +5,11 @@
       <div class="input-group mb-3">
         <%= f.search_field :user_info_profile_name_cont, class: 'form-control me-2', placeholder: 'Search name users' %>
         <%= f.search_field :phone_number_cont, class: 'form-control me-2', placeholder: 'Search phone' %>
-        <%= f.submit 'Search', class: 'btn btn-outline-success', type: 'submit' %>
+        <%= f.check_box :anonymous_cont, class: 'form-check-input me-2' %>
+        <label class="form-check-label me-2" for="flexCheckChecked">
+           Anonymous
+        </label>
+        <%= f.submit 'Search', class: 'btn btn-outline-success ', type: 'submit' %>
       </div>
     <% end %>
   </div>

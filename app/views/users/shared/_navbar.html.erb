@@ -1,4 +1,4 @@
-<nav class="navbar fixed-top">
+<nav class="navbar">
     <div class="container-fluid d-flex">
         <span>
             <a href="#" onclick="moveBackward()" ><i class="fa-solid fa-chevron-left"></i></a>
@@ -7,16 +7,16 @@
         </span>
         <% if !user_signed_in? %>
             <span class="ms-auto">
-                <a type="button" class="btn btn-light custom-signup-btn" href="<%= sign_up_path %>">
+                <a type="button" class="btn btn-light custom_signup" href="<%= sign_up_path %>">
                     Sign up
                 </a>
-                <a type="button" class="btn btn-light custom-signin-btn" href="<%= sign_in_path %>">
+                <a type="button" class="btn btn-light custom_signin" href="<%= sign_in_path %>">
                     Log in
                 </a>
             </span>
         <% else %>
             <span class="ms-auto">
-                <a type="button" class="btn btn-light custom-signin-btn" href=#>
+                <a type="button" class="btn btn-light custom_signin" href=#>
                     Install App
                 </a>
             </span>
@@ -61,4 +61,3 @@
         <% end %>
     </div>
 </nav>
-<%= javascript_include_tag 'users/moving' %>

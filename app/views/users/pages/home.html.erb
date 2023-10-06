@@ -1,23 +1,28 @@
-<div class="container-fluid custom-upper-body">
-  <div class="row">
-    <div class="col-md-3 custom-board">
-      <div class="custom-menu">
+<div class="container-fluid custom_body">
+  <div class="row custom_render_row">
+    <div class="col-md-3 custom_board">
+      <div class="custom_menu">
         <ul>
           <li><a href=<%= root_path %>><i class="fa-solid fa-house fa-lg"></i>Home</a></li>
           <li><a href=#><i class="fa-solid fa-magnifying-glass fa-lg"></i>Search</a></li>
           <li><a href=#><i class="fa-solid fa-book fa-lg"></i>My courses</a><a href=#><i class="fa-solid fa-plus"></i></a></li>
         </ul>
       </div>
-      <%= turbo_frame_tag "board" do %>
-        <div class="centered-container c-board">
+      <%= turbo_frame_tag "new_confession_frame", src: new_users_confession_path, loading: :lazy do %>
+        <div class="centered_container centered_confession_frame">
+          <i class="fa-solid fa-spinner fa-spin-pulse fa-2xl"></i>
+        </div>
+      <% end %>
+      <%= turbo_frame_tag "board", src: users_confessions_path, loading: :lazy do %>
+        <div class="centered_container centered_board">
           <i class="fa-solid fa-spinner fa-spin-pulse fa-2xl"></i>
         </div>
       <% end %>
     </div>
-    <div class="col-md-9 custom-main">
+    <div class="col-md-9 custom_main">
       <%= render "users/shared/navbar" %>
       <%= turbo_frame_tag "main", src: users_podcasts_path, loading: :lazy do %>
-        <div class="centered-container c-main">
+        <div class="centered_container centered_main">
           <i class="fa-solid fa-spinner fa-spin-pulse fa-2xl"></i>
         </div>
       <% end %>
@@ -33,3 +38,5 @@
     </div>
   </div>
 </div>
+<%= javascript_include_tag 'users/home_page' %>
+<%= turbo_stream_from "confessions_index_channel" %>

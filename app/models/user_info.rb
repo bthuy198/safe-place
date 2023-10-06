@@ -6,6 +6,7 @@
 #
 #  id            :bigint           not null, primary key
 #  address       :string(255)
+#  avatar        :string(255)
 #  date_of_birth :date
 #  deleted_at    :datetime
 #  gender        :string(255)
