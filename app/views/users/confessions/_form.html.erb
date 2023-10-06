@@ -1,6 +1,5 @@
 <%= form_with(model: confession, url: url, id: "#{dom_id(confession)}_form", class: "confession_form") do |form| %>
   <div>
-    <%= form.label :content %>
     <%= form.rich_text_area :content %>
   </div>
 
