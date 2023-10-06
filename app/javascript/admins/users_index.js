@@ -1,5 +1,4 @@
 var isHandlingChange = false;
-
 $(document).on("change", ".anonymous-switch", function () {
   if (isHandlingChange) {
     return;
@@ -20,7 +19,7 @@ $(document).on("change", ".anonymous-switch", function () {
     },
     success: function (data) {
       console.log('The "Anonymous" status has been updated successfully.');
-      isHandlingChange = false; 
+      isHandlingChange = false;
     },
     error: function () {
       console.log('An error occurred while updating the "Anonymous" status.');

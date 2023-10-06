@@ -1,6 +1,14 @@
-<% if @user.type == 'User' %>
-  <%= turbo_stream.prepend "users-tbody", partial: "admins/users/partials/user", locals: { user: @user } %>
+<% if @user.errors.any? %>
+  <%= turbo_stream.replace "#{dom_id(User.new)}_form" do %>
+    <%= render "admins/users/partials/form", user: @user %>
+  <% end %>
 <% else %>
-  <%= turbo_stream.prepend "counselors-tbody", partial: "admins/counselors/partials/counselor", locals: { counselor: @user } %>
+  <%= (turbo_stream.prepend "users-tbody", partial: "admins/users/partials/user", 
+      locals: { user: @user }) if @user.type == 'User' && params[:user][:page] == '1' %>
+  <%= turbo_stream.update "close_model_user" do %>
+    <script>
+      $("#exampleModal").modal('hide');
+    </script>
+  <% end %>
 <% end %>
-<%= turbo_stream.update "modal_for_user", "Success Create!" %>
+<%= render_turbo_stream_flash_messages %>

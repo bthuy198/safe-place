@@ -1,6 +1,17 @@
-<% if @counselor.type == 'Counselor' %>
-  <%= turbo_stream.replace "counselor-#{@counselor.id}", partial: "admins/counselors/partials/counselor", locals: { counselor: @counselor } %>
+<% if @counselor.errors.any? %>
+  <%= turbo_stream.replace "#{dom_id(@counselor)}_form" do %>
+    <%= render "admins/counselors/partials/form", counselor: @counselor %>
+  <% end %>
 <% else %>
-  <%= turbo_stream.remove "counselor-#{@counselor.id}" %>
+  <% if @counselor.type == 'Counselor' %>
+    <%= turbo_stream.replace "counselor-#{@counselor.id}", partial: "admins/counselors/partials/counselor", locals: { counselor: @counselor } %>
+  <% else %>
+    <%= turbo_stream.remove "counselor-#{@counselor.id}" %>
+  <% end %>
+  <%= turbo_stream.update "close_model_user" do %>
+    <script>
+      $("#exampleModal1").modal('hide');
+    </script>
+  <% end %>
 <% end %>
-<%= turbo_stream.update "modal_for_counselor", "Success Edit" %>
+<%= render_turbo_stream_flash_messages %>

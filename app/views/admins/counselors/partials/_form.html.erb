@@ -1,6 +1,7 @@
 <% user_type = {"User"=>"User", "Counselor"=>"Counselor"} %>
 <div class="form-user">
-  <%= form_with(model: [:admins,counselor] ) do |form| %>
+  <%= form_with(model: [:admins,counselor], id: "#{dom_id(counselor)}_form" ) do |form| %>
+    <%= form.hidden_field :page , value: (params[:page] || 1) %>
     <%= form.fields_for :user_info do |user_info_fields| %>
       <div class="row mb-1 gy-2 gx-3 align-items-center">
         <div class="col">

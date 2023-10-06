@@ -1,6 +1,17 @@
-<% if @user.type == 'User' %>
-  <%= turbo_stream.replace "user-#{@user.id}", partial: "admins/users/partials/user", locals: { user: @user } %>
+<% if @user.errors.any? %>
+  <%= turbo_stream.replace "#{dom_id(@user)}_form" do %>
+    <%= render "admins/users/partials/form", user: @user %>
+  <% end %>
 <% else %>
-  <%= turbo_stream.remove "user-#{@user.id}" %>
+  <% if @user.type == 'User' %>
+    <%= turbo_stream.replace "user-#{@user.id}", partial: "admins/users/partials/user", locals: { user: @user } %>
+  <% else %>
+    <%= turbo_stream.remove "user-#{@user.id}" %>
+  <% end %>
+  <%= turbo_stream.update "close_model_user" do %>
+    <script>
+      $("#exampleModal").modal('hide');
+    </script>
+  <% end %>
 <% end %>
-<%= turbo_stream.update "modal_for_user", "Success Edit" %>
+<%= render_turbo_stream_flash_messages %>

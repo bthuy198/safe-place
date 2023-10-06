@@ -27,14 +27,11 @@ module Admins
 
       respond_to do |format|
         if @user.save
-          format.html do
-            redirect_to @user.type == 'User' ? admins_user_url(@user) : admins_counselor_url(@user),
-                        notice: 'User was successfully created.'
-          end
-          format.turbo_stream
+          format.turbo_stream { flash.now[:notice] = "#{@user.type} was successfully created!" }
         else
-          flash[:alert] = @user.errors.full_messages.join(', ')
-          format.html { redirect_to new_admins_user_path }
+          format.turbo_stream do
+            flash.now[:alert] = "<ul><li>#{@user.errors.full_messages.join('</li><li>')}</li><ul>".html_safe
+          end
         end
       end
     end
@@ -42,14 +39,15 @@ module Admins
     def update
       respond_to do |format|
         if @user.update(user_params)
-          format.html do
-            redirect_to @user.type == 'User' ? admins_user_url(@user) : admins_counselor_url(@user),
-                        notice: 'User was successfully updated.'
-          end
-          format.turbo_stream
+          # format.html do
+          #   redirect_to @user.type == 'User' ? admins_user_url(@user) : admins_counselor_url(@user),
+          #               notice: 'User was successfully updated.'
+          # end
+          format.turbo_stream { flash.now[:notice] = "#{@user.type} was successfully created!" }
         else
-          flash[:alert] = @user.errors.full_messages.join(', ')
-          format.html { render :edit, status: :unprocessable_entity }
+          format.turbo_stream do
+            flash.now[:alert] = "<ul><li>#{@user.errors.full_messages.join('</li><li>')}</li><ul>".html_safe
+          end
         end
       end
     end

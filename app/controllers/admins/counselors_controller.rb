@@ -8,7 +8,7 @@ module Admins
     DEFAULT_PASSWORD = '123456'
 
     def index
-      @q = User.includes(:user_info).ransack(params[:q])
+      @q = Counselor.includes(:user_info).ransack(params[:q])
       @counselors = @q.result(distinct: true).order(id: :desc).page params[:page]
     end
 
@@ -22,14 +22,11 @@ module Admins
       @counselor.password = DEFAULT_PASSWORD
       respond_to do |format|
         if @counselor.save
-          format.html do
-            redirect_to @counselor.type == 'User' ? admins_user_url(@counselor) : admins_counselor_url(@counselor),
-                        notice: 'counselor was successfully created.'
-          end
-          format.turbo_stream
+          format.turbo_stream { flash.now[:notice] = "#{@counselor.type} was successfully created!" }
         else
-          flash[:alert] = @counselor.errors.full_messages.join(', ')
-          format.html { render :new, status: :unprocessable_entity }
+          format.turbo_stream do
+            flash.now[:alert] = "<ul><li>#{@counselor.errors.full_messages.join('</li><li>')}</li><ul>".html_safe
+          end
         end
       end
     end
@@ -37,14 +34,11 @@ module Admins
     def update
       respond_to do |format|
         if @counselor.update(counselor_params)
-          format.html do
-            redirect_to @counselor.type == 'User' ? admins_user_url(@counselor) : admins_counselor_url(@counselor),
-                        notice: 'counselor was successfully updated.'
-          end
-          format.turbo_stream
+          format.turbo_stream { flash.now[:notice] = "#{@counselor.type} was successfully edited!" }
         else
-          flash[:alert] = @counselor.errors.full_messages.join(', ')
-          format.html { render :edit, status: :unprocessable_entity }
+          format.turbo_stream do
+            flash.now[:alert] = "<ul><li>#{@counselor.errors.full_messages.join('</li><li>')}</li><ul>".html_safe
+          end
         end
       end
     end
