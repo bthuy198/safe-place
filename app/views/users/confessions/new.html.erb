@@ -1,6 +1,24 @@
 <%= turbo_frame_tag "new_confession_frame" do %>
   <div class="new_confession">
-    <h3>Confession Board</h3>
-    <%= render "users/confessions/form", confession: @confession, url: users_confessions_path %>
+    <h4>Confession Board</h4>
+    <button type="button" class="btn btn-primary new_confession" data-bs-toggle="modal" data-bs-target="#confessionFormModal">
+      Do you have anything <br> you want to share?
+    </button>
+    <div class="modal fade" id="confessionFormModal" tabindex="-1" aria-labelledby="confessionFormModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="confessionFormModalLabel">Write your confession here</h1>
+          </div>
+          <div class="modal-body">
+            <%= render "users/confessions/form", confession: @confession, url: users_confessions_path %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>

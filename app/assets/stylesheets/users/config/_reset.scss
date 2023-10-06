@@ -89,6 +89,26 @@ turbo-frame#new_confession_frame {
       border-radius: var(--border-radius);
       height: 20vh;
       overflow: auto;
+      h1, h4 {
+        font-family: var(--font-family-sans);
+        color: var(--color-primary);
+      }
+      button.new_confession {
+        width: 100%;
+        margin-top: 10px;
+        background-color: var(--color-white);
+        transition: color 200ms;
+        color: var(--color-gray);
+        font-weight: bolder;
+        border: var(--border);
+        border-radius: 15px;
+        &:hover,
+        &:focus,
+        &:active {
+          color: var(--color-pink);
+          border-color: var(--color-primary);
+        }
+      }
     }
   }
 }
