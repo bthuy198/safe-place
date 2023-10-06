@@ -109,6 +109,25 @@ turbo-frame#new_confession_frame {
           border-color: var(--color-primary);
         }
       }
+      form.confession_form {
+        label {
+          color: var(--color-primary);
+        }
+        .trix-button-group--file-tools {
+          display: none;
+        }
+        trix-editor {
+          height: 40vh;
+        }
+        input {
+          margin-top: 10px;
+          &.custom_btn {
+            color: var(--color-primary);
+            border: var(--border);
+            border-radius: var(--border-radius);
+          }
+        }
+      }
     }
   }
 }
