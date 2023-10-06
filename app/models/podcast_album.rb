@@ -24,6 +24,7 @@ class PodcastAlbum < ApplicationRecord
   has_many :podcasts, dependent: :destroy
   max_paginates_per 10
   mount_uploader :image, ImageUploader
+  validates :name, :user_id, presence: { message: 'not null'}
   def self.ransackable_attributes(auth_object = nil)
     ["created_at", "id", "image", "name", "updated_at", "user_id"]
   end

@@ -29,7 +29,7 @@ class PodcastAlbumsController < AdminsLayoutController
 
   # GET /podcast_albums/1/edit
   def edit
-    # @podcast_album = PodcastAlbum.find(params[:id])
+    @podcast_album = PodcastAlbum.find(params[:id])
     respond_to do |format|
       format.js
     end

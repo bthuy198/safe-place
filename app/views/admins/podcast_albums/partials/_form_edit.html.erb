@@ -1,4 +1,5 @@
 <%= form_for @podcast_album, url: url_for(action: :update, controller: 'admins/podcast_albums', id: @podcast_album.id), remote: true, method: :patch do |form| %>
+  <% binding.pry %>
   <div class="modal-header">
     <h5 class="modal-title text_green">Update Podcast Album</h5>
     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -8,7 +9,11 @@
       <label class="label">
         <%= form.file_field :image, class: "form-control", id: 'img-input' %>
         <figure class="personal-figure">
-          <%= image_tag @podcast_album.image.url, alt: "Album Avatar", class: "personal-avatar", id: 'album_img' %>
+          <% if podcast_album.image? %>
+            <td><%= image_tag @podcast_album.image.url, alt: "Album Avatar", class: "personal-avatar", id: 'album_img' %></td>
+          <% else %>
+            <td><%= image_tag 'podcast.jpg', alt: "Album Avatar", class: "personal-avatar", id: 'album_img' %></td>
+          <% end %>
           <figcaption class="personal-figcaption">
             <img src="https://raw.githubusercontent.com/ThiagoLuizNunes/angular-boilerplate/master/src/assets/imgs/camera-white.png">
           </figcaption>
