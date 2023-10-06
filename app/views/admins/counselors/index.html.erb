@@ -15,8 +15,8 @@
     <div class="card-body">
       <div class="card-title card-title-user d-flex justify-content-between align-items-center ">
         <h1>List Users</h1>
-        <button class="button_hidden" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          <%= link_to "New User",new_admins_user_path, data:{turbo_frame: "modal_for_user"},class:"btn btn-edit button_new_user"%>
+        <button class="button_hidden" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+          <%= link_to "New User", new_admins_counselor_path, data:{turbo_frame: 'modal_for_counselor'},class:"btn btn-edit button_new_user"%>
         </button>
       </div>
       <ul class="nav nav-tabs nav-fill">
@@ -35,7 +35,6 @@
     </div>
   </div>
 </div>
-<%= render 'admins/users/partials/modal' %>
 <%= render 'admins/counselors/partials/modal' %>
 <%= javascript_include_tag "jquery" %>
 <%= javascript_include_tag 'admins/users_index' %>
