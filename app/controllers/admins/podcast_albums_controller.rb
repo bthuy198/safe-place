@@ -54,7 +54,7 @@ class PodcastAlbumsController < AdminsLayoutController
   def update
     respond_to do |format|
       if @podcast_album.update(podcast_album_params)
-        format.html { redirect_to admins_podcast_albums_url, notice: 'Podcast album was successfully updated.' }
+        format.html { redirect_to @podcast_album, notice: 'Podcast album was successfully updated.' }
         format.js {}
         format.json { render :show, status: :ok, location: @podcast_album }
       else

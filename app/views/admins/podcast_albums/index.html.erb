@@ -3,19 +3,20 @@
 <div class="container-fluid">
   <div class="card text-green" style="margin-top: 50px; border-radius: 15px">
     <div class="card-body" style="padding: 30px">
+      <h4 class="text_green">Search Form</h4>
       <div class="row">
-    <div class="col-8">
-      <div class="input-group mb-3">
-        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-        <div class="input-group-append">
-          <button type="button" class="btn btn-outline-primary button_hover text_green border_green" style="border-bottom-left-radius: 0; border-top-left-radius: 0">SEARCH</button>
+        <div class="col-8">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control">
+            <div class="input-group-append">
+              <button type="button" class="btn btn-outline-primary button_hover text_green border_green" style="border-bottom-left-radius: 0; border-top-left-radius: 0">SEARCH</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+          <button class="btn btn-primary bg_green border_green button_hover" id='btnShowCreateModal'><i class="fa-solid fa-plus"></i> New Album</button>
         </div>
       </div>
-    </div>
-    <div class="col-2">
-      <button class="btn btn-primary bg_green border_green button_hover" id='btnShowCreateModal'><i class="fa-solid fa-plus"></i> New Album</button>
-    </div>
-    </div>
     </div>
   </div>
   <div id="podcast_albums" class="card" style="margin-top: 50px; border-radius: 15px">
@@ -25,10 +26,10 @@
         <thead>
         <tr class="table-light">
           <th scope="col">ID</th>
+          <th scope="col">Avatar</th>
           <th scope="col">Album Name</th>
           <th scope="col">Username</th>
-          <th scope="col">Updated At</th>
-          <th scope="col" colspan="2"></th>
+          <th scope="col" colspan="2">Action</th>
         </tr>
         </thead>
         <tbody id="album_table">
@@ -43,7 +44,7 @@
 </div>
 
 <!-- Modal create-->
-<div id="modalCreateAlbum" class="modal hide fade">
+<div id="modalCreateAlbum" class="modal hide fade" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -55,8 +56,8 @@
   </div>
 </div>
 
-<!-- Modal edit-->
-<div id="modalUpdateAlbum" class="modal hide fade">
+
+<div id="modalUpdateAlbum" class="modal hide fade" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
     </div>
