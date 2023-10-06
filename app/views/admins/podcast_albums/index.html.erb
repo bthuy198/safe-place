@@ -6,12 +6,10 @@
       <h4 class="text_green">Search Form</h4>
       <div class="row">
         <div class="col-8">
-          <div class="input-group mb-3">
-            <input type="text" class="form-control">
-            <div class="input-group-append">
-              <button type="button" class="btn btn-outline-primary button_hover text_green border_green" style="border-bottom-left-radius: 0; border-top-left-radius: 0">SEARCH</button>
-            </div>
-          </div>
+          <%= search_form_for @q, url: admins_podcast_albums_path, class: "input-group" do |f| %>
+            <%= f.search_field :name_or_user_user_name_cont, class: "form-control rounded", placeholder: "Search by album name or username" %>
+            <%= f.submit 'Search', class: "btn btn-outline-primary button_hover text_green border_green", style: 'border-bottom-left-radius: 0; border-top-left-radius: 0' %>
+          <% end %>
         </div>
         <div class="col-2">
           <button class="btn btn-primary bg_green border_green button_hover" id='btnShowCreateModal'><i class="fa-solid fa-plus"></i> New Album</button>
@@ -56,7 +54,7 @@
   </div>
 </div>
 
-
+<!-- Modal update-->
 <div id="modalUpdateAlbum" class="modal hide fade" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">

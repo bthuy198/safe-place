@@ -6,7 +6,8 @@ class PodcastAlbumsController < AdminsLayoutController
 
   # GET /podcast_albums or /podcast_albums.json
   def index
-    @podcast_albums = PodcastAlbum.page params[:page]
+    @q = PodcastAlbum.ransack(params[:q])
+    @podcast_albums = @q.result(distinct: true).page(params[:page])
     @users = User.all
     @podcast_album = PodcastAlbum.new
   end
@@ -18,6 +19,7 @@ class PodcastAlbumsController < AdminsLayoutController
   # GET /podcast_albums/new
   def new
     @podcast_album = PodcastAlbum.new
+    @podcast_album.image = params[:file]
     respond_to do |format|
       format.html
       format.js
@@ -40,7 +42,9 @@ class PodcastAlbumsController < AdminsLayoutController
     respond_to do |format|
       # debugger
       if @podcast_album.save
+        # binding.pry
         format.html { redirect_to @podcast_album, notice: 'Podcast album was successfully created.' }
+          # format.html { redirect_to [:admins, @podcast_album], notice: 'Podcast album was successfully created.' }
         format.js {}
         format.json { render :show, status: :created, location: @podcast_album }
       else
@@ -84,7 +88,7 @@ class PodcastAlbumsController < AdminsLayoutController
 
   # Only allow a list of trusted parameters through.
   def podcast_album_params
-    params.require(:podcast_album).permit(:name, :user_id)
+    params.require(:podcast_album).permit(:name, :user_id, :image)
   end
 end
 end
