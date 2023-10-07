@@ -7,6 +7,6 @@
   <% end %>
   <td><%= podcast_album.name %></td>
   <td><%= podcast_album.user.user_name %></td>
-  <td><%= link_to "Edit", edit_admins_podcast_album_path(podcast_album), remote: true, class: 'button_hover btn btn-primary bg_green border_green update_class' %></td>
+  <td><%= link_to "Edit", admins_podcast_album_path(podcast_album), class: 'button_hover btn btn-primary bg_green border_green update_class' %></td>
   <td><%= link_to 'Destroy', admins_podcast_album_path(podcast_album), method: :delete, data: { confirm: "Destroy album '#{podcast_album.name}'?" }, remote: :true, class: "destroy_class btn btn-danger" %></td>
 </tr>

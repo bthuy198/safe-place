@@ -20,79 +20,31 @@
       <%= form.select :user_id, @users.map { |t| [t.user_name, t.id]}, {}, class: "form-select" %>
     </div>
   </div>
-<div class="modal-footer">
-  <div class="form-group justify-content-center">
-    <%= form.submit "New Album", class: "btn btn-primary button_border bg_green border_green button_hover"%>
+  <div class="modal-footer">
+    <div class="form-group justify-content-center">
+      <%= form.submit "New Album", class: "btn btn-primary button_border bg_green border_green button_hover"%>
+    </div>
   </div>
-</div>
 <% end %>
-
-<style>
-    .personal-image {
-        text-align: center;
-    }
-    .personal-image input[type="file"] {
-        display: none;
-    }
-    .personal-figure {
-        position: relative;
-        width: 120px;
-        height: 120px;
-    }
-    .personal-avatar {
-        cursor: pointer;
-        width: 120px;
-        height: 120px;
-        box-sizing: border-box;
-        border-radius: 100%;
-        border: 2px solid transparent;
-        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
-        transition: all ease-in-out .3s;
-    }
-    .personal-avatar:hover {
-        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
-    }
-    .personal-figcaption {
-        cursor: pointer;
-        position: absolute;
-        top: 0px;
-        width: inherit;
-        height: inherit;
-        border-radius: 100%;
-        opacity: 0;
-        background-color: rgba(0, 0, 0, 0);
-        transition: all ease-in-out .3s;
-    }
-    .personal-figcaption:hover {
-        opacity: 1;
-        background-color: rgba(0, 0, 0, .5);
-    }
-    .personal-figcaption > img {
-        margin-top: 32.5px;
-        width: 50px;
-        height: 50px;
-    }
-</style>
 <script type="module">
-    $(document).on('ready', function() {
-        handle_preview($("#img-input"), $("#album_img"));
+  $(document).on('ready', function() {
+    handle_preview($("#img-input"), $("#album_img"));
+  });
+
+  function readURL(input, image) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        image.attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  function handle_preview(input_tag, image){
+    input_tag.change(function(e){
+      readURL(e.target, image);
     });
-
-    function readURL(input, image) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                image.attr('src', e.target.result);
-            }
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-    function handle_preview(input_tag, image){
-        input_tag.change(function(e){
-            var file = e.target.files[0];
-            readURL(e.target, image);
-        });
-    }
+  }
 
 </script>

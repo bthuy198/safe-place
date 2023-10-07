@@ -1,5 +1,4 @@
 <%= form_for @podcast_album, url: url_for(action: :update, controller: 'admins/podcast_albums', id: @podcast_album.id), remote: true, method: :patch do |form| %>
-  <% binding.pry %>
   <div class="modal-header">
     <h5 class="modal-title text_green">Update Podcast Album</h5>
     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -7,10 +6,10 @@
   <div class="modal-body">
     <div class="personal-image form-group">
       <label class="label">
-        <%= form.file_field :image, class: "form-control", id: 'img-input' %>
+        <%= form.file_field :image, class: "form-control", id: 'img-input-edit' %>
         <figure class="personal-figure">
           <% if podcast_album.image? %>
-            <td><%= image_tag @podcast_album.image.url, alt: "Album Avatar", class: "personal-avatar", id: 'album_img' %></td>
+            <td><%= image_tag @podcast_album.image.url, alt: "Album Avatar", class: "personal-avatar", id: 'album_img-edit' %></td>
           <% else %>
             <td><%= image_tag 'podcast.jpg', alt: "Album Avatar", class: "personal-avatar", id: 'album_img' %></td>
           <% end %>
@@ -35,73 +34,4 @@
     </div>
   </div>
 <% end %>
-
-<style>
-    .personal-image {
-        text-align: center;
-    }
-    .personal-image input[type="file"] {
-        display: none;
-    }
-    .personal-figure {
-        position: relative;
-        width: 120px;
-        height: 120px;
-    }
-    .personal-avatar {
-        cursor: pointer;
-        width: 120px;
-        height: 120px;
-        box-sizing: border-box;
-        border-radius: 100%;
-        border: 2px solid transparent;
-        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
-        transition: all ease-in-out .3s;
-    }
-    .personal-avatar:hover {
-        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
-    }
-    .personal-figcaption {
-        cursor: pointer;
-        position: absolute;
-        top: 0px;
-        width: inherit;
-        height: inherit;
-        border-radius: 100%;
-        opacity: 0;
-        background-color: rgba(0, 0, 0, 0);
-        transition: all ease-in-out .3s;
-    }
-    .personal-figcaption:hover {
-        opacity: 1;
-        background-color: rgba(0, 0, 0, .5);
-    }
-    .personal-figcaption > img {
-        margin-top: 32.5px;
-        width: 50px;
-        height: 50px;
-    }
-</style>
-<script type="module">
-    $(document).on('ready', function() {
-        handle_preview($("#img-input"), $("#album_img"));
-    });
-
-    function readURL(input, image) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                image.attr('src', e.target.result);
-            }
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-    function handle_preview(input_tag, image){
-        input_tag.change(function(e){
-            var file = e.target.files[0];
-            readURL(e.target, image);
-        });
-    }
-
-</script>
+<%= javascript_include_tag 'admins/podcast_album/edit_podcast_album' %>

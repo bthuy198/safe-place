@@ -13,8 +13,7 @@ class PodcastAlbumsController < AdminsLayoutController
   end
 
   # GET /podcast_albums/1 or /podcast_albums/1.json
-  def show
-  end
+  def show; end
 
   # GET /podcast_albums/new
   def new
@@ -28,12 +27,7 @@ class PodcastAlbumsController < AdminsLayoutController
   end
 
   # GET /podcast_albums/1/edit
-  def edit
-    @podcast_album = PodcastAlbum.find(params[:id])
-    respond_to do |format|
-      format.js
-    end
-  end
+  def edit; end
 
   # POST /podcast_albums or /podcast_albums.json
   def create
@@ -83,7 +77,7 @@ class PodcastAlbumsController < AdminsLayoutController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_podcast_album
-    @podcast_album = PodcastAlbum.find(params[:id])
+    @podcast_album = PodcastAlbum.find_by(id: params[:id])
   end
 
   # Only allow a list of trusted parameters through.
