@@ -15,4 +15,3 @@ pin 'jquery'
 pin 'jquery_ujs'
 pin 'bootstrap', to: 'bootstrap.js', preload: true
 pin 'popper', to: 'popper.js', preload: true
-pin 'trix', to: 'https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js'
