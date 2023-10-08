@@ -1,17 +1,7 @@
 <div class="card w-80 mb-3 mt-3">
   <div class="card-body">
-    <h5 class="card-title">Search user</h5>
-    <%= search_form_for @q, url:admins_users_path, class: 'd-flex' do |f| %>
-      <div class="input-group mb-3">
-        <%= f.search_field :user_info_profile_name_cont, class: 'form-control me-2', placeholder: 'Search name users' %>
-        <%= f.search_field :phone_number_cont, class: 'form-control me-2', placeholder: 'Search phone' %>
-        <%# f.check_box :anonymous_cont, class: 'form-check-input me-2' %>
-        <%# <label class="form-check-label me-2" for="flexCheckChecked">
-          Anonymous
-        </label> %>
-        <%= f.submit 'Search', class: 'btn btn-outline-success ', type: 'submit' %>
-      </div>
-    <% end %>
+    <h5 class="card-title">Search User</h5>
+      <%= render 'admins/partials/search_user_form', q: @q, path: admins_users_path %>
   </div>
 </div>
 <div class="profile-card">
@@ -20,7 +10,7 @@
       <div class="card-title card-title-user d-flex justify-content-between align-items-center ">
         <h1>List Users</h1>
         <button class="button_hidden" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          <%= link_to "New User",new_admins_user_path(page: params[:page]), data:{turbo_frame: "modal_for_user"},class:"btn btn-edit button_new_user"%>
+          <%= link_to "New User",new_admins_user_path(page: params[:page]), data:{turbo_frame: "modal_for_user"},class:"btn btn-outline-success btn-lg"%>
         </button>
       </div>
       <ul class="nav nav-tabs nav-fill ">

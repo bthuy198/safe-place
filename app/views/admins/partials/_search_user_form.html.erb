@@ -1,0 +1,19 @@
+<% anonymous_select = [['Anonymous (All)'], ['Yes', true], ['No', false]]  %>
+<%= search_form_for q, url:path do |f| %>
+  <div class="row">
+    <div class="col-md-4 mb-3">
+      <%= f.search_field :user_info_profile_name_cont, class: 'form-control', placeholder: 'Search name' %>
+    </div>
+    <div class="col-md-4 mb-3">
+      <%= f.search_field :phone_number_cont, class: 'form-control', placeholder: 'Search phone' %>
+    </div>
+    <div class="col-md-4 mb-3">
+      <%= f.select :anonymous_eq, anonymous_select, {}, class: 'form-select' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <%= f.submit 'Search', class: 'btn btn-outline-success btn-lg', type: 'submit' %>
+    </div>
+  </div>
+<% end %>
