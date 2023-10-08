@@ -32,7 +32,7 @@ module Users
         respond_to do |format|
           format.turbo_stream do
             flash.now[:alert] = "<ul><li>#{@confession.errors.full_messages.join("</li><li>")}</li><ul>".html_safe
-            head :unprocessable_entity
+            render status: :unprocessable_entity
           end
           format.json { render json: @confession.errors, status: :unprocessable_entity }
         end
