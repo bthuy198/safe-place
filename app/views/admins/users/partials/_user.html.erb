@@ -1,6 +1,10 @@
 <tr id="user-<%= user.id %>" data-anonymous="<%= user.anonymous ? '1' : '0' %>" >
   <td><%= user.id %></td>
-  <td><%= link_to user.user_name, admins_user_path(user), class:"fw-medium text-decoration-none text-black" %></td>
+  <td>
+    <button class="button_hidden" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <%= link_to user.user_name, admins_user_path(user), data:{turbo_frame: "modal_for_user"} , class:"fw-medium text-decoration-none text-black" %>
+    </button>
+  </td>
   <td><%= user.user_info ? user.user_info.profile_name : "" %></td>
   <td><%= user.user_info ? user.user_info.date_of_birth : "" %></td>
   <td><%= user.phone_number %></td>
