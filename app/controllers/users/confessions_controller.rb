@@ -30,7 +30,10 @@ module Users
         Turbo::StreamsChannel.broadcast_append_later_to("confessions_index_channel", target: "confessions", partial: "users/confessions/confession", locals: { confession: @confession })
       else
         respond_to do |format|
-          format.turbo_stream { flash.now[:alert] = "<ul><li>#{@confession.errors.full_messages.join("</li><li>")}</li><ul>".html_safe }
+          format.turbo_stream do
+            flash.now[:alert] = "<ul><li>#{@confession.errors.full_messages.join("</li><li>")}</li><ul>".html_safe
+            head :unprocessable_entity
+          end
           format.json { render json: @confession.errors, status: :unprocessable_entity }
         end
       end

@@ -9,6 +9,7 @@ export default class extends Controller {
     //     $(this).modal("hide")
     //   }
     // })
+
     this.modalTarget.addEventListener("turbo:submit-end", (event) => {
       if (event.detail.success) {
         $(this.modalTarget).modal("hide");
