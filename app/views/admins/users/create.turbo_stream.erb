@@ -5,10 +5,10 @@
 <% else %>
   <%= (turbo_stream.prepend "users-tbody", partial: "admins/users/partials/user", 
       locals: { user: @user }) if @user.type == 'User' && params[:user][:page] == '1' %>
-  <%= turbo_stream.update "close_model_user" do %>
-    <script>
+  <%# turbo_stream.update "close_model_user" do %>
+    <%# <script>
       $("#exampleModal").modal('hide');
-    </script>
-  <% end %>
+    </script> %>
+  <%# end %>
 <% end %>
 <%= render_turbo_stream_flash_messages %>

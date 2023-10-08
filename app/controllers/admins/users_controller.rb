@@ -31,6 +31,7 @@ module Admins
         else
           format.turbo_stream do
             flash.now[:alert] = "<ul><li>#{@user.errors.full_messages.join('</li><li>')}</li><ul>".html_safe
+            render status: :bad_request
           end
         end
       end
@@ -47,6 +48,7 @@ module Admins
         else
           format.turbo_stream do
             flash.now[:alert] = "<ul><li>#{@user.errors.full_messages.join('</li><li>')}</li><ul>".html_safe
+            render status: :bad_request
           end
         end
       end
