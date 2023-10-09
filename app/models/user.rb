@@ -60,6 +60,8 @@ class User < ApplicationRecord
   has_one :user_info, dependent: :destroy
   validates :user_name, presence: { message: "can't be null" }
   validates :user_name, uniqueness: { message: 'has already taken' }
+  validates :phone_number, format: { with: /(0|\+[0-9]+)[0-9]{5,}/, message: 'invalid phone number' },
+                           allow_blank: true
 
   enum status: { available: 'available', unavailable: 'unavailable', await: 'await' }
 

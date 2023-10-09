@@ -22,11 +22,14 @@
       <div class="row mb-1 gy-2 gx-3 ">
         <div class="col">
           <%= user_info_fields.label :profile_name,"Name" %>
-          <%= user_info_fields.text_field :profile_name, class: 'form-control' %>
+          <%= user_info_fields.text_field :profile_name, class: 'form-control'%>
         </div>
         <div class="col">
           <%= form.label :phone_number, "Phone" %>
-          <%= form.number_field :phone_number, class: 'form-control' %>
+          <%= form.telephone_field :phone_number, class: 'form-control' %>
+          <% if counselor.errors.include?(:phone_number) %>
+            <div class="text-danger"><%= counselor.errors[:phone_number].first %></div>
+          <% end %>
         </div>
       </div>
       <div class="row mb-1 gy-2 gx-3 ">
