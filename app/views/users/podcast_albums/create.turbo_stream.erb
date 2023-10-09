@@ -1,4 +1,10 @@
-<%= turbo_stream.append 'collection_name', partial: 'podcast_album', locals: { podcast_album: @podcast_album } %>
-<%= turbo_stream.append 'albums', partial: 'podcast_album', locals: { podcast_album: @podcast_album } %>
-
-<%= turbo_stream.update PodcastAlbum.new, "" %>
+<% if @podcast_album.errors.any? %>
+  <%= render_turbo_stream_flash_messages %>
+<% else %>
+    <%= turbo_stream.append 'albums' do %>
+        <%= render partial: 'users/podcasts/podcast_album', locals: { podcast_album: @podcast_album }%>
+        <script>
+                $("#podcastAlbumModal").modal("hide")
+        </script>
+    <% end %>
+<% end %>

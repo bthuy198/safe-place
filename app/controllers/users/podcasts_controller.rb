@@ -13,7 +13,6 @@ module Users
       end
 
       def show
-        @podcast = Podcast.find(params[:id])
       end
 
       def new
@@ -21,7 +20,6 @@ module Users
       end
 
       def edit
-        @podcast = Podcast.find(params[:id])
       end
 
       def create
@@ -43,7 +41,7 @@ module Users
         @podcast.destroy
     
         respond_to do |format|
-          format.html { redirect_to podcasts_url, notice: "Podcast was successfully destroyed." }
+          format.html { redirect_to home_path, notice: "Podcast was successfully destroyed." }
           format.json { head :no_content }
         end
       end

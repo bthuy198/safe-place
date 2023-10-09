@@ -62,7 +62,10 @@
             <hr>
           </div>
         </div>
-        <%= link_to "Edit profile", edit_users_user_infos_path, class:"btn btn-outline-secondary button_edit"%>
+        <button style="background-color: transparent; border: none;" class="button_hidden" data-bs-toggle="modal" data-bs-target="#edit_user_modal">
+            <div class = "btn btn-outline-secondary button_edit">Edit profile</div>
+        </button>
+
         <h2 class="user_infos_label">Support</h2>
         <div class="row align-items-center" style="color: 1F7564;">
             <button type="button" class="btn button_send_request">
@@ -89,5 +92,9 @@
         </center>
   </div>
 </div>
+
+
+<%= render "users/user_infos/modal", user: @user%>
+
 
 

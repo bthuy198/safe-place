@@ -1,5 +1,15 @@
 
 .podcast_form_container{
+    padding: 0;
+    margin: 0;
+    .album-avatar {
+      border-radius: 50%;
+      width: 200px; 
+      height: 200px; 
+      margin-bottom: 25px;
+      position: relative;
+      object-fit: cover;
+    }
     .form_podcast_label {
       font-size: 20px;
     }
@@ -20,39 +30,57 @@
 
 .show_podcast_album {
   margin: 5px;
-  .album_image {
-    border-radius: 5px;
-    width:70px;
-  }
-  .album_name{
-    font-size: 20px;
-  }
-  .album_date{
-    font-size: 18px;
+  .button_hidden_album {
+    background-color: transparent; 
+    border: none; 
+    width: 100%;
+    .podcast_album_image {
+      border-radius: 5px;
+      width:70px;
+      height: 70px;
+      position: relative;
+      object-fit: cover;
+    }
+    .album_name{
+      font-size: 20px;
+      color: black;
+      font-weight: bold;
+    }
+    .album_date{
+      font-size: 18px;
+      color: black;
+    }
   }
   i {
     width: 25px;
+    color: black;
   }
 }
 
+
+
 .show_podcast_detail {
   .scrolling-container {
-    display: flex; /* Hiển thị các podcast cạnh nhau */
-    overflow-x: auto; /* Tạo thanh cuộn ngang khi cần */
-    white-space: nowrap; /* Ngăn chuyển dòng cho các podcast */
-    max-width: 100%; /* Đảm bảo container không vượt quá kích thước màn hình */
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+    white-space: nowrap;
+    max-width: 100%;
+    
     .col-3 {
-      width: 25%; /* Hiển thị 4 podcast mỗi lần */
-      padding: 10px; /* Điều chỉnh khoảng cách giữa các podcast */
-      box-sizing: border-box; /* Đảm bảo padding không làm tăng kích thước thực của mỗi podcast */
+      flex-grow: 1;
+      padding: 10px; 
+      box-sizing: border-box;
     }
   }
   .item {
-    margin-right: 10px;
     .podcast_image {
       border-radius: 7px;
       width: 180px;
       height: 150px;
+      position: relative;
+      object-fit: cover;
+
     }
     .podcast_name {
       font-size: 20px;
@@ -81,10 +109,26 @@
   .podcast_album_text{
       margin: 5px 25px;
   }
+  .album-avatar {
+    border-radius: 50%;
+    width: 200px; 
+    height: 200px; 
+    margin-bottom: 25px;
+    position: relative;
+    object-fit: cover;
+  }
+
   .button_add {
       background-color: #1F7564; 
       color: #fff; 
-      width: 200px
+      font-size: 18px; 
+      margin-top: 15px;
+  }
+  .button_close {
+      color: #fff; 
+      font-size: 18px; 
+      margin-top: 15px;
+      margin-right: 15px;
   }
 }
 
@@ -94,6 +138,10 @@
       height: 65vh;
       .body_index{
         padding-right: 20px;
+        .index_text {
+          font-size: 20px;
+          text-align: center;
+        }
         .card_album{
           .body_album {
             max-height: 60vh; 

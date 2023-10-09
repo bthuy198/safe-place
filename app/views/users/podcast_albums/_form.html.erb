@@ -1,16 +1,24 @@
 
-<div class="container-fluid podcast_album_form">
-    <%= form_for @podcast_album, url: users_podcast_albums_path do |f| %>
-        <div class="row mb-4 align-items-center">
-            <%= f.label :name, class:"col-3 label form_podcast_label" %>
-                <%= f.text_field :name, class:"col form-control form_podcast_textfield"%>
-            </div>
-            <div class="row mb-4 align-items-center">
-                <%= f.label :image, class:"col-3 label form_podcast_label" %>
-                <%= f.file_field :image, class:"col form-control form_podcast_textfield"%>
-            </div>
-            <center>
-                <%= f.submit "Add", class:"btn button_add"%>
-            </center>
-        <% end %>
+<div class="container podcast_album_form">
+    <%= form_with(model: [:users, podcast_album], id: "#{dom_id(podcast_album)}_form") do |f| %>
+        <div class="text-center">
+            <label for="img-input" class="image-label">
+                <%= f.file_field :image, class: "form-control", id: 'img-input', style: "display: none;" %>
+                <% if podcast_album.image? %>
+                    <%= image_tag podcast_album.image_url, alt: "Album Avatar", class: "album-avatar", id: 'album_img' %>
+                <% else %>
+                <%= image_tag("camera.png", alt: "Image", class: "album-avatar", id: 'album_img') %>
+
+                <% end %>
+            </label>
+        </div>
+        <%= f.text_field :name, class:"form-control form_podcast_textfield"%>
+        <div class="row justify-content-center">
+            <% if podcast_album.persisted? %>
+                <%= link_to "Delete", users_podcast_album_path(podcast_album), class: "col-5 btn btn-danger button_close", method: :delete %>
+            <% end %>
+            <%= f.submit "Save", class:"col-5 btn button_add"%>
+        </div>
+    <% end %>
 </div>
+<%= javascript_include_tag 'users/podcast' %>

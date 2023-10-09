@@ -1,15 +1,13 @@
 <% if @podcast.errors.any? %>
-  <%= turbo_stream.replace "#{dom_id(@podcast)}_form" do %>
-    <%= render "users/podcasts/form", podcast: @podcast %>
-  <% end %>
+  <%= render_turbo_stream_flash_messages %>
 <% else %>
-    <%= turbo_stream.append 'recent_podcasts_frame' do  %>
+    <%= turbo_stream.prepend 'recent_podcasts_frame' do  %>
         <%= render partial: 'podcast', locals: { podcast: @podcast }%>
         <script>
-            $("#new_podcast_modal").modal("hide")
+            $("#exampleModal").modal("hide")
         </script>
     <% end %>
 <% end %>
 
-<%= render_turbo_stream_flash_messages %>
+
 
