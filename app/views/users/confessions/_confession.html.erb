@@ -1,17 +1,23 @@
-<div id="<%= dom_id confession %>">
-  <p>
-    <strong>Tag:</strong>
-    <%= confession.tag %>
-  </p>
-
-  <p>
-    <strong>Anonymous:</strong>
-    <%= confession.anonymous %>
-  </p>
-
-  <p>
-    <strong>Content:</strong>
+<div class="card" id="<%= dom_id confession %>">
+  <div class="card-body">
+    <% if confession.anonymous %>
+      <h5 class="card-title">
+        Anonymous Post
+      </h5>
+    <% else %>
+      <h5>
+        <%= confession.user.user_name %>
+      </h5>
+      <p class="time_ago"><%= time_ago_in_words(confession.created_at) %> ago</p>
+    <% end %>
     <%= confession.content.body %>
-  </p>
-
+  </div>
+  <div class="text-center custom_tag">
+    <%= confession.tag.map {|t| "##{t}"}.join(" ") %>
+  </div>
+  <div class="btn-group" role="group" aria-label="confession_group">
+    <button type="button" class="btn btn-light custom_button"><i class="fa-regular fa-heart"></i></button>
+    <%= link_to "<i class='fa-regular fa-message'></i>".html_safe, users_confession_path(confession), class: "btn btn-light custom_button", type: "button" %>
+    <button type="button" class="btn btn-light custom_button"><i class="fa-solid fa-envelope-circle-check"></i></button>
+  </div>
 </div>

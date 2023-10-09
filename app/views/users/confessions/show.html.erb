@@ -1,6 +1,20 @@
 <%= turbo_frame_tag "board" do %>
   <div class="confessions_board">
-    <%= render @confession %>
+    <div id="<%= dom_id @confession %>">
+      <% if @confession.anonymous %>
+        <h5>Anonymous Post</h5>
+      <% else %>
+        <h5><%= @confession.user.user_name %></h5>
+      <% end %>
+      <p>
+        <strong>Content:</strong>
+        <%= @confession.content.body %>
+      </p>
+      <p>
+        <strong>Tag:</strong>
+        <%= @confession.tag.join(", ") %>
+      </p>
+    </div>
 
     <div>
       <%= link_to "Edit this confession", edit_users_confession_path(@confession) %> |
