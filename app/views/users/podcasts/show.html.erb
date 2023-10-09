@@ -1,7 +1,7 @@
 <p style="color: green"><%= notice %></p>
-
-<%= render @podcast %>
-
+  <% podcast_album.podcasts.each do |thing| %>
+      <%= podcast_album.podcasts.name%>
+  <% end %>
 <div>
   <%= link_to "Edit this podcast", edit_users_podcast_path(@podcast) %> |
   <%= link_to "Back to podcasts", users_podcasts_path %>

@@ -57,7 +57,30 @@
   }
 }
 
-
+.podcast_detail {
+  margin-bottom: 25px;
+  .image_podcast {
+    width: 70px;
+    height: 70px;
+    border-radius: 15px;
+    margin-right: 10px;
+    position: relative;
+    object-fit: cover;
+  }
+  .podcast_filed{
+    font-size: 20px;
+  }
+  .episode {
+    font-weight: bold;
+    width: 50px;
+  }
+  .name {
+    font-weight: bold;
+  }
+  .time {
+    padding-left: 80px;
+  }
+}
 
 .show_podcast_detail {
   .scrolling-container {
@@ -143,12 +166,20 @@
           text-align: center;
         }
         .card_album{
+          .album_title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 10px;
+          }
           .body_album {
             max-height: 70vh; 
             overflow-y: scroll;
           }
         }
       }
+    }
+    .center_frame {
+      margin-top: 10%;
     }
     .button_create_podcast {
       margin: 15px 0px;
