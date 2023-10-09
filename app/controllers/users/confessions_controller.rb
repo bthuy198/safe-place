@@ -60,6 +60,12 @@ module Users
       end
     end
 
+    def like
+      @confession = Confession.find(params[:id])
+      LikeService.new(current_user, @confession).like
+      redirect_to @confession, notice: 'Confession liked/unliked successfully.'
+    end
+
     private
 
     def set_confession

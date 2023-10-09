@@ -12,12 +12,12 @@
                 <% end %>
             </label>
         </div>
-        <%= f.text_field :name, class:"form-control form_podcast_textfield"%>
+        <%= f.text_field :name, class: "form-control form_podcast_textfield"%>
         <div class="row justify-content-center">
             <% if podcast_album.persisted? %>
                 <%= link_to "Delete", users_podcast_album_path(podcast_album), class: "col-5 btn btn-danger button_close", method: :delete %>
             <% end %>
-            <%= f.submit "Save", class:"col-5 btn button_add"%>
+            <%= f.submit "Save", class: "col-5 btn button_add"%>
         </div>
     <% end %>
 </div>

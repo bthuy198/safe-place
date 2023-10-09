@@ -41,8 +41,12 @@ Rails.application.routes.draw do
   namespace 'users' do
     resource :user_infos
     resources :podcasts
-    resources :podcast_albums
-    resources :confessions
+    resources :podcast_albums do
+      post 'like'
+    end
+    resources :confessions do
+      post 'like'
+    end
   end
 
 
