@@ -13,7 +13,11 @@
         </div>
         <div class="col">
           <%= form.label :email, "Email" %>
-          <%= form.email_field :email, class: 'form-control' %>
+          <% if user.id  %>
+            <%= form.email_field :email, class: 'form-control', disabled:true %>
+          <% else %>
+            <%= form.email_field :email, class: 'form-control'%>
+          <% end %>
           <% if user.errors.include?(:email) %>
             <div class="text-danger"><%= user.errors[:email].first %></div>
           <% end %>

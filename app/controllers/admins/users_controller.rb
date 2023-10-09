@@ -44,7 +44,7 @@ module Admins
 
     def update
       respond_to do |format|
-        if @user.update(user_params)
+        if @user.update(update_user_params)
           # format.html do
           #   redirect_to @user.type == 'User' ? admins_user_url(@user) : admins_counselor_url(@user),
           #               notice: 'User was successfully updated.'
@@ -69,7 +69,7 @@ module Admins
     end
 
     def toggle_anonymous
-      @user = User.find_by(params[:id])
+      @user = User.find_by(id: params[:id])
       @user.update(anonymous: params[:anonymous])
       render json: { message: "The 'Anonymous' status has been successfully updated." }
     end
@@ -77,7 +77,12 @@ module Admins
     private
 
     def set_user
-      @user = User.find_by(params[:id])
+      @user = User.find_by(id: params[:id])
+    end
+
+    def update_user_params
+      params.require(:user).permit(:anonymous, :password, :phone_number, :status, :type, :user_name,
+                                   user_info_attributes: %i[address date_of_birth gender profile_name])
     end
 
     def user_params
