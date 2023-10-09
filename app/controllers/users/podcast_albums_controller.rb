@@ -3,8 +3,13 @@
 module Users
   # class UsersPagesController
   class PodcastAlbumsController < UsersLayoutController
+    before_action :set_podcast_album, only: %i[ show edit update destroy ]
+
     def new
       @podcast_album = PodcastAlbum.new
+    end
+
+    def edit
     end
 
     def create
@@ -20,10 +25,36 @@ module Users
       end
     end
 
+    def update
+      respond_to do |format|
+        if @podcast_album.update(podcast_album_params)
+          format.turbo_stream
+          format.html { redirect_to root_url, notice: "Album was successfully updated." }
+          format.json { render :show, status: :ok, location: @podcast_album }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @podcast_album.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+
+    def destroy
+      @podcast_album.destroy
+  
+      respond_to do |format|
+        format.html { redirect_to home_path, notice: "Album was successfully destroyed." }
+        format.json { head :no_content }
+      end
+    end
+
     private
 
+    def set_podcast_album
+      @podcast_album = PodcastAlbum.find(params[:id])
+    end
+
     def podcast_album_params
-      params.require(:podcast_album).permit(:name)
+      params.fetch(:podcast_album, {}).permit!
     end
   end
 end

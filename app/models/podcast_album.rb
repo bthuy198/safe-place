@@ -22,4 +22,5 @@
 class PodcastAlbum < ApplicationRecord
   belongs_to :user
   has_many :podcasts, dependent: :destroy
+  mount_uploader :image, ImageUploader
 end

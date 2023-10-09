@@ -3,6 +3,8 @@
 module Users
   # class UsersPagesController
   class UserInfosController < UsersLayoutController
+    before_action :authenticate_user!
+
     def show
       @user = current_user
       @user_info = @user.user_info
