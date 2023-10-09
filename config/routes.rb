@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     resources :podcasts
     resources :podcast_albums
     resources :confessions
+    resources :album_homepages, only: [:index, :show]
   end
 
 
