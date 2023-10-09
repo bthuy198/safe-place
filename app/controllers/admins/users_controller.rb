@@ -12,14 +12,19 @@ module Admins
       @users = @q.result(distinct: true).order(id: :desc).page params[:page]
     end
 
-    def show; end
+    def show
+      render layout: false
+    end
 
     def new
       @user = User.new
       @user.user_info = UserInfo.new
+      render layout: false
     end
 
-    def edit; end
+    def edit
+      render layout: false
+    end
 
     def create
       @user = User.new(user_params)

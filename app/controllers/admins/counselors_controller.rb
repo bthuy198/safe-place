@@ -15,6 +15,7 @@ module Admins
     def new
       @counselor = Counselor.new
       @counselor.user_info = UserInfo.new
+      render layout: false
     end
 
     def create
@@ -62,9 +63,13 @@ module Admins
       render json: { message: "The 'Anonymous' status has been successfully updated." }
     end
 
-    def show; end
+    def show
+      render layout: false
+    end
 
-    def edit; end
+    def edit
+      render layout: false
+    end
 
     private
 
