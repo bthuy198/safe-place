@@ -135,7 +135,7 @@
 .show_podcast {
   .row {
     .card_index{
-      height: 65vh;
+      height: 100%;
       .body_index{
         padding-right: 20px;
         .index_text {
@@ -144,7 +144,7 @@
         }
         .card_album{
           .body_album {
-            max-height: 60vh; 
+            max-height: 70vh; 
             overflow-y: scroll;
           }
         }

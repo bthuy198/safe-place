@@ -9,7 +9,7 @@ module Users
 
       def index; 
         @podcast_albums = PodcastAlbum.where(user_id: current_user.id)
-        @recent_podcasts = Podcast.order(created_at: :desc)
+        @recent_podcasts = Podcast.where(podcast_album_id: @podcast_albums.pluck(:id))
       end
 
       def show
