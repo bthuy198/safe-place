@@ -19,12 +19,11 @@ div {
   }
 
   &.custom_board {
-    position: relative;
-    padding-right: 0;
+    padding: 0;
   }
 
   &.custom_menu {
-    margin-top: 10px;
+    margin: 10px;
     font-family: var(--font-family-sans);
     color: var(--color-primary);
     font-weight: bolder;
@@ -58,13 +57,17 @@ div {
   }
 
   &.custom_main {
-    position: relative;
+    padding: 0 10px 10px 10px;
   }
 
   &.centered_container {
     display: flex;
     justify-content: center;
     align-items: center;
+    &.centered_confession_frame {
+      height: 25vh;
+    }
+
     &.centered_board {
       height: 50vh;
     }
@@ -75,27 +78,90 @@ div {
   }
 }
 
+turbo-frame#new_confession_frame {
+  display: inline-block;
+  width: 100%;
+  padding: 10px;
+  div {
+    &.new_confession {
+      overflow: hidden;
+      padding: 10px;
+      border: var(--border);
+      border-radius: var(--border-radius);
+      height: 20vh;
+      h1, h4 {
+        font-family: var(--font-family-sans);
+        color: var(--color-primary);
+        font-style: italic;
+      }
+      button.new_confession {
+        width: 100%;
+        height: 10vh;
+        margin-top: 10px;
+        background-color: var(--color-white);
+        transition: color 200ms;
+        color: var(--color-gray);
+        font-weight: bolder;
+        font-size: var(--font-size-l);
+        border: var(--border);
+        border-radius: 15px;
+        &:hover,
+        &:focus,
+        &:active {
+          color: var(--color-pink);
+          border-color: var(--color-pink);
+        }
+      }
+      form.confession_form {
+        label {
+          color: var(--color-primary);
+        }
+        .trix-button-group--file-tools {
+          display: none;
+        }
+        trix-editor {
+          height: 40vh;
+        }
+        input {
+          margin-top: 10px;
+          &.custom_btn {
+            color: var(--color-primary);
+            border: var(--border);
+            border-radius: var(--border-radius);
+          }
+        }
+      }
+    }
+  }
+}
+
 turbo-frame#board {
-  position: absolute;
-  margin-top: 10px;
-  width: 95.7%;
+  display: inline-block;
+  width: 100%;
+  padding: 10px;
+  div {
+    &.confessions_board {
+      padding: 10px;
+      border: var(--border);
+      border-radius: var(--border-radius);
+      height: 80vh;
+      overflow: auto;
+      word-wrap: break-word;
+    }
+  }
 }
 
 turbo-frame#main {
-  position: absolute;
-  width: 97.3%;
-  top: 10vh;
+  display: inline-block;
+  width: 100%;
 }
 
 nav {
-  position: absolute !important;
   top: 0;
   right: 0;
   background-color: var(--color-primary);
   border-radius: 10px 10px 0 0;
   margin-top: 10px;
-  margin-right: 10px;
-  margin-left: 10px;
 
   a {
     color: var(--color-white);

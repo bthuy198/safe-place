@@ -26,7 +26,9 @@ class Podcast < ApplicationRecord
   belongs_to :podcast_album
   has_many :likes, as: :likeable, dependent: :destroy
   has_many :bookmarks, as: :bookmarkable, dependent: :destroy
+  validates :audio, presence: true
 
   mount_uploader :audio, AudioUploader
   mount_uploader :image, ImageUploader
+
 end

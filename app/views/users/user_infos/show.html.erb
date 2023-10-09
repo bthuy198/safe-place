@@ -1,93 +1,100 @@
 
-<div class="container-fluid" style="margin-top: 2rem;" >
+<div class="container-fluid user_infos_container">
   <div class = "row justify-content-center">
     <div class="col-lg-6">
-        <div class="head-title">Account Overview</div>
-        <div class="head-label">Profile</div>
-        <div class="card mb-4 user_info__card">
-          <div class="card-body user_info__body">
+        <div class="user_infos_title">Account Overview</div>
+        <div class="user_infos_label">Profile</div>
+        <div class="card mb-4 ">
+          <div class="card-body ">
             <div class="row">
               <div class="col-sm-7">
-                <p class="text-muted mb-0 user_info__label">Username</p>
+                <p class="text-muted mb-0 form_user_infos_label">Username</p>
               </div>
               <div class="col-sm-5">
-                <p class="mb-0 user_info__text"><%= @user.user_name%></p>
+                <p class="mb-0 form_user_infos_textfield"><%= @user.user_name%></p>
               </div>
             </div>
             <hr>
             <div class="row">
               <div class="text-muted col-sm-7">
-                <p class="mb-0 user_info__label">Email</p>
+                <p class="mb-0 form_user_infos_label">Email</p>
               </div>
               <div class="col-sm-5">
-                <p class="mb-0 user_info__text"><%= @user.email%></p>
+                <p class="mb-0 form_user_infos_textfield"><%= @user.email%></p>
               </div>
             </div>
             <hr>
             <div class="row">
               <div class="col-sm-7">
-                <p class="text-muted mb-0 user_info__label">Phone number</p>
+                <p class="text-muted mb-0 form_user_infos_label">Phone number</p>
               </div>
               <div class="col-sm-5">
-                <p class="mb-0 user_info__text"><%= @user.phone_number%></p>
+                <p class="mb-0 form_user_infos_textfield"><%= @user.phone_number%></p>
               </div>
             </div>
             <hr>
             <div class="row">
               <div class="col-sm-7">
-                <p class="text-muted mb-0 user_info__label">Gender</p>
+                <p class="text-muted mb-0 form_user_infos_label">Gender</p>
               </div>
               <div class="col-sm-5">
-                <p class="mb-0 user_info__text"><%= @user_info ? @user_info.gender : "" %></p>
+                <p class="mb-0 form_user_infos_textfield"><%= @user_info ? @user_info.gender : "" %></p>
               </div>
             </div>
             <hr>
             <div class="row">
               <div class="col-sm-7">
-                <p class="text-muted mb-0 user_info__label">Date of birth</p>
+                <p class="text-muted mb-0 form_user_infos_label">Date of birth</p>
               </div>
               <div class="col-sm-5">
-                <p class="mb-0 user_info__text"><%= @user_info ? @user_info.date_of_birth : "" %></p>
+                <p class="mb-0 form_user_infos_textfield"><%= @user_info ? @user_info.date_of_birth : "" %></p>
               </div>
             </div>
             <hr>
             <div class="row">
               <div class="col-sm-7">
-                <p class="text-muted mb-0 user_info__label">Province</p>
+                <p class="text-muted mb-0 form_user_infos_label">Province</p>
               </div>
               <div class="col-sm-5">
-                <p class="mb-0 user_info__text"><%= @user_info ? @user_info.address : "" %></p>
+                <p class="mb-0 form_user_infos_textfield"><%= @user_info ? @user_info.address : "" %></p>
               </div>
             </div>
             <hr>
           </div>
         </div>
-        <%= link_to "Edit profile", edit_users_user_infos_path, class:"btn btn-outline-secondary btn-edit"%>
-        <h2 class="head-label">Support</h2>
+        <button style="background-color: transparent; border: none;" class="button_hidden" data-bs-toggle="modal" data-bs-target="#edit_user_modal">
+            <div class = "btn btn-outline-secondary button_edit">Edit profile</div>
+        </button>
+
+        <h2 class="user_infos_label">Support</h2>
         <div class="row align-items-center" style="color: 1F7564;">
-            <button type="button" class="btn btn__send-request">
+            <button type="button" class="btn button_send_request">
                 <div class="row justify-content-between align-items-center">
-                    <div class="col-2 text-support" style="margin-left: 5px;">Send a question</div>
-                    <div class="col-2"><%= image_tag("arrow.png", alt: "Image") %></div>
+                    <div class="col support_textfield">Send a question</div>
+                    <div class="col"><%= image_tag("arrow.png", alt: "Image") %></div>
                 </div>
             </button>
         </div>
         <div class="row align-items-center" >
-            <button type="button" class="btn btn__customer-care">
+            <button type="button" class="btn button_customer_care">
                 <div class="row justify-content-between align-items-center">
-                    <div class="col-3 text-support">Customer are call center</div>
-                    <div class="col-2"><%= image_tag("person.png", alt: "Image") %></div>
+                    <div class="col support_textfield">Customer are call center</div>
+                    <div class="col"><%= image_tag("person.png", alt: "Image") %></div>
                 </div>
             </button>
         </div>
-        <h2 class="head-label">Q&A</h2>
+        <h2 class="user_infos_label">Q&A</h2>
         <div class="row align-items-center">
             <%= image_tag("poster.png", alt: "Image") %>
         </div>
         <center>
-            <%= link_to "Log out",destroy_user_session_path, class:"btn btn-outline-secondary btn__log-out", data: {turbo_method: :delete} %>
+            <%= link_to "Log out",destroy_user_session_path, class:"btn btn-outline-secondary button_logout", data: {turbo_method: :delete} %>
         </center>
   </div>
 </div>
+
+
+<%= render "users/user_infos/modal", user: @user%>
+
 
 

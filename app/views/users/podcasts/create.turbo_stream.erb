@@ -1,0 +1,13 @@
+<% if @podcast.errors.any? %>
+  <%= render_turbo_stream_flash_messages %>
+<% else %>
+    <%= turbo_stream.prepend 'recent_podcasts_frame' do  %>
+        <%= render partial: 'podcast', locals: { podcast: @podcast }%>
+        <script>
+            $("#exampleModal").modal("hide")
+        </script>
+    <% end %>
+<% end %>
+
+
+

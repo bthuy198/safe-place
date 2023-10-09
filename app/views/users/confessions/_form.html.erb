@@ -1,0 +1,14 @@
+<%= form_with(model: confession, url: url, id: "#{dom_id(confession)}_form", class: "confession_form") do |form| %>
+  <div>
+    <%= form.rich_text_area :content, class: "form-control #{'is-invalid' if confession.errors[:content].any?}", placeholder: "Share your thought with us!" %>
+  </div>
+
+  <div class="form-floating">
+    <%= form.text_field :tag, class: "form-control #{'is-invalid' if confession.errors[:tag].any?}", id: "tag", placeholder: "Input your tags here." %>
+    <%= form.label :tag, for: "tag" %>
+  </div>
+
+  <div>
+    <%= form.submit class: "btn btn-light custom_btn" %>
+  </div>
+<% end %>
