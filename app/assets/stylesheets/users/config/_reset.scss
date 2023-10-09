@@ -130,6 +130,9 @@ turbo-frame#new_confession_frame {
             border-radius: var(--border-radius);
           }
         }
+        .form-switch {
+          line-height: 2.5;
+        }
       }
     }
   }
@@ -146,6 +149,11 @@ turbo-frame#board {
       border-radius: var(--border-radius);
       height: 80vh;
       overflow: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
       word-wrap: break-word;
     }
   }

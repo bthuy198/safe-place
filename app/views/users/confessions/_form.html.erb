@@ -8,6 +8,12 @@
     <%= form.label :tag, for: "tag" %>
   </div>
 
+  <div class="form-check form-switch">
+    <% checked_value = confession.anonymous.present? ? confession.anonymous : current_user.anonymous %>
+    <%= form.check_box :anonymous, checked: checked_value, checked_value: true, unchecked_value: false, class: "form-check-input", type: "checkbox", role: "switch", id: :anonymous %>
+    <%= form.label :anonymous, for: "anonymous", class: "form-check-label"  %>
+  </div>
+
   <div>
     <%= form.submit class: "btn btn-light custom_btn" %>
   </div>

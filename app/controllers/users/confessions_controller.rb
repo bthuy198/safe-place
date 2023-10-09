@@ -21,13 +21,13 @@ module Users
     def create
       @confession = Confession.new(confession_params)
       @confession.user_id = current_user.id
-      @confession.anonymous = current_user.anonymous
+      @confession.tag = params[:confession][:tag].split(" ")
       if @confession.save
         respond_to do |format|
           format.turbo_stream { flash.now[:notice] = 'Confession was successfully created.' }
           format.json { render :show, status: :created, location: @confession }
         end
-        Turbo::StreamsChannel.broadcast_append_later_to("confessions_index_channel", target: "confessions", partial: "users/confessions/confession", locals: { confession: @confession })
+        Turbo::StreamsChannel.broadcast_prepend_later_to("confessions_index_channel", target: "confessions", partial: "users/confessions/confession", locals: { confession: @confession })
       else
         respond_to do |format|
           format.turbo_stream do
@@ -67,7 +67,7 @@ module Users
     end
 
     def confession_params
-      params.require(:confession).permit(:tag, :content, :anonymous, :user_id)
+      params.require(:confession).permit({tag: []}, :content, :anonymous, :user_id)
     end
 
     def authenticate_flash
