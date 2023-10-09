@@ -1,7 +1,9 @@
-<%= form_for @podcast_album, url: url_for(action: :update, controller: 'admins/podcast_albums', id: @podcast_album.id), remote: true, method: :patch do |form| %>
+<%= form_for @podcast_album, url: url_for(action: :update, controller: 'admins/podcast_albums', id: @podcast_album.id), remote: true, method: :patch, id: 'updateAlbumForm' do |form| %>
   <div class="modal-header">
     <h5 class="modal-title text_green">Update Podcast Album</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+  </div>
+  <div class="alert alert-danger" role="alert" style="display:none" id="alert_edit">
   </div>
   <div class="modal-body">
     <div class="personal-image form-group">

@@ -1,2 +1,10 @@
-$("<%= j render 'admins/podcast_albums/partials/podcast_album', podcast_album: @podcast_album %>").prependTo("#album_table");
-$('#modalCreateAlbum').modal('hide');
+<% if @result[:success] == true %>
+  window.location.reload()
+<% else %>
+  <% flash[:message].each do |val| %>
+    $(".modal-content .alert").prepend('<%= val %>')
+  <% end %>
+  $(".modal-content .alert").attr("style", "display:block")
+<% end %>
+
+
