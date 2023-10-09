@@ -64,6 +64,12 @@ module Users
 
     def set_confession
       @confession = Confession.find_by(id: params[:id])
+      if @confession.nil?
+        respond_to do |format|
+          format.html { redirect_to root_path, alert: 'Confession not found.' }
+          format.json { head :no_content }
+        end
+      end
     end
 
     def confession_params
