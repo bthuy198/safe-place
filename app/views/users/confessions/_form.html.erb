@@ -1,6 +1,10 @@
-<%= form_with(model: confession, url: url, id: "#{dom_id(confession)}_form", class: "confession_form") do |form| %>
+<%= form_with(model: confession, url: url, id: "#{dom_id(confession)}_form", class: "confession_form", data: {controller: "emoji-picker"}) do |form| %>
+
   <div>
-    <%= form.rich_text_area :content, class: "form-control #{'is-invalid' if confession.errors[:content].any?}", placeholder: "Share your thought with us!" %>
+    <%= content_tag(:div, "", class:"pickerContainer", data: {
+    emoji_picker_target: "pickerContainer"
+  }) %>
+    <%= form.rich_text_area :content, class: "form-control #{'is-invalid' if confession.errors[:content].any?}", placeholder: "Share your thought with us!", data: { emoji_picker_target: "trixEditor" } %>
   </div>
 
   <div class="form-floating">
