@@ -69,7 +69,7 @@ module Admins
     end
 
     def toggle_anonymous
-      @user = User.find(params[:id])
+      @user = User.find_by(params[:id])
       @user.update(anonymous: params[:anonymous])
       render json: { message: "The 'Anonymous' status has been successfully updated." }
     end
@@ -77,7 +77,7 @@ module Admins
     private
 
     def set_user
-      @user = User.find(params[:id])
+      @user = User.find_by(params[:id])
     end
 
     def user_params
