@@ -1,6 +1,7 @@
 <%= turbo_stream.replace "#{dom_id(@podcast)}" do  %>
     <%= render partial: "users/podcasts/podcast", locals: { podcast: @podcast }%>
     <script>
+        console.log("nam")
         $("#exampleModal").modal("hide")
     </script>
 <% end %>

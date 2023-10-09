@@ -17,9 +17,11 @@ module Users
 
       def new
         @podcast = Podcast.new
+        render layout: false
       end
 
       def edit
+        render layout: false
       end
 
       def create

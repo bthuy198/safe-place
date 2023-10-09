@@ -7,9 +7,11 @@ module Users
 
     def new
       @podcast_album = PodcastAlbum.new
+      render layout: false
     end
 
     def edit
+      render layout: false
     end
 
     def create
