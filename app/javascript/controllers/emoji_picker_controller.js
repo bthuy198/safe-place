@@ -2,28 +2,31 @@ import { Controller } from "@hotwired/stimulus";
 import { createPopup } from "@picmo/popup-picker";
 import { RichText } from "../classes/RichText";
 
-// Connects to data-controller="emoji-picker"
 export default class extends Controller {
   static targets = ["trixEditor", "pickerContainer"];
+
   connect() {
-    console.log("Connected to emoji-picker");
     const buttonString = this.emojiButtonString();
     const emojiButton = this.emojiButtonTemplate(buttonString);
     let picker;
     let richText = new RichText(picker, emojiButton);
     picker = createPopup(
       {
-        rootElement: this.pickerContainerTarget,
+        rootElement: this.pickerContainerTarget
       },
       {
-        // The element that triggers the popup
         triggerElement: emojiButton,
-        // The element to position the picker relative to - often this is also the trigger element,
         referenceElement: emojiButton,
-        // specify how to position the popup
-        position: "bottom-start",
+        position: "absolute",
+        hideOnEmojiSelect: false,
+        hideOnClickOutside: false
       }
     );
+
+    picker.closeButton.setAttribute("type", "button");
+    picker.closeButton.addEventListener("click", (event) => {
+      picker.close();
+    });
 
     picker.addEventListener("emoji:select", (event) => {
       this.trixEditorTarget.editor.insertString(event.emoji);

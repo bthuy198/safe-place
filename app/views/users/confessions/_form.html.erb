@@ -1,20 +1,18 @@
 <%= form_with(model: confession, url: url, id: "#{dom_id(confession)}_form", class: "confession_form", data: {controller: "emoji-picker"}) do |form| %>
-
+   <%= content_tag(:div, "", class:"pickerContainer", data: {
+      emoji_picker_target: "pickerContainer" }) %>
   <div>
-    <%= content_tag(:div, "", class:"pickerContainer", data: {
-    emoji_picker_target: "pickerContainer"
-  }) %>
-    <%= form.rich_text_area :content, class: "form-control #{'is-invalid' if confession.errors[:content].any?}", placeholder: "Share your thought with us!", data: { emoji_picker_target: "trixEditor" } %>
+    <%= form.rich_text_area :content, class: "form form-control #{'is-invalid' if confession.errors[:content].any?}", placeholder: "Share your thought with us!", data: { emoji_picker_target: "trixEditor" } %>
   </div>
 
   <div class="form-floating">
-    <%= form.text_field :tag, class: "form-control #{'is-invalid' if confession.errors[:tag].any?}", id: "tag", placeholder: "Input your tags here." %>
+    <%= form.text_field :tag, class: "form form-control #{'is-invalid' if confession.errors[:tag].any?}", id: "tag", placeholder: "Input your tags here." %>
     <%= form.label :tag, for: "tag" %>
   </div>
 
   <div class="form-check form-switch">
     <% checked_value = confession.anonymous.present? ? confession.anonymous : current_user.anonymous %>
-    <%= form.check_box :anonymous, checked: checked_value, checked_value: true, unchecked_value: false, class: "form-check-input", type: "checkbox", role: "switch", id: :anonymous %>
+    <%= form.check_box :anonymous, checked: checked_value, checked_value: true, unchecked_value: false, class: "form form-check-input", type: "checkbox", role: "switch", id: :anonymous %>
     <%= form.label :anonymous, for: "anonymous", class: "form-check-label"  %>
   </div>
 
