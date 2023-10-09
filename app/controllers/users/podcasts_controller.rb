@@ -3,7 +3,7 @@
 module Users
     # class UsersPagesController
     class PodcastsController < UsersLayoutController
-      before_action :authenticate_user!, except: [:show, :index]
+      before_action :authenticate_user!
       before_action :set_podcast, only: %i[ show edit update destroy ]
 
 

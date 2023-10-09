@@ -15,7 +15,10 @@
 
     <div class="d-flex">
         <div class="podcast_filed created"><%=podcast.created_at.strftime("%b %d, %Y")%></div>
-        <div class="podcast_filed time">1h45</div>
+        <div class="d-flex flex-column justify-content-between action_icon">
+            <i class="fa-regular fa-heart"></i>
+            <i class="fa-regular fa-bookmark"></i>
+        </div>
     </div>
 </div>
 <hr>

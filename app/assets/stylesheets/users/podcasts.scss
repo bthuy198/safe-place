@@ -4,8 +4,8 @@
     margin: 0;
     .album-avatar {
       border-radius: 50%;
-      width: 200px; 
-      height: 200px; 
+      width: 200px;
+      height: 200px;
       margin-bottom: 25px;
       position: relative;
       object-fit: cover;
@@ -17,22 +17,22 @@
       font-size: 20px;
     }
     .button_close {
-      font-size: 18px; 
+      font-size: 18px;
       margin: 10px 5px 25px 25px;
     }
     .button_add{
-      background-color: #1F7564; 
-      color: #fff; 
-      border: 2px solid #1F7564; 
-      font-size: 18px; 
+      background-color: #1F7564;
+      color: #fff;
+      border: 2px solid #1F7564;
+      font-size: 18px;
     }
 }
 
 .show_podcast_album {
   margin: 5px;
   .button_hidden_album {
-    background-color: transparent; 
-    border: none; 
+    background-color: transparent;
+    border: none;
     width: 100%;
     .podcast_album_image {
       border-radius: 5px;
@@ -57,8 +57,15 @@
   }
 }
 
+.show_list_podcast_from_album {
+  padding: 0px 15px;
+  max-height: 70vh;
+  overflow-y: scroll;
+}
+
 .podcast_detail {
   margin-bottom: 25px;
+
   .image_podcast {
     width: 70px;
     height: 70px;
@@ -77,8 +84,8 @@
   .name {
     font-weight: bold;
   }
-  .time {
-    padding-left: 80px;
+  .action_icon {
+    padding: 10px 0px 10px 80px;
   }
 }
 
@@ -89,10 +96,10 @@
     overflow-x: auto;
     white-space: nowrap;
     max-width: 100%;
-    
+
     .col-3 {
       flex-grow: 1;
-      padding: 10px; 
+      padding: 10px;
       box-sizing: border-box;
     }
   }
@@ -134,22 +141,22 @@
   }
   .album-avatar {
     border-radius: 50%;
-    width: 200px; 
-    height: 200px; 
+    width: 200px;
+    height: 200px;
     margin-bottom: 25px;
     position: relative;
     object-fit: cover;
   }
 
   .button_add {
-      background-color: #1F7564; 
-      color: #fff; 
-      font-size: 18px; 
+      background-color: #1F7564;
+      color: #fff;
+      font-size: 18px;
       margin-top: 15px;
   }
   .button_close {
-      color: #fff; 
-      font-size: 18px; 
+      color: #fff;
+      font-size: 18px;
       margin-top: 15px;
       margin-right: 15px;
   }
@@ -172,7 +179,7 @@
             margin-top: 10px;
           }
           .body_album {
-            max-height: 70vh; 
+            max-height: 70vh;
             overflow-y: scroll;
           }
         }
@@ -183,11 +190,13 @@
     }
     .button_create_podcast {
       margin: 15px 0px;
+      background-color: #1F7564;
+      color: #fff;
     }
     #recent_podcasts_frame {
       display: flex;
-      overflow-x: auto; 
-      white-space: nowrap; 
+      overflow-x: auto;
+      white-space: nowrap;
       .row.show_podcast_detail {
         width: 50%;
         .col-3 {

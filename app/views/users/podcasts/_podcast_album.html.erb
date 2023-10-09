@@ -1,6 +1,6 @@
 
 <div id="<%= dom_id podcast_album %>">
-    <div class="d-flex justify-content-between align-items-center show_podcast_album">
+    <div class="d-flex justify-content-between align-content-start show_podcast_album">
         <button class="button_hidden_album" data-bs-toggle="modal" data-bs-target="#listPodcastModal" >
         <%= link_to users_podcast_album_path(podcast_album), data: {turbo_frame: "show_list_podcast"}, class: "button_show_podcast" do %>
                 <div class="d-flex">
