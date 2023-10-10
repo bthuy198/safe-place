@@ -1,14 +1,5 @@
 <%= turbo_frame_tag "board" do %>
-  <div class="confessions_board">
-    <h3>Confessions</h3>
-
-    <div id="confessions">
-      <% @confessions.each do |confession| %>
-        <%= render confession %>
-        <p>
-          <%= link_to "Show this confession", users_confession_path(confession) %>
-        </p>
-      <% end %>
-    </div>
+  <div class="confessions_board" id="confessions_board">
+    <%= render "users/confessions/confessions_index", confessions: @confessions %>
   </div>
 <% end %>

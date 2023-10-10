@@ -40,7 +40,11 @@ Rails.application.routes.draw do
         patch 'toggle_anonymous', to: 'users#toggle_anonymous'
       end
     end
-    resources :rooms
+    resources :rooms do 
+      member do 
+        patch 'change_status' 
+      end 
+    end
   end
 
   namespace 'users' do
@@ -49,9 +53,11 @@ Rails.application.routes.draw do
     resources :podcast_albums do
       post 'like'
     end
-    resources :confessions do
+    resources :confessions, except: %i[edit] do
       post 'like'
     end
+    resources :podcast_albums
+    resources :confessions, except: %i[edit]
   end
 
 

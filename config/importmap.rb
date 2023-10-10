@@ -17,3 +17,5 @@ pin 'jquery', preload: true
 pin 'jquery_ujs', preload: true
 pin 'bootstrap', to: 'bootstrap.js', preload: true
 pin 'popper', to: 'popper.js', preload: true
+pin "@picmo/popup-picker", to: "https://ga.jspm.io/npm:@picmo/popup-picker@5.4.0/dist/index.js"
+pin "picmo", to: "https://ga.jspm.io/npm:picmo@5.4.2/dist/index.js"

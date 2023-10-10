@@ -23,7 +23,16 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Room < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, optional: true
   belongs_to :counselor
   has_many :conversations, dependent: :destroy
+
+  validates :name, presence: true, uniqueness: {message: 'has already taken'}
+
+  paginates_per 10
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["counselor_id", "created_at", "id", "name", "status", "updated_at", "user_id"]
+  end
+
 end
