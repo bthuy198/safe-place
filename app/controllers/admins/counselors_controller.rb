@@ -35,7 +35,7 @@ module Admins
 
     def update
       respond_to do |format|
-        if @counselor.update(counselor_params)
+        if @counselor.update(update_counselor_params)
           format.turbo_stream { flash.now[:notice] = "#{@counselor.type} was successfully edited!" }
         else
           format.turbo_stream do
@@ -58,7 +58,7 @@ module Admins
     end
 
     def toggle_anonymous
-      @counselor = User.find(params[:id])
+      @counselor = User.find_by(id: params[:id])
       @counselor.update(anonymous: params[:anonymous])
       render json: { message: "The 'Anonymous' status has been successfully updated." }
     end
@@ -74,7 +74,12 @@ module Admins
     private
 
     def set_counselor
-      @counselor = User.find(params[:id])
+      @counselor = User.find_by(id: params[:id])
+    end
+
+    def update_counselor_params
+      params.require(:counselor).permit(:anonymous, :password, :phone_number, :status, :type, :user_name,
+                                        user_info_attributes: %i[address date_of_birth gender profile_name])
     end
 
     def counselor_params

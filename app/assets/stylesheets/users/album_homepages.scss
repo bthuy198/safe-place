@@ -1,0 +1,19 @@
+.album_homepage_detail {
+    padding: 25px 0px 10px 0px;
+    margin: 10px 15px;
+    background-color: #aee3b9;
+    border-radius: 10px;
+    .album-avatar {
+        width: 160px;
+        height: 180px;
+        border-radius: 15px;
+        position: relative;
+        object-fit: cover;
+    }
+    .album_title {
+        font-size: 20px;
+    }
+}
+.pink {
+    background-color: #efb5d0
+}

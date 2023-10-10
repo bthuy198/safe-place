@@ -33,22 +33,27 @@ Rails.application.routes.draw do
 
   namespace :admins do
     get 'dashboard', to: 'pages#dashboard'
+    resources :podcast_albums
     resources :counselors
     resources :users do
       member do
         patch 'toggle_anonymous', to: 'users#toggle_anonymous'
       end
     end
-    resources :rooms
+    resources :rooms do 
+      member do 
+        patch 'change_status' 
+      end 
+    end
   end
 
   namespace 'users' do
     resource :user_infos
-    resource :podcasts
-    resource :podcast_albums
-    resources :confessions
     post 'bookmark_action', to: 'bookmarks#action'
     resources :bookmarks
+    resources :podcasts
+    resources :podcast_albums
+    resources :confessions, except: %i[edit]
   end
 
 

@@ -1,15 +1,28 @@
-<div class="d-flex justify-content-between">
-    <div class="d-flex">
-        <div class="p-2">
-            <img src="https://media.pitchfork.com/photos/6500b0b300c361fe1f460f39/1:1/w_320,c_limit/Eli%20Escobar%20-%20The%20Beach%20Album.jpeg" width="70px">
+
+<div id="<%= dom_id podcast_album %>">
+    <div class="d-flex justify-content-between align-content-start show_podcast_album">
+        <button class="button_hidden_album" data-bs-toggle="modal" data-bs-target="#listPodcastModal" >
+        <%= link_to users_podcast_album_path(podcast_album), data: {turbo_frame: "show_list_podcast"}, class: "button_show_podcast" do %>
+                <div class="d-flex">
+                    <div class="p-2">
+                        <%= podcast_album.image? ? image_tag(podcast_album.image_url, class: "podcast_album_image") : image_tag("album_default.jpg", class: "podcast_album_image") %>
+                    </div>
+                    <div class="p-2 d-flex flex-column align-items-start">
+                        <div class="album_name"><%= podcast_album.name%></div>
+                        <div class="album_date"><%= podcast_album.created_at.strftime("%b %d, %Y")%></div>
+                    </div>
+                </div>
+        <% end %>
+        </button>
+        <div>
+            <button class="button_hidden_album" data-bs-toggle="modal" data-bs-target="#podcastAlbumModal" >
+                <%= link_to edit_users_podcast_album_path(podcast_album), data: {turbo_frame: "modal_for_podcast_album"} do %>
+                    <i class="fa-regular fa-pen-to-square"></i>
+                <% end %>
+            </button>
+            
         </div>
-        <div class="p-2 d-flex flex-column">
-            <div><%= podcast_album.name%></div>
-            <div><%= podcast_album.created_at%></div>
-        </div>
-    </div>
-    <div class="ml-auto p-2 d-flex">
-        <div><i class="fa-regular fa-heart" style="width: 25px;"></i></div>
-        <div><i class="fa-solid fa-book" style="width: 25px;"></i></div>
     </div>
 </div>
+<hr>
+

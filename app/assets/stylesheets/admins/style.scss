@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=League+Spartan');
 @import "admins/login";
 @import "admins/user_admin";
+@import "admins/podcast_admin";
 
 .list_dropdown {
   transform: translate3d(0px, 58px, 0px) !important;
   border-radius : 0px;
   background-color: #f4f3ef;
 }
-
-.show {
+.show{
   // background-color: #f4f3ef !important;
 }
 
@@ -17,7 +17,6 @@
 }
 
 .page_content {
-  min-height: 100vh;
   width: 100% !important;
 }
 
@@ -26,7 +25,7 @@
   width: 100% !important;
 }
 
-.top_admin_page {
+.top_admin_page{
   font-size: x-large;
   padding: .5rem 1rem;
   height: 57px;
@@ -111,3 +110,79 @@
 .btn_dropdown {
   border-radius: 0px;
 }
+
+.new_room{
+  margin: 17vh 10vh !important; 
+  // background-color: #fff ; 
+}
+
+.form_modal_room{
+  padding: 5vh !important;
+
+}
+
+// css for room
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.thead {
+  display: table-header-group;
+}
+
+.tr {
+  display: table-row;
+}
+
+.th,
+.td {
+  display: table-cell;
+  padding: 8px;
+  text-align: center;
+}
+
+/* Bootstrap-like classes */
+.mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.align-middle {
+  vertical-align: middle !important;
+}
+
+
+.custom-link {
+  color: #fff; 
+  text-decoration: none; 
+}
+
+.custom-link-delete{
+  color: black; 
+  text-decoration: none;
+}
+
+.logout_admin{
+  padding: 8px;
+}
+
+.switch_status:checked{
+  background-color: #198754 !important;
+  border-color: #198754 !important;
+  color: #fff;
+}
+
+.input_search_room{
+  width: 50vh;
+}
+
