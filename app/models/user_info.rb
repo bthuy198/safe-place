@@ -27,6 +27,8 @@
 class UserInfo < ApplicationRecord
   belongs_to :user
 
+  acts_as_paranoid
+
   enum gender: { male: 'Male', female: 'Female', non_binary: 'Non-binary', other: 'Other' }
 
   def self.ransackable_attributes(_auth_object = nil)

@@ -1,38 +1,38 @@
 <% user_type = {"User"=>"User", "Counselor"=>"Counselor"} %>
 <div class="form-user">
-  <%= form_with(model: [:admins, user], id: "#{dom_id(user)}_form" ) do |form| %>
+  <%= form_with(model: [:admins,counselor], id: "#{dom_id(counselor)}_form" ) do |form| %>
     <%= form.hidden_field :page , value: (params[:page] || 1) %>
     <%= form.fields_for :user_info do |user_info_fields| %>
       <div class="row mb-1 gy-2 gx-3 ">
         <div class="col">
           <%= form.label :user_name, "UserName" %>
           <%= form.text_field :user_name, class: 'form-control' %>
-          <% if user.errors.include?(:user_name) %>
-            <div class="text-danger"><%= user.errors[:user_name].first %></div>
+          <% if counselor.errors.include?(:user_name) %>
+            <div class="text-danger"><%= counselor.errors[:user_name].first %></div>
           <% end %>
         </div>
         <div class="col">
           <%= form.label :email, "Email" %>
-          <% if user.id  %>
+          <% if counselor.id  %>
             <%= form.email_field :email, class: 'form-control', disabled:true %>
           <% else %>
             <%= form.email_field :email, class: 'form-control'%>
           <% end %>
-          <% if user.errors.include?(:email) %>
-            <div class="text-danger"><%= user.errors[:email].first %></div>
+          <% if counselor.errors.include?(:email) %>
+            <div class="text-danger"><%= counselor.errors[:email].first %></div>
           <% end %>
         </div>
       </div>
       <div class="row mb-1 gy-2 gx-3 ">
         <div class="col">
           <%= user_info_fields.label :profile_name,"Name" %>
-          <%= user_info_fields.text_field :profile_name, class: 'form-control' %>
+          <%= user_info_fields.text_field :profile_name, class: 'form-control'%>
         </div>
         <div class="col">
           <%= form.label :phone_number, "Phone" %>
-          <%= form.telephone_field :phone_number, class: 'form-control'%>
-          <% if user.errors.include?(:phone_number) %>
-            <div class="text-danger"><%= user.errors[:phone_number].first %></div>
+          <%= form.telephone_field :phone_number, class: 'form-control' %>
+          <% if counselor.errors.include?(:phone_number) %>
+            <div class="text-danger"><%= counselor.errors[:phone_number].first %></div>
           <% end %>
         </div>
       </div>

@@ -11,15 +11,15 @@
         <th scope="col"></th>
       </tr>
     </thead>
-    <tbody id="users-tbody">
-      <% users.each do |user| %>
-        <%= render 'admins/users/partials/user', user: user %>
+    <tbody id="counselors-tbody">
+      <% counselors.each do |counselor| %>
+        <%= render 'admins/counselors/partials/counselor', counselor: counselor %>
       <% end %>
     </tbody>
   </table>
 </div>
-<div class="d-flex justify-content-end mt-1" id="paginate-user-table">
+<div class="d-flex justify-content-end mt-1" id="paginate-counselor-table">
   <nav aria-label="Page navigation example">
-    <%= paginate users, theme: 'bootstrap-5', window: 1 %>
+    <%= paginate counselors, theme: 'bootstrap-5', window: 1 %>
   </nav>
 </div>
