@@ -149,22 +149,22 @@ turbo-frame#board {
         display: none;
       }
       word-wrap: break-word;
+      h5 {
+        color: var(--color-primary);
+        font-weight: bold;
+      }
+      .time_ago {
+        font-size: var(--font-size-xs);
+        font-style: italic;
+        color: var(--color-gray);
+      }
+      .custom_tag {
+        margin-bottom: 10px;
+        font-style: italic;
+      }
       .card {
         margin-bottom: 10px;
         height: 35vh;
-        h5 {
-          color: var(--color-primary);
-          font-weight: bold;
-        }
-        .time_ago {
-          font-size: var(--font-size-xs);
-          font-style: italic;
-          color: var(--color-gray);
-        }
-        .custom_tag {
-          margin-bottom: 10px;
-          font-style: italic;
-        }
         .custom_button {
           border-radius: 0;
           &:hover,
@@ -173,6 +173,12 @@ turbo-frame#board {
             color: var(--color-primary);
           }
         }
+      }
+      .confesssion_show {
+        height: 30vh;
+      }
+      .confession_show_group {
+        width: 100%;
       }
     }
   }

@@ -1,26 +1,12 @@
 <%= turbo_frame_tag "board" do %>
   <div class="confessions_board">
-    <div id="<%= dom_id @confession %>">
-      <% if @confession.anonymous %>
-        <h5>Anonymous Post</h5>
-      <% else %>
-        <h5><%= @confession.user.user_name %></h5>
-      <% end %>
-      <p>
-        <strong>Content:</strong>
-        <%= @confession.content.body %>
-      </p>
-      <p>
-        <strong>Tag:</strong>
-        <%= @confession.tag.join(", ") %>
-      </p>
+    <%= render "users/confessions/confession", confession: @confession %>
+    <div class="btn-group confession_show_group" role="group" aria-label="confession_show">
+      <%= link_to "Back", users_confessions_path, class: "btn btn-light", type: "button" %>
+      <%= link_to "Edit", edit_users_confession_path(@confession), class: "btn btn-success", type: "button" %>
+      <%= link_to "Delete", users_confession_path(@confession), method: :delete, data: {confirm: "Are you sure to delete this confession?"}, class: "btn btn-danger", type: "button" %>
     </div>
-
-    <div>
-      <%= link_to "Edit this confession", edit_users_confession_path(@confession) %> |
-      <%= link_to "Back to confessions", users_confessions_path %>
-
-      <%= button_to "Destroy this confession", users_confession_path(@confession), method: :delete %>
-    </div>
+    <hr>
+    <p>Placeholder for comments</p>
   </div>
 <% end %>
