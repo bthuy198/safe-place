@@ -5,6 +5,7 @@
 
 //= link users/style.css
 //= link admins/style.css
+//= link users/room_user.css
 
 //= link jquery.js
 //= link jquery_ujs.js

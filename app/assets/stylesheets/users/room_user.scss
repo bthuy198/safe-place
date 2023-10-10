@@ -1,0 +1,45 @@
+.menu_join{
+    height: 85vh;
+    background-color: #f4f3ef;
+    width: 95vh;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+
+.item_room_join{
+    display: flex;
+    justify-content: center;
+    height: 17vh;
+    width: 17vh;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.item_join{
+    display: flex;
+    flex-direction: column; /* Đặt hướng cột */
+    justify-content: center; /* Canh giữa theo chiều ngang */
+    // align-items: center; /* Canh giữa theo chiều dọc */
+    text-align: center; 
+}
+
+.btn_join{
+  width: 9vh;
+}
+
+.paginate_room_join{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff; 
+}
+
+.mini_menu{
+    margin: 3vh;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4vh;
+  }
+
+
+ 

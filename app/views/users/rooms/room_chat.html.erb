@@ -1,0 +1,6 @@
+<h1>room chat <%= @room.id%>  name : <%= @room.name%></h1>
+<button id="out_room_id" data-room-id="<%= @room.id %>">
+    out room
+</button>
+
+<%= javascript_include_tag 'users/rooms/out_room' %>
