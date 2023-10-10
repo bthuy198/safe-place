@@ -1,0 +1,24 @@
+<div class="d-flex justify-content-between podcast_detail">
+    <div class="d-flex justify-content-between">
+        <div class="podcast_filed episode">Ep.<%= podcast.episode_number%></div>
+        <% if podcast.image? %>
+          <%= image_tag podcast.image_url, class:"image_podcast"%>
+        <% else %>
+           <%= image_tag "podcast_default.jpg", class:"image_podcast"%>
+        <% end %>
+       
+        <div class="d-flex flex-column justify-content-start">
+            <div class="podcast_filed name"><%=podcast.name%></div>
+            <div class="podcast_filed"><%=podcast.author_name%></div>
+        </div>
+    </div>
+
+    <div class="d-flex">
+        <div class="podcast_filed created"><%=podcast.created_at.strftime("%b %d, %Y")%></div>
+        <div class="d-flex flex-column justify-content-between action_icon">
+            <i class="fa-regular fa-heart"></i>
+            <i class="fa-regular fa-bookmark"></i>
+        </div>
+    </div>
+</div>
+<hr>

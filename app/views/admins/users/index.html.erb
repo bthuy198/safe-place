@@ -1,25 +1,32 @@
 <div class="card w-80 mb-3 mt-3">
   <div class="card-body">
-    <h5 class="card-title">Search user</h5>
-    <%= search_form_for @q, url:admins_users_path, class: 'd-flex' do |f| %>
-      <div class="input-group mb-3">
-        <%= f.search_field :user_info_profile_name_cont, class: 'form-control me-2', placeholder: 'Search name users' %>
-        <%= f.search_field :phone_number_cont, class: 'form-control me-2', placeholder: 'Search phone' %>
-        <%= f.check_box :anonymous_cont, class: 'form-check-input me-2' %>
-        <label class="form-check-label me-2" for="flexCheckChecked">
-           Anonymous
-        </label>
-        <%= f.submit 'Search', class: 'btn btn-outline-success ', type: 'submit' %>
+    <h5 class="card-title">Search User</h5>
+      <%= render 'admins/partials/search_user_form', q: @q, path: admins_users_path %>
+  </div>
+</div>
+<div class="profile-card">
+  <div class="card w-80">
+    <div class="card-body">
+      <div class="card-title card-title-user d-flex justify-content-between align-items-center ">
+        <h1>List Users</h1>
+        <button class="button_hidden" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <%= link_to "New User",new_admins_user_path(page: params[:page]), data:{turbo_frame: "modal_for_user"},class:"btn btn-outline-success btn-lg"%>
+        </button>
       </div>
-    <% end %>
+      <ul class="nav nav-tabs nav-fill ">
+        <li class="nav-item">
+          <%= link_to 'Users', admins_users_path, data:{ turbo_frame: "table-user" }, class:"nav-link active" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Counselors', admins_counselors_path, data:{ turbo_frame: "table_user" }, class:"nav-link" %>
+        </li>
+      </ul>
+      <p class="card-text">
+        <%= turbo_frame_tag "table-user" do %>
+          <%= render "admins/users/partials/user_table", users: @users %>
+        <% end %>
+      </p>
+    </div>
   </div>
 </div>
-
-<div class="card w-80">
-  <div class="card-body">
-    <h5 class="card-title">List Users</h5>
-    <p class="card-text">
-    <%= render "admins/users/partials/user_table", users: @users %>
-    </p>    
-  </div>
-</div>
+<%= render 'admins/users/partials/modal' %>

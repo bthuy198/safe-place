@@ -1,5 +1,5 @@
 body {
-  font-family: 'League Spartan', sans-serif;
+  font-family: "League Spartan", sans-serif;
 }
 
 .text-color-green {
@@ -19,8 +19,9 @@ form {
 
 .input-login {
   height: 7vh;
-  border-radius: 02px;
-  border-color: #1f7564;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  color: #1f7564;
 }
 
 .input-login::placeholder {

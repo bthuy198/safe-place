@@ -3,23 +3,26 @@
 module Users
     # class UsersPagesController
     class PodcastsController < UsersLayoutController
-      before_action :authenticate_user!, except: [:show, :index]
+      before_action :authenticate_user!
       before_action :set_podcast, only: %i[ show edit update destroy ]
 
 
       def index; 
         @podcast_albums = PodcastAlbum.where(user_id: current_user.id)
-        @recent_podcasts = Podcast.order(created_at: :desc)
+        @recent_podcasts = Podcast.where(podcast_album_id: @podcast_albums.pluck(:id)).limit(5)
       end
 
       def show
+        
       end
 
       def new
         @podcast = Podcast.new
+        render layout: false
       end
 
       def edit
+        render layout: false
       end
 
       def create
