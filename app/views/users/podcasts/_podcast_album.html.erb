@@ -1,4 +1,3 @@
-
 <div id="<%= dom_id podcast_album %>">
     <div class="d-flex justify-content-between show_podcast_album">
         <button class="button_hidden_album" data-bs-toggle="modal" data-bs-target="#podcastAlbumModal" >
@@ -15,8 +14,12 @@
         <% end %>
         </button>
         <div class="ml-auto p-2 d-flex justify-content-around">
-            <div><i class="fa-regular fa-heart"></i></div>
-            <div><i class="fa-regular fa-bookmark" ></i></div>
+          <% if Like.where('likeable_type = ? and likeable_id = ? and user_id = ? ',podcast_album.class.to_s, podcast_album.id, current_user.id) %>
+            <div><%= link_to '<i class="fa-solid fa-heart"></i>'.html_safe, users_podcast_album_like_path(podcast_album), method: :post %></div>
+          <% else %>
+            <div><%= link_to '<i class="fa-regular fa-heart"></i>'.html_safe, users_podcast_album_like_path(podcast_album), method: :post, style: 'color: red' %></div>
+          <% end %>
+          <div><i class="fa-regular fa-bookmark" ></i></div>
         </div>
     </div>
 </div>

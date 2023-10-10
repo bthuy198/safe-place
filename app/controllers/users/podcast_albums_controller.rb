@@ -48,9 +48,11 @@ module Users
     end
 
     def like
-      @podcast_album = Confession.find(params[:id])
+      @podcast_album = PodcastAlbum.find(params[:podcast_album_id])
       LikeService.new(current_user, @podcast_album).like
-      redirect_to @podcast_album, notice: 'Podcast album liked/unliked successfully.'
+      # respond_to do |format|
+      #   format.js {}
+      # end
     end
 
     private
