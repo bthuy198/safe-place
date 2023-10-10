@@ -31,10 +31,10 @@
                     <h2>Podcasts are not just voices; they are emotions and knowledge shared through sound. When you upload a podcast, you are sharing a part of yourself with the world.</h2>        
                     <div class="row-md-7">
                       <button style="background-color: transparent; border: none;" class="col button_hidden" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <%= link_to "Create podcast",new_users_podcast_path, data:{turbo_frame: "modal_for_podcast"},class:"btn button_create_podcast"%>
+                        <%= link_to "Create podcast",new_users_podcast_path, data:{turbo_frame: "modal_for_podcast"},class: "btn button_create_podcast"%>
                       </button>
                       <button style="background-color: transparent; border: none;" class="col button_hidden" data-bs-toggle="modal" data-bs-target="#podcastAlbumModal">
-                        <%= link_to "Create Album",new_users_podcast_album_path, data:{turbo_frame: "modal_for_podcast_album"},class:"btn button_create_podcast"%>
+                        <%= link_to "Create Album",new_users_podcast_album_path, data:{turbo_frame: "modal_for_podcast_album"},class: "btn button_create_podcast"%>
                       </button>
                     </div>
                   </div>
@@ -57,10 +57,7 @@
 <%= render "users/podcasts/modal"%>
 <%= render "users/podcast_albums/modal"%>
 <%= render "users/podcast_albums/podcast_modal"%>
-
 <% end %>
-
-
 
 
 

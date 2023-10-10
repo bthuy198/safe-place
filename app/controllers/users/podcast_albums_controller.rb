@@ -53,6 +53,11 @@ module Users
       end
     end
 
+    def like
+      @podcast_album = PodcastAlbum.find(params[:podcast_album_id])
+      LikeService.new(current_user, @podcast_album).like
+    end
+
     private
 
     def set_podcast_album

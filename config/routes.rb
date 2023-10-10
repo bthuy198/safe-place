@@ -50,6 +50,12 @@ Rails.application.routes.draw do
   namespace 'users' do
     resource :user_infos
     resources :podcasts
+    resources :podcast_albums do
+      post 'like'
+    end
+    resources :confessions, except: %i[edit] do
+      post 'like'
+    end
     resources :podcast_albums
     resources :confessions, except: %i[edit]
   end

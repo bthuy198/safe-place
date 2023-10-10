@@ -67,6 +67,12 @@ module Users
       Turbo::StreamsChannel.broadcast_remove_to("confessions_index_channel", target: helpers.dom_id(@confession))
     end
 
+    def like
+      @confession = Confession.find(params[:id])
+      LikeService.new(current_user, @confession).like
+      redirect_to @confession, notice: 'Confession liked/unliked successfully.'
+    end
+
     private
 
     def set_confessions
