@@ -1,2 +1,8 @@
-<%= turbo_stream.prepend "quotes", partial: "quotes/quote", locals: { quote: @quote } %>
-<%= turbo_stream.update Quote.new, "" %>
+<%= turbo_stream.prepend "room_table" do %>
+    <%= render partial: "admins/rooms/partials/room_table", locals: { room: @room } %>
+    <script>
+        console.log('lalaa');
+      $("#exampleModal2").modal('hide');
+    </script>
+<% end %>
+<%= turbo_stream.update 'room_model', partial: "admins/rooms/partials/form", locals: {room: Room.new} %>
