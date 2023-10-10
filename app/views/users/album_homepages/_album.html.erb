@@ -1,0 +1,15 @@
+<div class="col album_homepage_detail <%= index % 2 == 0 ? ' ' : 'pink' %>">
+        <div class="d-flex flex-column">
+            <% if album.image? %>
+                <%= image_tag album.image_url, alt: "Album Avatar", class: "album-avatar", id: 'album_img' %>
+            <% else %>
+                <%= image_tag("album_default.jpg", alt: "Image", class: "album-avatar", id: 'album_img') %>
+            <% end %>
+            <div class="album_title">
+                <%= album.name%>
+            </div>
+            <div class="album_title">
+                <%= album.user.user_name%>
+            </div>
+        </div>
+</div>
