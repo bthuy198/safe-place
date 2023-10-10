@@ -4,8 +4,8 @@ module Users
     class AlbumHomepagesController < UsersLayoutController
       
       def index
-        @albums = PodcastAlbum.limit(5)
-        @recent_albums = PodcastAlbum.order(created_at: :desc).limit(5)
+        @albums = PodcastAlbum.limit(6)
+        @recent_albums = PodcastAlbum.order(created_at: :desc).limit(6)
       end
 
       def show
