@@ -113,18 +113,8 @@ turbo-frame#new_confession_frame {
         }
       }
       form.confession_form {
-        .pickerContainer {
-          position: relative;
-          z-index: 9998;
-        }
         label {
           color: var(--color-primary);
-        }
-        .trix-button-group--file-tools {
-          display: none;
-        }
-        trix-editor {
-          height: 40vh;
         }
         input.form {
           margin-top: 10px;
@@ -315,5 +305,18 @@ footer {
     div {
       width: 130px;
     }
+  }
+}
+
+form {
+  .pickerContainer {
+    position: relative;
+    z-index: 9998;
+  }
+  .trix-button-group--file-tools {
+    display: none;
+  }
+  trix-editor {
+    height: 40vh;
   }
 }
