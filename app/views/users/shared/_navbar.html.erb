@@ -49,8 +49,9 @@
                                 <li><a class="dropdown-item" href="#">Something else here</a></li>
                             </ul>
                         </li>
+
                         <li class="nav-item">
-                            <a href="<%= edit_user_registration_path %>" class="nav-link">Account Settings</a>
+                            <%= link_to "Account Settings", users_user_infos_path, class:"nav-link" %>
                         </li>
                         <li class="nav-item">
                             <a href="<%= sign_out_path %>" data-turbo-method="delete" data-turbo-confirm="Are you sure you want to sign out?" class="nav-link">Sign Out</a>
