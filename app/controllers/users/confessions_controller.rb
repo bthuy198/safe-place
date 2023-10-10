@@ -65,6 +65,7 @@ module Users
         end
         format.json { head :no_content }
       end
+      Turbo::StreamsChannel.broadcast_remove_to("confessions_index_channel", target: helpers.dom_id(@confession))
     end
 
     private
