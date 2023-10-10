@@ -47,6 +47,8 @@ Rails.application.routes.draw do
     resource :podcasts
     resource :podcast_albums
     resources :confessions
+    post 'bookmark_action', to: 'bookmarks#action'
+    resources :bookmarks
   end
 
 
