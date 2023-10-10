@@ -1,21 +1,28 @@
 $(document).ready(function () {
   $(".bookmark").on("click", function () {
-    const albumId = $(this).data("album-id"); // Lấy ID của album từ thuộc tính data
-    const url = "users/bookmark/" + albumId; // Đặt URL cho hành động toggle bookmark
+    console.log("Bookmark clicked");
+    const albumId = $(this).data("album-id");
+    const url = "/users/podcast_albums/" + albumId + "/toggle_bookmark";
+
+    const bookmarkIcon = $(this);
+
+    bookmarkIcon.toggleClass("bookmark-clicked");
 
     $.ajax({
       url: url,
-      type: "POST", // Hoặc GET tùy thuộc vào cách bạn muốn xử lý
+      type: "POST",
       headers: {
-        "X-CSRF-Token": $('meta[name="csrf-token"]').attr("content"), // Điều này là để đảm bảo bảo mật CSRF
+        "X-CSRF-Token": $('meta[name="csrf-token"]').attr("content"),
       },
       success: function (data) {
-        // Xử lý phản hồi từ máy chủ ở đây, ví dụ cập nhật biểu tượng bookmark dựa trên dữ liệu từ máy chủ
         if (data.bookmarked) {
-          $(".bookmark").attr("src", "bookmark_icon_red.svg");
+          bookmarkIcon.attr("src", " /assets/bookmark_icon_red.svg");
         } else {
-          $(".bookmark").attr("src", "bookmark_icon.svg");
+          bookmarkIcon.attr("src", " /assets/bookmark_icon.svg");
         }
+        setTimeout(function () {
+          bookmarkIcon.removeClass('bookmark-clicked');
+        }, 300); 
       },
       error: function (error) {
         console.error("Lỗi khi gửi yêu cầu: ", error);

@@ -4,9 +4,9 @@
       <div class="row">
         <div class="col-md-3">
           <% if @album.image? %>
-            <%= image_tag @album.image_url, alt: "Album Avatar", id: 'album_img', class: "img-fluid",  width: "300", height: "300" %>
+            <%= image_tag @album.image_url, alt: "Album Avatar", id: 'album_img', class: "img-fluid album_image " %>
           <% else %>
-            <%= image_tag "album_default.jpg", alt: "Image", id: 'album_img', class: "img-fluid",  width: "300", height: "300" %>
+            <%= image_tag "album_default.jpg", alt: "Image", id: 'album_img', class: "img-fluid album_image" %>
           <% end %>
         </div>
         <div class="col-md-7 d-flex flex-column justify-content-end mb-2 p-0 album_info">
@@ -16,11 +16,11 @@
             <% if @album.user.user_info && !@album.user.user_info.profile_name.blank?  %>
               <%= @album.user.user_info.profile_name %>
             <% else %>
-              Anonymous
+              Anonymous 
             <% end %>
             <div>
               <%= image_tag "heart_white_icon.png", class:"heart" %>
-              <%= image_tag "bookmark_white_icon.png", class:"bookmark" %>
+              <%= image_tag current_user.bookmarks.exists?(bookmarkable: @album) ? "bookmark_icon_red.svg" : "bookmark_icon.svg", class:"bookmark", data: { album_id: @album.id } %>
             </div>
           </div>
           <div class="col-md-2 d-flex flex-column justify-content-between align-items-end album_play mt-5">
@@ -68,4 +68,5 @@
         <% end %>
       </div>
     </div>
+    <%= javascript_include_tag 'users/bookmark' %>
   <% end %>

@@ -45,9 +45,17 @@ Rails.application.routes.draw do
 
   namespace 'users' do
     resource :user_infos
-    resources :podcasts
-    resources :podcast_albums
-    resources :confessions
+    resources :podcasts do
+      post 'toggle_bookmark'
+    end
+    resources :podcast_albums do
+      member do
+        post 'toggle_bookmark'
+      end
+    end
+    resources :confessions do
+      post 'toggle_bookmark'
+    end
     resources :album_homepages, only: [:index, :show]
   end
 
