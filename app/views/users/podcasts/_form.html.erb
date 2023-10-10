@@ -31,7 +31,7 @@
               </div>
               <div class="row mb-4 align-items-center">
                 <%= f.label :podcast_album, class: "col-md-3 label form_podcast_label" %>
-                 <%= f.collection_select :podcast_album_id, PodcastAlbum.all, :id, :name, { prompt: "Select an album" }, class: "col form-control form_podcast_textfield", id: "collection_name" %>
+                 <%= f.collection_select :podcast_album_id, PodcastAlbum.where(user_id: current_user.id), :id, :name, { prompt: "Select an album" }, class: "col form-control form_podcast_textfield", id: "collection_name" %>
               </div>
         </div>
         <div class="row">
@@ -45,4 +45,4 @@
   </div>
 </div>
 
-<%= javascript_include_tag 'users/podcast' %>
+<%= javascript_include_tag 'users/podcasts/podcast' %>

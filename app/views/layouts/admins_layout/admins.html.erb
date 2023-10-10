@@ -5,13 +5,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "admins/style", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
-  <body id="body" class="d-flex flex-column min-vh-100 "> 
+  <body id="body" class="d-flex flex-column min-vh-100 ">
     <%= render "shared/flash"%>
     <div class="d-flex color_admins" id="wrapper">
       <%= render 'layouts/admins_layout/partials/leftmenu' %>
@@ -26,5 +24,4 @@
       </div>
     </div>
   </body>
-
 </html>
