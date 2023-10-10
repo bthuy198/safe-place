@@ -112,22 +112,7 @@ turbo-frame#new_confession_frame {
           border-color: var(--color-pink);
         }
       }
-      form.confession_form {
-        label {
-          color: var(--color-primary);
-        }
-        input.form {
-          margin-top: 10px;
-          &.custom_btn {
-            color: var(--color-primary);
-            border: var(--border);
-            border-radius: var(--border-radius);
-          }
-        }
-        .form-switch {
-          line-height: 2.5;
-        }
-      }
+
     }
   }
 }
@@ -138,6 +123,11 @@ turbo-frame#board {
   padding: 10px;
   div {
     &.confessions_board {
+      h1, h4 {
+        font-family: var(--font-family-sans);
+        color: var(--color-primary);
+        font-style: italic;
+      }
       padding: 10px;
       border: var(--border);
       border-radius: var(--border-radius);
@@ -324,5 +314,22 @@ form {
   }
   trix-editor {
     height: 40vh;
+  }
+}
+
+form.confession_form {
+  label {
+    color: var(--color-primary);
+  }
+  input.form {
+    margin-top: 10px;
+    &.custom_btn {
+      color: var(--color-primary);
+      border: var(--border);
+      border-radius: var(--border-radius);
+    }
+  }
+  .form-switch {
+    line-height: 2.5;
   }
 }

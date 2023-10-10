@@ -1,6 +1,6 @@
 <%= turbo_frame_tag "board" do %>
   <div class="confessions_board">
-    <h1>Editing confession</h1>
+    <h5>Edit</h5>
 
     <%= render "users/confessions/form", confession: @confession, url: users_confession_path(@confession) %>
 
