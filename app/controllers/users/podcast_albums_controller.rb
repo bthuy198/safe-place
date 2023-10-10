@@ -58,6 +58,8 @@ module Users
       service = Users::BookmarkService.new(current_user, @podcast_album)
       service.call
       render json: { bookmarked: service.exists? }
+    end
+
     def like
       @podcast_album = PodcastAlbum.find(params[:podcast_album_id])
       LikeService.new(current_user, @podcast_album).like
