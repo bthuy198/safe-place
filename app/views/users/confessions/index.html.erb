@@ -1,9 +1,5 @@
 <%= turbo_frame_tag "board" do %>
-  <div class="confessions_board">
-    <div id="confessions">
-      <% @confessions.each do |confession| %>
-        <%= render "users/confessions/confession_index", confession: confession %>
-      <% end %>
-    </div>
+  <div class="confessions_board" id="confessions_board">
+    <%= render "users/confessions/confessions_index", confessions: @confessions %>
   </div>
 <% end %>

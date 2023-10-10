@@ -2,12 +2,12 @@
 
 module Users
   class ConfessionsController < UsersLayoutController
+    before_action :set_confessions, only: %i[index destroy]
     before_action :set_confession, only: %i[show edit update destroy]
     before_action :authenticate_flash, only: %i[edit update destroy]
     before_action :authenticate_user!, only: %i[new create edit update destroy]
 
     def index
-      @confessions = Confession.all
     end
 
     def show; end
@@ -27,7 +27,7 @@ module Users
           format.turbo_stream { flash.now[:notice] = 'Confession was successfully created.' }
           format.json { render :show, status: :created, location: @confession }
         end
-        Turbo::StreamsChannel.broadcast_prepend_later_to("confessions_index_channel", target: "confessions", partial: "users/confessions/confession", locals: { confession: @confession })
+        Turbo::StreamsChannel.broadcast_prepend_later_to("confessions_index_channel", target: "confessions", partial: "users/confessions/confession_index", locals: { confession: @confession })
       else
         respond_to do |format|
           format.turbo_stream do
@@ -40,12 +40,17 @@ module Users
     end
 
     def update
-      respond_to do |format|
-        if @confession.update(confession_params)
-          format.html { redirect_to users_confessions_path, notice: 'Confession was successfully updated.' }
+      if @confession.update(confession_params.merge(tag: params[:confession][:tag].split(" ")))
+        respond_to do |format|
+          format.turbo_stream { flash.now[:notice] = 'Confession was successfully updated.' }
           format.json { render :show, status: :ok, location: @confession }
-        else
-          format.html { render :edit, status: :unprocessable_entity }
+        end
+      else
+        respond_to do |format|
+          format.turbo_stream do
+            flash.now[:alert] = "<ul><li>#{@confession.errors.full_messages.join("</li><li>")}</li><ul>".html_safe
+            render status: :unprocessable_entity
+          end
           format.json { render json: @confession.errors, status: :unprocessable_entity }
         end
       end
@@ -55,12 +60,18 @@ module Users
       @confession.destroy
 
       respond_to do |format|
-        format.html { redirect_to users_confessions_path, notice: 'Confession was successfully destroyed.' }
+        format.turbo_stream do
+          flash.now[:notice] = 'Confession was successfully destroyed.'
+        end
         format.json { head :no_content }
       end
     end
 
     private
+
+    def set_confessions
+      @confessions = Confession.order(created_at: :desc)
+    end
 
     def set_confession
       @confession = Confession.find_by(id: params[:id])
