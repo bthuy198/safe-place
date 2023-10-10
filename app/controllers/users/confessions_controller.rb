@@ -3,9 +3,9 @@
 module Users
   class ConfessionsController < UsersLayoutController
     before_action :set_confessions, only: %i[index destroy]
-    before_action :set_confession, only: %i[show edit update destroy]
-    before_action :authenticate_flash, only: %i[edit update destroy]
-    before_action :authenticate_user!, only: %i[new create edit update destroy]
+    before_action :set_confession, only: %i[show update destroy]
+    before_action :authenticate_flash, only: %i[update destroy]
+    before_action :authenticate_user!, only: %i[new create update destroy]
 
     def index
     end
@@ -15,8 +15,6 @@ module Users
     def new
       @confession = Confession.new
     end
-
-    def edit; end
 
     def create
       @confession = Confession.new(confession_params)
@@ -45,6 +43,8 @@ module Users
           format.turbo_stream { flash.now[:notice] = 'Confession was successfully updated.' }
           format.json { render :show, status: :ok, location: @confession }
         end
+        Turbo::StreamsChannel.broadcast_replace_later_to("confessions_index_channel", target: helpers.dom_id(@confession), partial: "users/confessions/confession_index", locals: { confession: @confession })
+        Turbo::StreamsChannel.broadcast_update_later_to("confessions_show_channel", target: "#{helpers.dom_id(@confession)}_show", partial: "users/confessions/confession", locals: { confession: @confession })
       else
         respond_to do |format|
           format.turbo_stream do
