@@ -1,12 +1,12 @@
 
 
-                <tr class="podcast_detail">
+                <tr class="podcast_detail ">
                 <td class="podcast_filed episode" >Ep.<%= podcast.episode_number %></td>
                 <td>
                     <% if podcast.image? %>
-                    <%= image_tag podcast.image_url, alt: "Album Avatar", id: 'album_img', class: "img-fluid image_podcast",  width: "100", height: "100" %>
+                    <%= image_tag podcast.image_url, alt: "Album Avatar", id: 'album_img', class: " image_podcast",  width: "100", height: "100" %>
                     <% else %>
-                    <%= image_tag "podcast_default.jpg", alt: "Image", id: 'album_img', class: "img-fluid image_podcast",  width: "100", height: "100" %>
+                    <%= image_tag "podcast_default.jpg", alt: "Image", id: 'album_img', class: " image_podcast",  width: "100", height: "100" %>
                     <% end %>
                 </td>
                 <td>
