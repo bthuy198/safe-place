@@ -51,12 +51,16 @@ Rails.application.routes.draw do
     resources :podcast_albums do
       member do
         post 'toggle_bookmark'
+        post 'like'
       end
     end
     resources :confessions do
       post 'toggle_bookmark'
+      post 'like'
     end
     resources :album_homepages, only: [:index, :show]
+    resources :confessions, except: %i[edit] do
+    end
   end
 
 
