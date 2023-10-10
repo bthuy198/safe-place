@@ -1,0 +1,14 @@
+<% if @counselor.errors.any? %>
+  <%= turbo_stream.replace "#{dom_id(Counselor.new)}_form" do %>
+    <%= render "admins/counselors/partials/form", counselor: @counselor %>
+  <% end %>
+<% else %>
+  <%= turbo_stream.prepend "counselors-tbody", partial: "admins/counselors/partials/counselor",
+        locals: { counselor: @counselor } if @counselor.type == 'Counselor' && params[:counselor][:page] == '1' %>
+  <%# turbo_stream.update "close_model_counselor" do %>
+    <%# <script>
+      $("#exampleModal1").modal('hide');
+    </script> %>
+  <%# end %>
+<% end %>
+<%= render_turbo_stream_flash_messages %>

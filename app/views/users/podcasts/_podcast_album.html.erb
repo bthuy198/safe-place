@@ -1,7 +1,9 @@
+<% is_like = Like.where('user_id = ? and likeable_type = ? and likeable_id = ?',current_user.id, podcast_album.class.to_s, podcast_album.id).present?  %>
+<%= hidden_field_tag "is_like_#{podcast_album.id}", is_like %>
 <div id="<%= dom_id podcast_album %>">
-    <div class="d-flex justify-content-between show_podcast_album">
-        <button class="button_hidden_album" data-bs-toggle="modal" data-bs-target="#podcastAlbumModal" >
-        <%= link_to edit_users_podcast_album_path(podcast_album), data:{turbo_frame: "modal_for_podcast_album"}, class: "button_show_podcast" do %>
+    <div class="d-flex justify-content-between align-content-start show_podcast_album">
+        <button class="button_hidden_album" data-bs-toggle="modal" data-bs-target="#listPodcastModal" >
+        <%= link_to users_podcast_album_path(podcast_album), data: {turbo_frame: "show_list_podcast"}, class: "button_show_podcast" do %>
                 <div class="d-flex">
                     <div class="p-2">
                         <%= podcast_album.image? ? image_tag(podcast_album.image_url, class: "podcast_album_image") : image_tag("album_default.jpg", class: "podcast_album_image") %>
@@ -13,15 +15,27 @@
                 </div>
         <% end %>
         </button>
-        <div class="ml-auto p-2 d-flex justify-content-around">
-          <% if Like.where('likeable_type = ? and likeable_id = ? and user_id = ? ',podcast_album.class.to_s, podcast_album.id, current_user.id) %>
-            <div><%= link_to '<i class="fa-solid fa-heart"></i>'.html_safe, users_podcast_album_like_path(podcast_album), method: :post %></div>
-          <% else %>
-            <div><%= link_to '<i class="fa-regular fa-heart"></i>'.html_safe, users_podcast_album_like_path(podcast_album), method: :post, style: 'color: red' %></div>
-          <% end %>
-          <div><i class="fa-regular fa-bookmark" ></i></div>
+        <div class="ml-auto d-flex justify-content-around flex-column">
+          <div class="p-2 col d-flex">
+            <div class="col" id='like_album'>
+              <% if is_like %>
+                <div class="like_link" onclick='likeFunction(this, <%= podcast_album.id %>)'><i class="fa-solid fa-heart text-danger"></i></div>
+              <% else %>
+                <div class="like_link" onclick="likeFunction(this, <%= podcast_album.id %>)"><i class="fa-regular fa-heart text-danger"></i></div>
+              <% end %>
+            </div>
+            <div class="col"><i class="fa-regular fa-bookmark" ></i></div>
+          </div>
+          <div class="col d-flex ms-auto p-2 bd-highlight">
+            <button class="button_hidden_album" data-bs-toggle="modal" data-bs-target="#podcastAlbumModal" >
+              <%= link_to edit_users_podcast_album_path(podcast_album), data: {turbo_frame: "modal_for_podcast_album"} do %>
+                <i class="fa-regular fa-pen-to-square"></i>
+              <% end %>
+            </button>
+          </div>
         </div>
     </div>
 </div>
 <hr>
+
 

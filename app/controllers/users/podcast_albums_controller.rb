@@ -7,9 +7,15 @@ module Users
 
     def new
       @podcast_album = PodcastAlbum.new
+      render layout: false
+    end
+
+    def show
+      @podcasts = Podcast.where(podcast_album_id: @podcast_album.id).order(episode_number: :asc)
     end
 
     def edit
+      render layout: false
     end
 
     def create
@@ -50,15 +56,12 @@ module Users
     def like
       @podcast_album = PodcastAlbum.find(params[:podcast_album_id])
       LikeService.new(current_user, @podcast_album).like
-      # respond_to do |format|
-      #   format.js {}
-      # end
     end
 
     private
 
     def set_podcast_album
-      @podcast_album = PodcastAlbum.find(params[:id])
+      @podcast_album = PodcastAlbum.find_by(id: params[:id])
     end
 
     def podcast_album_params
