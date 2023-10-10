@@ -7,9 +7,15 @@ module Users
 
     def new
       @podcast_album = PodcastAlbum.new
+      render layout: false
+    end
+
+    def show
+      @podcasts = Podcast.where(podcast_album_id: @podcast_album.id).order(episode_number: :asc)
     end
 
     def edit
+      render layout: false
     end
 
     def create
@@ -50,7 +56,7 @@ module Users
     private
 
     def set_podcast_album
-      @podcast_album = PodcastAlbum.find(params[:id])
+      @podcast_album = PodcastAlbum.find_by(id: params[:id])
     end
 
     def podcast_album_params
