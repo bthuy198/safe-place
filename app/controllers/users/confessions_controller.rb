@@ -8,6 +8,10 @@ module Users
     before_action :authenticate_user!, only: %i[new create update destroy]
 
     def index
+      respond_to do |format|
+        format.html
+        format.turbo_stream
+      end
     end
 
     def show; end
@@ -76,7 +80,10 @@ module Users
     private
 
     def set_confessions
-      @confessions = Confession.order(created_at: :desc)
+      @confessions = Confession.order(created_at: :desc).page(params[:page]).per(3)
+      @current_page = @confessions.current_page
+      @total_pages = @confessions.total_pages
+      @has_next_page = @current_page < @total_pages
     end
 
     def set_confession
