@@ -1,7 +1,8 @@
 export class RichText {
-  constructor(picker, emojiButton) {
+  constructor(picker, emojiButton, form) {
     this.picker = picker;
     this.emojiButton = emojiButton;
+    this.form = form;
     this.createEmojiPickerButton();
   }
   createEmojiPickerButton() {
@@ -9,7 +10,7 @@ export class RichText {
       "click",
       this.toggleEmojiPicker.bind(this)
     );
-    document
+    this.form
       .querySelector("[data-trix-button-group=block-tools]")
       .prepend(this.emojiButton);
   }

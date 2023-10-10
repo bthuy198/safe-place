@@ -3,13 +3,13 @@ import { createPopup } from "@picmo/popup-picker";
 import { RichText } from "../classes/RichText";
 
 export default class extends Controller {
-  static targets = ["trixEditor", "pickerContainer"];
+  static targets = ["form", "trixEditor", "pickerContainer"];
 
-  connect() {
+  initialize() {
     const buttonString = this.emojiButtonString();
     const emojiButton = this.emojiButtonTemplate(buttonString);
     let picker;
-    let richText = new RichText(picker, emojiButton);
+    let richText = new RichText(picker, emojiButton, this.formTarget);
     picker = createPopup(
       {
         rootElement: this.pickerContainerTarget
@@ -44,7 +44,7 @@ export default class extends Controller {
   }
 
   emojiButtonString() {
-    const buttonString = `<button class="trix-button" id="emoji-picker" data-trix-action="popupPicker" tabindex="1">😀</button>`;
+    const buttonString = `<button class="trix-button" id="emoji-picker-${this.index}" data-trix-action="popupPicker" tabindex="1">😀</button>`;
     return buttonString;
   }
 }
