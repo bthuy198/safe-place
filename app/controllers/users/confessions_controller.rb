@@ -19,7 +19,6 @@ module Users
     def create
       @confession = Confession.new(confession_params)
       @confession.user_id = current_user.id
-      @confession.tag = params[:confession][:tag].split(" ")
       if @confession.save
         respond_to do |format|
           format.turbo_stream { flash.now[:notice] = 'Confession was successfully created.' }
@@ -38,7 +37,7 @@ module Users
     end
 
     def update
-      if @confession.update(confession_params.merge(tag: params[:confession][:tag].split(" ")))
+      if @confession.update(confession_params)
         respond_to do |format|
           format.turbo_stream { flash.now[:notice] = 'Confession was successfully updated.' }
           format.json { render :show, status: :ok, location: @confession }
@@ -85,6 +84,7 @@ module Users
     end
 
     def confession_params
+      params[:confession][:tag] = params[:confession][:tag].split(" ")
       params.require(:confession).permit({tag: []}, :content, :anonymous, :user_id)
     end
 
