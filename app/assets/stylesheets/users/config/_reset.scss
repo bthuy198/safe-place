@@ -112,25 +112,7 @@ turbo-frame#new_confession_frame {
           border-color: var(--color-pink);
         }
       }
-      form.confession_form {
-        label {
-          color: var(--color-primary);
-        }
-        .trix-button-group--file-tools {
-          display: none;
-        }
-        trix-editor {
-          height: 40vh;
-        }
-        input {
-          margin-top: 10px;
-          &.custom_btn {
-            color: var(--color-primary);
-            border: var(--border);
-            border-radius: var(--border-radius);
-          }
-        }
-      }
+
     }
   }
 }
@@ -141,12 +123,53 @@ turbo-frame#board {
   padding: 10px;
   div {
     &.confessions_board {
+      h1, h4 {
+        font-family: var(--font-family-sans);
+        color: var(--color-primary);
+        font-style: italic;
+      }
       padding: 10px;
       border: var(--border);
       border-radius: var(--border-radius);
-      height: 80vh;
+      height: 50vh;
       overflow: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
       word-wrap: break-word;
+      h5 {
+        color: var(--color-primary);
+        font-weight: bold;
+      }
+      .time_ago {
+        font-size: var(--font-size-xs);
+        font-style: italic;
+        color: var(--color-gray);
+      }
+      .custom_tag {
+        margin-bottom: 10px;
+        font-style: italic;
+      }
+      .card {
+        margin-bottom: 10px;
+        height: 35vh;
+        .custom_button {
+          border-radius: 0;
+          &:hover,
+          &:focus,
+          &:active {
+            color: var(--color-primary);
+          }
+        }
+      }
+      .confesssion_show {
+        height: 30vh;
+      }
+      .confession_show_group {
+        width: 100%;
+      }
     }
   }
 }
@@ -278,5 +301,35 @@ footer {
     div {
       width: 130px;
     }
+  }
+}
+
+form {
+  .pickerContainer {
+    position: relative;
+    z-index: 9998;
+  }
+  .trix-button-group--file-tools {
+    display: none;
+  }
+  trix-editor {
+    height: 40vh;
+  }
+}
+
+form.confession_form {
+  label {
+    color: var(--color-primary);
+  }
+  input.form {
+    margin-top: 10px;
+    &.custom_btn {
+      color: var(--color-primary);
+      border: var(--border);
+      border-radius: var(--border-radius);
+    }
+  }
+  .form-switch {
+    line-height: 2.5;
   }
 }

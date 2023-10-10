@@ -47,7 +47,7 @@ Rails.application.routes.draw do
     resource :user_infos
     resources :podcasts
     resources :podcast_albums
-    resources :confessions
+    resources :confessions, except: %i[edit]
   end
 
 
