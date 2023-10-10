@@ -11,7 +11,7 @@ module Users
     end
 
     def show
-      @podcasts = Podcast.where(podcast_album_id: @podcast_album.id).order(episode_number: :asc)
+      @podcasts = @podcast_album.podcasts.order(:episode_number)
     end
 
     def edit

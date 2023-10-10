@@ -1,26 +1,32 @@
 <%= turbo_frame_tag "main" do %>
-    <div class="container-fluid" >
+    <div class="container-fluid index_of_album">
         <div class="card">
             <div class="card-body">
                 <div class="d-flex flex-column justify-content-between">
                     <div class="d-flex flex-column">
-                        <div class="d-flex justify-content-between">
-                            <h2>Podcast</h2>
-                            <h2>Show all</h2>
+                        <div class="d-flex justify-content-between text_podcast">
+                            <h2 class="album_title">Album</h2>
+                            <h2 class="btn btn-link button_show_all">Show all</h2>
                         </div>
-                        <div class="row justify-content-center">
+                        <div class="container-scroll">
+                            <div class="d-flex justify-content-between">
                                 <% @albums.each_with_index do |album, index| %>
                                     <%= render "users/album_homepages/album", album: album, index: index%>
                                 <% end %> 
+                            </div>
                         </div>
                     </div>
-                    <div class="d-flex flex-column">
-                        <div class="d-flex justify-content-between">
-                            <h2>Podcast recnet</h2>
-                            <h2>Show all</h2>
+                    <div class="d-flex flex-column podcast_album_recent">
+                        <div class="d-flex justify-content-between text_podcast_recent">
+                            <h2 class="album_title ">Recently Posted</h2>
+                            <h2 class="btn btn-link button_show_all">Show all</h2>
                         </div>
-                        <div>
-                            BBBBB
+                        <div class="container-scroll">
+                            <div class="d-flex justify-content-between">
+                                <% @recent_albums.each_with_index do |album, index| %>  
+                                    <%= render "users/album_homepages/album", album: album, index: (index + 1)%>
+                                <% end %> 
+                            </div>
                         </div>
                     </div>
                 </div>
