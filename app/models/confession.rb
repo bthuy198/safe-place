@@ -27,4 +27,6 @@ class Confession < ApplicationRecord
   has_many :comments, as: :commentable, dependent: :destroy
 
   validates :content, presence: true
+
+  serialize :tag, Array
 end

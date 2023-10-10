@@ -1,17 +1,18 @@
-<div id="<%= dom_id confession %>">
-  <p>
-    <strong>Tag:</strong>
-    <%= confession.tag %>
-  </p>
-
-  <p>
-    <strong>Anonymous:</strong>
-    <%= confession.anonymous %>
-  </p>
-
-  <p>
-    <strong>Content:</strong>
-    <%= confession.content.body %>
-  </p>
-
+<div class="confesssion_show" id="<%= dom_id confession %>">
+  <% if confession.anonymous %>
+    <h5>
+      Anonymous Post
+    </h5>
+  <% else %>
+    <h5>
+      <%= confession.user.user_name %>
+    </h5>
+  <% end %>
+  <p class="time_ago"><%= time_ago_in_words(confession.created_at) %> ago</p>
+  <br>
+  <%= confession.content.body %>
+  <br>
+  <div class="text-center custom_tag">
+    <%= confession.tag.map {|t| "##{t}"}.join(" ") %>
+  </div>
 </div>

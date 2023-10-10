@@ -1,0 +1,4 @@
+<%= turbo_stream.update "confessions_board" do %>
+    <%= render "users/confessions/confessions_index", confessions: @confessions %>
+<% end %>
+<%= render_turbo_stream_flash_messages %>
