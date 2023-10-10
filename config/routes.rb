@@ -33,6 +33,7 @@ Rails.application.routes.draw do
 
   namespace :admins do
     get 'dashboard', to: 'pages#dashboard'
+    resources :podcast_albums
     resources :counselors
     resources :users do
       member do
