@@ -8,6 +8,10 @@ module Users
     before_action :authenticate_user!, only: %i[new create update destroy]
 
     def index
+      respond_to do |format|
+        format.html
+        format.turbo_stream
+      end
     end
 
     def show; end
@@ -19,7 +23,6 @@ module Users
     def create
       @confession = Confession.new(confession_params)
       @confession.user_id = current_user.id
-      @confession.tag = params[:confession][:tag].split(" ")
       if @confession.save
         respond_to do |format|
           format.turbo_stream { flash.now[:notice] = 'Confession was successfully created.' }
@@ -38,7 +41,7 @@ module Users
     end
 
     def update
-      if @confession.update(confession_params.merge(tag: params[:confession][:tag].split(" ")))
+      if @confession.update(confession_params)
         respond_to do |format|
           format.turbo_stream { flash.now[:notice] = 'Confession was successfully updated.' }
           format.json { render :show, status: :ok, location: @confession }
@@ -68,10 +71,19 @@ module Users
       Turbo::StreamsChannel.broadcast_remove_to("confessions_index_channel", target: helpers.dom_id(@confession))
     end
 
+    def like
+      @confession = Confession.find(params[:id])
+      LikeService.new(current_user, @confession).like
+      redirect_to @confession, notice: 'Confession liked/unliked successfully.'
+    end
+
     private
 
     def set_confessions
-      @confessions = Confession.order(created_at: :desc)
+      @confessions = Confession.order(created_at: :desc).page(params[:page]).per(3)
+      @current_page = @confessions.current_page
+      @total_pages = @confessions.total_pages
+      @has_next_page = @current_page < @total_pages
     end
 
     def set_confession
@@ -85,6 +97,7 @@ module Users
     end
 
     def confession_params
+      params[:confession][:tag] = params[:confession][:tag].split(" ")
       params.require(:confession).permit({tag: []}, :content, :anonymous, :user_id)
     end
 

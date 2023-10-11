@@ -1,5 +1,10 @@
 <%= turbo_frame_tag "board" do %>
   <div class="confessions_board" id="confessions_board">
-    <%= render "users/confessions/confessions_index", confessions: @confessions %>
+    <div id="confessions">
+      <%= render "users/confessions/confessions_index", confessions: @confessions %>
+    </div>
+    <% if @has_next_page %>
+      <%= turbo_frame_tag "confessions_pagination", src: users_confessions_path(page: @current_page + 1, format: :turbo_stream), loading: "lazy" %>
+    <% end %>
   </div>
 <% end %>
