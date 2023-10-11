@@ -166,6 +166,11 @@ turbo-frame#board {
       }
       .confesssion_show {
         height: 30vh;
+        display: flex;
+        flex-direction: column;
+        .confession_body {
+          flex-grow: 1;
+        }
       }
       .confession_show_group {
         width: 100%;

@@ -3,7 +3,7 @@
 module Users
   class ConfessionsController < UsersLayoutController
     before_action :set_confessions, only: %i[index destroy]
-    before_action :set_confession, only: %i[show update destroy]
+    before_action :set_confession, only: %i[like show update destroy]
     before_action :authenticate_flash, only: %i[update destroy]
     before_action :authenticate_user!, only: %i[new create update destroy]
 
@@ -72,9 +72,12 @@ module Users
     end
 
     def like
-      @confession = Confession.find(params[:id])
       LikeService.new(current_user, @confession).like
-      redirect_to @confession, notice: 'Confession liked/unliked successfully.'
+      respond_to do |format|
+        format.turbo_stream do
+          flash.now[:notice] = 'Confession liked/unliked successfully.'
+        end
+      end
     end
 
     private
