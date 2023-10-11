@@ -1,12 +1,6 @@
 $(document).ready(function () {
-  $(".bookmark").on("click", function () {
-    console.log("Bookmark clicked");
-    const albumId = $(this).data("album-id");
-    const url = "/users/podcast_albums/" + albumId + "/toggle_bookmark";
-
-    const bookmarkIcon = $(this);
-
-    bookmarkIcon.toggleClass("bookmark-clicked");
+  function toggleIcon(iconElement, url, cssClass) {
+    iconElement.toggleClass("bookmark-clicked");
 
     $.ajax({
       url: url,
@@ -14,19 +8,27 @@ $(document).ready(function () {
       headers: {
         "X-CSRF-Token": $('meta[name="csrf-token"]').attr("content"),
       },
-      success: function (data) {
-        if (data.bookmarked) {
-          bookmarkIcon.attr("src", " /assets/bookmark_icon_red.svg");
-        } else {
-          bookmarkIcon.attr("src", " /assets/bookmark_icon.svg");
-        }
-        setTimeout(function () {
-          bookmarkIcon.removeClass('bookmark-clicked');
-        }, 300); 
-      },
-      error: function (error) {
-        console.error("Lỗi khi gửi yêu cầu: ", error);
-      },
     });
+
+    if (cssClass === "heart") {
+      iconElement.toggleClass("fill-red", !iconElement.hasClass("stroke-red"));
+    }
+
+    iconElement.toggleClass("stroke-red");
+
+    setTimeout(function () {
+      iconElement.removeClass("bookmark-clicked");
+    }, 300);
+  }
+
+  $(".bookmark").on("click", function () {
+    const url =
+      "/users/podcast_albums/" + $(this).data("album-id") + "/toggle_bookmark";
+    toggleIcon($(this), url, "bookmark");
+  });
+
+  $(".heart").on("click", function () {
+    const url = "/users/podcast_albums/" + $(this).data("album-id") + "/like";
+    toggleIcon($(this), url, "heart");
   });
 });

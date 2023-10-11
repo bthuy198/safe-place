@@ -55,13 +55,12 @@ module Users
 
     def toggle_bookmark
       @podcast_album = PodcastAlbum.find_by(id: params[:id])
-      service = Users::BookmarkService.new(current_user, @podcast_album)
-      service.call
-      render json: { bookmarked: service.exists? }
+      Users::BookmarkService.call(current_user, @podcast_album)
     end
 
     def like
-      @podcast_album = PodcastAlbum.find(params[:podcast_album_id])
+      id = params[:id] || params[:podcast_album_id]
+      @podcast_album = PodcastAlbum.find_by(id:)
       LikeService.new(current_user, @podcast_album).like
     end
 

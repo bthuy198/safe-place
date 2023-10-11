@@ -70,12 +70,13 @@
 }
 
 .album_showpage {
+  border: 0;
   .bookmark-clicked {
     transform: scale(1.2);
-    transition: transform 0.3s ease-in-out; 
+    transition: transform 0.3s ease-in-out;
   }
   .heart {
-    margin-right: 1rem;
+    margin-right: 1.5rem;
     width: 40px;
     cursor: pointer;
   }
@@ -83,13 +84,43 @@
     width: 35px;
     cursor: pointer;
   }
+  .stroke-red {
+    path {
+      stroke: #ff5a4c;
+    }
+  }
+
+  .text_opacity_50 {
+    opacity: 50%;
+    color: #1a1a1a;
+  }
+
+  .fill-red {
+    path {
+      fill: #ff5a4c;
+    }
+  }
+
+  p {
+    margin-bottom: 0.5rem;
+  }
+
   .play {
     width: 60px;
     margin-bottom: 1rem;
     margin-right: 1rem;
   }
+  .album_image_col {
+    min-width: 220px;
+    padding-right: 6px;
+  }
 
   .album_play {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    flex-direction: column;
+    justify-content: space-evenly;
     padding-right: 2rem;
     h3 {
       color: #ffffff;
@@ -98,13 +129,24 @@
     }
   }
   .card-header {
+    border: 0;
+    border-radius: 0;
     background-color: #1f7564;
   }
-  border-top: 0px;
+
+  .card-body {
+    border: 1px solid #00000021;
+    border-radius: 0 0 10px 10px;
+    border-top: 0px;
+  }
   .album_info {
     p {
       color: rgba(255, 255, 255, 0.616);
       margin-bottom: 0.5rem;
     }
+  }
+
+  .table-responsive {
+    max-height: 500px;
   }
 }
