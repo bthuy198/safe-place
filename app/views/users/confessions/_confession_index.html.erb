@@ -16,8 +16,12 @@
     <%= confession.tag.map {|t| "##{t}"}.join(" ") %>
   </div>
   <div class="btn-group" role="group" aria-label="confession_group">
-    <%= link_to like_users_confession_path(confession), class: "btn btn-light custom_button", type: "button", id: "#{dom_id(confession)}_like", data:{turbo_method: :post} do %>
-      <%= render "users/shared/like", user: user, item: confession %>
+    <% if user %>
+      <%= link_to like_users_confession_path(confession), class: "btn btn-light custom_button", type: "button", id: "#{dom_id(confession)}_like", data:{turbo_method: :post} do %>
+        <%= render "users/shared/like", user: user, item: confession %>
+      <% end %>
+    <% else %>
+      <button type="button" class="btn btn-light custom_button"><i class="fa-regular fa-heart"></i></button>
     <% end %>
     <%= link_to "<i class='fa-regular fa-message'></i>".html_safe, users_confession_path(confession), class: "btn btn-light custom_button", type: "button" %>
     <button type="button" class="btn btn-light custom_button"><i class="fa-solid fa-envelope-circle-check"></i></button>
