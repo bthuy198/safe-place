@@ -28,7 +28,7 @@ module Users
           format.turbo_stream { flash.now[:notice] = 'Confession was successfully created.' }
           format.json { render :show, status: :created, location: @confession }
         end
-        Turbo::StreamsChannel.broadcast_prepend_later_to("confessions_index_channel", target: "confessions", partial: "users/confessions/confession_index", locals: { confession: @confession })
+        Turbo::StreamsChannel.broadcast_prepend_later_to("confessions_index_channel", target: "confessions", partial: "users/confessions/confession_index", locals: { user: current_user, confession: @confession })
       else
         respond_to do |format|
           format.turbo_stream do
@@ -46,7 +46,7 @@ module Users
           format.turbo_stream { flash.now[:notice] = 'Confession was successfully updated.' }
           format.json { render :show, status: :ok, location: @confession }
         end
-        Turbo::StreamsChannel.broadcast_replace_later_to("confessions_index_channel", target: helpers.dom_id(@confession), partial: "users/confessions/confession_index", locals: { confession: @confession })
+        Turbo::StreamsChannel.broadcast_replace_later_to("confessions_index_channel", target: helpers.dom_id(@confession), partial: "users/confessions/confession_index", locals: { user: current_user, confession: @confession })
         Turbo::StreamsChannel.broadcast_update_later_to("confessions_show_channel", target: "#{helpers.dom_id(@confession)}_show", partial: "users/confessions/confession", locals: { confession: @confession })
       else
         respond_to do |format|
