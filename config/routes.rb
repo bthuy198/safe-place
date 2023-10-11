@@ -40,10 +40,10 @@ Rails.application.routes.draw do
         patch 'toggle_anonymous', to: 'users#toggle_anonymous'
       end
     end
-    resources :rooms do 
-      member do 
-        patch 'change_status' 
-      end 
+    resources :rooms do
+      member do
+        patch 'change_status'
+      end
     end
   end
 
@@ -54,7 +54,9 @@ Rails.application.routes.draw do
       post 'like'
     end
     resources :confessions, except: %i[edit] do
-      post 'like'
+      member do
+        post 'like'
+      end
     end
     resources :podcast_albums
     resources :confessions, except: %i[edit]
@@ -65,6 +67,7 @@ Rails.application.routes.draw do
         get 'room_chat'
       end
     end
+
   end
 
 
