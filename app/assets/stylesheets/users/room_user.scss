@@ -1,4 +1,3 @@
-
 .item_room_join{
     display: flex;
     justify-content: center;
@@ -58,5 +57,9 @@
 .join_room_button:disabled{
   background-color: #328879;
   border-color: #328879;
+}
+
+.out_room_page h1{
+  color: #1F7564;
 }
 
