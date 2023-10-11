@@ -1,0 +1,58 @@
+<h1>rooms</h1>
+<div>
+<div class="header_room_join">
+    <div class="card w-80 mb-3 mt-3">
+  <div class="card-body ">
+    <%# <h5 class="card-title">Search room</h5> %>
+    <%= search_form_for @q, url:users_rooms_path, class: 'd-flex justify-content-center' do |f| %>
+      <div class="input-group mb-3 input_search_room">
+        <%= f.search_field :name_cont, class: 'form-control me-2', placeholder: 'Search room name' %>
+        <%= f.submit 'Search', class: 'btn btn-outline-success ', type: 'submit' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+</div>
+<div class="content_room_join d-flex justify-content-center">
+    <div id="room_menu_join" class=" menu_join">
+        <div class="mini_menu d-grid">
+            <% @rooms.each do |room| %>
+             <div class="item_room_join">
+                <div class="item_join ">
+                    
+                    <label for=""><%= room.name%></label>
+
+                    <%if room.user_id.nil? %>
+
+                    <button class="btn btn-primary btn_join join_room_button" data-room-id="<%= room.id %>">Join</button>
+                    
+                    <%# <button id="" class="btn btn-primary btn_join" >
+                        Join
+                    </button> %>
+
+                    <% else %>
+
+                    <button class="btn btn-primary btn_join" disabled>
+                        Join
+                    </button>
+
+                    <% end %>
+                    
+                </div>
+                
+             </div>
+            
+            <% end %>
+
+        </div>
+    </div>
+</div>
+<div>
+    
+<%# </div>
+    <div class="paginate_room_join" id="paginate-element">
+    <%= paginate @rooms, theme: 'bootstrap-5' %>
+    <%# </div> 
+</div> %> 
+
+<%= javascript_include_tag 'users/rooms/join_room' %>
