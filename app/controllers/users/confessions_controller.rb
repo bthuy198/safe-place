@@ -2,6 +2,7 @@
 
 module Users
   class ConfessionsController < UsersLayoutController
+    before_action :check_url
     before_action :set_confessions, only: %i[index destroy]
     before_action :set_confession, only: %i[like show update destroy]
     before_action :authenticate_flash, only: %i[update destroy]
@@ -107,6 +108,12 @@ module Users
     def authenticate_flash
       unless user_signed_in?
         render turbo_stream: turbo_stream.replace( "flash", partial: "shared/flash", locals: { flash: {"alert" => "Please sign in to continue"} })
+      end
+    end
+
+    def check_url
+      if request.original_url.include?('confessions') && request.referer.nil?
+        redirect_to root_path
       end
     end
   end
