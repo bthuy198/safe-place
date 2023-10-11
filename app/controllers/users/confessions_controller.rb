@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Users
+  # class Confessions Controller
   class ConfessionsController < UsersLayoutController
     before_action :check_url
     before_action :set_confessions, only: %i[index destroy]
@@ -29,11 +30,12 @@ module Users
           format.turbo_stream { flash.now[:notice] = 'Confession was successfully created.' }
           format.json { render :show, status: :created, location: @confession }
         end
-        Turbo::StreamsChannel.broadcast_prepend_later_to("confessions_index_channel", target: "confessions", partial: "users/confessions/confession_index", locals: { user: current_user, confession: @confession })
+        Turbo::StreamsChannel.broadcast_prepend_later_to('confessions_index_channel', target: 'confessions',
+                                                                                      partial: 'users/confessions/confession_index', locals: { user: current_user, confession: @confession })
       else
         respond_to do |format|
           format.turbo_stream do
-            flash.now[:alert] = "<ul><li>#{@confession.errors.full_messages.join("</li><li>")}</li><ul>".html_safe
+            flash.now[:alert] = "<ul><li>#{@confession.errors.full_messages.join('</li><li>')}</li><ul>".html_safe
             render status: :unprocessable_entity
           end
           format.json { render json: @confession.errors, status: :unprocessable_entity }
@@ -47,12 +49,14 @@ module Users
           format.turbo_stream { flash.now[:notice] = 'Confession was successfully updated.' }
           format.json { render :show, status: :ok, location: @confession }
         end
-        Turbo::StreamsChannel.broadcast_replace_later_to("confessions_index_channel", target: helpers.dom_id(@confession), partial: "users/confessions/confession_index", locals: { user: current_user, confession: @confession })
-        Turbo::StreamsChannel.broadcast_update_later_to("confessions_show_channel", target: "#{helpers.dom_id(@confession)}_show", partial: "users/confessions/confession", locals: { confession: @confession })
+        Turbo::StreamsChannel.broadcast_replace_later_to('confessions_index_channel',
+                                                         target: helpers.dom_id(@confession), partial: 'users/confessions/confession_index', locals: { user: current_user, confession: @confession })
+        Turbo::StreamsChannel.broadcast_update_later_to('confessions_show_channel',
+                                                        target: "#{helpers.dom_id(@confession)}_show", partial: 'users/confessions/confession', locals: { confession: @confession })
       else
         respond_to do |format|
           format.turbo_stream do
-            flash.now[:alert] = "<ul><li>#{@confession.errors.full_messages.join("</li><li>")}</li><ul>".html_safe
+            flash.now[:alert] = "<ul><li>#{@confession.errors.full_messages.join('</li><li>')}</li><ul>".html_safe
             render status: :unprocessable_entity
           end
           format.json { render json: @confession.errors, status: :unprocessable_entity }
@@ -69,7 +73,7 @@ module Users
         end
         format.json { head :no_content }
       end
-      Turbo::StreamsChannel.broadcast_remove_to("confessions_index_channel", target: helpers.dom_id(@confession))
+      Turbo::StreamsChannel.broadcast_remove_to('confessions_index_channel', target: helpers.dom_id(@confession))
     end
 
     def like
@@ -92,29 +96,30 @@ module Users
 
     def set_confession
       @confession = Confession.find_by(id: params[:id])
-      if @confession.nil?
-        respond_to do |format|
-          format.html { redirect_to root_path, alert: 'Confession not found.' }
-          format.json { head :no_content }
-        end
+      return unless @confession.nil?
+
+      respond_to do |format|
+        format.html { redirect_to root_path, alert: 'Confession not found.' }
+        format.json { head :no_content }
       end
     end
 
     def confession_params
-      params[:confession][:tag] = params[:confession][:tag].split(" ")
-      params.require(:confession).permit({tag: []}, :content, :anonymous, :user_id)
+      params[:confession][:tag] = params[:confession][:tag].split(' ')
+      params.require(:confession).permit({ tag: [] }, :content, :anonymous, :user_id)
     end
 
     def authenticate_flash
-      unless user_signed_in?
-        render turbo_stream: turbo_stream.replace( "flash", partial: "shared/flash", locals: { flash: {"alert" => "Please sign in to continue"} })
-      end
+      return if user_signed_in?
+
+      render turbo_stream: turbo_stream.replace('flash', partial: 'shared/flash',
+                                                         locals: { flash: { 'alert' => 'Please sign in to continue' } })
     end
 
     def check_url
-      if request.original_url.include?('confessions') && request.referer.nil?
-        redirect_to root_path
-      end
+      return unless request.original_url.include?('confessions') && request.referer.nil?
+
+      redirect_to root_path
     end
   end
 end

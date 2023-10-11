@@ -40,7 +40,7 @@ module Admins
 
     def change_status
       @room = Room.find(params[:id])
-      if @room.status.nil? or @room.status == 'disable'
+      if @room.status.nil? || (@room.status == 'disable')
         @room.update(status: 'enable')
         flash[:success] = 'Room status changed successfully.'
       else
