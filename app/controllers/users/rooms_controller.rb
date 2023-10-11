@@ -14,8 +14,11 @@ module Users
       @room = Room.find(params[:id])
 
       if @room.update(user_id: current_user.id)
-        render json: { message: 'success', status: 200 }, status: :ok
-      # redirect_to in_room_users_room_path(@room)
+        redirect_to room_chat_users_room_path(@room)
+        Turbo::StreamsChannel.broadcast_replace_to('room',
+                                                   partial: 'users/rooms/partials/disable_room_chat',
+                                                   locals: { room: @room },
+                                                   target: "button_join_#{@room.id}")
       else
         render json: { message: 'Failed to join room.' }, status: :unprocessable_entity
       end
@@ -27,7 +30,10 @@ module Users
 
       if @room.update(user_id: nil)
         render json: { message: 'success', status: 200 }, status: :ok
-
+        Turbo::StreamsChannel.broadcast_replace_to('room',
+                                                   partial: 'users/rooms/partials/room_chat',
+                                                   locals: { room: @room },
+                                                   target: "button_join_#{@room.id}")
       else
         render json: { error: 'Failed to join room.' }, status: :unprocessable_entity
       end
