@@ -49,16 +49,30 @@ Rails.application.routes.draw do
 
   namespace 'users' do
     resource :user_infos
-    resources :podcasts
-    resources :podcast_albums do
-      post 'like'
+    resources :podcasts do
+      member do
+        post 'toggle_bookmark'
+        patch'set_duration'
+      end
     end
+    resources :podcast_albums do
+      member do
+        post 'toggle_bookmark'
+        post 'like'
+      end
+    end
+    resources :confessions do
+      member do
+        post 'toggle_bookmark'
+        post 'like'
+      end
+    end
+    resources :album_homepages, only: [:index, :show]
     resources :confessions, except: %i[edit] do
       member do
         post 'like'
       end
     end
-    resources :podcast_albums
     resources :rooms, only: [:index] do
       member do
         patch 'join_room'

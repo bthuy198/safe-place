@@ -21,6 +21,10 @@ default: &default
 
   # socket:  /var/run/mysqld/mysqld.sock
 
+  # username: root
+  # password:
+  # socket: /tmp/mysql.sock
+
 development:
   <<: *default
   database: rails_7_safe_place_development

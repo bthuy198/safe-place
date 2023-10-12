@@ -1,18 +1,14 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom color_header">
     <div class="container-fluid">
-        <button class="btn" id="clickopen_nav" onclick="CloseMenu()" >
+        <button class="btn " onclick="CloseMenu()" >
             <%# <i class="fa-solid fa-ellipsis"></i> %>
-            <span class="navbar-toggler-icon">
-            </span>
+            <span class="navbar-toggler-icon"></span>
         </button>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-                <li class="nav-item active logout_admin">
-                    <% if current_admin %>
-                        <%= current_admin.email%>
-                    <% end %>
+                <li class="nav-item active"><a class="nav-link" href="#!">Home</a>
                 </li>
                 <li class="nav-item logout_admin">
                     <% if current_admin %>
@@ -27,7 +23,6 @@
 
                     <% end %>
                 </li>
-
             </ul>
         </div>
     </div>

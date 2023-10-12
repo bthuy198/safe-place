@@ -11,7 +11,7 @@ module Users
     end
 
     def show
-      @podcasts = Podcast.where(podcast_album_id: @podcast_album.id).order(episode_number: :asc)
+      @podcasts = @podcast_album.podcasts.order(:episode_number)
     end
 
     def edit
@@ -53,8 +53,14 @@ module Users
       end
     end
 
+    def toggle_bookmark
+      @podcast_album = PodcastAlbum.find_by(id: params[:id])
+      Users::BookmarkService.call(current_user, @podcast_album)
+    end
+
     def like
-      @podcast_album = PodcastAlbum.find(params[:podcast_album_id])
+      id = params[:id] || params[:podcast_album_id]
+      @podcast_album = PodcastAlbum.find_by(id:)
       LikeService.new(current_user, @podcast_album).like
     end
 
