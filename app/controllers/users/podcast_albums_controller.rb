@@ -3,7 +3,7 @@
 module Users
   # class UsersPagesController
   class PodcastAlbumsController < UsersLayoutController
-    before_action :set_podcast_album, only: %i[ show edit update destroy ]
+    before_action :set_podcast_album, only: %i[show edit update destroy]
 
     def new
       @podcast_album = PodcastAlbum.new
@@ -35,7 +35,7 @@ module Users
       respond_to do |format|
         if @podcast_album.update(podcast_album_params)
           format.turbo_stream
-          format.html { redirect_to root_url, notice: "Album was successfully updated." }
+          format.html { redirect_to root_url, notice: 'Album was successfully updated.' }
           format.json { render :show, status: :ok, location: @podcast_album }
         else
           format.html { render :edit, status: :unprocessable_entity }
@@ -46,15 +46,21 @@ module Users
 
     def destroy
       @podcast_album.destroy
-  
+
       respond_to do |format|
-        format.html { redirect_to home_path, notice: "Album was successfully destroyed." }
+        format.html { redirect_to home_path, notice: 'Album was successfully destroyed.' }
         format.json { head :no_content }
       end
     end
 
+    def toggle_bookmark
+      @podcast_album = PodcastAlbum.find_by(id: params[:id])
+      Users::BookmarkService.call(current_user, @podcast_album)
+    end
+
     def like
-      @podcast_album = PodcastAlbum.find(params[:podcast_album_id])
+      id = params[:id] || params[:podcast_album_id]
+      @podcast_album = PodcastAlbum.find_by(id:)
       LikeService.new(current_user, @podcast_album).like
     end
 

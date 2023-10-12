@@ -40,32 +40,49 @@ Rails.application.routes.draw do
         patch 'toggle_anonymous', to: 'users#toggle_anonymous'
       end
     end
-    resources :rooms do 
-      member do 
-        patch 'change_status' 
-      end 
+    resources :rooms do
+      member do
+        patch 'change_status'
+      end
     end
   end
 
   namespace 'users' do
     resource :user_infos
-    resources :podcasts
+    resources :podcasts do
+      member do
+        post 'toggle_bookmark'
+        patch'set_duration'
+      end
+    end
     resources :podcast_albums do
-      post 'like'
+      member do
+        post 'toggle_bookmark'
+        post 'like'
+      end
     end
-    resources :confessions, except: %i[edit] do
-      post 'like'
+    resources :confessions do
+      member do
+        post 'toggle_bookmark'
+        post 'like'
+      end
     end
-    resources :podcast_albums
-
-    resources :confessions, except: %i[edit]
     resources :album_homepages, only: [:index, :show]
-
+    resources :confessions, except: %i[edit] do
+      member do
+        post 'like'
+      end
+    end
+    resources :rooms, only: [:index] do
+      member do
+        patch 'join_room'
+        patch 'out_room'
+        get 'room_chat'
+      end
+    end
   end
 
-
-
-
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

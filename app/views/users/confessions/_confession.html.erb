@@ -10,9 +10,11 @@
   <% end %>
   <p class="time_ago"><%= time_ago_in_words(confession.created_at) %> ago</p>
   <br>
-  <%= confession.content.body %>
+  <div class="confession_body">
+    <%= confession.content.body %>
+  </div>
   <br>
   <div class="text-center custom_tag">
-    <%= confession.tag.map {|t| "##{t}"}.join(" ") %>
+    <%= confession.tag.map {|t| "##{t}"}.join(" ") if !confession.tag.empty? %>
   </div>
 </div>

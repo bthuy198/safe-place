@@ -7,6 +7,7 @@
 #  id               :bigint           not null, primary key
 #  audio            :string(255)      not null
 #  author_name      :string(255)
+#  duration         :decimal(10, )
 #  episode_number   :integer
 #  image            :string(255)
 #  name             :string(255)      not null
@@ -30,5 +31,4 @@ class Podcast < ApplicationRecord
 
   mount_uploader :audio, AudioUploader
   mount_uploader :image, ImageUploader
-
 end
