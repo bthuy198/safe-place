@@ -10,26 +10,22 @@
             <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
                 <li class="nav-item active"><a class="nav-link" href="#!">Home</a>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="#!">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                    
+                <li class="nav-item logout_admin">
+                    <% if current_admin %>
+                    <%# <i class="bi bi-box-arrow-in-right"></i> %>
+                    <button>
+                        
+                        <%= link_to destroy_admin_session_path, method: :delete do%>
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        <% end %>
+                        
+                    </button>
+
+                    <% end %>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
 
-<script>
-    function CloseMenu(){
-        let menu = document.getElementById("sidebar-wrapper")
-        if (menu) {
-            let displayValue = window.getComputedStyle(menu).getPropertyValue("display");
-            if (displayValue != 'none')
-            {
-                menu.style.display = "none";
-            }
-            else menu.style.display = "block";
-        }
-    }
-</script>
+<%= javascript_include_tag 'admins/close_menu' %>
