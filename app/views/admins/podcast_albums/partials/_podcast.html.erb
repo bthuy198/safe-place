@@ -1,0 +1,56 @@
+<div class="modal-header">
+  <h5 class="modal-title text_green">Update Podcast Album</h5>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+</div>
+<div class="alert alert-danger" role="alert" style="display:none" id="alert_edit">
+</div>
+<div class="modal-body">
+  <table class = 'table mx-auto table-condensed text-center align-middle text-green'>
+    <thead>
+    <tr class="table-light">
+      <th scope="col">ID</th>
+      <th scope="col">Avatar</th>
+      <th scope="col">Podcast Name</th>
+      <th scope="col" colspan="2">Action</th>
+    </tr>
+    </thead>
+    <tbody id="podcast_table">
+    <% if podcast.length == 0 %>
+    <tr>
+      <td class="col" colspan="5">
+      Nothing to show here
+      </td>
+    </tr>
+    <% else %>
+    <% podcast.each do |pod| %>
+      <tr id="podcast-<%= pod.id %>">
+        <td><%= pod.id %></td>
+        <% if pod.image? %>
+          <td><%= image_tag pod.image.url, alt: "Podcast Avatar", class: "",style: "width: 80px; height: 80px; border-radius: 50%" %></td>
+        <% else %>
+          <td><%= image_tag 'podcast.jpg', alt: "Album Avatar", class: "",style: " height: 80px; border-radius: 50%" %></td>
+        <% end %>
+        <td><%= pod.name %></td>
+        <td>edit</td>
+        <td>delete</td>
+        <!--        <td class="text-end"><%#= link_to "Edit", edit_admins_podcast_album_path(album), remote: true, class: 'button_hover btn btn-primary bg_green border_green update_class button_width' %></td>-->
+        <!--        <td class="text-start"><%#= link_to "Destroy", admins_podcast_album_path(album), data: { turbo_method: :delete, turbo_confirm: "Delete student '#{album.name}'?" }, class: "destroy_class btn btn-danger button_width" %></td>-->
+      </tr>
+    <% end %>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+<% if podcast.length > 0 %>
+<div class="modal-footer">
+  <div class="form-group justify-content-center">
+    <button>Confirm</button>
+    <%#= form.submit "Update Album", class: "btn btn-primary button_border bg_green border_green button_hover"%>
+  </div>
+</div>
+<% end %>
+<style>
+    .button_width{
+        width: 120px;
+    }
+</style>

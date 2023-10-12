@@ -3,8 +3,8 @@
 CarrierWave.configure do |config|
   config.fog_credentials = {
     provider: 'AWS', # required
-    aws_access_key_id: ENV['ACCESS_KEY_ID'], # required unless using use_iam_profile
-    aws_secret_access_key: ENV['SECRET_KEY_ID'], # required unless using use_iam_profile
+    aws_access_key_id: 'AKIAWWSKGBUEUER4AIS5', # required unless using use_iam_profile
+    aws_secret_access_key: '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', # required unless using use_iam_profile
     region: 'ap-southeast-1' # corrected region value
   }
   config.fog_directory  = 'safeplaceproject' # required
