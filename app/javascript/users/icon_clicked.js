@@ -11,7 +11,7 @@ $(document).ready(function () {
     });
 
     if (cssClass === "heart") {
-      iconElement.toggleClass("fill-red", !iconElement.hasClass("stroke-red"));
+      iconElement.toggleClass("fill-red");
     }
 
     iconElement.toggleClass("stroke-red");
@@ -21,14 +21,28 @@ $(document).ready(function () {
     }, 300);
   }
 
-  $(".bookmark").on("click", function () {
+  $(".bookmark_podcast_albums").on("click", function () {
     const url =
       "/users/podcast_albums/" + $(this).data("album-id") + "/toggle_bookmark";
     toggleIcon($(this), url, "bookmark");
   });
 
-  $(".heart").on("click", function () {
+  $(".heart_podcast_albums").on("click", function () {
     const url = "/users/podcast_albums/" + $(this).data("album-id") + "/like";
     toggleIcon($(this), url, "heart");
+  });
+
+  $("#play-pause-icon").click(function () {
+    var icon = $(this);
+
+    if (icon.hasClass("play")) {
+      icon
+        .removeClass("fa-solid fa-circle-play play")
+        .addClass("fa-solid fa-circle-pause pause");
+    } else {
+      icon
+        .removeClass("fa-solid fa-circle-pause pause")
+        .addClass("fa-solid fa-circle-play play");
+    }
   });
 });

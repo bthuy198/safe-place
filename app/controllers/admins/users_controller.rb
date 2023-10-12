@@ -34,10 +34,7 @@ module Admins
         if @user.save
           format.turbo_stream { flash.now[:notice] = "#{@user.type} was successfully created!" }
         else
-          format.turbo_stream do
-            # flash.now[:alert] = "<ul><li>#{@user.errors.full_messages.join('</li><li>')}</li><ul>".html_safe
-            render status: :bad_request
-          end
+          format.turbo_stream { render status: :bad_request }
         end
       end
     end
@@ -45,14 +42,9 @@ module Admins
     def update
       respond_to do |format|
         if @user.update(update_user_params)
-          # format.html do
-          #   redirect_to @user.type == 'User' ? admins_user_url(@user) : admins_counselor_url(@user),
-          #               notice: 'User was successfully updated.'
-          # end
           format.turbo_stream { flash.now[:notice] = "#{@user.type} was successfully created!" }
         else
           format.turbo_stream do
-            # flash.now[:alert] = "<ul><li>#{@user.errors.full_messages.join('</li><li>')}</li><ul>".html_safe
             render status: :bad_request
           end
         end

@@ -75,12 +75,12 @@
     transform: scale(1.2);
     transition: transform 0.3s ease-in-out;
   }
-  .heart {
+  .heart_podcast_albums {
     margin-right: 1.5rem;
     width: 40px;
     cursor: pointer;
   }
-  .bookmark {
+  .bookmark_podcast_albums {
     width: 35px;
     cursor: pointer;
   }
@@ -105,14 +105,16 @@
     margin-bottom: 0.5rem;
   }
 
-  .play {
-    width: 60px;
+  .play::before,.pause::before {
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 60px;
     margin-bottom: 1rem;
     margin-right: 1rem;
   }
   .album_image_col {
     min-width: 220px;
-    padding-right: 6px;
+    padding-right: 1rem;
   }
 
   .album_play {

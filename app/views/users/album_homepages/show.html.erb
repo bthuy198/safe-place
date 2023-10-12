@@ -1,47 +1,48 @@
 <%= turbo_frame_tag "main" do %>
   <div class="card album_showpage">
     <div class="card-header">
-      <div class="row">
-        <div class="col-md-3 album_image_col">
-          <% if @album.image? %>
-            <%= image_tag @album.image_url, alt: "Album Avatar", id: 'album_img', class: "img-fluid album_image", width:"280px", height:"280px" %>
-          <% else %>
-            <%= image_tag "album_default.jpg", alt: "Image", id: 'album_img', class: "img-fluid album_image", width:"280px", height:"280px" %>
-          <% end %>
-        </div>
-        <div class="col-md-6 d-flex flex-column justify-content-end mb-2 p-0 album_info">
-          <p class="fw-lighter"><%= @album.podcasts.count %> sessions </p>
-          <p class="text-white fw-bold fs-2"><%= @album.name %></p>
-          <p class="fw-light fs-4">
-            <% if @album.user.user_info && !@album.user.user_info.profile_name.blank?  %>
-              <%= @album.user.user_info.profile_name %>
+      <div class="d-flex justify-content-between flex-nowrap">
+        <span class="d-flex align-items-center">
+          <span class="album_image_col">
+            <% if @album.image? %>
+              <%= image_tag @album.image_url, alt: "Album Avatar", id: 'album_img', class: "img-fluid album_image", width:"280px", height:"280px" %>
             <% else %>
-              Anonymous 
+              <%= image_tag "album_default.jpg", alt: "Image", id: 'album_img', class: "img-fluid album_image", width:"280px", height:"280px" %>
             <% end %>
-          </p>
-          <div>
-            <% if current_user.likes.exists?(likeable: @album) %>
-              <%= inline_svg_tag('heart_icon.svg', class:"heart stroke-red fill-red", data: { album_id: @album.id } ) %>
-            <% else %>
-              <%= inline_svg_tag('heart_icon.svg', class:"heart", data: { album_id: @album.id } ) %>
-            <% end %>
-            <%# image_tag current_user.bookmarks.exists?(bookmarkable: @album) ? "bookmark_icon_red.svg" : "bookmark_icon.svg", class:"bookmark", data: { album_id: @album.id } %>
-            <% if current_user.bookmarks.exists?(bookmarkable: @album) %>
-              <%= inline_svg_tag('bookmark_icon.svg', class:"bookmark stroke-red", data: { album_id: @album.id } ) %>
-            <% else %>
-              <%= inline_svg_tag('bookmark_icon.svg', class:"bookmark", data: { album_id: @album.id } ) %>
-            <% end %>
-          </div>
-        </div>
-        <div class="col-md-3 album_play">
+          </span>
+          <span class="album_info">
+            <p class="fw-lighter"><%= @album.podcasts.count %> sessions </p>
+            <p class="text-white fw-bold fs-2"><%= @album.name %></p>
+            <p class="fw-light fs-4">
+              <% if @album.user.user_info && !@album.user.user_info.profile_name.blank?  %>
+                <%= @album.user.user_info.profile_name %>
+              <% else %>
+                Anonymous 
+              <% end %>
+            </p>
+            <div>
+              <% if current_user.likes.exists?(likeable: @album) %>
+                <%= inline_svg_tag('heart_icon.svg', class:"heart_podcast_albums stroke-red fill-red", data: { album_id: @album.id } ) %>
+              <% else %>
+                <%= inline_svg_tag('heart_icon.svg', class:"heart_podcast_albums", data: { album_id: @album.id } ) %>
+              <% end %>
+              <% if current_user.bookmarks.exists?(bookmarkable: @album) %>
+                <%= inline_svg_tag('bookmark_icon.svg', class:"bookmark_podcast_albums stroke-red", data: { album_id: @album.id } ) %>
+              <% else %>
+                <%= inline_svg_tag('bookmark_icon.svg', class:"bookmark_podcast_albums", data: { album_id: @album.id } ) %>
+              <% end %>
+            </div>
+          </span>
+        </span>
+        <span class=" album_play">
           <h3 class="text-white mt-4">Recommend</h2>
-          <%= image_tag "play_icon.png", class:"play" %>
-        </div>
+          <i class="fa-solid fa-circle-play play" id="play-pause-icon" ></i>
+        </span>
       </div>
     </div>
     <div class="card-body">
       <% if @podcasts.empty? %>
-        <div>
+        <div>align-self
           <h2 class="text-center fw-bold text-color-green pt-2">Podcast Empty</h2>
         </div>
       <% else %>
@@ -73,7 +74,7 @@
                   <td class="text_opacity_50">
                     <%= podcast.created_at.strftime("%b %d, %Y") %>
                   </td>
-                  <td class="text_opacity_50 time" id="audio_<%= podcast.id %>"><%= audio_tag podcast.audio_url, controls: true, class:"audio-player",hidden:true %></td>
+                  <td class="text_opacity_50 time"><%= formatted_duration(podcast.duration) %></td>
                 </tr>
               <% end %>
             </tbody>
@@ -82,5 +83,5 @@
       <% end %>
     </div>
   </div>
-  <%= javascript_include_tag 'users/bookmark' %>
+  <%= javascript_include_tag 'users/icon_clicked' %>
 <% end %>
