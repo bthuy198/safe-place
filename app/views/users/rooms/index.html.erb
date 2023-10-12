@@ -21,7 +21,6 @@
     </div>
     <div class="col-md-9 custom_main">
       <%= render "users/shared/navbar" %>
-      <%# <div class="centered_container centered_main"> %>
         <div class="container-fluid show_podcast" style="">
           <h1>List rooms</h1>
           <div class="card">
@@ -37,24 +36,22 @@
           <div class="d-flex justify-content-center">
             <div id="room_menu_join" class="all_room_join">
               <div class="mini_menu d-grid">
-                <% @rooms.each do |room| %>
-                  <div class="item_room_join">
-                    <%= turbo_stream_from 'room' %>
-                    <div class="item_join" id="button_join_<%= room.id %>">
-                      <label><%= room.name%></label>
-                      <%if room.user_id.nil? %>
-                        <%= button_to 'Join', join_room_users_room_path(room), method: :patch, class: "btn btn-primary btn_join join_room_button" %>
-                      <% else %>
-                        <%= button_to 'Join', join_room_users_room_path(room), method: :patch, class: "btn btn-primary btn_join join_room_button", disabled: true %>
-                      <% end %>
+                  <% @rooms.each do |room| %>
+                    <div class="item_room_join">
+                      <%= turbo_stream_from 'room' %>
+                      <div class="item_join" id="button_join_<%= room.id %>">
+                        <label><%= room.name%></label>
+                        <%if room.user_id.nil? %>
+                          <%= button_to 'Join', join_room_users_room_path(room), method: :patch, class: "btn btn-primary btn_join join_room_button" %>
+                        <% else %>
+                          <%= button_to 'Join', join_room_users_room_path(room), method: :patch, class: "btn btn-primary btn_join join_room_button", disabled: true %>
+                        <% end %>
+                      </div>
                     </div>
-                  </div>
-                <% end %>
-                
+                  <% end %>
               </div>
-              
-                <div class="d-flex justify-content-center", id="paginate-element" >
-                      <%= paginate @rooms, theme: 'bootstrap-5' %>
+                <div class="d-flex justify-content-center" id="paginate-element">
+                  <%= paginate @rooms, theme: 'bootstrap-5', class: 'ksj'%>
                 </div> 
             </div>
 
