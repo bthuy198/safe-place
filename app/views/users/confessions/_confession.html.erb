@@ -15,6 +15,6 @@
   </div>
   <br>
   <div class="text-center custom_tag">
-    <%= confession.tag.map {|t| "##{t}"}.join(" ") %>
+    <%= confession.tag.map {|t| "##{t}"}.join(" ") if !confession.tag.empty? %>
   </div>
 </div>
