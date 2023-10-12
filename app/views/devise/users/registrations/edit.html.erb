@@ -3,8 +3,8 @@
   <div class="col-md-7">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <div class="row mb-4 align-items-cerow mb-4 align-items-centernter">
-      <%= f.label :email, class:"col-4 label form_user_infos_label " %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"col form-control form_user_infos_textfield", disabled: true %>
+      <%= f.label :email, class:"col-4 label form_password_label " %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"col form-control form_password_label", disabled: true %>
     </div>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -14,18 +14,18 @@
     <% end %>
 
     <div class="row mb-4 align-items-center">
-      <%= f.label :password, class:"col-4 label form_user_infos_label " %>
-      <%= f.password_field :password, autocomplete: "new-password", class:"col form-control form_user_infos_textfield" %>
+      <%= f.label :password, class:"col-4 label form_password_label " %>
+      <%= f.password_field :password, autocomplete: "new-password", class:"col form-control form_password_label" %>
     </div>
 
     <div class="row mb-4 align-items-center">
-      <%= f.label :password_confirmation, class:"col-4 label form_user_infos_label " %>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"col form-control form_user_infos_textfield" %>
+      <%= f.label :password_confirmation, class:"col-4 label form_password_label " %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"col form-control form_password_label" %>
     </div>
 
     <div class="row mb-4 align-items-center">
-      <%= f.label :current_password, class:"col-4 label form_user_infos_label " %>
-      <%= f.password_field :current_password, autocomplete: "current-password", class:"col form-control form_user_infos_textfield" %>
+      <%= f.label :current_password, class:"col-4 label form_password_label " %>
+      <%= f.password_field :current_password, autocomplete: "current-password", class:"col form-control form_password_label" %>
     </div>
 
     <div class="row mb-4 align-items-center justify-content-center">

@@ -57,6 +57,12 @@ module Users
         end
       end
 
+      def set_duration
+        @podcast = Podcast.find_by(id: params[:id])
+        @podcast.duration = params[:duration]
+        @podcast.save
+      end
+
     private
     def set_podcast
       @podcast = Podcast.find(params[:id])
