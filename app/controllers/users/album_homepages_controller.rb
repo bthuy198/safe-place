@@ -11,5 +11,9 @@ module Users
       @album = PodcastAlbum.find_by(id: params[:id])
       @podcasts = @album.podcasts.order(:episode_number)
     end
+
+    def all_album 
+      @albums = PodcastAlbum.all
+    end
   end
 end

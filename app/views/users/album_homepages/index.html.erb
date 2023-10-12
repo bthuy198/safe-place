@@ -2,27 +2,27 @@
     <div class="container-fluid index_of_album">
         <div class="card">
             <div class="card-body">
-                <div class="d-flex flex-column justify-content-between">
-                    <div class="d-flex flex-column">
+                <div class="d-flex flex-column justify-content-between" style="height: 95%;">
+                    <div class="row d-flex flex-column">
                         <div class="d-flex justify-content-between text_podcast">
                             <h2 class="album_title">Album</h2>
-                            <h2 class="btn btn-link button_show_all">Show all</h2>
+                            <%= link_to "Show all", all_users_album_homepages_path, class:"btn btn-link button_show_all"%>
                         </div>
                         <div class="container-scroll">
-                            <div class="d-flex justify-content-between">
+                            <div class="d-flex justify-content-start">
                                 <% @albums.each_with_index do |album, index| %>
                                     <%= render "users/album_homepages/album", album: album, index: index%>
                                 <% end %> 
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex flex-column podcast_album_recent">
+                    <div class="row d-flex flex-column podcast_album_recent">
                         <div class="d-flex justify-content-between text_podcast_recent">
                             <h2 class="album_title ">Recently Posted</h2>
-                            <h2 class="btn btn-link button_show_all">Show all</h2>
+                            <%= link_to "Show all", all_users_album_homepages_path, class:"btn btn-link button_show_all"%>
                         </div>
                         <div class="container-scroll">
-                            <div class="d-flex justify-content-between">
+                            <div class="d-flex justify-content-start">
                                 <% @recent_albums.each_with_index do |album, index| %>  
                                     <%= render "users/album_homepages/album", album: album, index: (index + 1)%>
                                 <% end %> 

@@ -15,5 +15,5 @@
                     <h6 class="podcast_filed"><%= podcast.author_name %></h6>
                 </td>
                 <td class="podcast_filed created"><%= podcast.created_at.strftime("%b %d, %Y") %></td>
-                <td>01h50</td>
+                <td><%= formatted_duration(podcast.duration) %></td>
                 </tr>
