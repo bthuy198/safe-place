@@ -43,12 +43,13 @@ module Admins
       if @room.status.nil? or @room.status == 'disable'
         @room.update(status: 'enable')
         flash[:success] = 'Room status changed successfully.'
+        render json: { message: "The 'Anonymous' status has been successfully updated." }
       else
         @room.update(status: 'disable')
       end
-      # respond_to do |format|
-      #   format.js
-      # end
+      respond_to do |format|
+        format.js
+      end
     end
 
     def update

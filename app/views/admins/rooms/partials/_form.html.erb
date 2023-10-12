@@ -1,5 +1,7 @@
 <div class="container-fluid form-user" id="room_model">
 <%= form_with(model: [:admins, room], class: "form_modal_room") do |form| %>
+        <%#= render "shared/flash" %>
+
   <div class="row mb-5">
     <div class="col">
       <%= form.label :name, "Room Name" %>

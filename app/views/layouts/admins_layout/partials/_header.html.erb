@@ -1,7 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom color_header">
     <div class="container-fluid">
         <button class="btn" id="clickopen_nav" onclick="CloseMenu()" >
-            <%# <i class="fa-solid fa-ellipsis"></i> %>
             <span class="navbar-toggler-icon">
             </span>
         </button>
@@ -16,19 +15,14 @@
                 </li>
                 <li class="nav-item logout_admin">
                     <% if current_admin %>
-                    <%# <i class="bi bi-box-arrow-in-right"></i> %>
-                    <button>
-                        
-                        <%= link_to destroy_admin_session_path, method: :delete do%>
+                        <%= link_to destroy_admin_session_path, method: :delete, class: 'color_sign_out' do%>
                         <i class="fa-solid fa-arrow-right-from-bracket"></i>
                         <% end %>
-                        
-                    </button>
-
                     <% end %>
                 </li>
-
             </ul>
         </div>
     </div>
 </nav>
+
+<%= javascript_include_tag 'admins/close_menu' %>
