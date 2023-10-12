@@ -2,8 +2,9 @@
 
 module Users
   class ConfessionsController < UsersLayoutController
+    before_action :check_url
     before_action :set_confessions, only: %i[index destroy]
-    before_action :set_confession, only: %i[show update destroy]
+    before_action :set_confession, only: %i[like show update destroy]
     before_action :authenticate_flash, only: %i[update destroy]
     before_action :authenticate_user!, only: %i[new create update destroy]
 
@@ -29,7 +30,7 @@ module Users
           format.turbo_stream { flash.now[:notice] = 'Confession was successfully created.' }
           format.json { render :show, status: :created, location: @confession }
         end
-        Turbo::StreamsChannel.broadcast_prepend_later_to("confessions_index_channel", target: "confessions", partial: "users/confessions/confession_index", locals: { confession: @confession })
+        Turbo::StreamsChannel.broadcast_prepend_later_to("confessions_index_channel", target: "confessions", partial: "users/confessions/confession_index", locals: { user: current_user, confession: @confession })
       else
         respond_to do |format|
           format.turbo_stream do
@@ -47,7 +48,7 @@ module Users
           format.turbo_stream { flash.now[:notice] = 'Confession was successfully updated.' }
           format.json { render :show, status: :ok, location: @confession }
         end
-        Turbo::StreamsChannel.broadcast_replace_later_to("confessions_index_channel", target: helpers.dom_id(@confession), partial: "users/confessions/confession_index", locals: { confession: @confession })
+        Turbo::StreamsChannel.broadcast_replace_later_to("confessions_index_channel", target: helpers.dom_id(@confession), partial: "users/confessions/confession_index", locals: { user: current_user, confession: @confession })
         Turbo::StreamsChannel.broadcast_update_later_to("confessions_show_channel", target: "#{helpers.dom_id(@confession)}_show", partial: "users/confessions/confession", locals: { confession: @confession })
       else
         respond_to do |format|
@@ -73,9 +74,12 @@ module Users
     end
 
     def like
-      @confession = Confession.find(params[:id])
       LikeService.new(current_user, @confession).like
-      redirect_to @confession, notice: 'Confession liked/unliked successfully.'
+      respond_to do |format|
+        format.turbo_stream do
+          flash.now[:notice] = 'Confession liked/unliked successfully.'
+        end
+      end
     end
 
     private
@@ -104,6 +108,12 @@ module Users
     def authenticate_flash
       unless user_signed_in?
         render turbo_stream: turbo_stream.replace( "flash", partial: "shared/flash", locals: { flash: {"alert" => "Please sign in to continue"} })
+      end
+    end
+
+    def check_url
+      if request.original_url.include?('confessions') && request.referer.nil?
+        redirect_to root_path
       end
     end
   end
