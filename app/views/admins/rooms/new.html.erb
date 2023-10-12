@@ -1,9 +1,8 @@
-<div style="margin: 17vh 10vh; background-color: #fff; padding: 5vh">
-    <h1>New room</h1>
-    <%= turbo_frame_tag "add_room" do %>
-        <%= render "admins/rooms/partials/form", room: @room %>
-    
-    <% end %>
-    
-</div>
+<%= turbo_frame_tag "custom_room" do%>
 
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Add room</h1>
+         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <%= render "admins/rooms/partials/form", room: @room %>
+<% end %>
