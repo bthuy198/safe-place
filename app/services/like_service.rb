@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # app/services/like_service.rb
 class LikeService
   def initialize(user, item)

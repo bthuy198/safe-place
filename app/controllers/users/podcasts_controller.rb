@@ -65,7 +65,6 @@ module Users
     end
 
     private
-
     def set_podcast
       @podcast = Podcast.find(params[:id])
     end

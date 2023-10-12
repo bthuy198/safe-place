@@ -27,12 +27,11 @@ class Room < ApplicationRecord
   belongs_to :counselor
   has_many :conversations, dependent: :destroy
 
-  validates :name, presence: true, uniqueness: {message: 'has already taken'}
+  validates :name, presence: true, uniqueness: { message: 'has already taken' }
 
   paginates_per 16
 
   def self.ransackable_attributes(auth_object = nil)
     ['counselor_id', 'created_at', 'id', 'name', 'status', 'updated_at', 'user_id']
   end
-
 end

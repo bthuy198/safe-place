@@ -13,7 +13,7 @@
           <i class="fa-solid fa-spinner fa-spin-pulse fa-2xl"></i>
         </div>
       <% end %>
-      <%= turbo_frame_tag "board", src: users_confessions_path, loading: :lazy do %>
+      <%= turbo_frame_tag "board", src: users_confessions_path(format: :html), loading: :lazy do %>
         <div class="centered_container centered_board">
           <i class="fa-solid fa-spinner fa-spin-pulse fa-2xl"></i>
         </div>

@@ -33,6 +33,19 @@ module Admins
       end
     end
 
+    def change_status
+      @room = Room.find(params[:id])
+      if @room.status.nil? || (@room.status == 'disable')
+        @room.update(status: 'enable')
+        flash[:success] = 'Room status changed successfully.'
+      else
+        @room.update(status: 'disable')
+      end
+      # respond_to do |format|
+      #   format.js
+      # end
+    end
+
     def update
       respond_to do |format|
         if @room.update(room_params)
