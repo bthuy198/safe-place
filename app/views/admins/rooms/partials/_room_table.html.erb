@@ -14,7 +14,7 @@
   </td>
   <td>
       <div class="form-check form-switch d-flex justify-content-center">
-        <%= check_box_tag "status_#{room.id}", "enable", (room.status == "enable"), class: "form-check-input anonymous-switch switch_status", id: "room_anonymous_#{room.id}" %>
+        <%= check_box_tag "status_#{room.id}", "enable", (room.status == "enable"), class: "form-check-input anonymous-switch-room switch_status", id: "room_anonymous_#{room.id}" %>
         <label class="form-check-label" for="room_anonymous_<%= room.id %>"></label>
       </div>
   </td>
@@ -27,4 +27,10 @@
     </button>
   </td>
 </tr>
+
+
+
+
+
+
 

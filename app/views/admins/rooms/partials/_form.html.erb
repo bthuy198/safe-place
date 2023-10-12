@@ -1,14 +1,7 @@
-<%# <% user_type = {"User"=>"User", "Counselor"=>"Counselor"} %>
-<%= turbo_frame_tag "quotes" do %>
-<div class="container-fluid form-user">
-<%= form_with(model: [:admins,room] ) do |form| %>
-  <% if room.errors.any? %>
-    <ul>
-      <% room.errors.each do |err| %>
-        <li><%= content_tag(:div, err.message, class: "alert alert-info")%></li>
-      <% end %>
-    </ul>
-  <% end %>
+<div class="container-fluid form-user" id="room_model">
+<%= form_with(model: [:admins, room], class: "form_modal_room") do |form| %>
+        <%#= render "shared/flash" %>
+
   <div class="row mb-5">
     <div class="col">
       <%= form.label :name, "Room Name" %>
@@ -16,17 +9,14 @@
     </div>
     <div class="col">
         <%= form.label :counselor_id, " Name counselor" %>
-
-        
-      <%= form.select :counselor_id, options_for_select(User.where(type:"Counselor").map{|c| [c.user_name, c.id]}), {}, class: "form-control form-select mb-3" %>
-
+      <%= form.select :counselor_id, User.where(type:"Counselor").map{|c| [c.user_name, c.id]}, {}, class: "form-control form-select mb-3" %>
     </div>
   </div>
 
-  <div class="form-actions">
-    <%= form.submit "Submit", class: "btn btn-success btn-lg" %>
+  <div class="form-actions d-flex justify-content-center">
+    <%= form.submit "Submit", class: "btn btn-success btn-lg"%>
+    
   </div>
 <% end %>
 </div>
 
-<% end %>

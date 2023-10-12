@@ -21,12 +21,11 @@
     </div>
     <div class="col-md-9 custom_main">
       <%= render "users/shared/navbar" %>
-      <div class="centered_container centered_main">
-        <div class="container-fluid show_podcast">
+      <%# <div class="centered_container centered_main"> %>
+        <div class="container-fluid show_podcast" style="">
           <h1>List rooms</h1>
           <div class="card">
             <div class="card-body ">
-<!--              <h6 class="card-title">Search room</h6>-->
               <%= search_form_for @q, url:users_rooms_path, class: 'd-flex justify-content-center' do |f| %>
                 <div class="input-group mb-3 input_search_room">
                   <%= f.search_field :name_cont, class: 'form-control me-2', placeholder: 'Search room name' %>
@@ -36,7 +35,7 @@
             </div>
           </div>
           <div class="d-flex justify-content-center">
-            <div id="room_menu_join">
+            <div id="room_menu_join" class="all_room_join">
               <div class="mini_menu d-grid">
                 <% @rooms.each do |room| %>
                   <div class="item_room_join">
@@ -51,20 +50,23 @@
                     </div>
                   </div>
                 <% end %>
+                
               </div>
+                <div class="d-flex justify-content-center", id="paginate-element" >
+                  <%= paginate @rooms, theme: 'bootstrap-5' %>
+                </div> 
             </div>
+
           </div>
         </div>
+        
 
       </div>
-    </div>
   </div>
 </div>
 
     
-<%# </div>
-    <div class="paginate_room_join" id="paginate-element">
-    <%= paginate @rooms, theme: 'bootstrap-5' %>
-    <%# </div> 
-</div> %> 
+</div>
+    
+</div> 
 
