@@ -52,11 +52,9 @@
                 <% end %>
                 
               </div>
-                <div class="d-flex justify-content-center" >
-                  <%#= paginate @rooms, theme: 'bootstrap-5', class: 'css_paginate' %>
-                  <%= paginate @rooms, theme: 'bootstrap-5', class: 'css_paginate' %>
-
-
+              
+                <div class="d-flex justify-content-center", id="paginate-element" >
+                      <%= paginate @rooms, theme: 'bootstrap-5' %>
                 </div> 
             </div>
 
