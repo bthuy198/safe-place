@@ -21,7 +21,7 @@ module Users
       if @user.update(user_params)
         redirect_to users_user_infos_path, notice: 'User infomation updated successfully'
       else
-        render 'edit'
+        render status: :bad_request
       end
     end
 

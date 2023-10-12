@@ -61,17 +61,30 @@
       color: #1F7564;
     }
   }
-  .button_logout {
-    background-color: #FFFFFF;
-    padding: 5px 140px;
-    font-size: 18px;
+  .text-center {
     margin-top: 40px;
     margin-bottom: 60px;
-    color: #1F7564;
-    &:hover {
-      background-color: #1F7564;
-      color: #FFFFFF;
+    .button_change_pw {
+      background-color: #FFFFFF;
+      padding: 5px 140px;
+      font-size: 18px;
+  
+      color: #1F7564;
+      &:hover {
+        background-color: #1F7564;
+        color: #FFFFFF;
+      }
     }
+  }
+  
+}
+
+.button_update_pw {
+  background-color: #FFFFFF;
+  color: #1F7564;
+  &:hover {
+    background-color: #1F7564;
+    color: #FFFFFF;
   }
 }
 
