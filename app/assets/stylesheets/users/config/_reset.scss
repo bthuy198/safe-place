@@ -154,7 +154,7 @@ turbo-frame#board {
       }
       .card {
         margin-bottom: 10px;
-        height: 35vh;
+        min-height: 35vh;
         .custom_button {
           border-radius: 0;
           &:hover,
@@ -165,7 +165,12 @@ turbo-frame#board {
         }
       }
       .confesssion_show {
-        height: 30vh;
+        min-height: 30vh;
+        display: flex;
+        flex-direction: column;
+        .confession_body {
+          flex-grow: 1;
+        }
       }
       .confession_show_group {
         width: 100%;
