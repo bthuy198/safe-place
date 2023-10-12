@@ -59,7 +59,6 @@ Rails.application.routes.draw do
       end
     end
     resources :podcast_albums
-    resources :confessions, except: %i[edit]
     resources :rooms, only: [:index] do
       member do
         patch 'join_room'
@@ -67,12 +66,9 @@ Rails.application.routes.draw do
         get 'room_chat'
       end
     end
-
   end
 
-
-
-
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

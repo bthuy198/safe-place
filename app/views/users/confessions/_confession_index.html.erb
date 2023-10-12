@@ -13,7 +13,7 @@
     <%= confession.content.body %>
   </div>
   <div class="text-center custom_tag">
-    <%= confession.tag.map {|t| "##{t}"}.join(" ") %>
+    <%= confession.tag.map {|t| "##{t}"}.join(" ") if !confession.tag.empty? %>
   </div>
   <div class="btn-group" role="group" aria-label="confession_group">
     <% if user %>
@@ -23,7 +23,7 @@
     <% else %>
       <button type="button" class="btn btn-light custom_button"><i class="fa-regular fa-heart"></i></button>
     <% end %>
-    <%= link_to "<i class='fa-regular fa-message'></i>".html_safe, users_confession_path(confession), class: "btn btn-light custom_button", type: "button" %>
+    <%= link_to sanitize("<i class='fa-regular fa-message'></i>"), users_confession_path(confession), class: "btn btn-light custom_button", type: "button" %>
     <button type="button" class="btn btn-light custom_button"><i class="fa-solid fa-envelope-circle-check"></i></button>
   </div>
 </div>
