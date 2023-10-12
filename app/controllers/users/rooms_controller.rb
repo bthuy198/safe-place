@@ -6,7 +6,7 @@ module Users
     before_action :authenticate_user!
 
     def index
-      @q = Room.includes(:user).ransack(params[:q])
+      @q = Room.includes(:user).where(status: :enable).ransack(params[:q])
       @rooms = @q.result(distinct: true).order(id: :desc).page params[:page]
     end
 
@@ -28,7 +28,6 @@ module Users
       @room = Room.find(params[:id])
 
       if @room.update(user_id: nil)
-        # render json: { message: 'success', status: 200 }, status: :ok
         redirect_to users_rooms_path
         Turbo::StreamsChannel.broadcast_replace_to('room',
                                                    partial: 'users/rooms/partials/room_chat',
