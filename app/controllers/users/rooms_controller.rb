@@ -29,7 +29,7 @@ module Users
       @room = Room.find(params[:id])
 
       if @room.update(user_id: nil)
-        render json: { message: 'success', status: 200 }, status: :ok
+        redirect_to users_rooms_path
         Turbo::StreamsChannel.broadcast_replace_to('room',
                                                    partial: 'users/rooms/partials/room_chat',
                                                    locals: { room: @room },
