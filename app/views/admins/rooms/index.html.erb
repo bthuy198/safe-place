@@ -31,6 +31,7 @@
         </thead>
       <tbody id="room_table">
           <% @rooms.each do |room| %>
+            <%#= turbo_stream_from "rooms" %>
             <%= render "admins/rooms/partials/room_table", room: room %>
           <% end %>
       </tbody>

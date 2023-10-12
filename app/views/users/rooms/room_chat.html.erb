@@ -1,0 +1,4 @@
+<div class="container out_room_page">
+<h1><strong>Counselling Room: <%= @room.name%></strong></h1>
+<%= button_to 'Out', out_room_users_room_path(@room), method: :patch, class: "btn btn-primary btn_join join_room_button" %>
+</div>
