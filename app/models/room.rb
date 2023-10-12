@@ -29,10 +29,10 @@ class Room < ApplicationRecord
 
   validates :name, presence: true, uniqueness: {message: 'has already taken'}
 
-  paginates_per 10
+  paginates_per 16
 
   def self.ransackable_attributes(auth_object = nil)
-    ["counselor_id", "created_at", "id", "name", "status", "updated_at", "user_id"]
+    ['counselor_id', 'created_at', 'id', 'name', 'status', 'updated_at', 'user_id']
   end
 
 end
