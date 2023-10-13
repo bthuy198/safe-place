@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :podcasts
   get 'home', to: 'users/pages#home'
   get 'contact', to: 'users/pages#contact'
   get 'about_app', to: 'users/pages#about_app'
@@ -45,6 +46,7 @@ Rails.application.routes.draw do
         patch 'change_status'
       end
     end
+    resources :podcasts
   end
 
   namespace 'users' do
