@@ -21,24 +21,23 @@ module Users
     def create
       @podcast_album = PodcastAlbum.new(podcast_album_params)
       @podcast_album.user_id = current_user.id
-      if @podcast_album.save
-        respond_to do |format|
-          format.turbo_stream
+      respond_to do |format|
+        if @podcast_album.save
+          format.turbo_stream{flash.now[:notice] = "Album created successfully"}
           format.html { redirect_to users_podcasts_path, notice: 'Podcast album was' }
+        else
+          format.turbo_stream { flash.now[:alert] = "<ul><li>#{@podcast_album.errors.full_messages.join("</li><li>")}</li><ul>".html_safe }
         end
-      else
-        render 'new', status: :unprocessable_entity
       end
     end
 
     def update
       respond_to do |format|
         if @podcast_album.update(podcast_album_params)
-          format.turbo_stream
-          format.html { redirect_to root_url, notice: 'Album was successfully updated.' }
+          format.turbo_stream { flash.now[:notice] = "Album was successfully updated." }
           format.json { render :show, status: :ok, location: @podcast_album }
         else
-          format.html { render :edit, status: :unprocessable_entity }
+          format.turbo_stream { flash.now[:alert] = "<ul><li>#{@podcast_album.errors.full_messages.join("</li><li>")}</li><ul>".html_safe }
           format.json { render json: @podcast_album.errors, status: :unprocessable_entity }
         end
       end
