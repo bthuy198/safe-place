@@ -1,9 +1,9 @@
 <nav class="navbar">
     <div class="container-fluid d-flex">
         <span>
-            <a href="#" onclick="moveBackward()" data-turbo-frame="main"><i class="fa-solid fa-chevron-left"></i></a>
-            <a href="#" onclick="moveForward()" data-turbo-frame="main"><i class="fa-solid fa-chevron-right"></i></a>
-            <a href="#">Placeholder change language</a>
+            <span class="custom_navigator" data-action="click->frame-moving#back" type="button"><i class="fa-solid fa-chevron-left"></i></span>
+            <span class="custom_navigator" data-action="click->frame-moving#forward" type="button"><i class="fa-solid fa-chevron-right"></i></span>
+            <span class="custom_navigator">Placeholder change language</span>
         </span>
         <% if !user_signed_in? %>
             <span class="ms-auto">

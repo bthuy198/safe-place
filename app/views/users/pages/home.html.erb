@@ -21,7 +21,7 @@
     </div>
     <div class="col-md-9 custom_main">
       <%= render "users/shared/navbar" %>
-      <%= turbo_frame_tag "main", src: users_album_homepages_path, loading: :lazy do %>
+      <%= turbo_frame_tag "main", src: users_album_homepages_path, loading: :lazy, data: { frame_moving_target: "mainFrame" } do %>
         <div class="centered_container centered_main">
           <i class="fa-solid fa-spinner fa-spin-pulse fa-2xl"></i>
         </div>
