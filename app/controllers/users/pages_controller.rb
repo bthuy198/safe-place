@@ -5,7 +5,9 @@ module Users
   class PagesController < ApplicationController
     layout 'users_layout/users'
 
-    def home; end
+    def home
+      @confession_url ||= session[:confession_url]
+    end
     def contact; end
     def about_app; end
     def term; end
