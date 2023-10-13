@@ -32,6 +32,24 @@ module Devise
       #   super
       # end
 
+      def update
+        if current_user.update_with_password(user_password_params)
+          flash.now[:notice] = 'User password updated successfully'
+          bypass_sign_in(current_user)
+          respond_to do |format|
+            format.turbo_stream { flash.now[:notice] = 'Password was successfully changed.'}
+          end
+        else
+          respond_to do |format|
+            
+            format.turbo_stream do 
+              flash.now[:alert] = "<ul><li>#{current_user.errors.full_messages.join('</li><li>')}</li><ul>".html_safe
+              render  status: :bad_request
+            end
+          end
+        end
+      end
+
       # DELETE /resource
       # def destroy
       #   super
@@ -67,6 +85,10 @@ module Devise
       def user_params
         params.require(:user).permit(:email, :password, :user_name,
                                      user_info_attributes: %i[address date_of_birth profile_name gender])
+      end
+
+      def user_password_params
+        params.require(:user).permit(:email, :password, :password_confirmation, :current_password)
       end
       # The path used after sign up for inactive accounts.
       # def after_inactive_sign_up_path_for(resource)

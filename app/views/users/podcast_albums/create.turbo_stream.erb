@@ -1,6 +1,4 @@
-<% if @podcast_album.errors.any? %>
-  <%= render_turbo_stream_flash_messages %>
-<% else %>
+
     <%= turbo_stream.append 'albums' do %>
         <%= render partial: 'users/podcasts/podcast_album', locals: { podcast_album: @podcast_album }%>
         <script>
@@ -8,4 +6,4 @@
                 $(".index_text").hide()
         </script>
     <% end %>
-<% end %>
+    <%= render_turbo_stream_flash_messages %>
