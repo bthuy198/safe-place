@@ -3,6 +3,10 @@
     padding: 0px;
     .card {
         height: 84vh;
+        .card-body {
+          height: 83vh;
+          overflow-y: scroll;
+        }
     }
     .container-scroll {
         overflow-x: auto;
@@ -51,8 +55,8 @@
   background-color: #aee3b9;
   border-radius: 10px;
   .album-avatar {
-      width: 170px;
-      height: 180px;
+      width: 180px;
+      height: 190px;
       margin: 20px 10px 10px 10px;
       border-radius: 15px;
       position: relative;
@@ -63,6 +67,10 @@
     .album_title_album_name {
       font-size: 20px;
       font-weight: bold;
+      white-space: nowrap; 
+      width: 9vw; 
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .album_title_user_name {
       opacity: 50%;
