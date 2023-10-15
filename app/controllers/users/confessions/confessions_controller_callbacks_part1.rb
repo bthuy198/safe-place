@@ -16,7 +16,11 @@ module Users
         private
 
         def set_confessions
-          @confessions = Confession.order(created_at: :desc).page(params[:page]).per(3)
+          if params[:q]
+            @confessions = Confession.ransack(tags_cont: params[:q]).result.order(created_at: :desc).page(params[:page]).per(3)
+          else
+            @confessions = Confession.order(created_at: :desc).page(params[:page]).per(3)
+          end
           @current_page = @confessions.current_page
           @total_pages = @confessions.total_pages
           @has_next_page = @current_page < @total_pages

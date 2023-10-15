@@ -29,4 +29,12 @@ class Confession < ApplicationRecord
   validates :content, presence: true
 
   serialize :tag, Array
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["tags"]
+  end
+
+  ransacker :tags do |parent|
+    Arel.sql("CONCAT('%', #{parent.table_name}.tag, '%')")
+  end
 end
