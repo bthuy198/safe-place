@@ -1,0 +1,18 @@
+<%= form_with url: "", data: {turbo_frame: ""}, method: :get, class: "dropdown-menu p-4", id: "search_form" do |form| %>
+    <div class="mb-3">
+        <%= form.text_field :q, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+        <div class="form-check">
+            <%= form.radio_button :path, users_confessions_path, class: "form-check-input search_option", type: "radio" %>
+            <%= form.label :path_usersconfessions, "Search confessions", class: "form-check-label radio_label" %>
+        </div>
+        <div class="form-check">
+            <%= form.radio_button :path, users_podcasts_path, class: "form-check-input search_option", type: "radio" %>
+            <%= form.label :path_userspodcasts, "Search podcasts", class: "form-check-label radio_label" %>
+        </div>
+    </div>
+    <div class="mb-3">
+        <%= form.submit "Search", class: "btn btn-light custom_submit" %>
+    </div>
+<% end %>
