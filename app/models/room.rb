@@ -23,7 +23,7 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Room < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, optional: true
   belongs_to :counselor
   has_many :conversations, dependent: :destroy
 

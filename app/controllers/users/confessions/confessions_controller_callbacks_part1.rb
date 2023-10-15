@@ -9,18 +9,11 @@ module Users
       extend ActiveSupport::Concern
 
       included do
-        before_action :check_url
         before_action :set_confessions, only: %i[index destroy]
         before_action :set_confession, only: %i[like show update destroy]
         # rubocop:enable Rails/LexicallyScopedActionFilter
 
         private
-
-        def check_url
-          return unless request.original_url.include?('confessions') && request.referer.nil?
-
-          redirect_to root_path
-        end
 
         def set_confessions
           @confessions = Confession.order(created_at: :desc).page(params[:page]).per(3)
