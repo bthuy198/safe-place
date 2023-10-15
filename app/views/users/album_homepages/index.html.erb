@@ -21,7 +21,7 @@
                             <h2 class="album_title ">Recently Posted</h2>
                             <%= link_to "Show all", all_users_album_homepages_path, class:"btn btn-link button_show_all"%>
                         </div>
-                        <div class="container-scroll">
+                        <div class="container-scroll" >
                             <div class="d-flex justify-content-start">
                                 <% @recent_albums.each_with_index do |album, index| %>  
                                     <%= render "users/album_homepages/album", album: album, index: (index + 1)%>

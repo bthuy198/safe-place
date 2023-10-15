@@ -4,7 +4,7 @@
     .card {
         height: 84vh;
         .card-body {
-          height: 83vh;
+          max-height: 81vh;
           overflow-y: scroll;
         }
     }
@@ -18,17 +18,15 @@
         }
     }
     .album_title {
-        font-size: 18;
+        font-size: 35px;
         color: #1F7564;
         font-weight: bold;
         font-family: "Signika", sans-serif;
     }
-  }
-  .text_podcast {
-    margin-top: 10px;
-  }
-  .text_podcast_recent {
-    margin-top: 30px;
+}
+
+.text_podcast_recent {
+  margin-top: 10px;
   }
   .album_title {
     font-size: 18;
@@ -39,21 +37,21 @@
   .button_show_all {
     color: #d8508e;
     font-weight: bold;
-    font-size: 10;
+    font-size: 16px;
     text-decoration: none;
   }
-.button_show_album {
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-  color: #1a1a1a;
-}
+  .button_show_album {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    color: #1a1a1a;
+  }
 
-.album_homepage_detail {
-  margin-right: 20px;
-  width: 14rem;
-  background-color: #aee3b9;
-  border-radius: 10px;
+  .album_homepage_detail {
+    margin-right: 20px;
+    width: 14rem;
+    background-color: #aee3b9;
+    border-radius: 10px;
   .album-avatar {
       width: 180px;
       height: 190px;
@@ -68,7 +66,7 @@
       font-size: 20px;
       font-weight: bold;
       white-space: nowrap; 
-      width: 9vw; 
+      width: 180px; 
       overflow: hidden;
       text-overflow: ellipsis;
     }
@@ -192,6 +190,9 @@
           .album-avatar {
             width: 210px;
             height: 240px;
+          }
+          .album_title_album_name {
+            width: 11vw; 
           }
         }
       }
