@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Users
+  # class AlbumHomePagesController
   class AlbumHomepagesController < UsersLayoutController
     def index
       @albums = PodcastAlbum.limit(6)
@@ -12,7 +13,7 @@ module Users
       @podcasts = @album.podcasts.order(:episode_number)
     end
 
-    def all_album 
+    def all_album
       @albums = PodcastAlbum.all
     end
   end

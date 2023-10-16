@@ -37,14 +37,13 @@ module Devise
           flash.now[:notice] = 'User password updated successfully'
           bypass_sign_in(current_user)
           respond_to do |format|
-            format.turbo_stream { flash.now[:notice] = 'Password was successfully changed.'}
+            format.turbo_stream { flash.now[:notice] = 'Password was successfully changed.' }
           end
         else
           respond_to do |format|
-            
-            format.turbo_stream do 
+            format.turbo_stream do
               flash.now[:alert] = "<ul><li>#{current_user.errors.full_messages.join('</li><li>')}</li><ul>".html_safe
-              render  status: :bad_request
+              render status: :bad_request
             end
           end
         end

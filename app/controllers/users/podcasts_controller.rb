@@ -22,19 +22,20 @@ module Users
       render layout: false
     end
 
-      def create
-        @podcast = Podcast.new(podcast_params)
-        respond_to do |format|
-          if @podcast.save
-            format.turbo_stream {flash.now[:notice] = 'Podcast created successfully'  }
-            format.html { redirect_to home_path, notice: 'Podcast information created successfully' }
-          else
-            format.turbo_stream {  flash.now[:alert] = "<ul><li>#{@podcast.errors.full_messages.join("</li><li>")}</li><ul>".html_safe  }
-            format.json { render json: @podcast.errors, status: :unprocessable_entity }
+    def create
+      @podcast = Podcast.new(podcast_params)
+      respond_to do |format|
+        if @podcast.save
+          format.turbo_stream { flash.now[:notice] = 'Podcast created successfully' }
+          format.html { redirect_to home_path, notice: 'Podcast information created successfully' }
+        else
+          format.turbo_stream do
+            flash.now[:alert] = "<ul><li>#{@podcast.errors.full_messages.join('</li><li>')}</li><ul>".html_safe
           end
+          format.json { render json: @podcast.errors, status: :unprocessable_entity }
         end
       end
-      
+    end
 
     def destroy
       @podcast.destroy
@@ -45,25 +46,28 @@ module Users
       end
     end
 
-      def update
-        respond_to do |format|
-          if @podcast.update(podcast_params)
-            format.turbo_stream { flash.now[:notice] = 'Podcast updated successfully'}
-            format.json { render :show, status: :ok, location: @podcast }
-          else
-            format.turbo_stream { flash.now[:alert] = "<ul><li>#{@podcast.errors.full_messages.join("</li><li>")}</li><ul>".html_safe }
-            format.json { render json: @podcast.errors, status: :unprocessable_entity }
+    def update
+      respond_to do |format|
+        if @podcast.update(podcast_params)
+          format.turbo_stream { flash.now[:notice] = 'Podcast updated successfully' }
+          format.json { render :show, status: :ok, location: @podcast }
+        else
+          format.turbo_stream do
+            flash.now[:alert] = "<ul><li>#{@podcast.errors.full_messages.join('</li><li>')}</li><ul>".html_safe
           end
+          format.json { render json: @podcast.errors, status: :unprocessable_entity }
         end
       end
+    end
 
-      def set_duration
-        @podcast = Podcast.find_by(id: params[:id])
-        @podcast.duration = params[:duration]
-        @podcast.save
-      end
+    def set_duration
+      @podcast = Podcast.find_by(id: params[:id])
+      @podcast.duration = params[:duration]
+      @podcast.save
+    end
 
     private
+
     def set_podcast
       @podcast = Podcast.find(params[:id])
     end
