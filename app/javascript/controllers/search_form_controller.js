@@ -1,9 +1,13 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ['form', 'option']
+  static targets = ['form', 'option', 'submit']
 
   connect() {
+    this.formTarget.addEventListener('click', function(event) {
+      event.stopPropagation();
+    });
+    this.submitTarget.disabled = true;
     this.optionTargets.forEach(option => {
       option.addEventListener('change', () => {
         if (option.checked) {
@@ -14,6 +18,7 @@ export default class extends Controller {
           } else if (mainFrameIncludes) {
             this.formTarget.setAttribute('data-turbo-frame', 'main');
           }
+          this.submitTarget.disabled = false;
         }
       });
     });
