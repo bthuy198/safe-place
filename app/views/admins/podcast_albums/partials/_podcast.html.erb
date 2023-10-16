@@ -31,106 +31,14 @@
           <td><%= image_tag 'podcast.jpg', alt: "Album Avatar", class: "",style: " height: 80px; border-radius: 50%" %></td>
         <% end %>
         <td id="podcast_name_<%= pod.id %>" data-id="<%= pod.id %>"><input class="form-control" type='text' value='<%= pod.name %>' id='input_name_podcast_<%= pod.id %>'></td>
-        <td><button class="btn btn-danger button_podcast_width delete_podcast" data-id="<%= pod.id %>" onclick="deletePodcast(<%= pod.id %>)">Delete</button></td>
-        <td><button class="btn btn-primary bg_green border_green button_podcast_width button_done" data-id="<%= pod.id %>" onclick="updatePodcast(<%= pod.id %>)">Done</button></td>
-        <td><button class="btn btn-warning button_podcast_width button_cancel" data-id="<%= pod.id %>" onclick="cancelEdit(<%= pod.id %>)">Cancel</button></td>
+        <td class="text-end"><button class="btn btn-warning button_cancel" data-id="<%= pod.id %>" onclick="cancelEdit(<%= pod.id %>)"><i class="fa-solid fa-arrow-rotate-left"></i></button></td>
+        <td class="text-center"><button class="btn btn-danger delete_podcast" data-id="<%= pod.id %>" onclick="deletePodcast(<%= pod.id %>)"><i class="fa-solid fa-trash"></i></button></td>
+        <td class="text-start"><button class="btn btn-primary bg_green border_green button_done" data-id="<%= pod.id %>" onclick="updatePodcast(<%= pod.id %>)"><i class="fa-solid fa-check"></i></button></td>
       </tr>
     <% end %>
     <% end %>
     </tbody>
   </table>
 </div>
-<style>
-    .button_podcast_width{
-        width: 80px;
-    }
 
-    .button_done:hover, .button_done:focus, .button_done:active{
-        background-color: #1a5e51;
-        border-color: #1a5e51;
-    }
-
-    .button_cancel{
-        color: #fff;
-    }
-</style>
-<script>
-  let podcast_id = 0
-  let podcast_url = 'http://127.0.0.1:3000/admins/podcasts'
-
-  function updatePodcast(podcastId){
-      console.log(podcast_url)
-      console.log(podcastId)
-      $.ajax({
-          type: 'GET',
-          url: podcast_url + '/' + podcastId + '/edit'
-      })
-          .done((data) => {
-              let name = $(`#input_name_podcast_${podcastId}`).val();
-              console.log(name)
-              let obj = {
-                  name: name
-              }
-              console.log(obj)
-              $.ajax({
-                  type: 'PATCH',
-                  url: `${podcast_url}/${podcastId}`,
-                  data: obj
-              })
-                  .done((podcast) => {
-                      $(`#input_name_podcast_${podcastId}`).val(podcast.name)
-                  })
-                  .fail((error) => {
-                      console.log(error);
-                  })
-          })
-          .fail((error) => {
-              console.log(error);
-          })
-  }
-
-  function deletePodcast(podcastId){
-      $.ajax({
-          type: 'GET',
-          url: podcast_url + '/' + podcastId
-      })
-          .done((data) => {
-              let id = data.id
-              let confirmed = confirm("Are you sure to delete this podcast?")
-              if(confirmed){
-                  $.ajax({
-                      headers: {
-                          'accept': 'application/json',
-                          'content-type': 'application/json'
-                      },
-                      type: 'DELETE',
-                      url: podcast_url + '/' + id,
-                  })
-                      .done(() => {
-
-                          $('#podcast-' + id).remove();
-
-                      })
-                      .fail((error) => {
-                          console.log(error)
-                      })
-              }
-          })
-          .fail((error) => {
-              console.log(error);
-          })
-  }
-
-  function cancelEdit(podcastId){
-      $.ajax({
-          type: 'GET',
-          url: podcast_url + '/' + podcastId
-      })
-          .done((data) => {
-              $(`#input_name_podcast_${podcastId}`).val(data.name);
-          })
-          .fail((error) => {
-              console.log(error);
-          })
-  }
-</script>
+<%= javascript_include_tag 'admins/podcast_album/manager_podcast' %>

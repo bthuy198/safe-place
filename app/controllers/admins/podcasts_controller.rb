@@ -40,11 +40,8 @@ module Admins
     def update
       respond_to do |format|
         if @podcast.update(podcast_params)
-          binding.pry
-          # format.html { redirect_to podcast_url(@podcast), notice: 'Podcast was successfully updated.' }
           format.json { render json: @podcast, status: :ok }
         else
-          # format.html { render :edit, status: :unprocessable_entity }
           format.json { render json: @podcast.errors, status: :unprocessable_entity }
         end
       end
@@ -69,7 +66,7 @@ module Admins
 
     # Only allow a list of trusted parameters through.
     def podcast_params
-      params.fetch(:podcast, {})
+      params.permit(:name, :id)
     end
   end
 end
