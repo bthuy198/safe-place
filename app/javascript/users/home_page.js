@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('turbo:load', function() {
   const targetElement = document.querySelector('.custom_render_row');
 
   function handleViewportChange(mq) {
