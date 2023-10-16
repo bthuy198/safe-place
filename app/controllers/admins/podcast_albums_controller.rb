@@ -13,7 +13,9 @@ module Admins
     end
 
     # GET /podcast_albums/1 or /podcast_albums/1.json
-    def show; end
+    def show
+      @podcast = Podcast.where('podcast_album_id = ?', params[:id])
+    end
 
     # GET /podcast_albums/new
     def new
