@@ -233,6 +233,19 @@ nav {
     }
   }
 
+  span.custom_navigator {
+    color: var(--color-white);
+    transition: color 200ms;
+    margin-left: 4px;
+    margin-right: 4px;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: var(--color-glint);
+    }
+  }
+
   button.navbar-toggler {
     border-radius: 25px;
     background-color: var(--color-white);
