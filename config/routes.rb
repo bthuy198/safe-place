@@ -69,7 +69,11 @@ Rails.application.routes.draw do
         post 'like'
       end
     end
-    resources :album_homepages, only: [:index, :show]
+    resources :album_homepages, only: [:index, :show] do
+      collection do
+        get 'all', to: 'album_homepages#all_album'
+      end
+    end
     resources :confessions, except: %i[edit] do
       member do
         post 'like'

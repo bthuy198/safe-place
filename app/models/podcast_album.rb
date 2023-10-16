@@ -33,4 +33,8 @@ class PodcastAlbum < ApplicationRecord
   def self.ransackable_associations(_auth_object = nil)
     %w[podcasts user]
   end
+
+  def total_duration
+    podcasts.sum(:duration)
+  end
 end

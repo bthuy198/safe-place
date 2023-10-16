@@ -1,23 +1,30 @@
 .index_of_album {
-  margin: 0px;
-  padding: 10px;
-  .card {
-    height: 100%;
-  }
-  .container-scroll {
-    overflow-x: auto;
-    white-space: nowrap;
-    max-width: 100%;
-    .col {
-      flex-grow: 1;
-      box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    .card {
+        height: 84vh;
+    }
+    .container-scroll {
+        overflow-x: auto;
+        white-space: nowrap;
+        max-width: 100%;
+        .col {
+          flex-grow: 1;
+          box-sizing: border-box;
+        }
+    }
+    .album_title {
+        font-size: 18;
+        color: #1F7564;
+        font-weight: bold;
+        font-family: "Signika", sans-serif;
     }
   }
   .text_podcast {
-    margin-top: 15px;
+    margin-top: 10px;
   }
   .text_podcast_recent {
-    margin-top: 50px;
+    margin-top: 30px;
   }
   .album_title {
     font-size: 18;
@@ -31,7 +38,6 @@
     font-size: 10;
     text-decoration: none;
   }
-}
 .button_show_album {
   margin: 0;
   padding: 0;
@@ -41,17 +47,16 @@
 
 .album_homepage_detail {
   margin-right: 20px;
-
+  width: 14rem;
   background-color: #aee3b9;
   border-radius: 10px;
   .album-avatar {
-    width: 170px;
-    height: 180px;
-    margin: 20px 10px 10px 10px;
-
-    border-radius: 15px;
-    position: relative;
-    object-fit: cover;
+      width: 170px;
+      height: 180px;
+      margin: 20px 10px 10px 10px;
+      border-radius: 15px;
+      position: relative;
+      object-fit: cover;
   }
   .album_info {
     margin-left: 13px;
@@ -60,8 +65,15 @@
       font-weight: bold;
     }
     .album_title_user_name {
-      font-size: 15px;
-      opacity: 0.5;
+      opacity: 50%;
+      color: #1a1a1a;
+    }
+    .icon_time {
+      margin: 4px;
+
+      font-size: 13px;
+      opacity: 50%;
+      color: #1a1a1a;
     }
   }
 }
@@ -153,6 +165,27 @@
   }
 
   .table-responsive {
-    height: 49.5vh;
+    height: 50vh;
   }
 }
+  .all_album {
+    width: 100%;
+    .card {
+      height: 84vh;
+      .album_item_container {
+        max-height: 80vh;
+        flex-wrap: wrap;
+        overflow-x: auto;
+        white-space: nowrap;
+        .album_homepage_detail {
+          width: 15rem;
+          margin-right: 30px;
+          margin-bottom: 30px;
+          .album-avatar {
+            width: 210px;
+            height: 240px;
+          }
+        }
+      }
+    }
+  }

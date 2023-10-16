@@ -86,13 +86,14 @@
         <div class="row align-items-center">
             <%= image_tag("poster.png", alt: "Image") %>
         </div>
-        <center>
-            <%= link_to "Log out",destroy_user_session_path, class:"btn btn-outline-secondary button_logout", data: {turbo_method: :delete} %>
-        </center>
+        <div class="text-center">
+          <button style="background-color: transparent; border: none;" data-bs-toggle="modal" data-bs-target="#edit-password-modal">
+            <%= link_to "Change password", edit_user_registration_path, class:"btn btn-outline-secondary button_change_pw", data: {turbo_frame: "change_password"} %>
+          </button>
+        </div>
   </div>
 </div>
-
-
+<%= render "users/user_infos/modal_password"%>
 <%= render "users/user_infos/modal", user: @user%>
 
 

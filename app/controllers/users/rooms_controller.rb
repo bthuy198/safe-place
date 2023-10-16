@@ -6,7 +6,7 @@ module Users
     before_action :authenticate_user!
 
     def index
-      @q = Room.includes(:user).ransack(params[:q])
+      @q = Room.includes(:user).where(status: :enable).ransack(params[:q])
       @rooms = @q.result(distinct: true).order(id: :desc).page params[:page]
     end
 
@@ -25,7 +25,6 @@ module Users
     end
 
     def out_room
-      # binding.pry
       @room = Room.find(params[:id])
 
       if @room.update(user_id: nil)
