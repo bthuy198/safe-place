@@ -15,11 +15,6 @@ document.addEventListener('turbo:load', function() {
   handleViewportChange(mq);
 
   mq.addEventListener('change', handleViewportChange);
-
-
-  $('.radio_label').on('click', function(e) {
-    e.stopPropagation();
-  });
 });
 
 document.addEventListener("turbo:frame-missing", function(event) {
