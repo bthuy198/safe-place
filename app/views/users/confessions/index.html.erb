@@ -4,7 +4,7 @@
       <%= render "users/confessions/confessions_index", user: current_user, confessions: @confessions %>
     </div>
     <% if @has_next_page %>
-      <%= turbo_frame_tag "confessions_pagination", src: users_confessions_path(page: @current_page + 1, format: :turbo_stream), loading: "lazy" %>
+      <%= turbo_frame_tag "confessions_pagination", src: users_confessions_path(page: @current_page + 1, format: :turbo_stream, q: params[:q]), loading: "lazy" %>
     <% end %>
   </div>
 <% end %>

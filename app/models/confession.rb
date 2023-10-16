@@ -34,6 +34,10 @@ class Confession < ApplicationRecord
     ["tags"]
   end
 
+  def self.ransackable_associations(auth_object = nil)
+    ["user"]
+  end
+
   ransacker :tags do |parent|
     Arel.sql("CONCAT('%', #{parent.table_name}.tag, '%')")
   end
