@@ -9,7 +9,8 @@
     <td><%= album.name %></td>
     <td><%= album.user.user_name %></td>
     <td class="text-end"><%= link_to "Edit", edit_admins_podcast_album_path(album), remote: true, class: 'button_hover btn btn-primary bg_green border_green update_class button_width' %></td>
-    <td class="text-start"><%= link_to "Destroy", admins_podcast_album_path(album), data: { turbo_method: :delete, turbo_confirm: "Delete student '#{album.name}'?" }, class: "destroy_class btn btn-danger button_width" %></td>
+    <td class="text-center"><%= link_to "Destroy", admins_podcast_album_path(album), data: { turbo_method: :delete, turbo_confirm: "Delete student '#{album.name}'?" }, class: "destroy_class btn btn-danger button_width" %></td>
+    <td class="text-start"><%= link_to "Show", admins_podcast_album_path(album), remote: true, class: 'btn btn-warning button_width' %></td>
   </tr>
 <% end %>
 <style>

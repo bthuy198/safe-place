@@ -34,7 +34,7 @@ module Users
                                                    locals: { room: @room },
                                                    target: "button_join_#{@room.id}")
       else
-        render json: { error: 'Failed to join room.' }, status: :unprocessable_entity
+        render json: { error: 'Failed to out room.' }, status: :unprocessable_entity
       end
     end
 

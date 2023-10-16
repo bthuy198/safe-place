@@ -3,7 +3,6 @@
     color: #1F7564;
     font-size: 50px;
     font-weight: bold;
-    margin-top: 25px;
   }
   .user_infos_label {
     color: #1F7564;
@@ -89,6 +88,14 @@
     background-color: #1F7564;
     color: #FFFFFF;
   }
+}
+
+.button_back_user_info {
+  position: fixed;
+  margin-left: 22px;
+  margin-top: 15px;
+  font-size: 28px;
+  color: #1F7564;
 }
 
 

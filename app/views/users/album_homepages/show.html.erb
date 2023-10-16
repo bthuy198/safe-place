@@ -21,15 +21,18 @@
               <% end %>
             </p>
             <div>
-              <% if current_user.likes.exists?(likeable: @album) %>
-                <%= inline_svg_tag('heart_icon.svg', class:"heart_podcast_albums stroke-red fill-red", data: { album_id: @album.id } ) %>
-              <% else %>
-                <%= inline_svg_tag('heart_icon.svg', class:"heart_podcast_albums", data: { album_id: @album.id } ) %>
-              <% end %>
-              <% if current_user.bookmarks.exists?(bookmarkable: @album) %>
-                <%= inline_svg_tag('bookmark_icon.svg', class:"bookmark_podcast_albums stroke-red", data: { album_id: @album.id } ) %>
-              <% else %>
-                <%= inline_svg_tag('bookmark_icon.svg', class:"bookmark_podcast_albums", data: { album_id: @album.id } ) %>
+              
+              <% if user_signed_in? %>
+                <% if current_user.likes.exists?(likeable: @album) %>
+                  <%= inline_svg_tag('heart_icon.svg', class:"heart_podcast_albums stroke-red fill-red", data: { album_id: @album.id } ) %>
+                <% else %>
+                  <%= inline_svg_tag('heart_icon.svg', class:"heart_podcast_albums", data: { album_id: @album.id } ) %>
+                <% end %>
+                <% if current_user.bookmarks.exists?(bookmarkable: @album) %>
+                  <%= inline_svg_tag('bookmark_icon.svg', class:"bookmark_podcast_albums stroke-red", data: { album_id: @album.id } ) %>
+                <% else %>
+                  <%= inline_svg_tag('bookmark_icon.svg', class:"bookmark_podcast_albums", data: { album_id: @album.id } ) %>
+                <% end %>
               <% end %>
             </div>
           </span>

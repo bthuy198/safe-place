@@ -54,6 +54,17 @@ div {
         }
       }
     }
+    #search_form {
+      width: 300px;
+      color: var(--color-primary);
+      font-size: var(--font-size-s);
+      .custom_submit {
+        color: var(--color-primary);
+        border: var(--border);
+        border-radius: var(--border-radius);
+        font-size: var(--font-size-s);
+      }
+    }
   }
 
   &.custom_main {
@@ -341,7 +352,7 @@ form.confession_form {
   }
   input.form {
     margin-top: 10px;
-    &.custom_btn {
+    &.custom_submit {
       color: var(--color-primary);
       border: var(--border);
       border-radius: var(--border-radius);

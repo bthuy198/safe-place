@@ -23,10 +23,12 @@ module Users
       @podcast_album.user_id = current_user.id
       respond_to do |format|
         if @podcast_album.save
-          format.turbo_stream{flash.now[:notice] = "Album created successfully"}
+          format.turbo_stream { flash.now[:notice] = 'Album created successfully' }
           format.html { redirect_to users_podcasts_path, notice: 'Podcast album was' }
         else
-          format.turbo_stream { flash.now[:alert] = "<ul><li>#{@podcast_album.errors.full_messages.join("</li><li>")}</li><ul>".html_safe }
+          format.turbo_stream do
+            flash.now[:alert] = "<ul><li>#{@podcast_album.errors.full_messages.join('</li><li>')}</li><ul>".html_safe
+          end
         end
       end
     end
@@ -34,10 +36,12 @@ module Users
     def update
       respond_to do |format|
         if @podcast_album.update(podcast_album_params)
-          format.turbo_stream { flash.now[:notice] = "Album was successfully updated." }
+          format.turbo_stream { flash.now[:notice] = 'Album was successfully updated.' }
           format.json { render :show, status: :ok, location: @podcast_album }
         else
-          format.turbo_stream { flash.now[:alert] = "<ul><li>#{@podcast_album.errors.full_messages.join("</li><li>")}</li><ul>".html_safe }
+          format.turbo_stream do
+            flash.now[:alert] = "<ul><li>#{@podcast_album.errors.full_messages.join('</li><li>')}</li><ul>".html_safe
+          end
           format.json { render json: @podcast_album.errors, status: :unprocessable_entity }
         end
       end

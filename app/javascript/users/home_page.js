@@ -1,11 +1,4 @@
-function moveForward() {
-    window.history.forward();
-}
-function moveBackward() {
-    window.history.back();
-}
-
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('turbo:load', function() {
   const targetElement = document.querySelector('.custom_render_row');
 
   function handleViewportChange(mq) {
@@ -22,6 +15,11 @@ document.addEventListener('DOMContentLoaded', function() {
   handleViewportChange(mq);
 
   mq.addEventListener('change', handleViewportChange);
+
+
+  $('.radio_label').on('click', function(e) {
+    e.stopPropagation();
+  });
 });
 
 document.addEventListener("turbo:frame-missing", function(event) {
