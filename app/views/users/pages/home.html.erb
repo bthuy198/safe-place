@@ -4,7 +4,12 @@
       <div class="custom_menu">
         <ul>
           <li><a href=<%= root_path %>><i class="fa-solid fa-house fa-lg"></i>Home</a></li>
-          <li><a href=#><i class="fa-solid fa-magnifying-glass fa-lg"></i>Search</a></li>
+          <li>
+            <div class="btn-group dropend">
+              <a role="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-magnifying-glass fa-lg"></i>Search</a>
+              <%= render "users/shared/search_form" %>
+            </div>
+          </li>
           <li><a href=#><i class="fa-solid fa-book fa-lg"></i>My courses</a><a href=#><i class="fa-solid fa-plus"></i></a></li>
         </ul>
       </div>
