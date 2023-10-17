@@ -84,6 +84,7 @@ Rails.application.routes.draw do
         patch 'join_room'
         patch 'out_room'
         get 'room_chat'
+        post 'create_conversation'
       end
     end
   end

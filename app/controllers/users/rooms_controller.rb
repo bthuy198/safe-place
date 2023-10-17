@@ -42,6 +42,15 @@ module Users
       @room = Room.find(params[:id])
     end
 
+    def create_conversation
+      @room = Room.find(params[:id])
+      @conversation = current_user.conversations.new(room_id: @room.id, content: params[:conversation][:content])
+      if @conversation.save
+        Turbo::StreamsChannel.broadcast_prepend_to("chatbox", partial: "users/rooms/partials/conversation", locals: { conversation: @conversation }, target: "list-conversation")
+      else
+      end
+    end
+
     private
 
     def room_params

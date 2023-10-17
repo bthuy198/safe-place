@@ -23,7 +23,19 @@
                         <h4 class="card-title"><strong>Chat</strong></h4>
                     </div>
 
-                    <%=turbo_stream_from @room %>
+                    <%=turbo_stream_from "chatbox" %>
+                    <div id="list-conversation">
+                        <% @room.conversations.each do |conversation| %>
+                            <%= render "users/rooms/partials/conversation", conversation: conversation%>
+                        <% end %>
+                    </div>
+                    <%= form_with(model: [@room, Conversation.new], url: create_conversation_users_room_path(@room)) do |form| %>
+                            <%= form.rich_text_area :content %>
+                            <%= form.submit%>
+                    <% end %>
+
+                    
+                    <!--
                     <div id="message" class="ps-container ps-theme-default ps-active-y" style="overflow-y: scroll !important; height:400px !important;">
                             <div class="media media-chat">
                                 <div class="media-body">
@@ -52,7 +64,9 @@
                             <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 2px;"></div>
                         </div>
                     </div>
+                    -->
                 <%#= render "users/rooms/partials/new_message_form", room: @room %>
+                <!--
                 <div class="publisher bt-1 border-light">
                     <img class="avatar avatar-xs" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">
                     
@@ -65,6 +79,7 @@
                     <a class="publisher-btn text-info" href="#" data-abc="true"><i class="fa fa-paper-plane"></i></a>
 
                 </div>
+                -->
             </div>
         </div>
     </div>
