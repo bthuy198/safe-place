@@ -270,6 +270,23 @@ nav {
     padding: 8px 12px;
     margin-left: 12px;
   }
+
+  .main_menu {
+    color: var(--color-primary);
+    a {
+      color: var(--color-primary);
+
+      &:hover,
+      &:focus,
+      &:active {
+      color: var(--color-gray);
+    }
+
+      &.custom_item {
+        width: 97%;
+      }
+    }
+  }
 }
 
 footer {
