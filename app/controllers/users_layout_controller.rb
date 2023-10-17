@@ -10,11 +10,18 @@ class UsersLayoutController < ApplicationController
   def check_current_url
     current_url = request.original_url
 
-    if current_url.include?('confessions') && request.referer.nil?
-      redirect_to root_path
-      session[:confession_url] = current_url
-    elsif session[:confession_url]
-      session[:confession_url] = nil
+    conditions = [
+      { keywords: ['confession'], session_key: :confession_url },
+      { keywords: ['album', 'podcast'], session_key: :podcast_url }
+    ]
+
+    conditions.each do |condition|
+      if condition[:keywords].any? { |keyword| current_url.include?(keyword) } && request.referer.nil?
+        redirect_to root_path
+        session[condition[:session_key]] = current_url
+      elsif session[condition[:session_key]]
+        session[condition[:session_key]] = nil
+      end
     end
   end
 end
