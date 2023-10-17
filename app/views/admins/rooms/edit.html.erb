@@ -1,12 +1,31 @@
 <%#= turbo_frame_tag "custom_room" do %>
         <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit room <%=@room.id%></h1>
+            <h1 class="modal-title fs-5 title_edit_room_admin" id="exampleModalLabel" >Edit room <%=@room.id%></h1>
          <%# <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> %>
         </div>
         <%#= render "shared/flash"%>
-        <div id="lll" style="background-color: bisque;">
+        <div id="lll" class="edit_room_view" >
+                <%#= render 'admins/rooms/partials/form', room: @room %>
+               <div class="container-fluid form-user" id="room_model">
+                <%= form_with(model: [:admins, @room], class: "form_modal_room") do |form| %>
+                        <div class="row mb-5">
+                                <div class="input_room_edit">
+                                        <%= form.label :name, "Room Name", class: 'lable_room_edit' %>
+                                        <%= form.text_field :name, class: 'form-control' %>
+                                </div>
 
-                <%= render 'admins/rooms/partials/form', room: @room %>
+                                <div class="input_room_edit" style="margin-top: 24px;">
+                                        <%= form.label :counselor_id, " Name counselor", class:'lable_room_edit' %>
+                                        <%= form.select :counselor_id, User.where(type: "Counselor").map{|c| [c.user_name, c.id]}, {}, class: "form-control form-select mb-3" %>
+                                </div>
+                        </div>
+
+                        <div class="form-actions d-flex justify-content-center">
+                                <%= form.submit "Submit", class: "btn btn-success btn-lg"%>
+
+                        </div>
+                <% end %>
+                </div>
         </div>
         
 <%# end %>

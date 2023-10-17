@@ -1,4 +1,73 @@
-<div class="container out_room_page">
-<h1><strong>Counselling Room: <%= @room.name%></strong></h1>
-<%= button_to 'Out', out_room_users_room_path(@room), method: :patch, class: "btn btn-primary btn_join join_room_button" %>
+<% if @room.nil? %>
+    <div class="d-flex align-items-center justify-content-center vh-100">
+            <div class="text-center">
+                <h1 class="display-1 fw-bold">404</h1>
+                <p class="fs-3"> <span class="text-danger">Opps!</span> Page not found.</p>
+                <%# <p class="lead">
+                    Bạn chưa join room hoặc room đã có người khác join
+                  </p> %>
+                <%= link_to 'Go Rooms ', users_rooms_path, class: 'btn btn-primary'  %>
+            </div>
+    </div>
+<% else %>
+   <div class="container out_room_page">
+    <h1><strong>Counselling Room: <%= @room.name%></strong></h1>
+    <%= button_to 'Out', out_room_users_room_path(@room), method: :patch, class: "btn btn-primary btn_join join_room_button" %>
 </div>
+<div class="page-content page-container" id="page-content">
+    <div class="padding">
+        <div class="row container d-flex justify-content-center">
+            <div class="col-md-6 box_chat_room" >
+                <div class="card card-bordered">
+                    <div class="card-header">
+                        <h4 class="card-title"><strong>Chat</strong></h4>
+                    </div>
+
+                    <%=turbo_stream_from @room %>
+                    <div id="message" class="ps-container ps-theme-default ps-active-y" style="overflow-y: scroll !important; height:400px !important;">
+                            <div class="media media-chat">
+                                <div class="media-body">
+                                    <p class="custom_p_chat_box">Hi</p>
+                                </div>
+                            </div>
+                        <div class="media media-chat media-chat-reverse">
+                            <div class="media-body">
+                                <p>Hiii, I'm good.</p>
+                            </div>
+                        </div>
+
+                        <div class="media media-chat media-chat-reverse">
+                            <div class="media-body">
+                                <p>Do you have pictures of Matley Marriage?</p>
+                                <p class="meta">
+                                    <time datetime="2018">00:10</time>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
+                            <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                        </div>
+                        <div class="ps-scrollbar-y-rail" style="top: 0px; height: 0px; right: 2px;">
+                            <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 2px;"></div>
+                        </div>
+                    </div>
+                <%#= render "users/rooms/partials/new_message_form", room: @room %>
+                <div class="publisher bt-1 border-light">
+                    <img class="avatar avatar-xs" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">
+                    
+                    <input class="publisher-input" type="text" placeholder="Write something">
+                    <span class="publisher-btn file-group">
+                        <i class="fa fa-paperclip file-browser"></i>
+                        <input type="file">
+                    </span>
+                    <a class="publisher-btn" href="#" data-abc="true"><i class="fa fa-smile"></i></a>
+                    <a class="publisher-btn text-info" href="#" data-abc="true"><i class="fa fa-paper-plane"></i></a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% end %>
+
