@@ -1,5 +1,9 @@
 let podcast_id = 0
+let podcast_album_id = 0
 let podcast_url = 'http://127.0.0.1:3000/admins/podcasts'
+let podcast_album_url = 'http://127.0.0.1:3000/admins/podcast_albums'
+let imageFile
+let audioFile
 
 function updatePodcast(podcastId){
     console.log(podcast_url)
@@ -78,3 +82,92 @@ function cancelEdit(podcastId){
             console.log(error);
         })
 }
+
+function openModalCreatePodcast(album_id){
+    $('#modalCreatePodcast').modal('show');
+    console.log(album_id)
+    podcast_album_id = album_id
+
+}
+
+function createPodcast(){
+    let album_id = podcast_album_id;
+    let name = $("#crePodcastName").val();
+    let author_name = $("#creAuthorName").val();
+    let episode_number = $("#creEpNumber").val();
+
+    let formData = new FormData();
+    formData.append("name", name);
+    formData.append("author_name", author_name);
+    formData.append("episode_number", episode_number);
+    formData.append("image", imageFile);
+    formData.append("audio", audioFile);
+    formData.append("podcast_album_id", album_id)
+
+    console.log(name)
+    console.log(imageFile)
+    console.log(formData)
+
+    $.ajax({
+        type: 'POST',
+        url: podcast_url,
+        contentType: false,
+        cache: false,
+        processData: false,
+        data: formData
+    })
+        .done((data) => {
+            let str = renderPodcast(data)
+            alert("Create successful")
+            $('#modalCreatePodcast').modal('hide');
+            let count = $("#all_podcast tr").length;
+            console.log(count)
+            if (count === 0){
+                $("#all_podcast").empty();
+                let table_head = renderTableHead();
+                $("#all_podcast").append(table_head);
+            }
+
+            $("#podcast_table").append(str);
+            $("#createPodcastForm")[0].reset();
+        })
+        .fail((error) => {
+            console.log(error);
+        })
+}
+
+function renderPodcast(podcast){
+    return `<tr id="podcast-${podcast.id}">
+        <td>${podcast.id}</td>
+        ${podcast.image ? `<td><img src="${podcast.image.url}" alt="Podcast Avatar" class="" style="width: 80px; height: 80px; border-radius: 50%"></td>` : `<td><img src="podcast.jpg" alt="Album Avatar" class="" style="height: 80px; border-radius: 50%"></td>`}
+        <td id="podcast_name_${podcast.id}" data-id="${podcast.id}"><input class="form-control" type='text' value='${podcast.name}' id='input_name_podcast_${podcast.id}'></td>
+        <td class="text-end"><button class="btn btn-warning button_cancel" data-id="${podcast.id}" onclick="cancelEdit(${podcast.id})"><i class="fa-solid fa-arrow-rotate-left"></i></button></td>
+        <td class="text-center"><button class="btn btn-danger delete_podcast" data-id="${podcast.id}" onclick="deletePodcast(${podcast.id})"><i class="fa-solid fa-trash"></i></button></td>
+        <td class="text-start"><button class="btn btn-primary bg_green border_green button_done" data-id="${podcast.id}" onclick="updatePodcast(${podcast.id})"><i class="fa-solid fa-check"></i></button></td>
+      </tr>`
+}
+
+function renderTableHead(){
+    return `<thead>
+                <tr class="table-light">
+                  <th scope="col">ID</th>
+                  <th scope="col">Avatar</th>
+                  <th scope="col">Podcast Name</th>
+                  <th scope="col" colspan="3">Action</th>
+                </tr>
+            </thead>
+            <tbody id="podcast_table"></tbody>`
+}
+
+function resetCreateForm(){
+    $("#createPodcastForm")[0].reset();
+}
+
+$('#crePodcastImage').change(function(e){
+    var imageName = e.target.files[0].name;
+    imageFile = e.target.files[0];
+});
+$('#crePodcastAudio').change(function(e){
+    var audioName = e.target.files[0].name;
+    audioFile = e.target.files[0];
+});

@@ -6,6 +6,7 @@ module Admins
     # GET /podcasts or /podcasts.json
     def index
       @podcasts = Podcast.all
+      @podcast = Podcast.new
     end
 
     # GET /podcasts/1 or /podcasts/1.json
@@ -23,14 +24,12 @@ module Admins
 
     # POST /podcasts or /podcasts.json
     def create
-      @podcast = Podcast.new(podcast_params)
+      @podcast = Podcast.new(create_podcast_params)
 
       respond_to do |format|
         if @podcast.save
-          format.html { redirect_to podcast_url(@podcast), notice: 'Podcast was successfully created.' }
-          format.json { render :show, status: :created, location: @podcast }
+          format.json { render json: @podcast, status: :created}
         else
-          format.html { render :new, status: :unprocessable_entity }
           format.json { render json: @podcast.errors, status: :unprocessable_entity }
         end
       end
@@ -68,5 +67,11 @@ module Admins
     def podcast_params
       params.permit(:name, :id)
     end
+
+    def create_podcast_params
+      params.permit(:name, :author_name, :episode_number, :image, :audio, :podcast_album_id)
+    end
+
+
   end
 end
