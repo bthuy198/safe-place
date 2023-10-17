@@ -10,7 +10,7 @@ module Users
 
       included do
         before_action :authenticate_flash, only: %i[update destroy]
-        before_action :authenticate_user!, only: %i[new create update destroy]
+        before_action :authenticate_user!, only: %i[create update destroy]
         # rubocop:enable Rails/LexicallyScopedActionFilter
 
         private
