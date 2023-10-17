@@ -1,7 +1,7 @@
 let podcast_id = 0
 let podcast_album_id = 0
-let podcast_url = 'http://127.0.0.1:3000/admins/podcasts'
-let podcast_album_url = 'http://127.0.0.1:3000/admins/podcast_albums'
+let podcast_url = `${window.location.origin}/admins/podcasts`
+let podcast_album_url = `${window.location.origin}/admins/podcast_albums`
 let imageFile
 let audioFile
 
@@ -87,7 +87,7 @@ function openModalCreatePodcast(album_id){
     $('#modalCreatePodcast').modal('show');
     console.log(album_id)
     podcast_album_id = album_id
-
+    console.log(window.location.origin)
 }
 
 function createPodcast(){
@@ -166,8 +166,10 @@ function resetCreateForm(){
 $('#crePodcastImage').change(function(e){
     var imageName = e.target.files[0].name;
     imageFile = e.target.files[0];
+    alert(imageName)
 });
 $('#crePodcastAudio').change(function(e){
     var audioName = e.target.files[0].name;
     audioFile = e.target.files[0];
+    alert(audioName)
 });
