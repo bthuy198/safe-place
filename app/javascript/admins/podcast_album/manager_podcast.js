@@ -85,9 +85,7 @@ function cancelEdit(podcastId){
 
 function openModalCreatePodcast(album_id){
     $('#modalCreatePodcast').modal('show');
-    console.log(album_id)
     podcast_album_id = album_id
-    console.log(window.location.origin)
 }
 
 function createPodcast(){
@@ -166,10 +164,8 @@ function resetCreateForm(){
 $('#crePodcastImage').change(function(e){
     var imageName = e.target.files[0].name;
     imageFile = e.target.files[0];
-    alert(imageName)
 });
 $('#crePodcastAudio').change(function(e){
     var audioName = e.target.files[0].name;
     audioFile = e.target.files[0];
-    alert(audioName)
 });
