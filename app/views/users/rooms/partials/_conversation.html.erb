@@ -3,11 +3,6 @@
 <div id="list-conversation-<%=conversation.id%>" class="d-flex justify-content-between">
         <div><%= conversation.conversationable.user_name%></div>
         <div><%= conversation.content%></div>
-    
-    <% if current_user == conversation.conversationable %>
-        <%= link_to 'Delete', users_room_conversation_path(room, conversation), data: { turbo_method: :delete, turbo_confirm: 'Are you sure' } %>
-    <% else %>
-        x
-    <% end %>    
+        <%= link_to 'Delete', users_room_conversation_path(conversation.room, conversation), data: { turbo_method: :delete, turbo_confirm: 'Are you sure' } %>
 </div>
 

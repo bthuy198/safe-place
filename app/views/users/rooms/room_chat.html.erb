@@ -26,7 +26,7 @@
                     <%=turbo_stream_from "chatbox" %>
                     <div id="list-conversation">
                         <% @room.conversations.each do |conversation| %>
-                            <%= render "users/rooms/partials/conversation", conversation: conversation, room: @room%>
+                            <%= render "users/rooms/partials/conversation", conversation: conversation%>
                         <% end %>
                     </div>
                     <%= render "users/rooms/partials/form_conversation"%>
