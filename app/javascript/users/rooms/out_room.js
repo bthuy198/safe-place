@@ -9,6 +9,17 @@ document.addEventListener('DOMContentLoaded', function() {
     })
 })
 
+const outbutton = document.getElementById('out_room_id')
+
+window.addEventListener('beforeunload', function (event) {
+  // event.preventDefault();
+  // event.returnValue = 'lâlaaaaa'; 
+  this.alert('234')
+  const roomId = outbutton.getAttribute('data-room-id')
+  outRoomAjax(roomId);
+  // event.returnValue = 'lâlaaaaa'; 
+});
+
 function outRoomAjax(roomId) {
     console.log(roomId);
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');

@@ -6,6 +6,9 @@
     <div class="col">
       <%= form.label :name, "Room Name" %>
       <%= form.text_field :name, class: 'form-control' %>
+      <% if room.errors.include?(:name) %>
+          <div class="text-danger"><%= room.errors[:name].first %></div>
+      <% end %>
     </div>
     <div class="col">
         <%= form.label :counselor_id, " Name counselor" %>
