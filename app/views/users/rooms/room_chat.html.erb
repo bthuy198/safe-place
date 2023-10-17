@@ -26,13 +26,10 @@
                     <%=turbo_stream_from "chatbox" %>
                     <div id="list-conversation">
                         <% @room.conversations.each do |conversation| %>
-                            <%= render "users/rooms/partials/conversation", conversation: conversation%>
+                            <%= render "users/rooms/partials/conversation", conversation: conversation, room: @room%>
                         <% end %>
                     </div>
-                    <%= form_with(model: [@room, Conversation.new], url: create_conversation_users_room_path(@room)) do |form| %>
-                            <%= form.rich_text_area :content %>
-                            <%= form.submit%>
-                    <% end %>
+                    <%= render "users/rooms/partials/form_conversation"%>
 
                     
                     <!--
