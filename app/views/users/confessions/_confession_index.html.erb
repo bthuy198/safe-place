@@ -16,14 +16,14 @@
     <%= confession.tag.map {|t| "##{t}"}.join(" ") if !confession.tag.empty? %>
   </div>
   <div class="btn-group" role="group" aria-label="confession_group">
-    <% if user %>
+    <% if user_signed_in? %>
       <%= link_to like_users_confession_path(confession), class: "btn btn-light custom_button", type: "button", id: "#{dom_id(confession)}_like", data:{turbo_method: :post} do %>
         <%= render "users/shared/like", user: user, item: confession %>
       <% end %>
     <% else %>
-      <button type="button" class="btn btn-light custom_button"><i class="fa-regular fa-heart"></i></button>
+      <button type="button" class="btn btn-light custom_button" disabled><i class="fa-solid fa-heart-crack"></i></button>
     <% end %>
     <%= link_to sanitize("<i class='fa-regular fa-message'></i>"), users_confession_path(confession), class: "btn btn-light custom_button", type: "button" %>
-    <button type="button" class="btn btn-light custom_button"><i class="fa-solid fa-envelope-circle-check"></i></button>
+    <button type="button" class="btn btn-light custom_button" disabled><i class="fa-solid fa-envelope-circle-check"></i></button>
   </div>
 </div>

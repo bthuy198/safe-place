@@ -23,6 +23,7 @@ div {
   }
 
   &.custom_menu {
+    height: 20vh;
     margin: 10px;
     font-family: var(--font-family-sans);
     color: var(--color-primary);
@@ -104,6 +105,10 @@ turbo-frame#new_confession_frame {
         font-family: var(--font-family-sans);
         color: var(--color-primary);
         font-style: italic;
+      }
+      h5 {
+        font-family: var(--font-family-sans);
+        color: var(--color-primary);
       }
       button.new_confession {
         width: 100%;
@@ -196,6 +201,7 @@ turbo-frame#main {
 }
 
 nav {
+  height: 8vh;
   top: 0;
   right: 0;
   background-color: var(--color-primary);
@@ -263,6 +269,23 @@ nav {
     border: var(--border);
     padding: 8px 12px;
     margin-left: 12px;
+  }
+
+  .main_menu {
+    color: var(--color-primary);
+    a {
+      color: var(--color-primary);
+
+      &:hover,
+      &:focus,
+      &:active {
+      color: var(--color-gray);
+    }
+
+      &.custom_item {
+        width: 97%;
+      }
+    }
   }
 }
 

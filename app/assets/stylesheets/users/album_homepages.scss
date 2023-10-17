@@ -2,9 +2,8 @@
     margin: 0px;
     padding: 0px;
     .card {
-        height: 84vh;
+        height: 88vh;
         .card-body {
-          max-height: 81vh;
           overflow-y: scroll;
         }
     }
@@ -65,8 +64,8 @@
     .album_title_album_name {
       font-size: 20px;
       font-weight: bold;
-      white-space: nowrap; 
-      width: 180px; 
+      white-space: nowrap;
+      width: 180px;
       overflow: hidden;
       text-overflow: ellipsis;
     }
@@ -192,7 +191,7 @@
             height: 240px;
           }
           .album_title_album_name {
-            width: 11vw; 
+            width: 11vw;
           }
         }
       }
