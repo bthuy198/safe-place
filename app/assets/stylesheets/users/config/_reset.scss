@@ -179,6 +179,13 @@ turbo-frame#board {
             color: var(--color-primary);
           }
         }
+        .custom_dropdown {
+          color: var(--color-primary);
+          &:focus,
+          &:active {
+            background-color: var(--color-gray);
+          }
+        }
       }
       .confesssion_show {
         min-height: 30vh;
