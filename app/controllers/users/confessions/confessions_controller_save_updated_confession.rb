@@ -11,10 +11,15 @@ module Users
 
         def broadcast_updated_confession
           Turbo::StreamsChannel
-            .broadcast_replace_later_to('confessions_index_channel',
-                                        target: helpers.dom_id(@confession),
-                                        partial: 'users/confessions/confession_index',
-                                        locals: { user: current_user, confession: @confession })
+            .broadcast_update_later_to('confessions_index_channel',
+                                        target: "#{helpers.dom_id(@confession)}_card_body",
+                                        partial: 'users/confessions/confession_card_body',
+                                        locals: { confession: @confession })
+          Turbo::StreamsChannel
+            .broadcast_update_later_to('confessions_index_channel',
+                                        target: "#{helpers.dom_id(@confession)}_card_tag",
+                                        partial: 'users/confessions/confession_card_tag',
+                                        locals: { confession: @confession })
           Turbo::StreamsChannel
             .broadcast_update_later_to('confessions_show_channel',
                                        target: "#{helpers.dom_id(@confession)}_show",
