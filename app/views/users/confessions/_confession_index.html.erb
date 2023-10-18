@@ -1,4 +1,4 @@
-<div class="card" id="<%= dom_id confession %>">
+<div class="card" id="<%= dom_id(confession) %>">
   <div class="card-body">
     <% if confession.anonymous %>
       <h5 class="card-title">
@@ -16,14 +16,71 @@
     <%= confession.tag.map {|t| "##{t}"}.join(" ") if !confession.tag.empty? %>
   </div>
   <div class="btn-group" role="group" aria-label="confession_group">
-    <% if user_signed_in? %>
+    <% if user %>
       <%= link_to like_users_confession_path(confession), class: "btn btn-light custom_button", type: "button", id: "#{dom_id(confession)}_like", data:{turbo_method: :post} do %>
         <%= render "users/shared/like", user: user, item: confession %>
       <% end %>
     <% else %>
       <button type="button" class="btn btn-light custom_button" disabled><i class="fa-solid fa-heart-crack"></i></button>
     <% end %>
-    <%= link_to sanitize("<i class='fa-regular fa-message'></i>"), users_confession_path(confession), class: "btn btn-light custom_button", type: "button" %>
+    <button type="button" class="btn btn-light custom_button" data-bs-target="#<%= "#{dom_id(confession)}_show_modal" %>" data-bs-toggle="modal">
+      <i class='fa-regular fa-message'></i>
+    </button>
+
+    <div class="modal fade" id="<%= "#{dom_id(confession)}_show_modal" %>" aria-hidden="true" aria-labelledby="<%= "#{dom_id(confession)}_show_modal_label" %>" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+
+            <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-solid fa-ellipsis"></i></button>
+            </button>
+            <ul class="dropdown-menu">
+              <li>
+                <button class="dropdown-item" data-bs-target="#<%= "#{dom_id(confession)}_edit_modal" %>" data-bs-toggle="modal">
+                  Edit
+                </button>
+              </li>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <%= link_to "Delete", users_confession_path(confession), data: {turbo_confirm: "Are you sure to delete this confession?", turbo_method: :delete}, class: "dropdown-item", type: "button" %>
+              </li>
+            </ul>
+
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <%= turbo_frame_tag "#{dom_id(confession)}_show", src: users_confession_path(confession), loading: "lazy" do %>
+              <div class="centered_container centered_board">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-2xl"></i>
+              </div>
+            <% end %>
+          </div>
+          <div class="modal-footer">
+            Placeholder of comments.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="<%= "#{dom_id(confession)}_edit_modal" %>" aria-hidden="true" aria-labelledby="<%= "#{dom_id(confession)}_edit_modal_label" %>" tabindex="-1" data-controller="modal" data-modal-target="modal">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button class="btn btn-secondary" data-bs-target="#<%= "#{dom_id(confession)}_show_modal" %>" data-bs-toggle="modal">Back</button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <%= turbo_frame_tag "#{dom_id(confession)}_edit", src: edit_users_confession_path(confession), loading: "lazy" do %>
+              <div class="centered_container centered_board">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-2xl"></i>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <button type="button" class="btn btn-light custom_button" disabled><i class="fa-solid fa-envelope-circle-check"></i></button>
   </div>
 </div>

@@ -9,8 +9,8 @@ module Users
       extend ActiveSupport::Concern
 
       included do
-        before_action :authenticate_flash, only: %i[update destroy]
-        before_action :authenticate_user!, only: %i[create update destroy]
+        before_action :authenticate_flash, only: %i[edit update destroy]
+        before_action :authenticate_user!, only: %i[create edit update destroy]
         # rubocop:enable Rails/LexicallyScopedActionFilter
 
         private

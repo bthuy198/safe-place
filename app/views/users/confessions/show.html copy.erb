@@ -1,0 +1,38 @@
+<%= turbo_frame_tag "board" do %>
+  <div class="confessions_board" id="confessions_board">
+    <div id="<%= "#{dom_id(@confession)}_show"%>">
+      <%= render "users/confessions/confession", confession: @confession %>
+    </div>
+    <div class="btn-group confession_show_group" role="group" aria-label="confession_show">
+      <%= link_to "Back", users_confessions_path, class: "btn btn-light", type: "button" %>
+      <% if current_user %>
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#<%= "#{dom_id(@confession)}_FormModal" %>">
+          Edit
+        </button>
+        <div class="modal fade" id="<%= "#{dom_id(@confession)}_FormModal" %>" tabindex="-1" aria-labelledby="<%= "#{dom_id(@confession)}_FormModalLabel" %>" aria-hidden="true" data-controller="modal" data-modal-target="modal">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="<%= "#{dom_id(@confession)}_FormModalLabel" %>">Edit your confession here</h1>
+                <button type="button" class="btn btn-secondary modal_close_btn" data-bs-dismiss="modal">Close</button>
+              </div>
+              <div class="modal-body">
+                <%= render "users/confessions/form", confession: @confession, url: users_confession_path(@confession) %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <%= link_to "Delete", users_confession_path(@confession), data: {confirm: "Are you sure to delete this confession?", turbo_method: :delete}, class: "btn btn-danger", type: "button" %>
+      <% else %>
+        <button type="button" class="btn btn-success" disabled>
+          Edit
+        </button>
+        <button type="button" class="btn btn-danger" disabled>
+          Delete
+        </button>
+      <% end %>
+    </div>
+    <hr>
+    <p>Placeholder for comments</p>
+  </div>
+<% end %>

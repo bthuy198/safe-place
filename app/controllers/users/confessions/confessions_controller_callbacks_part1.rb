@@ -10,7 +10,7 @@ module Users
 
       included do
         before_action :set_confessions, only: %i[index destroy]
-        before_action :set_confession, only: %i[like show update destroy]
+        before_action :set_confession, only: %i[like show edit update destroy]
         # rubocop:enable Rails/LexicallyScopedActionFilter
         include Kaminari::PageScopeMethods
 
