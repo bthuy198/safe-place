@@ -10,6 +10,10 @@ module Users
       @rooms = @q.result(distinct: true).order(id: :desc).page params[:page]
     end
 
+    def show
+      @room = Room.find(params[:id])
+    end
+
     def join_room
       @room = Room.find(params[:id])
 
@@ -38,13 +42,7 @@ module Users
       end
     end
 
-    def room_chat
-      @room = Room.find(params[:id])
-    end
-
-    def destroy_conversation
-
-    end
+    def destroy_conversation; end
 
     private
 

@@ -1,0 +1,33 @@
+<% if @room.nil? %>
+    <div class="d-flex align-items-center justify-content-center vh-100">
+            <div class="text-center">
+                <h1 class="display-1 fw-bold">404</h1>
+                <p class="fs-3"> <span class="text-danger">Opps!</span> Page not found.</p>
+                <%# <p class="lead">
+                    Bạn chưa join room hoặc room đã có người khác join
+                  </p> %>
+                <%= link_to 'Go Rooms ', users_rooms_path, class: 'btn btn-primary'  %>
+            </div>
+    </div>
+<% else %>
+   <div class="container out_room_page">
+        <h1><strong>Counselling Room: <%= @room.name%></strong></h1>
+        <%= button_to 'Out', out_room_users_room_path(@room), method: :patch, class: "btn btn-primary btn_join join_room_button" %>
+    </div>
+<div class="page-content page-container" id="page-content">
+    <div class="padding">
+        <div class="row container d-flex justify-content-center">
+            <div class="col-md-6 box_chat_room" >
+                <div class="card card-bordered">
+                    <div class="card-header">
+                        <h4 class="card-title"><strong>Chat</strong></h4>
+                    </div>
+                    <%= turbo_stream_from dom_id(@room) %>
+                    <%= turbo_stream_from current_user&.to_gid_param %>
+                    <%= render "users/rooms/partials/room", room: @room %>
+            </div>
+        </div>
+    </div>
+</div>
+<% end %>
+

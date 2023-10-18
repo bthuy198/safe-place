@@ -79,12 +79,11 @@ Rails.application.routes.draw do
         post 'like'
       end
     end
-    resources :rooms, only: [:index] do
+    resources :rooms do
       resources :conversations
       member do
         patch 'join_room'
         patch 'out_room'
-        get 'room_chat'
       end
     end
   end
