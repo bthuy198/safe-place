@@ -18,13 +18,12 @@
     <div class="padding">
         <div class="row container d-flex justify-content-center">
             <div class="col-md-6 box_chat_room" >
-                <div class="card card-bordered">
-                    <div class="card-header">
-                        <h4 class="card-title"><strong>Chat</strong></h4>
+                <div class="card">
+                    <div class="card-body">
+                        <%= turbo_stream_from dom_id(@room) %>
+                        <%= turbo_stream_from current_user&.to_gid_param %>
+                        <%= render "users/rooms/partials/room", room: @room %>
                     </div>
-                    <%= turbo_stream_from dom_id(@room) %>
-                    <%= turbo_stream_from current_user&.to_gid_param %>
-                    <%= render "users/rooms/partials/room", room: @room %>
             </div>
         </div>
     </div>

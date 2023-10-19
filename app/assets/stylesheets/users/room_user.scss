@@ -387,6 +387,54 @@ button, input, optgroup, select, textarea {
 }
 
 .box_chat_room{
-  width: 100vh;
+  margin-top: 15px;
+  height: 80vh;
+  border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  .card {
+    border: none;
+  }
+  #conversations {
+    height: 60vh;
+    width: 100%;
+    overflow-y: auto;
+    .his_bg {
+      max-width: 20vw;
+    }
+    .comment_content {
+      font-size: 18px;
+      word-wrap: break-word;
+    }
+    img{
+      margin-right: 10px;
+    }
+    .button_delete {
+      color: #16594b;
+      text-decoration: none;
+    }
+    .message-time {
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .content_hover:hover .message-time {
+      opacity: 1;
+      transition: opacity 0.2s;
+    }
+
+  }
+  #form_comment {
+    .comment_textfield{
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      height: 10vh;
+      width: 100%;
+      overflow-y: auto;
+    }
+    .comment_submit {
+      margin-top: 10px;
+    }
+
+  }
 }
+

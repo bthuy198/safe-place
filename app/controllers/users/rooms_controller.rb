@@ -7,7 +7,7 @@ module Users
 
     def index
       @q = Room.includes(:user).where(status: :enable).ransack(params[:q])
-      @rooms = @q.result(distinct: true).order(id: :desc).page params[:page]
+      @rooms = @q.result.order(id: :desc).page params[:page]
     end
 
     def show

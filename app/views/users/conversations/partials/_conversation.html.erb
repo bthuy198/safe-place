@@ -1,10 +1,15 @@
 <%= turbo_frame_tag dom_id(conversation) do %>
-  <%= turbo_frame_tag(["controls", dom_id(conversation)]) %>
-  <div class="row">
-    <%= render "users/conversations/partials/display_controls", conversation: conversation if defined?(user) && user == conversation.conversationable %>
-    <div><%= conversation.conversationable.email%></div>
-    <div><%= conversation.content%></div>
-  </div>
-  <hr>
+  <div class="d-flex mb-4 msg_<%= conversation.conversationable.id%>">
+    <img class="img-hover" src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp" alt="avatar 1" style="width: 45px; height: 100%;">
+    <div class="content_hover">
+      <div class="d-flex flex-column align-items-end">
+        <div class="p-3 me-4 border bg_<%= conversation.conversationable.id%> his_bg" style="border-radius: 15px; ">
+          <p class="small mb-0 comment_content"><%= conversation.content %></p>
+        </div>
+        <%= turbo_frame_tag(["controls", dom_id(conversation)]) %>
+        <%= render "users/conversations/partials/display_controls", conversation: conversation if defined?(user) && user == conversation.conversationable %>
+        <span class="message-time">12:34 PM</span> 
+      </div>
+    </div>
+  </div>  
 <% end %>
-
