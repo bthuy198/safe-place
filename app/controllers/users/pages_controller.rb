@@ -7,8 +7,9 @@ module Users
 
     def home
       @confession_url ||= session[:confession_url]
-      @podcast_url ||= session[:podcast_url]
+      @home ||= session[:podcast_url]
     end
+
     def contact; end
     def about_app; end
     def term; end
