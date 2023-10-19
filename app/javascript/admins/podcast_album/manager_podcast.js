@@ -1,7 +1,6 @@
 let podcast_id = 0
 let podcast_album_id = 0
-let podcast_url = `${window.location.origin}/admins/podcasts`
-let podcast_album_url = `${window.location.origin}/admins/podcast_albums`
+let podcast_url = "/admins/podcasts"
 let imageFile
 let audioFile
 
