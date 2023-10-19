@@ -1,7 +1,6 @@
 <%= turbo_stream.prepend "room_table" do %>
     <%= render partial: "admins/rooms/partials/room_table", locals: { room: @room } %>
     <script>
-        console.log('lalaa');
       $("#exampleModal2").modal('hide');
     </script>
 <% end %>
