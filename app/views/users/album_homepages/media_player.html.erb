@@ -1,0 +1,41 @@
+<%= turbo_frame_tag 'media' do %>
+  <div class="d-flex m-3 media_player"></div>
+  <span class="d-flex align-items-center">
+    <span>
+      <%= image_tag 'podcast_default.jpg', width: 100, heigh: 100 %>
+    </span>
+    <span>
+      <p id="podcast_name"><%= @podcasts.first.name  %></p>
+      <p id="podcast_author"><%= @podcasts.first.author_name %></p>
+    </span>
+    <span>
+      <%= inline_svg_tag('heart_icon.svg', class:"heart_podcast",style:"") %>
+      <%= inline_svg_tag('bookmark_icon.svg', class:"bookmark_podcast" ) %>
+    </span>
+  </span>
+  <span>
+  </span>
+</div>
+<div class="media-player">
+  <audio id="audio-player" controls, style="display: none;">
+    <source src="<%= @podcasts.first.audio_url %>" type="audio/mpeg">
+  </audio>
+  <div class="media-controls">
+    <button id="play-pause-button">Play</button>
+    <input type="range" id="volume-slider" min="0" max="1" step="0.1" value="1">
+    <input type="range" id="seek-slider" min="0" value="0">
+    <button id="prev-button">Previous</button>
+    <button id="next-button">Next</button>
+  </div>
+  <div class="podcast-list">
+    <button id="toggle-list-button">Toggle List</button>
+    <ul id="podcast-list" style="display: none; position: relative; z-index: 2;">
+      <% @podcasts.each do |podcast| %>
+        <li class="podcast-list-item" data-index="<%= podcast.id %>"><%= podcast.name %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<hr>
+
+<% end %>
