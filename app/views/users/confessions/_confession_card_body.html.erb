@@ -1,0 +1,11 @@
+<% if confession.anonymous %>
+    <h5 class="card-title">
+        Anonymous Post
+    </h5>
+<% else %>
+    <h5>
+        <%= confession.user.user_name %>
+    </h5>
+<% end %>
+<p class="time_ago"><%= time_ago_in_words(confession.created_at) %> ago</p>
+<%= confession.content.body %>

@@ -1,20 +1,18 @@
-<div class="confesssion_show" id="<%= dom_id confession %>">
-  <% if confession.anonymous %>
-    <h5>
-      Anonymous Post
-    </h5>
-  <% else %>
-    <h5>
-      <%= confession.user.user_name %>
-    </h5>
-  <% end %>
-  <p class="time_ago"><%= time_ago_in_words(confession.created_at) %> ago</p>
-  <br>
-  <div class="confession_body">
-    <%= confession.content.body %>
-  </div>
-  <br>
-  <div class="text-center custom_tag">
-    <%= confession.tag.map {|t| "##{t}"}.join(" ") if !confession.tag.empty? %>
-  </div>
+<% if confession.anonymous %>
+  <h5>
+    Anonymous Post
+  </h5>
+<% else %>
+  <h5>
+    <%= confession.user.user_name %>
+  </h5>
+<% end %>
+<p class="time_ago"><%= time_ago_in_words(confession.created_at) %> ago</p>
+<br>
+<div class="confession_body">
+  <%= confession.content.body %>
+</div>
+<br>
+<div class="text-center custom_tag">
+  <%= render "users/confessions/confession_card_tag", confession: confession %>
 </div>

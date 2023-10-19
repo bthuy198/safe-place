@@ -30,12 +30,12 @@ class Confession < ApplicationRecord
 
   serialize :tag, Array
 
-  def self.ransackable_attributes(auth_object = nil)
-    ["tags"]
+  def self.ransackable_attributes(_auth_object = nil)
+    ['tags']
   end
 
-  def self.ransackable_associations(auth_object = nil)
-    ["user"]
+  def self.ransackable_associations(_auth_object = nil)
+    ['user']
   end
 
   ransacker :tags do |parent|

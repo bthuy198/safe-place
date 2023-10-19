@@ -1,14 +1,15 @@
-module ApplicationCable
-    class RoomChannel < ApplicationCable::Channel
-        def subscribed
-          stream_from "room_#{params[:room_id]}"
-        end
+# frozen_string_literal: true
 
-        def receive(data)
-          ActionCable.server.broadcast("room_#{params[:room_id]}", data)
-        end
-    
-        def unsubscribed
-        end
+module ApplicationCable
+  class RoomChannel < ApplicationCable::Channel
+    def subscribed
+      stream_from "room_#{params[:room_id]}"
     end
+
+    def receive(data)
+      ActionCable.server.broadcast("room_#{params[:room_id]}", data)
+    end
+
+    def unsubscribed; end
+  end
 end

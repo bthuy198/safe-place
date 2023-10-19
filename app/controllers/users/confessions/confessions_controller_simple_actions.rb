@@ -14,11 +14,13 @@ module Users
           end
         end
 
-        def show; end
-
         def new
           @confession = Confession.new
         end
+
+        def show; end
+
+        def edit; end
       end
     end
   end
