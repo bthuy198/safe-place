@@ -72,6 +72,7 @@ Rails.application.routes.draw do
       member do
         post 'like'
       end
+      resources :comments, module: :confessions
     end
     resources :rooms, only: [:index] do
       member do
