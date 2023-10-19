@@ -114,7 +114,7 @@ turbo-frame#new_confession_frame {
         width: 100%;
         height: 10vh;
         margin-top: 10px;
-        background-color: var(--color-white);
+        background-color: var(--color-gray-white);
         transition: color 200ms;
         color: var(--color-gray);
         font-weight: bolder;
@@ -128,7 +128,6 @@ turbo-frame#new_confession_frame {
           border-color: var(--color-pink);
         }
       }
-
     }
   }
 }
