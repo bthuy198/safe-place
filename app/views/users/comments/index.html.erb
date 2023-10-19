@@ -1,3 +1,27 @@
 <%= turbo_frame_tag "#{dom_id(@commentable)}_comments" do %>
-test
+  <div class="container text-dark">
+    <div class="row d-flex justify-content-center">
+      <div class="col" id="comments">
+        <% @commentable.comments.each do |comment| %>
+          <div class="d-flex flex-start">
+            <img class="rounded-circle shadow-1-strong me-3"
+            src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar" width="50"
+            height="50" />
+            <div class="card w-100 comment_body">
+              <div class="card-body">
+                <h6><%= comment.user.user_name %></h6>
+                <p class="small"><%= time_ago_in_words(@commentable.created_at) %> ago</p>
+                <%= comment.comment.body %>
+                <div class="d-flex justify-content-between align-items-center">
+                  <a href="#!" class="link-muted">
+                    <i class="fas fa-thumbs-up me-1"></i>132
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 <% end %>

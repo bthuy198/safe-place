@@ -167,9 +167,10 @@ turbo-frame#board {
         margin-bottom: 10px;
         font-style: italic;
       }
-      .card {
+      .main_card {
         margin-bottom: 10px;
         min-height: 35vh;
+        border-bottom: var(--border);
         .custom_button {
           border-radius: 0;
           &:hover,
@@ -191,11 +192,15 @@ turbo-frame#board {
         display: flex;
         flex-direction: column;
         .confession_body {
+          margin-top: 10px;
           flex-grow: 1;
         }
       }
       .confession_show_group {
         width: 100%;
+      }
+      .comment_body {
+        border-radius: var(--border-radius);
       }
     }
   }
