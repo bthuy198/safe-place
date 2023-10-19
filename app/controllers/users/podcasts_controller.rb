@@ -66,6 +66,16 @@ module Users
       @podcast.save
     end
 
+    def toggle_bookmark
+      @podcast = Podcast.find_by(id: params[:id])
+      Users::BookmarkService.call(current_user, @podcast)
+    end
+
+    def toggle_like
+      @podcast = Podcast.find_by(id: params[:id])
+      LikeService.new(current_user, @podcast).like
+    end
+
     private
 
     def set_podcast

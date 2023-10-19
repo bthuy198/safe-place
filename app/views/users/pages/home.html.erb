@@ -37,12 +37,15 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12 custom-media">
-      <%= turbo_frame_tag "media" do %>
-        Placeholder for Media player
+      <%= turbo_frame_tag "media", src: users_media_players_path, loading: :lazy do %>
+        <div class="centered_container centered_main">
+          <i class="fa-solid fa-spinner fa-spin-pulse fa-2xl"></i>
+        </div>
       <% end %>
     </div>
   </div>
 </div>
+<%= javascript_include_tag 'users/icon_clicked_service' %>
 <%= javascript_include_tag 'users/home_page' %>
 <%= javascript_include_tag 'users/podcast_albums/albums_like_service' %>
 <%= turbo_stream_from "confessions_index_channel" %>

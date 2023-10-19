@@ -10,7 +10,7 @@
   <td><%= counselor.phone_number %></td>
   <td>
     <div class="form-check form-switch" >
-      <%= check_box_tag "user_anonymous_#{counselor.id}", "1", counselor.anonymous, class: "form-check-input anonymous-switch", id: "user_anonymous_#{counselor.id}" %>
+      <%= check_box_tag "user_anonymous_#{counselor.id}", "1", counselor.anonymous, class: "form-check-input anonymous-switch switch_status", id: "user_anonymous_#{counselor.id}" %>
       <label class="form-check-label" for="user_anonymous_<%= counselor.id %>"></label>
     </div>
   </td>

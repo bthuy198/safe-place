@@ -50,10 +50,12 @@ Rails.application.routes.draw do
   end
 
   namespace 'users' do
+    resources :media_players, only: [:index]
     resource :user_infos
     resources :podcasts do
       member do
         post 'toggle_bookmark'
+        post 'toggle_like'
         patch'set_duration'
       end
     end
