@@ -29,6 +29,8 @@ class UserInfo < ApplicationRecord
 
   acts_as_paranoid
 
+  mount_uploader :avatar, ImageUploader
+
   enum gender: { male: 'Male', female: 'Female', non_binary: 'Non-binary', other: 'Other' }
 
   def self.ransackable_attributes(_auth_object = nil)

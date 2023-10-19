@@ -4,6 +4,14 @@
     font-size: 50px;
     font-weight: bold;
   }
+  .profile_image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: relative;
+    object-fit: cover;
+    margin-left: 25px;
+  }
   .user_infos_label {
     color: #1F7564;
     font-size: 24px;
@@ -63,22 +71,9 @@
       color: #1F7564;
     }
   }
-  .text-center {
-    margin-top: 40px;
-    margin-bottom: 60px;
-    .button_change_pw {
-      background-color: #FFFFFF;
-      padding: 5px 140px;
-      font-size: 18px;
-  
-      color: #1F7564;
-      &:hover {
-        background-color: #1F7564;
-        color: #FFFFFF;
-      }
-    }
+  .text-center{
+    margin-bottom: 10px;
   }
-  
 }
 
 .button_update_pw {
@@ -96,6 +91,28 @@
   margin-top: 15px;
   font-size: 28px;
   color: #1F7564;
+}
+.album-avatar {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  position: relative;
+  object-fit: cover;
+}
+.text-center {
+  margin-top: 40px;
+  margin-bottom: 60px;
+  .button_change_pw {
+    background-color: #FFFFFF;
+    padding: 5px 140px;
+    font-size: 18px;
+    margin-top: 15px;
+    color: #1F7564;
+    &:hover {
+      background-color: #1F7564;
+      color: #FFFFFF;
+    }
+  }
 }
 
 
