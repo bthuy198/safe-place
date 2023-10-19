@@ -39,7 +39,7 @@ module Users
     end
 
     def room_chat
-      @room = Room.find(params[:id])
+      @room = Room.find_by(id: params[:id])
     end
 
     private

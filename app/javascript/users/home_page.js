@@ -15,14 +15,20 @@ document.addEventListener('turbo:load', function() {
   handleViewportChange(mq);
 
   mq.addEventListener('change', handleViewportChange);
-
-
-  $('.radio_label').on('click', function(e) {
-    e.stopPropagation();
-  });
 });
 
 document.addEventListener("turbo:frame-missing", function(event) {
   event.preventDefault();
   event.target.remove();
 });
+
+document.addEventListener("turbo:before-stream-render", (event) => {
+  if(event.detail.newStream.getAttribute("action")=="remove") {
+    let target_id = event.detail.newStream.getAttribute("target")
+    if(target_id.includes("confession")) {
+      let target = document.getElementById(target_id)
+    let modal = target.children[2].children[2]
+    $(modal).modal("hide")
+    }
+  }
+})

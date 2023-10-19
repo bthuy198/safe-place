@@ -18,7 +18,7 @@
           <i class="fa-solid fa-spinner fa-spin-pulse fa-2xl"></i>
         </div>
       <% end %>
-      <%= turbo_frame_tag "board", src: (@confession_url.nil? ? users_confessions_path : @confession_url), loading: :lazy, data: { turbo_action: "advance" } do %>
+      <%= turbo_frame_tag "board", src: (@confession_url.nil? ? users_confessions_path : @confession_url), loading: :lazy do %>
         <div class="centered_container centered_board">
           <i class="fa-solid fa-spinner fa-spin-pulse fa-2xl"></i>
         </div>
@@ -26,7 +26,7 @@
     </div>
     <div class="col-md-9 custom_main">
       <%= render "users/shared/navbar" %>
-      <%= turbo_frame_tag "main", src: users_album_homepages_path, loading: :lazy, data: { frame_moving_target: "mainFrame" } do %>
+      <%= turbo_frame_tag "main", src: (@podcast_url.nil? ? users_album_homepages_path : @podcast_url), loading: :lazy, data: { frame_moving_target: "mainFrame", turbo_action: "advance" } do %>
         <div class="centered_container centered_main">
           <i class="fa-solid fa-spinner fa-spin-pulse fa-2xl"></i>
         </div>

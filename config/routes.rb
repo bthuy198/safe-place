@@ -63,18 +63,12 @@ Rails.application.routes.draw do
         post 'like'
       end
     end
-    resources :confessions do
-      member do
-        post 'toggle_bookmark'
-        post 'like'
-      end
-    end
     resources :album_homepages, only: [:index, :show] do
       collection do
         get 'all', to: 'album_homepages#all_album'
       end
     end
-    resources :confessions, except: %i[edit] do
+    resources :confessions do
       member do
         post 'like'
       end
