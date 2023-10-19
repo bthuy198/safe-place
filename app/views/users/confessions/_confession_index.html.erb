@@ -18,11 +18,11 @@
     </button>
     <div class="modal fade" id="<%= "#{dom_id(confession)}_show_modal" %>" aria-hidden="true" aria-labelledby="<%= "#{dom_id(confession)}_show_modal_label" %>" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
+        <div class="modal-content custom_modal">
           <div class="modal-header">
             <% if user %>
-            <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="fa-solid fa-ellipsis"></i></button>
+            <button type="button" class="btn custom_action_btn" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-solid fa-ellipsis"></i>
             </button>
             <ul class="dropdown-menu">
               <li>
@@ -45,7 +45,6 @@
               </div>
             <% end %>
             <hr>
-            <br>
             <%= turbo_frame_tag "#{dom_id(confession)}_comments", src: users_confession_comments_path(confession), loading: "lazy" do %>
               <div class="centered_container centered_confession_frame">
                 <i class="fa-solid fa-spinner fa-spin-pulse fa-2xl"></i>
@@ -57,7 +56,7 @@
     </div>
     <div class="modal fade" id="<%= "#{dom_id(confession)}_edit_modal" %>" aria-hidden="true" aria-labelledby="<%= "#{dom_id(confession)}_edit_modal_label" %>" tabindex="-1" data-controller="modal" data-modal-target="modal">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
+        <div class="modal-content custom_modal">
           <div class="modal-header">
             <button class="btn btn-secondary" data-bs-target="#<%= "#{dom_id(confession)}_show_modal" %>" data-bs-toggle="modal">Back</button>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

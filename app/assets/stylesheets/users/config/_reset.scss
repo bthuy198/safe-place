@@ -154,7 +154,7 @@ turbo-frame#board {
         display: none;
       }
       word-wrap: break-word;
-      h5 {
+      h5, h6 {
         color: var(--color-primary);
         font-weight: bold;
       }
@@ -177,6 +177,13 @@ turbo-frame#board {
           &:focus,
           &:active {
             color: var(--color-primary);
+          }
+        }
+        .custom_action_btn {
+          &:hover,
+          &:focus,
+          &:active {
+            border: var(--border);
           }
         }
         .custom_dropdown {
@@ -395,4 +402,8 @@ form.confession_form {
   .form-switch {
     line-height: 2.5;
   }
+}
+
+.custom_modal {
+  border-radius: var(--border-radius);
 }
