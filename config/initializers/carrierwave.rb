@@ -14,3 +14,4 @@ CarrierWave.configure do |config|
   # uncomment the line :file instead of the default :storage.  Otherwise, it will use AWS as the temp cache store.
   # config.cache_storage = :file
 end
+
