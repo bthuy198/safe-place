@@ -50,20 +50,16 @@ Rails.application.routes.draw do
   end
 
   namespace 'users' do
+    resources :media_players, only: [:index]
     resource :user_infos
     resources :podcasts do
       member do
         post 'toggle_bookmark'
+        post 'toggle_like'
         patch'set_duration'
       end
     end
     resources :podcast_albums do
-      member do
-        post 'toggle_bookmark'
-        post 'like'
-      end
-    end
-    resources :confessions do
       member do
         post 'toggle_bookmark'
         post 'like'
@@ -74,7 +70,7 @@ Rails.application.routes.draw do
         get 'all', to: 'album_homepages#all_album'
       end
     end
-    resources :confessions, except: %i[edit] do
+    resources :confessions do
       member do
         post 'like'
       end

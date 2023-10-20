@@ -11,13 +11,13 @@ module TimeFormattingHelper
 
     formatted_time = []
 
-    if hours > 0
+    if hours.positive?
       formatted_time << "#{hours}h"
-      formatted_time << "#{minutes}m" if minutes > 0
-    elsif minutes > 0
+      formatted_time << "#{minutes}m" if minutes.positive?
+    elsif minutes.positive?
       formatted_time << "#{minutes}m"
-      formatted_time << "#{seconds}s" if seconds > 0
-    elsif seconds > 0
+      formatted_time << "#{seconds}s" if seconds.positive?
+    elsif seconds.positive?
       formatted_time << "#{seconds}s"
     end
 

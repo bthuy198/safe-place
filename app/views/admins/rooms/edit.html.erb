@@ -5,9 +5,11 @@
         </div>
         <%#= render "shared/flash"%>
         <div id="lll" class="edit_room_view" >
+
                 <%#= render 'admins/rooms/partials/form', room: @room %>
                <div class="container-fluid form-user" id="room_model">
                 <%= form_with(model: [:admins, @room], class: "form_modal_room") do |form| %>
+
                         <div class="row mb-5">
                                 <div class="input_room_edit">
                                         <%= form.label :name, "Room Name", class: 'lable_room_edit' %>

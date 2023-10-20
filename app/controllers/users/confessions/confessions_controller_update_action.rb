@@ -5,7 +5,8 @@ module Users
     # module Confessions Controller contain update action
     module ConfessionsControllerUpdateAction
       extend ActiveSupport::Concern
-      include Users::Confessions::ConfessionsControllerSaveUpdatedConfession
+      include Users::Confessions::ConfessionsControllerSaveUpdatedConfession1
+      include Users::Confessions::ConfessionsControllerSaveUpdatedConfession3
 
       included do
         def update

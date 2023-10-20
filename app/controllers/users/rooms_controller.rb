@@ -42,7 +42,9 @@ module Users
       end
     end
 
-    def destroy_conversation; end
+    def room_chat
+      @room = Room.find_by(id: params[:id])
+    end
 
     private
 
