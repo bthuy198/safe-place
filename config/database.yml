@@ -63,3 +63,4 @@ test:
 #
 production:
   <<: *default
+  database: <%= ENV["DATABASES_NAME_PRODUCTION"] %>
