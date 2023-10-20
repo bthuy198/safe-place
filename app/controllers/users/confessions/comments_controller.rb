@@ -6,6 +6,7 @@ module Users
     class CommentsController < Users::CommentsController
       before_action :set_commentable
       before_action :set_comments, only: %i[index]
+      before_action :set_new_comment, only: %i[index]
       # before_action :set_comment
 
       private
@@ -20,6 +21,10 @@ module Users
         @current_page = @comments.current_page
         @total_pages = @comments.total_pages
         @has_next_page = @current_page < @total_pages
+      end
+
+      def set_new_comment
+        @comment = @commentable.comments.new
       end
 
       def set_comment

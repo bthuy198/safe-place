@@ -169,10 +169,11 @@ turbo-frame#board {
           }
         }
         .custom_action_btn {
+          color: var(--color-gray);
           &:hover,
           &:focus,
           &:active {
-            border: var(--border);
+            color: var(--color-primary);
           }
         }
         .custom_dropdown {
@@ -216,19 +217,10 @@ turbo-frame#board {
       }
     }
   }
-  form {
-    .pickerContainer {
-      position: relative;
-      z-index: 9998;
-    }
-    .trix-button-group--file-tools {
-      display: none;
-    }
+  form.comment_form {
     trix-editor {
-      height: 40vh;
+      height: 10vh;
     }
-  }
-  form.confession_form {
     label {
       color: var(--color-primary);
     }
@@ -243,6 +235,9 @@ turbo-frame#board {
     .form-switch {
       line-height: 2.5;
     }
+  }
+  .custom_breaker {
+    height: 5vh;
   }
   .custom_modal {
     border-radius: var(--border-radius);
@@ -384,5 +379,34 @@ footer.main_footer {
     div {
       width: 130px;
     }
+  }
+}
+form.confession_form {
+  label {
+    color: var(--color-primary);
+  }
+  input.form {
+    margin-top: 10px;
+    &.custom_submit {
+      color: var(--color-primary);
+      border: var(--border);
+      border-radius: var(--border-radius);
+    }
+  }
+  .form-switch {
+    line-height: 2.5;
+  }
+}
+form {
+  .pickerContainer {
+    position: fixed;
+    z-index: 9998;
+    cursor: move;
+  }
+  .trix-button-group--file-tools {
+    display: none;
+  }
+  trix-editor {
+    height: 40vh;
   }
 }

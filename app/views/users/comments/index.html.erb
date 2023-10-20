@@ -1,6 +1,8 @@
 <%= turbo_frame_tag "#{dom_id(@commentable)}_comments" do %>
   <div class="container text-dark">
     <div class="row d-flex justify-content-center">
+      <%= render "users/comments/form", comment: @comment, url: users_confession_comments_path(@commentable) %>
+      <div class="custom_breaker"></div>
       <div class="col" id="comments">
         <%= render "users/comments/comments", user: current_user, comments: @comments %>
       </div>

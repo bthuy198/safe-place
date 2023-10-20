@@ -21,9 +21,9 @@
         <div class="modal-content custom_modal">
           <div class="modal-header">
             <% if user %>
-            <button type="button" class="btn custom_action_btn" data-bs-toggle="dropdown" aria-expanded="false">
+            <a type="button" class="custom_action_btn" data-bs-toggle="dropdown" aria-expanded="false" role="button">
               <i class="fa-solid fa-ellipsis"></i>
-            </button>
+            </a>
             <ul class="dropdown-menu">
               <li>
                 <a class="dropdown-item custom_dropdown" data-bs-target="#<%= "#{dom_id(confession)}_edit_modal" %>" data-bs-toggle="modal" type="button">
