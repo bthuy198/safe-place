@@ -63,6 +63,3 @@ test:
 #
 production:
   <<: *default
-  database: rails_7_safe_place_production
-  username: rails_7_safe_place
-  password: <%= ENV["RAILS_7_SAFE_PLACE_DATABASE_PASSWORD"] %>
