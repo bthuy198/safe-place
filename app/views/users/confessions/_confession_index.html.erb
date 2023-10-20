@@ -7,7 +7,7 @@
   </div>
   <div class="btn-group" role="group" aria-label="confession_group">
     <% if user %>
-      <%= link_to like_users_confession_path(confession), class: "btn btn-light custom_button", type: "button", id: "#{dom_id(confession)}_like", data:{turbo_method: :post} do %>
+      <%= link_to like_users_confession_path(confession), class: "btn btn-light custom_button", type: "button", id: "#{dom_id(confession)}_like", data: {turbo_method: :post} do %>
         <%= render "users/shared/like", user: user, item: confession %>
       <% end %>
     <% else %>
@@ -38,7 +38,7 @@
             <% end %>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body custom_main_body">
             <%= turbo_frame_tag "#{dom_id(confession)}_show", src: users_confession_path(confession), loading: "lazy" do %>
               <div class="centered_container centered_confession_frame">
                 <i class="fa-solid fa-spinner fa-spin-pulse fa-2xl"></i>

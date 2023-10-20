@@ -3,25 +3,20 @@
 *::after {
   box-sizing: border-box;
 }
-
 html {
   overflow-y: scroll;
   height: 100%;
 }
-
 body {
   padding-right: 0 !important;
 }
-
 div {
   &.custom_body {
     flex-grow: 1;
   }
-
   &.custom_board {
     padding: 0;
   }
-
   &.custom_menu {
     height: 20vh;
     margin: 10px;
@@ -67,11 +62,9 @@ div {
       }
     }
   }
-
   &.custom_main {
     padding: 0 10px 10px 10px;
   }
-
   &.centered_container {
     display: flex;
     justify-content: center;
@@ -79,17 +72,14 @@ div {
     &.centered_confession_frame {
       height: 25vh;
     }
-
     &.centered_board {
       height: 50vh;
     }
-
     &.centered_main {
       height: 65vh;
     }
   }
 }
-
 turbo-frame#new_confession_frame {
   display: inline-block;
   width: 100%;
@@ -131,7 +121,6 @@ turbo-frame#new_confession_frame {
     }
   }
 }
-
 turbo-frame#board {
   display: inline-block;
   width: 100%;
@@ -208,36 +197,78 @@ turbo-frame#board {
       }
       .comment_body {
         border-radius: var(--border-radius);
+        a {
+          text-decoration: none;
+          color: var(--color-gray);
+          &:hover,
+          &:focus,
+          &:active {
+            color: var(--color-primary);
+          }
+        }
+      }
+    }
+    .custom_main_body {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      &::-webkit-scrollbar {
+        display: none;
       }
     }
   }
+  form {
+    .pickerContainer {
+      position: relative;
+      z-index: 9998;
+    }
+    .trix-button-group--file-tools {
+      display: none;
+    }
+    trix-editor {
+      height: 40vh;
+    }
+  }
+  form.confession_form {
+    label {
+      color: var(--color-primary);
+    }
+    input.form {
+      margin-top: 10px;
+      &.custom_submit {
+        color: var(--color-primary);
+        border: var(--border);
+        border-radius: var(--border-radius);
+      }
+    }
+    .form-switch {
+      line-height: 2.5;
+    }
+  }
+  .custom_modal {
+    border-radius: var(--border-radius);
+  }
 }
-
 turbo-frame#main {
   display: inline-block;
   width: 100%;
 }
-
-nav {
+nav.main_nav {
   height: 8vh;
   top: 0;
   right: 0;
   background-color: var(--color-primary);
   border-radius: 10px 10px 0 0;
   margin-top: 10px;
-
   a {
     color: var(--color-white);
     transition: color 200ms;
     margin-left: 4px;
     margin-right: 4px;
-
     &:hover,
     &:focus,
     &:active {
       color: var(--color-glint);
     }
-
     &.custom_signup {
       background-color: var(--color-primary);
       color: var(--color-white);
@@ -245,21 +276,18 @@ nav {
       font-weight: bolder;
       border-radius: 30px;
       padding: 4px 20px;
-
       &:hover,
       &:focus,
       &:active {
         color: var(--color-pink);
       }
     }
-
     &.custom_signin {
       color: var(--color-pink);
       font-size: var(--font-size-l);
       font-weight: bolder;
       border-radius: 30px;
       padding: 4px 20px;
-
       &:hover,
       &:focus,
       &:active {
@@ -267,20 +295,17 @@ nav {
       }
     }
   }
-
   span.custom_navigator {
     color: var(--color-white);
     transition: color 200ms;
     margin-left: 4px;
     margin-right: 4px;
-
     &:hover,
     &:focus,
     &:active {
       color: var(--color-glint);
     }
   }
-
   button.navbar-toggler {
     border-radius: 25px;
     background-color: var(--color-white);
@@ -288,38 +313,32 @@ nav {
     padding: 8px 12px;
     margin-left: 12px;
   }
-
   .main_menu {
     color: var(--color-primary);
     a {
       color: var(--color-primary);
-
       &:hover,
       &:focus,
       &:active {
       color: var(--color-gray);
     }
-
       &.custom_item {
         width: 97%;
       }
     }
   }
 }
-
-footer {
+footer.main_footer {
   background-color: var(--color-primary-bg);
   color: var(--color-black);
   line-height: var(--line-height-body);
   font-family: var(--font-family-sans);
   margin-bottom: 24px;
-
   h3 {
     font-size: var(--font-size-l);
     font-weight: bolder;
     margin-top: 12px;
   }
-
   a {
     color: var(--color-gray);
     font-size: var(--font-size-s);
@@ -327,13 +346,11 @@ footer {
     text-decoration: none;
     transition: color 200ms;
     line-height: var(--line-height-main);
-
     &:hover,
     &:focus,
     &:active {
       color: var(--color-primary);
     }
-
     &.facebook {
       &:hover,
       &:focus,
@@ -342,7 +359,6 @@ footer {
       }
       margin-top: 12px;
     }
-
     &.youtube {
       &:hover,
       &:focus,
@@ -352,19 +368,16 @@ footer {
       margin-top: 12px;
     }
   }
-
   img,
   picture,
   svg {
     display: block;
     max-width: 100%;
   }
-
   span.spacing {
     display: inline-block;
     margin: 12px;
   }
-
   div.justify_content {
     display: flex;
     justify-content: center;
@@ -372,38 +385,4 @@ footer {
       width: 130px;
     }
   }
-}
-
-form {
-  .pickerContainer {
-    position: relative;
-    z-index: 9998;
-  }
-  .trix-button-group--file-tools {
-    display: none;
-  }
-  trix-editor {
-    height: 40vh;
-  }
-}
-
-form.confession_form {
-  label {
-    color: var(--color-primary);
-  }
-  input.form {
-    margin-top: 10px;
-    &.custom_submit {
-      color: var(--color-primary);
-      border: var(--border);
-      border-radius: var(--border-radius);
-    }
-  }
-  .form-switch {
-    line-height: 2.5;
-  }
-}
-
-.custom_modal {
-  border-radius: var(--border-radius);
 }

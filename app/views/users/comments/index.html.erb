@@ -12,9 +12,9 @@
                 <div class="d-flex flex-column">
                   <div class="d-flex justify-content-between align-items-center">
                     <h6><%= comment.user.user_name %></h6>
-                    <a href="#!">
-                      <i class="fa-regular fa-heart"></i>
-                    </a>
+                    <%= link_to "!#", class: "custom_link", id: "#{dom_id(comment)}_like", data: {turbo_method: :post} do %>
+                      <%= render "users/shared/like", user: current_user, item: comment %>
+                    <% end %>
                   </div>
                   <p class="time_ago"><%= time_ago_in_words(@commentable.created_at) %> ago</p>
                 </div>
