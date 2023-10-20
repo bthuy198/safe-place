@@ -1,8 +1,1 @@
-<div class="dropdown" style="margin-right: 24px;">
-  <button id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" class="btn", style="border: none;">
-    <i class="fa-solid fa-ellipsis"></i>
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    <li><%= link_to 'Delete', users_room_conversation_path(conversation.room, conversation), data: { turbo_method: :delete, turbo_confirm: 'Are you sure' }, class:"btn btn-link button_delete"%></li>
-  </ul>
-</div>
+<li><%= link_to 'Delete', users_room_conversation_path(conversation.room, conversation), data: { turbo_method: :delete, turbo_confirm: 'Are you sure' }, class:"btn btn-link button_delete"%></li>

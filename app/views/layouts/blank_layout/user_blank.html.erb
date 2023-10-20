@@ -9,6 +9,19 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "users/style", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <% if user_signed_in? %>
+      <style>
+        <%= ".msg_#{current_user.id}"%> {
+          display: flex;
+          flex-direction: row-reverse
+        }
+        <%= ".bg_#{current_user.id}"%> {
+          background-color: rgba(57, 192, 237,.2);
+          padding: 5px 15px;
+          border-radius: 15px
+        }
+      </style>
+    <% end %>
   </head>
 
   <body id="body" class="d-flex flex-column min-vh-100">

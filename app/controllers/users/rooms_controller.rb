@@ -12,6 +12,7 @@ module Users
 
     def show
       @room = Room.find(params[:id])
+      render layout: "blank_layout/user_blank"
     end
 
     def join_room
