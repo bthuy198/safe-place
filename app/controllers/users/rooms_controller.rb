@@ -7,7 +7,7 @@ module Users
 
     def index
       @q = Room.includes(:user).where(status: :enable).ransack(params[:q])
-      @rooms = @q.result(distinct: true).order(id: :desc).page params[:page]
+      @rooms = @q.result().order(id: :desc).page params[:page]
     end
 
     def join_room
@@ -24,22 +24,23 @@ module Users
       end
     end
 
-    def out_room
-      @room = Room.find(params[:id])
+    # def out_room
+    #   @room = Room.find(params[:id])
+    #   if @room.update(user_id: nil)
+    #     redirect_to users_counselors_path
+    #     Turbo::StreamsChannel.broadcast_replace_to('room',
+    #                                                partial: 'users/rooms/partials/room_chat',
+    #                                                locals: { room: @room },
+    #                                                target: "button_join_#{@room.id}")
+                                    
+    #   else
+    #     render json: { error: 'Failed to out room.' }, status: :unprocessable_entity
+    #   end
+    # end
 
-      if @room.update(user_id: nil)
-        redirect_to users_rooms_path
-        Turbo::StreamsChannel.broadcast_replace_to('room',
-                                                   partial: 'users/rooms/partials/room_chat',
-                                                   locals: { room: @room },
-                                                   target: "button_join_#{@room.id}")
-      else
-        render json: { error: 'Failed to out room.' }, status: :unprocessable_entity
-      end
-    end
-
-    def room_chat
-      @room = Room.find_by(id: params[:id])
+    def show
+      @room = Room.find_by(id: params[:id], user_id: current_user.id)
+      
     end
 
     private

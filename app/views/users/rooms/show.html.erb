@@ -1,0 +1,17 @@
+<% if @room.nil?  %>
+    <div class="d-flex align-items-center justify-content-center vh-100">
+            <div class="text-center">
+                <h1 class="display-1 fw-bold">404</h1>
+                <p class="fs-3"> <span class="text-danger">Opps!</span> Page not found.</p>
+            
+                <%= link_to 'Go Counselor ', users_counselors_path, class: 'btn btn-primary'  %>
+            </div>
+    </div>
+<% else %>
+    <div class="container out_room_page">
+    <h1><strong>Counselling Room: <%= @room.name%></strong></h1>
+    <%#= button_to 'Out', out_room_users_room_path(@room), method: :patch, class: "btn btn-primary btn_join join_room_button" %>
+    </div>
+<% end %>
+
+
