@@ -2,28 +2,11 @@
   <div class="container text-dark">
     <div class="row d-flex justify-content-center">
       <div class="col" id="comments">
-        <% @commentable.comments.each do |comment| %>
-          <div class="d-flex flex-start">
-            <img class="rounded-circle shadow-1-strong me-3"
-            src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar" width="50"
-            height="50" />
-            <div class="card w-100 comment_body">
-              <div class="card-body">
-                <div class="d-flex flex-column">
-                  <div class="d-flex justify-content-between align-items-center">
-                    <h6><%= comment.user.user_name %></h6>
-                    <%= link_to "!#", class: "custom_link", id: "#{dom_id(comment)}_like", data: {turbo_method: :post} do %>
-                      <%= render "users/shared/like", user: current_user, item: comment %>
-                    <% end %>
-                  </div>
-                  <p class="time_ago"><%= time_ago_in_words(@commentable.created_at) %> ago</p>
-                </div>
-                <%= comment.comment.body %>
-              </div>
-            </div>
-          </div>
-        <% end %>
+        <%= render "users/comments/comments", user: current_user, comments: @comments %>
       </div>
+      <% if @has_next_page %>
+        <%= turbo_frame_tag "comments_pagination", src: self.send("users_#{@commentable.class.to_s.underscore}_comments_path", @commentable, page: @current_page + 1, format: :turbo_stream), loading: "lazy" %>
+      <% end %>
     </div>
   </div>
 <% end %>

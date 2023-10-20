@@ -15,7 +15,11 @@ module Users
       end
 
       def set_comments
-        @comments = @commentable.comments
+        @comments = @commentable.comments.includes(:rich_text_comment,
+        :user).order(created_at: :desc).page(params[:page]).per(3)
+        @current_page = @comments.current_page
+        @total_pages = @comments.total_pages
+        @has_next_page = @current_page < @total_pages
       end
 
       def set_comment
