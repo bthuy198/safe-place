@@ -11,7 +11,7 @@ module Users
     end
 
     def show
-      @room = Room.find(params[:id])
+      @room = Room.find_by(id: params[:id], user_id: current_user.id)
       render layout: "blank_layout/user_blank"
     end
 
@@ -42,11 +42,6 @@ module Users
     #     render json: { error: 'Failed to out room.' }, status: :unprocessable_entity
     #   end
     # end
-
-    def show
-      @room = Room.find_by(id: params[:id], user_id: current_user.id)
-      
-    end
 
     private
 
