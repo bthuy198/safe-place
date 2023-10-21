@@ -18,8 +18,8 @@ module Users
       @user = current_user
       if @user.update(user_params)
         redirect_to users_user_infos_path, notice: 'User infomation updated successfully'
-      else  
-        render 'edit', status: :bad_request
+      else
+        redirect_to users_user_infos_path, alert: @user.errors.full_messages.join(", ")
       end
     end
 
