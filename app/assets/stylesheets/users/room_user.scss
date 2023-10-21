@@ -51,6 +51,11 @@ background-color: #1F7564;
 border-color: #1F7564;
 }
 
+.join_counselor_button{
+  background-color: #1F7564;
+  border-color: #1F7564;
+  }
+
 .join_room_button:hover, .join_room_button:active{
 background-color: #16594b;
 border-color: #16594b;
@@ -143,5 +148,9 @@ nav {
       margin-top: 10px;
     }
   }
+}
+.custom_link_to {
+  color: #fff; 
+  text-decoration: none;
 }
 

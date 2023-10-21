@@ -1,6 +1,6 @@
 <%= turbo_frame_tag "main" do %>
   <div class="card album_showpage">
-    <div class="card-header justify-content-between flex-nowrap">
+    <div class="d-flex card-header align-items-center justify-content-between flex-nowrap">
       <span class="d-flex align-items-center">
         <span class="album_image_col">
           <% if @album.image? %>
@@ -35,7 +35,7 @@
           </div>
         </span>
       </span>
-      <span class="album_play ms-auto">
+      <span class="album_play d-flex flex-column align-items-end">
         <h3 class="text-white mt-4">Recommend</h2>
         <i class="fa-solid fa-circle-play play" id="play-pause-icon-album" ></i>
       </span>

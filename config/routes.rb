@@ -82,6 +82,11 @@ Rails.application.routes.draw do
         patch 'out_room'
       end
     end
+    resources :counselors do
+      member do
+        patch 'join_counseler_room'
+      end
+    end
   end
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?

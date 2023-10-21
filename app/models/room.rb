@@ -27,7 +27,7 @@ class Room < ApplicationRecord
   belongs_to :counselor
   has_many :conversations, dependent: :destroy
 
-  validates :name, presence: true, uniqueness: { message: 'has already taken' }
+  validates :name, presence: true
 
   paginates_per 16
 
