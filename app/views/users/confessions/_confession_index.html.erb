@@ -45,6 +45,7 @@
               </div>
             <% end %>
             <hr>
+            <%= turbo_stream_from "#{dom_id(confession)}_comments_channel" %>
             <%= turbo_frame_tag "#{dom_id(confession)}_comments", src: users_confession_comments_path(confession), loading: "lazy" do %>
               <div class="centered_container centered_confession_frame">
                 <i class="fa-solid fa-spinner fa-spin-pulse fa-2xl"></i>
