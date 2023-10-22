@@ -8,7 +8,7 @@ module Users
 
     def index
       @podcast_albums = PodcastAlbum.where(user_id: current_user.id)
-      @recent_podcasts = Podcast.where(podcast_album_id: @podcast_albums.pluck(:id)).limit(5)
+      @recent_podcasts = Podcast.joins(:podcast_album).where(podcast_albums: { user_id: current_user.id }).limit(5)
     end
 
     def show; end
