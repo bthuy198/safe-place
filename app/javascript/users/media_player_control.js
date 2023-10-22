@@ -61,12 +61,16 @@ function highlightCurrentPodcast(currentId) {
 }
 
 function loadAudio(podcast) {
+  if (isPlaying == undefined) {
+    isPlaying = true;
+  }
   audioPlayer.src = podcast.audio.url;
   audioPlayer.oncanplaythrough = function () {
-    audioPlayer.play();
-    $("#play-pause-icon")
-      .removeClass("fa-circle-play")
-      .addClass("fa-circle-pause");
+    if (isPlaying) {
+      playPodcast();
+    } else {
+      pausePodcast();
+    }
   };
 }
 
@@ -108,6 +112,7 @@ function playPodcast() {
       .removeClass("fa-circle-play")
       .addClass("fa-circle-pause");
     audioPlayer.play();
+    isPlaying = true;
   }
 }
 
@@ -116,6 +121,7 @@ function pausePodcast() {
     .removeClass("fa-circle-pause")
     .addClass("fa-circle-play");
   audioPlayer.pause();
+  isPlaying = false;
 }
 
 function updateMediaFrameVisibility() {
@@ -172,6 +178,7 @@ function selectPodcastItem(item) {
   const index = item.data("audio").id;
   currentPodcastIndex = podcasts.findIndex((podcast) => podcast.id === index);
   loadPodcast(currentPodcastIndex);
+  playPodcast();
 }
 
 var currentPodcastIndex = currentPodcastIndex || 0;
@@ -180,21 +187,19 @@ var podcasts = podcasts || [];
 var currentPodcast = currentPodcast || null;
 var currentTimePlaying = currentTimePlaying || 0;
 var audioCurrentTimeText = $("#audio_current_time")[0];
-var isPlaying = isPlaying || false;
-
-if (
-  currentPodcastIndex !== undefined &&
-  audioPlayer &&
-  Array.isArray(podcasts) &&
-  currentPodcast !== null
-) {
-  loadNewPlaylistPodcast(podcasts, currentPodcastIndex);
-  audioPlayer.currentTime = currentTimePlaying;
-  console.log(!isPlaying);
-  if (!isPlaying) pausePodcast();
-}
+var isPlaying;
 
 $(document).ready(function () {
+  if (
+    currentPodcastIndex !== undefined &&
+    audioPlayer &&
+    Array.isArray(podcasts) &&
+    currentPodcast !== null
+  ) {
+    loadNewPlaylistPodcast(podcasts, currentPodcastIndex);
+    audioPlayer.currentTime = currentTimePlaying;
+  }
+
   $(document).off("click", "#play-pause-icon");
   $(document).off("input", "#seek-slider");
   $(document).off("input", "#volume-slider");
@@ -217,14 +222,12 @@ $(document).ready(function () {
   });
 
   audioPlayer.onplay = function () {
-    isPlaying = true;
     $("#play-pause-icon")
       .removeClass("fa-circle-play")
       .addClass("fa-circle-pause");
   };
 
   audioPlayer.onpause = function () {
-    isPlaying = false;
     $("#play-pause-icon")
       .removeClass("fa-circle-pause")
       .addClass("fa-circle-play");

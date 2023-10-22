@@ -10,6 +10,7 @@ listPodcastItem.on("click", function () {
     loadNewPlaylistPodcast(listPodcastItemArrays, index);
   } else {
     loadPodcast(index);
+    playPodcast();
   }
   playPauseIconAlbum
     .removeClass("fa-circle-play play")
@@ -21,13 +22,13 @@ playPauseIconAlbum.on("click", function () {
     if (!checkIfIncludeAudio(currentPodcast, listPodcastItem)) {
       loadNewPlaylistPodcast(listPodcastItemArrays, 0);
     } else {
-      audioPlayer.play();
+      playPodcast();
     }
     playPauseIconAlbum
       .removeClass("fa-circle-play play")
       .addClass("fa-circle-pause pause");
   } else {
-    audioPlayer.pause();
+    pausePodcast();
     playPauseIconAlbum
       .removeClass("fa-circle-pause pause")
       .addClass("fa-circle-play play");
