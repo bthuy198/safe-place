@@ -45,6 +45,10 @@
       font-size: 20px;
       color: black;
       font-weight: bold;
+      max-width: 12rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .album_date{
       font-size: 18px;
@@ -75,10 +79,10 @@
     object-fit: cover;
   }
   .podcast_filed{
-    font-size: 20px;
+    font-size: 18px;
   }
   .episode {
-    font-weight: bold;
+    font-weight: normal;
     width: 80px;
     margin-top: 22px;
   }
@@ -127,6 +131,10 @@
       font-size: 20px;
       color: gray;
       margin-bottom: 3px;
+      max-width: 11rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 }
