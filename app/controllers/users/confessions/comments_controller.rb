@@ -4,7 +4,6 @@ module Users
   module Confessions
     # class Comments Controller
     class CommentsController < Users::CommentsController
-
       private
 
       def set_commentable

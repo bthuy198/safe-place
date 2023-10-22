@@ -28,10 +28,10 @@ module Users
           format.json { render :show, status: :created, location: @comment }
         end
         Turbo::StreamsChannel
-            .broadcast_prepend_later_to(@channel,
-                                        target: @target,
-                                        partial: 'users/comments/comment',
-                                        locals: { user: current_user, comment: @comment })
+          .broadcast_prepend_later_to(@channel,
+                                      target: @target,
+                                      partial: 'users/comments/comment',
+                                      locals: { user: current_user, comment: @comment })
       else
         # handle_failed_create_comment
       end
@@ -41,7 +41,7 @@ module Users
 
     def set_comments
       @comments = @commentable.comments.includes(:rich_text_comment,
-      :user).order(created_at: :desc).page(params[:page]).per(3)
+                                                 :user).order(created_at: :desc).page(params[:page]).per(3)
       @current_page = @comments.current_page
       @total_pages = @comments.total_pages
       @has_next_page = @current_page < @total_pages
