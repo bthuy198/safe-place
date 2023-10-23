@@ -6,7 +6,9 @@
                     <div class="row d-flex flex-column">
                         <div class="d-flex justify-content-between text_podcast">
                             <h2 class="album_title">Album</h2>
-                            <%= link_to "Show all", all_users_album_homepages_path, class:"btn btn-link button_show_all"%>
+                            <% if @albums.size >= 6%>
+                                <%= link_to "Show all", all_users_album_homepages_path, class:"btn btn-link button_show_all"%>
+                            <% end %>
                         </div>
                         <div class="container-scroll">
                             <div class="d-flex justify-content-start">
@@ -19,7 +21,9 @@
                     <div class="row d-flex flex-column podcast_album_recent">
                         <div class="d-flex justify-content-between text_podcast_recent">
                             <h2 class="album_title ">Recently Posted</h2>
-                            <%= link_to "Show all", all_users_album_homepages_path, class:"btn btn-link button_show_all"%>
+                            <% if @recent_albums.size >= 6%>
+                                <%= link_to "Show all", all_users_album_homepages_path, class:"btn btn-link button_show_all"%>
+                            <% end %>
                         </div>
                         <div class="container-scroll" >
                             <div class="d-flex justify-content-start">
