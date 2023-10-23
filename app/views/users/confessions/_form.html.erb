@@ -1,5 +1,5 @@
 <%= form_with(model: confession, url: url, id: "#{dom_id(confession)}_form", class: "confession_form", data: {controller: "emoji-picker", emoji_picker_target: "form"}) do |form| %>
-   <%= content_tag(:div, "", class:"pickerContainer", data: {
+   <%= content_tag(:div, "", class: "pickerContainer", data: {
       emoji_picker_target: "pickerContainer" }) %>
   <div>
     <%= form.rich_text_area :content, class: "form form-control #{'is-invalid' if confession.errors[:content].any?}", placeholder: "Share your thought with us!", data: { emoji_picker_target: "trixEditor" } %>

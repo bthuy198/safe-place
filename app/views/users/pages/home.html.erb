@@ -18,6 +18,8 @@
           <i class="fa-solid fa-spinner fa-spin-pulse fa-2xl"></i>
         </div>
       <% end %>
+      <%= turbo_stream_from "confessions_index_channel" %>
+      <%= turbo_stream_from "confessions_show_channel" %>
       <%= turbo_frame_tag "board", src: (@confession_url.nil? ? users_confessions_path : @confession_url), loading: :lazy do %>
         <div class="centered_container centered_board">
           <i class="fa-solid fa-spinner fa-spin-pulse fa-2xl"></i>
@@ -48,5 +50,3 @@
 <%= javascript_include_tag 'users/icon_clicked_service' %>
 <%= javascript_include_tag 'users/home_page' %>
 <%= javascript_include_tag 'users/podcast_albums/albums_like_service' %>
-<%= turbo_stream_from "confessions_index_channel" %>
-<%= turbo_stream_from "confessions_show_channel" %>

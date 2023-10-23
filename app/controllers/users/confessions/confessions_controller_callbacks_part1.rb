@@ -20,24 +20,23 @@ module Users
           if params[:q]
             confessions_search_and_paging
           else
-            @confessions = Confession.includes(:rich_text_content,
-                                               :user).order(created_at: :desc).page(params[:page]).per(3)
+            @confessions = Confession
+                           .eager_load(:rich_text_content, :user, :likes)
+                           .order(created_at: :desc)
+                           .page(params[:page]).per(3)
           end
           set_paging_variable
         end
 
         def confessions_search_and_paging
-          @confessions = Kaminari.paginate_array(confessions_search).page(params[:page]).per(3)
+          @confessions = Kaminari
+                         .paginate_array(confessions_search)
+                         .page(params[:page]).per(3)
         end
 
         def confessions_search
           @q = params[:q]
-          ransack_results = Confession.ransack(tags_cont: @q).result
-          user_results = Confession.where(anonymous: false).joins(:user)
-                                   .ransack(user_user_name_cont: @q).result
-          action_text_results = Confession.joins(:rich_text_content)
-                                          .where('action_text_rich_texts.body LIKE ?', "%#{@q}%")
-          (ransack_results + user_results + action_text_results).uniq.sort_by(&:created_at).reverse
+          (tag_search + user_search + content_search).uniq.sort_by(&:created_at).reverse
         end
       end
     end
