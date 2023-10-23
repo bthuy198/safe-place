@@ -9,44 +9,44 @@
               <a role="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-magnifying-glass fa-lg"></i>Search</a>
               <%= render "users/shared/search_form" %>
             </div>
-          </li>
-          <li><a href=#><i class="fa-solid fa-book fa-lg"></i>My courses</a><a href=#><i class="fa-solid fa-plus"></i></a></li>
-        </ul>
+            </li>
+            <li><a href=#><i class="fa-solid fa-book fa-lg"></i>My courses</a><a href=#><i class="fa-solid fa-plus"></i></a></li>
+          </ul>
+        </div>
+        <%= turbo_frame_tag "new_confession_frame", src: new_users_confession_path, loading: :lazy do %>
+          <div class="centered_container centered_confession_frame">
+            <i class="fa-solid fa-spinner fa-spin-pulse fa-2xl"></i>
+          </div>
+        <% end %>
+        <%= turbo_stream_from "confessions_index_channel" %>
+        <%= turbo_stream_from "confessions_show_channel" %>
+        <%= turbo_frame_tag "board", src: (@confession_url.nil? ? users_confessions_path : @confession_url), loading: :lazy do %>
+          <div class="centered_container centered_board">
+            <i class="fa-solid fa-spinner fa-spin-pulse fa-2xl"></i>
+          </div>
+        <% end %>
       </div>
-      <%= turbo_frame_tag "new_confession_frame", src: new_users_confession_path, loading: :lazy do %>
-        <div class="centered_container centered_confession_frame">
-          <i class="fa-solid fa-spinner fa-spin-pulse fa-2xl"></i>
-        </div>
-      <% end %>
-      <%= turbo_stream_from "confessions_index_channel" %>
-      <%= turbo_stream_from "confessions_show_channel" %>
-      <%= turbo_frame_tag "board", src: (@confession_url.nil? ? users_confessions_path : @confession_url), loading: :lazy do %>
-        <div class="centered_container centered_board">
-          <i class="fa-solid fa-spinner fa-spin-pulse fa-2xl"></i>
-        </div>
-      <% end %>
-    </div>
-    <div class="col-md-9 custom_main">
-      <%= render "users/shared/navbar" %>
-      <%= turbo_frame_tag "main", src: (@podcast_url.nil? ? users_album_homepages_path : @podcast_url), loading: :lazy, data: { frame_moving_target: "mainFrame", turbo_action: "advance" } do %>
-        <div class="centered_container centered_main">
-          <i class="fa-solid fa-spinner fa-spin-pulse fa-2xl"></i>
-        </div>
-      <% end %>
+      <div class="col-md-9 custom_main">
+        <%= render "users/shared/navbar" %>
+        <%= turbo_frame_tag "main", src: (@podcast_url.nil? ? users_album_homepages_path : @podcast_url), loading: :lazy, data: { frame_moving_target: "mainFrame", turbo_action: "advance" } do %>
+          <div class="centered_container centered_main">
+            <i class="fa-solid fa-spinner fa-spin-pulse fa-2xl"></i>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12 custom-media">
-      <%= turbo_frame_tag "media", src: users_media_players_path, loading: :lazy do %>
-        <div class="centered_container centered_main">
-          <i class="fa-solid fa-spinner fa-spin-pulse fa-2xl"></i>
-        </div>
-      <% end %>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 custom-media">
+        <%= turbo_frame_tag "media", src: users_media_players_path, loading: :lazy do %>
+          <div class="centered_container centered_main">
+            <i class="fa-solid fa-spinner fa-spin-pulse fa-2xl"></i>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
-<%= javascript_include_tag 'users/icon_clicked_service' %>
-<%= javascript_include_tag 'users/home_page' %>
-<%= javascript_include_tag 'users/podcast_albums/albums_like_service' %>
+  <%= javascript_include_tag 'users/icon_clicked_service' %>
+  <%= javascript_include_tag 'users/home_page' %>
+  <%= javascript_include_tag 'users/podcast_albums/albums_icon_click_service' %>
