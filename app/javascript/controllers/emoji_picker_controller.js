@@ -33,6 +33,26 @@ export default class extends Controller {
     });
 
     richText.setPicker(picker);
+
+    let isDragging = false;
+    let offsetX, offsetY;
+
+    this.pickerContainerTarget.addEventListener('mousedown', (event) => {
+      isDragging = true;
+      offsetX = event.clientX - this.pickerContainerTarget.offsetLeft;
+      offsetY = event.clientY - this.pickerContainerTarget.offsetTop;
+    });
+
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+    });
+
+    document.addEventListener('mousemove', (event) => {
+      if (isDragging) {
+        this.pickerContainerTarget.style.left = (event.clientX - offsetX) + 'px';
+        this.pickerContainerTarget.style.top = (event.clientY - offsetY) + 'px';
+      }
+    });
   }
 
   emojiButtonTemplate(buttonString) {
