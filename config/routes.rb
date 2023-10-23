@@ -77,6 +77,7 @@ Rails.application.routes.draw do
       resources :comments, module: :confessions
     end
     resources :rooms do
+      resources :conversations
       member do
         patch 'join_room'
         patch 'out_room'

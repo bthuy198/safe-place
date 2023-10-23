@@ -10,6 +10,15 @@ module Users
       @rooms = @q.result().order(id: :desc).page params[:page]
     end
 
+    def show
+      if current_user.type == "User"
+        @room = Room.find_by(id: params[:id], user_id: current_user.id)
+      else
+        @room = Room.find_by(id: params[:id], counselor_id: current_user.id)
+      end
+      render layout: "blank_layout/user_blank"
+    end
+
     def join_room
       @room = Room.find(params[:id])
 
@@ -37,11 +46,6 @@ module Users
     #     render json: { error: 'Failed to out room.' }, status: :unprocessable_entity
     #   end
     # end
-
-    def show
-      @room = Room.find_by(id: params[:id], user_id: current_user.id)
-      
-    end
 
     private
 

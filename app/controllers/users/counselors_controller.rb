@@ -2,8 +2,13 @@ module Users
     class CounselorsController < UsersLayoutController
         before_action :authenticate_user!
         def index
-            @q = Counselor.ransack(params[:q])
-            @counselors = @q.result(distinct: true).order(id: :desc).page params[:page]
+            if current_user.type == "User"
+                @q = Counselor.ransack(params[:q])
+                @counselors = @q.result(distinct: true).order(id: :desc).page params[:page]
+            else
+                @q = Room.joins(:counselor).where(counselor_id: current_user.id).ransack(params[:q])
+                @rooms = @q.result(distinct: true).order(id: :desc).page params[:page]
+            end
         end
 
         def join_counseler_room
@@ -22,6 +27,5 @@ module Users
             end
         end
 
-        def notfound_room; end
     end
 end
