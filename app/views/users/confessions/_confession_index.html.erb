@@ -5,6 +5,10 @@
   <div class="text-center custom_tag" id="<%= "#{dom_id(confession)}_card_tag" %>">
     <%= render "users/confessions/confession_card_tag", confession: confession %>
   </div>
+  <div class="d-flex justify-content-between px-3">
+    <div><%= confession.likes.size %> likes</div>
+    <div><%= confession.comments.size %> comments</div>
+  </div>
   <div class="btn-group" role="group" aria-label="confession_group">
     <% if user %>
       <%= link_to like_users_confession_path(confession), class: "btn btn-light custom_button", type: "button", id: "#{dom_id(confession)}_like", data: {turbo_method: :post} do %>
