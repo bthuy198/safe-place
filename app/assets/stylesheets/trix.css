@@ -1,4 +1,5 @@
 trix-editor {
+    overflow: auto;
     border: 1px solid #bbb;
     border-radius: 3px;
     margin: 0;

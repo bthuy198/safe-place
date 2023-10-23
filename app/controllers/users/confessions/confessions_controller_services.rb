@@ -8,10 +8,14 @@ module Users
 
       included do
         def like
-          LikeService.new(current_user, @confession).like
           respond_to do |format|
-            format.turbo_stream do
-              flash.now[:notice] = 'Confession liked/unliked successfully.'
+            if user_signed_in?
+              LikeService.new(current_user, @confession).like
+              format.turbo_stream do
+                flash.now[:notice] = 'Confession liked/unliked successfully.'
+              end
+            else
+              format.turbo_stream { flash.now[:alert] = 'Please login' }
             end
           end
         end

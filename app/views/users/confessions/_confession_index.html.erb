@@ -24,21 +24,21 @@
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content custom_modal">
           <div class="modal-header">
-            <% if user %>
-            <a type="button" class="custom_action_btn" data-bs-toggle="dropdown" aria-expanded="false" role="button">
-              <i class="fa-solid fa-ellipsis"></i>
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-item custom_dropdown" data-bs-target="#<%= "#{dom_id(confession)}_edit_modal" %>" data-bs-toggle="modal" type="button">
-                  Edit
-                </a>
-              </li>
-              <li><hr class="dropdown-divider"></li>
-              <li>
-                <%= link_to "Delete", users_confession_path(confession), data: {turbo_confirm: "Are you sure to delete this confession?", turbo_method: :delete}, class: "dropdown-item custom_dropdown", type: "button" %>
-              </li>
-            </ul>
+            <% if user && user.id == confession.user_id %>
+              <a type="button" class="custom_action_btn" data-bs-toggle="dropdown" aria-expanded="false" role="button">
+                <i class="fa-solid fa-ellipsis"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item custom_dropdown" data-bs-target="#<%= "#{dom_id(confession)}_edit_modal" %>" data-bs-toggle="modal" type="button">
+                    Edit
+                  </a>
+                </li>
+                <li><hr class="dropdown-divider"></li>
+                <li>
+                  <%= link_to "Delete", users_confession_path(confession), data: {turbo_confirm: "Are you sure to delete this confession?", turbo_method: :delete}, class: "dropdown-item custom_dropdown", type: "button" %>
+                </li>
+              </ul>
             <% end %>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>

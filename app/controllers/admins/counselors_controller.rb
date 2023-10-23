@@ -21,14 +21,12 @@ module Admins
     def create
       @counselor = User.new(counselor_params)
       @counselor.password = DEFAULT_PASSWORD
+
       respond_to do |format|
         if @counselor.save
           format.turbo_stream { flash.now[:notice] = "#{@counselor.type} was successfully created!" }
         else
-          format.turbo_stream do
-            # flash.now[:alert] = "<ul><li>#{@counselor.errors.full_messages.join('</li><li>')}</li><ul>".html_safe
-            render status: :bad_request
-          end
+          format.turbo_stream { render status: :bad_request }
         end
       end
     end
