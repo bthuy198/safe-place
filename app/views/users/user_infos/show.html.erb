@@ -95,9 +95,9 @@
             <%= image_tag("poster.png", alt: "Image") %>
         </div>
         <div class="text-center">
-          <button style="background-color: transparent; border: none;" data-bs-toggle="modal" data-bs-target="#edit-password-modal">
+          <span style="background-color: transparent; border: none;" data-bs-toggle="modal" data-bs-target="#edit-password-modal">
             <%= link_to "Change password", edit_user_registration_path, class:"btn btn-outline-secondary button_change_pw", data: {turbo_frame: "change_password"} %>
-          </button>
+          </span>
         </div>
   </div>
 </div>

@@ -2,7 +2,7 @@
 <%= hidden_field_tag "is_like_#{podcast_album.id}", is_like %>
 <div id="<%= dom_id podcast_album %>">
     <div class="d-flex justify-content-between align-content-start show_podcast_album">
-        <button class="button_hidden_album" data-bs-toggle="modal" data-bs-target="#listPodcastModal" >
+        <span class="button_hidden_album" data-bs-toggle="modal" data-bs-target="#listPodcastModal" >
         <%= link_to users_podcast_album_path(podcast_album), data: {turbo_frame: "show_list_podcast"}, class: "button_show_podcast" do %>
                 <div class="d-flex">
                     <div class="p-2">
@@ -14,7 +14,7 @@
                     </div>
                 </div>
         <% end %>
-        </button>
+        </span>
         <div class="ml-auto d-flex justify-content-around flex-column">
           <div class="p-2 col d-flex">
             <div class="col" id='like_album'>
@@ -27,11 +27,11 @@
             <div class="col"><i class="fa-regular fa-bookmark" ></i></div>
           </div>
           <div class="col d-flex ms-auto p-2 bd-highlight">
-            <button class="button_hidden_album" data-bs-toggle="modal" data-bs-target="#podcastAlbumModal" >
+            <span class="button_hidden_album" data-bs-toggle="modal" data-bs-target="#podcastAlbumModal" >
               <%= link_to edit_users_podcast_album_path(podcast_album), data: {turbo_frame: "modal_for_podcast_album"} do %>
                 <i class="fa-regular fa-pen-to-square"></i>
               <% end %>
-            </button>
+            </span>
           </div>
         </div>
     </div>
