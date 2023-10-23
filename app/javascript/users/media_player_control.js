@@ -106,9 +106,7 @@ function loadNewPlaylistPodcast(newListPodcast, currentPodcastIndex) {
   newListPodcast.forEach(function (podcast) {
     podcasts.push(podcast);
     const imageSrc =
-      podcast.image && podcast.image.url
-        ? podcast.image.url
-        : "/assets/podcast_default.jpg";
+      podcast.image && podcast.image.url ? podcast.image.url: "/assets/podcast_default.jpg";
 
     const listItem = `<li class="list-group-item podcast-list-item" data-index="${podcast.id}">
       <div class="d-flex align-items-center">
