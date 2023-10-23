@@ -3,7 +3,7 @@
 require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
-  Rails.application.config.assets.precompile += %w[.svg .jpg .jpeg .gif .png]
+  config.assets.precompile += %w[.svg .jpg .jpeg .gif .png]
 
   # Settings specified here will take precedence over those in config/application.rb.
 
