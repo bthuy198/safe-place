@@ -29,9 +29,9 @@ module Admins
 
       respond_to do |format|
         if @podcast.save
-          format.json { render json: @podcast, status: :created}
+          format.json { render json: @podcast, status: :created }
         else
-          format.json { render json: @podcast.errors, status: :unprocessable_entity }
+          format.json { render json: @podcast.errors.full_messages, status: :unprocessable_entity }
         end
       end
     end
