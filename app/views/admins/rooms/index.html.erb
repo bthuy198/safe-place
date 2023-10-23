@@ -1,7 +1,7 @@
 <div class="card w-80 mb-3 mt-3">
   <div class="card-body ">
     <%# <h5 class="card-title">Search room</h5> %>
-    <%= search_form_for @q, url:admins_rooms_path, class: 'd-flex justify-content-center' do |f| %>
+    <%= search_form_for @q, url:admins_rooms_path, class: 'd-flex justify-content-begin' do |f| %>
       <div class="input-group mb-3 input_search_room">
         <%= f.search_field :name_cont, class: 'form-control me-2', placeholder: 'Search room name' %>
         <%= f.submit 'Search', class: 'btn btn-outline-success ', type: 'submit' %>
@@ -24,7 +24,7 @@
             <th scope="col">ID</th>
             <th scope="col">Room Name</th>
             <th scope="col">User in room</th>
-            <th scope="col">id coun</th>
+            <th scope="col">Counsoler</th>
             <th scope="col">Enable room</th>
             <th scope="col">Action</th>
           </tr>
