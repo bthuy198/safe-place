@@ -3,10 +3,13 @@
             <div class="text-center">
                 <h1 class="display-1 fw-bold">404</h1>
                 <p class="fs-3"> <span class="text-danger">Opps!</span> Page not found.</p>
-                <%= link_to 'Go Rooms ', users_rooms_path, class: 'btn btn-primary'  %>
+                <%= link_to 'Go home ', root_path, class: 'btn btn-primary'  %>
             </div>
     </div>
 <% else %>
+<%= link_to root_path do %>
+  <i class="fa-solid fa-angle-left button_back_user_info"></i>
+<% end %>
     <div class="d-flex justify-content-center align-items-center">
         <div class="out_room_page">
             <h1><strong>Room: <%= @room.name%></strong></h1>
