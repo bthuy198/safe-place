@@ -72,10 +72,10 @@ margin-right: 50px;
 }
 
 .all_room_join{
-border-radius: 8px;
-border: 1px solid #d2d2d2;
-margin-top: 2vh;
-
+  border-radius: 8px;
+  border: 1px solid #d2d2d2;
+  margin-top: 2vh;
+  margin-bottom: 3vh;
 }
 
 #paginate-element {
@@ -152,5 +152,13 @@ nav {
 .custom_link_to {
   color: #fff; 
   text-decoration: none;
+}
+
+.custom_room_page{
+  width: 100%;
+}
+.border_counselor{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 4px;
 }
 

@@ -27,6 +27,5 @@ module Users
             end
         end
 
-        def notfound_room; end
     end
 end
