@@ -3,8 +3,8 @@
   <div class="col-md-7">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <div class="row mb-4 align-items-cerow mb-4 align-items-centernter">
-      <%= f.label :email, class:"col-4 label form_password_label " %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"col form-control form_password_label", disabled: true %>
+      <%= f.label :email, class: "col-4 label form_password_label " %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col form-control form_password_label", disabled: true %>
     </div>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>

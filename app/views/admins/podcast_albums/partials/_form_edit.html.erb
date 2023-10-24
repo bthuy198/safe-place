@@ -13,7 +13,7 @@
           <% if podcast_album.image? %>
             <td><%= image_tag @podcast_album.image.url, alt: "Album Avatar", class: "personal-avatar", id: 'album_img-edit' %></td>
           <% else %>
-            <td><%= image_tag 'podcast.jpg', alt: "Album Avatar", class: "personal-avatar", id: 'album_img' %></td>
+            <td><%= image_tag 'podcast.jpg', alt: "Album Avatar", class: "personal-avatar", id: 'album_img-edit' %></td>
           <% end %>
           <figcaption class="personal-figcaption">
             <img src="https://raw.githubusercontent.com/ThiagoLuizNunes/angular-boilerplate/master/src/assets/imgs/camera-white.png">

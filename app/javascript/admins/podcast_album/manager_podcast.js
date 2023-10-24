@@ -77,8 +77,8 @@ function cancelEdit(podcastId){
         .done((data) => {
             $(`#input_name_podcast_${podcastId}`).val(data.name);
         })
-        .fail((error) => {
-            console.log(error);
+        .fail((errors) => {
+            console.log(errors);
         })
 }
 
@@ -129,7 +129,11 @@ function createPodcast(){
             $("#createPodcastForm")[0].reset();
         })
         .fail((error) => {
-            console.log(error);
+            $('.alert_create_podcast').empty();
+            $('.alert_create_podcast').attr("style", "display:block")
+            $.each(error.responseJSON, (i, item) => {
+                $('.alert_create_podcast').append(`<li>${item}</li>`)
+            })
         })
 }
 
@@ -156,9 +160,11 @@ function renderTableHead(){
             <tbody id="podcast_table"></tbody>`
 }
 
-function resetCreateForm(){
+$('#modalCreatePodcast').on('hidden.bs.modal', () => {
     $("#createPodcastForm")[0].reset();
-}
+    $('.alert_create_podcast').attr("style", "display:none");
+    $('.alert_create_podcast').empty();
+})
 
 $('#crePodcastImage').change(function(e){
     var imageName = e.target.files[0].name;
