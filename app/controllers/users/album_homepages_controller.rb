@@ -4,8 +4,13 @@ module Users
   # class AlbumHomePagesController
   class AlbumHomepagesController < UsersLayoutController
     def index
-      @albums = PodcastAlbum.limit(6)
-      @recent_albums = PodcastAlbum.order(created_at: :desc).limit(6)
+      if params[:q]
+        @q = PodcastAlbum.ransack(user_user_name_or_name_cont: params[:q])
+        @albums = @q.result.includes(:user)
+      else
+        @albums = PodcastAlbum.joins(:podcasts).distinct.limit(6)
+        @recent_albums = PodcastAlbum.joins(:podcasts).distinct.order(created_at: :desc).limit(6)
+      end
     end
 
     def show
