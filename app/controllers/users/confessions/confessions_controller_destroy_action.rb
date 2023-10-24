@@ -16,9 +16,16 @@ module Users
             end
             format.json { head :no_content }
           end
-          Turbo::StreamsChannel.broadcast_remove_to('confessions_index_channel', target: helpers.dom_id(@confession))
-          Turbo::StreamsChannel.broadcast_remove_to('not_signed_in_confessions_index_channel',
-                                                    target: helpers.dom_id(@confession))
+          broadcast_destroy_confession
+        end
+
+        def broadcast_destroy_confession
+          Turbo::StreamsChannel
+            .broadcast_remove_to('confessions_index_channel',
+                                 target: helpers.dom_id(@confession))
+          Turbo::StreamsChannel
+            .broadcast_remove_to('not_signed_in_confessions_index_channel',
+                                 target: helpers.dom_id(@confession))
         end
       end
     end
