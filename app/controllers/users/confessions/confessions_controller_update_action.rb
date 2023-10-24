@@ -10,11 +10,7 @@ module Users
 
       included do
         def update
-          if current_user.id != @confession.user_id
-            respond_to do |format|
-              format.turbo_stream { flash.now[:alert] = "Cannot update other people's confessions" }
-            end
-          elsif @confession.update(confession_params)
+          if @confession.update(confession_params)
             respond_to do |format|
               format.turbo_stream { flash.now[:notice] = 'Confession was successfully updated.' }
               format.json { render :show, status: :ok, location: @confession }

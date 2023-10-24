@@ -9,6 +9,7 @@ module Users
       included do
         def destroy
           @confession.destroy
+
           respond_to do |format|
             format.turbo_stream do
               flash.now[:notice] = 'Confession was successfully destroyed.'
