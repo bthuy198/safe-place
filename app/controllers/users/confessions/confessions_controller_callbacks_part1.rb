@@ -8,6 +8,7 @@ module Users
     module ConfessionsControllerCallbacksPart1
       extend ActiveSupport::Concern
       include Users::Confessions::ConfessionsControllerCallbacksPart2
+      include Users::Confessions::ConfessionsControllerCallbacksPart3
 
       included do
         before_action :set_confessions, only: %i[index destroy]
@@ -36,7 +37,7 @@ module Users
 
         def confessions_search
           @q = params[:q]
-          (tag_search + user_search + content_search).uniq.sort_by(&:created_at).reverse
+          (id_search + tag_search + user_search + content_search).uniq.sort_by(&:created_at).reverse
         end
       end
     end

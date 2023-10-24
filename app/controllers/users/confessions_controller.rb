@@ -9,6 +9,6 @@ module Users
     include Users::Confessions::ConfessionsControllerDestroyAction
     include Users::Confessions::ConfessionsControllerServices
     include Users::Confessions::ConfessionsControllerCallbacksPart1
-    include Users::Confessions::ConfessionsControllerCallbacksPart3
+    include Users::Confessions::ConfessionsControllerCallbacksPart4
   end
 end

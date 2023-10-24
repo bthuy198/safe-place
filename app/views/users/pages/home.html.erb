@@ -24,7 +24,8 @@
           <%= turbo_stream_from "not_signed_in_confessions_index_channel" %>
         <% end %>
         <%= turbo_stream_from "confessions_show_channel" %>
-        <%= turbo_frame_tag "board", src: users_confessions_path(confession_url: @confession_url), loading: :lazy do %>
+        <% id = @confession_url.nil? ? "" : @confession_url.split("/").last %>
+        <%= turbo_frame_tag "board", src: users_confessions_path(confession_url: @confession_url, q: id), loading: :lazy do %>
           <div class="centered_container centered_board">
             <i class="fa-solid fa-spinner fa-spin-pulse fa-2xl"></i>
           </div>
