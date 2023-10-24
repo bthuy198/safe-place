@@ -1,5 +1,5 @@
-<% if user.likes.exists?(likeable: item) %>
-    <i class="fa-solid fa-heart"></i> <%= item.likes.size %>
+<% if user&.likes&.exists?(likeable: item) %>
+  <i class="fa-solid fa-heart"></i> <%= item.likes.size %>
 <% else %>
-    <i class="fa-regular fa-heart"></i> <%= item.likes.size %>
+  <i class="fa-regular fa-heart"></i> <%= item.likes.size %>
 <% end %>
