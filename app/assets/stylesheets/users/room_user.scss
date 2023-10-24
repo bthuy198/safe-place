@@ -1,8 +1,8 @@
 .item_room_join{
   display: flex;
   justify-content: center;
-  height: 19vh;
-  width: 19vh;
+  height: 18vh;
+  width: 18vh;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -169,9 +169,9 @@ nav {
   width: 100%;
 }
 .border_counselor{
-  // box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border: 1px solid #d2d2d2;;
   border-radius: 4px;
-  min-height: 70vh;
+  height: 70vh;
+  overflow-y: auto;
 }
 

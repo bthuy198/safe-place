@@ -26,7 +26,6 @@
 #
 class UserInfo < ApplicationRecord
   belongs_to :user
-  has_one :counselor, through: :user
 
   acts_as_paranoid
 
