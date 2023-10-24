@@ -1,7 +1,7 @@
 require 'faker'
 
-# create user and user_inf
-5.times do |i|
+# create user and user_info
+10.times do |i|
     User.create!(
         email: Faker::Internet.email,
         user_name: Faker::Name.name,
@@ -35,7 +35,7 @@ end
     end
 end
 
-# create room chat and conversation for this room chat
+# create room chat
 10.times do |i|
     room = Room.create(
         name: Faker::Space.star_cluster,
@@ -43,13 +43,6 @@ end
         counselor_id: Counselor.all.sample.id,
         status: User.statuses.keys.sample
     )
-    3.times do |j|
-        user = User.all.sample
-        user.conversations.create(
-            room_id: room.id, 
-            content: Faker::Lorem.sentence
-        )
-    end
 end
 
 # create podcastalbum and podcast
@@ -64,7 +57,7 @@ end
             podcast_album_id: album.id,
             author_name: Faker::Music.band,
             episode_number: Faker::Number.between(from: 1, to: 100),
-            audio: File.open("/home/msi/Downloads/file_example_MP3_700KB.mp3")
+            audio: File.open("/home/msi/Downloads/file_example_MP3_700KB.mp3") # change path for another file
         )
     end
 
@@ -86,6 +79,27 @@ end
         user_id: user.id,
     )
     confession.likes.create(
+        anonymous: user.anonymous,
+        user_id: user.id,
+    )
+end
+
+# create bookmark for Polymorphic(PodcastAlbum, Podcast, Confession)
+5.times do |i|
+    user = User.all.sample
+    album = PodcastAlbum.all.sample
+    podcast = Podcast.all.sample
+    confession = Confession.all.sample
+
+    album.bookmarks.create(
+        anonymous: user.anonymous,
+        user_id: user.id,
+    )
+    podcast.bookmarks.create(
+        anonymous: user.anonymous,
+        user_id: user.id,
+    )
+    confession.bookmarks.create(
         anonymous: user.anonymous,
         user_id: user.id,
     )
