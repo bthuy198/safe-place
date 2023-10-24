@@ -1,7 +1,7 @@
 
 <div id="<%= dom_id podcast %>">
     <div class="col-3">
-    <button class="button_hidden" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: transparent; border: none;">
+    <button class="button_hidden_podcast" data-bs-toggle="modal" data-bs-target="#exampleModal">
         <%= link_to edit_users_podcast_path(podcast), data:{turbo_frame: "modal_for_podcast"}, class: "button_show_podcast" do %>
             <div class="card item">
                 <div class="card-body d-flex flex-column justify-content-center">
