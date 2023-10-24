@@ -1,19 +1,11 @@
 <div class="container-fluid">
   <div class="row justify-content-center" style="height: 100vh">
     <h1 class="text-center align-self-end mb-4 text-color-green fw-bold">Sign up to SafePlace Vietnam</h1>
-
     <div class="col-md-4">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: 'form-xs', data: { turbo: false }) do |f| %>
         <% if alert.present? %>
           <div class="alert alert-danger mt-4">
             <% alert.each do |message| %>
-              <%= message %><br />
-            <% end %>
-          </div>
-        <% end %>
-        <% if resource.errors.any? %>
-          <div class="alert alert-danger text-center mt-4">
-            <% resource.errors.full_messages.each do |message| %>
               <%= message %><br />
             <% end %>
           </div>

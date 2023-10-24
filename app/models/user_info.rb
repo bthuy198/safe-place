@@ -31,7 +31,7 @@ class UserInfo < ApplicationRecord
 
   mount_uploader :avatar, ImageUploader
 
-  enum gender: { male: 'Male', female: 'Female', non_binary: 'Non-binary', other: 'Other' }
+  enum gender: { male: 'male', female: 'female', non_binary: 'non_binary', other: 'other' }
 
   def self.ransackable_attributes(_auth_object = nil)
     %w[address created_at date_of_birth deleted_at gender id profile_name updated_at user_id]

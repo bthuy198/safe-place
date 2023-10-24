@@ -13,9 +13,9 @@
 <div class="card w-80">
   <div class="card-body">
     <h5 class="card-title">List rooms</h5>
-        <button class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+        <span class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#exampleModal2">
       <%= link_to 'Add room', new_admins_room_path, data: {turbo_frame: 'custom_room'}, class: "no-underline custom-link"%>
-    </button>
+    </span>
     <p class="card-text">
       <%#= turbo_frame_tag "room" do  %>
       <table class = 'table mx-auto table-condensed text-center align-middle'>
@@ -43,7 +43,7 @@
 
 <div class="d-flex justify-content-center" id="paginate-element">
   <%= paginate @rooms, theme: 'bootstrap-5' %>
-</div> 
+</div>
 
 <%# modal- create %>
 <%= render 'admins/rooms/partials/modal'%>

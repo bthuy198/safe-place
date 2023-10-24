@@ -42,3 +42,18 @@
   width: 50px;
   height: 50px;
 }
+#paginate-element{
+  a{
+    color: #1F7564;
+  }
+  a:hover{
+    color: white;
+    background-color: #1F7564;
+    border-color: #1F7564;
+  }
+  .active a{
+    color: white;
+    background-color: #1F7564;
+    border-color: #1F7564;
+  }
+}
