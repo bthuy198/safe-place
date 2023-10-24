@@ -63,5 +63,6 @@ test:
 #
 production:
   <<: *default
-  database: <%= ENV["DATABASES_NAME_PRODUCTION"] %>
-  secret_key_base: <%=ENV["SECRET_KEY_BASE"]%>
+  # database: <%= ENV["DATABASES_NAME_PRODUCTION"] %>
+  # secret_key_base: <%=ENV["SECRET_KEY_BASE"]%>
+  url: <%= ENV['DATABASE_URL'] %>
