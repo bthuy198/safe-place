@@ -79,7 +79,7 @@ module Admins
 
     def update_counselor_params
       params.require(:counselor).permit(:anonymous, :password, :phone_number, :status, :type, :user_name,
-                                        user_info_attributes: %i[address date_of_birth gender profile_name])
+                                        user_info_attributes: %i[id address date_of_birth gender profile_name])
     end
 
     def counselor_params

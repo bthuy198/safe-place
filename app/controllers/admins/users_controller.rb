@@ -74,7 +74,7 @@ module Admins
 
     def update_user_params
       params.require(:user).permit(:anonymous, :password, :phone_number, :status, :type, :user_name,
-                                   user_info_attributes: %i[address date_of_birth gender profile_name])
+                                   user_info_attributes: %i[id address date_of_birth gender profile_name])
     end
 
     def user_params
