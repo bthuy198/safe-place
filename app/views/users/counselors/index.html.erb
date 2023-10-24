@@ -1,11 +1,11 @@
 <%= turbo_frame_tag "main" do %>
-<div class="container-fluid custom_body">
-  <div class="row custom_render_row">
-    <div class="col-md-9 custom_room_page ">
+  <div class="container-fluid custom_body">
+    <div class="row custom_render_row">
+      <div class="col-md-9 custom_room_page ">
         <% if current_user.type == "User" %>
           <div class="container-fluid show_podcast" >
             <h1>List counselor</h1>
-            <div class="card">
+            <div class="card search_room_body">
               <div class="card-body ">
                 <%= search_form_for @q, url:users_counselors_path, class: 'd-flex justify-content-center' do |f| %>
                   <div class="input-group mb-3 input_search_room">
@@ -27,19 +27,19 @@
                           <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp" alt="avatar 1" class="counselor_avt">
                         <% end %>
                         <p class="counselor_name"><%= counselor.user_name%></p>
-                          <%= link_to 'Chat', join_counseler_room_users_counselor_path(counselor), method: :patch, class: 'btn btn-primary btn_join join_counselor_button custom_link_to' %>
+                        <%= link_to 'Chat', join_counseler_room_users_counselor_path(counselor), method: :patch, class: 'btn btn-primary btn_join join_counselor_button custom_link_to' %>
                       </div>
                     </div>
                   <% end %>
-              </div>
-                  <div class="d-flex justify-content-center", id="paginate-element" >
-                    <%= paginate @counselors, theme: 'bootstrap-5' %>
-                  </div> 
+                </div>
+                <div class="d-flex justify-content-center", id="paginate-element" >
+                  <%= paginate @counselors, theme: 'bootstrap-5' %>
+                </div>
               </div>
             </div>
           </div>
         <% else %>
-        <div class="container-fluid show_podcast" >
+          <div class="container-fluid show_podcast" >
             <h1>List room</h1>
             <div class="card">
               <div class="card-body ">
@@ -63,20 +63,20 @@
                           <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp" alt="avatar 1" class="counselor_avt">
                         <% end %>
                         <p class="counselor_name"><%= room.name%></p>
-                          <%= link_to 'Chat', users_room_path(room), data: { turbo_frame: "_top" } , class: 'btn btn-primary btn_join join_counselor_button custom_link_to' %>
+                        <%= link_to 'Chat', users_room_path(room), data: { turbo_frame: "_top" } , class: 'btn btn-primary btn_join join_counselor_button custom_link_to' %>
                       </div>
                     </div>
                   <% end %>
                 </div>
                 <div class="d-flex justify-content-center", id="paginate-element" >
                   <%= paginate @rooms, theme: 'bootstrap-5' %>
-                </div> 
+                </div>
               </div>
             </div>
-            </div>
           </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
 <% end %>

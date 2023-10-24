@@ -4,9 +4,9 @@
       <span class="d-flex align-items-center">
         <span class="album_image_col">
           <% if @album.image? %>
-            <%= image_tag @album.image_url, alt: "Album Avatar", id: 'album_img', class: "album_image", width:"250px", height:"250px" %>
+            <%= image_tag @album.image_url, alt: "Album Avatar", id: 'album_img', class: "album_image" %>
           <% else %>
-            <%= image_tag "album_default.jpg", alt: "Image", id: 'album_img', class: "album_image", width:"250px", height:"250px" %>
+            <%= image_tag "album_default.jpg", alt: "Image", id: 'album_img', class: "album_image" %>
           <% end %>
         </span>
         <span class="album_info">
@@ -41,16 +41,14 @@
       </span>
     </div>
     <div class="card-body">
-      <div class="table-responsive">
-        <% if @podcasts.empty? %>
-          <div>
-            <h2 class="text-center fw-bold text-color-green pt-2">Podcast Empty</h2>
-          </div>
-        <% else %>
-          <p class="text_opacity_50">Popular</p>
-          <%= render 'podcast_table', podcasts: @podcasts %>
-        <% end %>
-      </div>
+      <% if @podcasts.empty? %>
+        <div>
+          <h2 class="text-center fw-bold text-color-green pt-2">Podcast Empty</h2>
+        </div>
+      <% else %>
+        <p class="text_opacity_50">Popular</p>
+        <%= render 'podcast_table', podcasts: @podcasts %>
+      <% end %>
     </div>
   </div>
   <%= javascript_include_tag 'users/podcast_albums/albums_show_page' %>
