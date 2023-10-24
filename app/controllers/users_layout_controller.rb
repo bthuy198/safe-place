@@ -24,7 +24,7 @@ class UsersLayoutController < ApplicationController
   def conditions
     [
       { keywords: ['confession'], session_key: :confession_url },
-      { keywords: %w[album podcast], session_key: :podcast_url }
+      { keywords: %w[album podcast counselor], session_key: :main_url }
     ]
   end
 
