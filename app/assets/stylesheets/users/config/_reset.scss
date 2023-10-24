@@ -18,7 +18,7 @@ div {
     padding: 0;
   }
   &.custom_menu {
-    height: 20vh;
+    height: 10rem;
     margin: 10px;
     font-family: var(--font-family-sans);
     color: var(--color-primary);
@@ -90,7 +90,7 @@ turbo-frame#new_confession_frame {
       padding: 10px;
       border: var(--border);
       border-radius: var(--border-radius);
-      height: 20vh;
+      height: 10rem;
       h1, h4 {
         font-family: var(--font-family-sans);
         color: var(--color-primary);
@@ -135,7 +135,7 @@ turbo-frame#board {
       padding: 10px;
       border: var(--border);
       border-radius: var(--border-radius);
-      height: 50vh;
+      height: 28rem;
       overflow: auto;
       scrollbar-width: none;
       -ms-overflow-style: none;
@@ -248,7 +248,7 @@ turbo-frame#main {
   width: 100%;
 }
 nav.main_nav {
-  height: 8vh;
+  // height: 8vh;
   top: 0;
   right: 0;
   background-color: var(--color-primary);

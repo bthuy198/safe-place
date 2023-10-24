@@ -2,7 +2,7 @@
   margin: 0px;
   padding: 0px;
   .card {
-    height: 88vh;
+    height: 47.2rem;
     .card-body {
       overflow-y: scroll;
     }
@@ -87,7 +87,7 @@
 }
 
 .album_showpage {
-  height: 85vh;
+  // height: 85vh;
   border: 0;
 
   .width_id_col {
@@ -159,15 +159,21 @@
     }
   }
   .card-header {
+    height: 15rem;
     border: 0;
     border-radius: 0;
     background-color: #1f7564;
   }
 
   .card-body {
+    height: 32.1rem;
+    overflow-y: auto;
     border: 1px solid #00000021;
     border-radius: 0 0 10px 10px;
     border-top: 0px;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
   .album_info {
     p {
@@ -176,13 +182,9 @@
     }
   }
 
-  .album_img {
-    height: 250px;
-    width: 250px;
-  }
-
-  .table-responsive {
-    height: 50vh;
+  #album_img {
+    height: 14rem;
+    width: 14rem;
   }
 
   .podcast-item {
@@ -194,9 +196,12 @@
 .all_album {
   width: 100%;
   .card {
-    height: 84vh;
+    height: 47.2rem;
     .album_item_container {
-      max-height: 80vh;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      max-height: 46rem;
       flex-wrap: wrap;
       overflow-x: auto;
       white-space: nowrap;
