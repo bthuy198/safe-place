@@ -180,7 +180,7 @@
 .show_podcast {
   .row {
     .card_index{
-      height: 84vh;
+      height: 47.2rem;
       .body_index{
         padding-right: 20px;
         .index_text {
@@ -194,7 +194,7 @@
             margin-top: 10px;
           }
           .body_album {
-            height: 65vh;
+            height: 38rem;
             overflow-y: scroll;
           }
         }
@@ -239,3 +239,6 @@
     margin-top: 25px;
 }
 
+.search_room_body{
+  height: 5rem;
+}
