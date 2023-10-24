@@ -220,3 +220,29 @@
     }
   }
 }
+
+.all_album_search {
+  width: 100%;
+  .album_card {
+    height: 84vh;
+    .album_item_container {
+      max-height: 80vh;
+      flex-wrap: wrap;
+      overflow-x: auto;
+      white-space: nowrap;
+      .album_homepage_detail {
+        width: 15rem;
+        margin-right: 30px;
+        margin-bottom: 30px;
+        .album-avatar {
+          width: 210px;
+          height: 240px;
+        }
+        .album_title_album_name {
+          width: 11vw;
+        }
+      }
+    }
+  }
+}
+
