@@ -25,10 +25,7 @@ module Admins
       @room.status = 'disable'
       respond_to do |format|
         if @room.save
-          format.turbo_stream
-          # format.html do
-          #   redirect_to admins_rooms_path(@room), notice: 'User was successfully created.'
-          # end
+          format.turbo_stream { flash.now[:notice] = 'Room created.' }
           format.json { render :show, status: :created, location: @room }
         else
           flash[:alert] = @room.errors.full_messages.join(', ')
@@ -42,7 +39,7 @@ module Admins
       @room = Room.find(params[:id])
       if @room.status.nil? || (@room.status == 'disable')
         @room.update(status: 'enable')
-        flash[:success] = 'Room status changed successfully.'
+        # flash[:notice] = 'Room status changed successfully.'
       else
         @room.update(status: 'disable')
       end
@@ -58,7 +55,7 @@ module Admins
         if @room.update(room_params)
           # format.turbo_stream
           format.html do
-            redirect_to admins_rooms_path, notice: 'User was successfully created.'
+            redirect_to admins_rooms_path, notice: 'Room was successfully updated.'
           end
           format.json { render :show, status: :ok, location: @user }
         else
