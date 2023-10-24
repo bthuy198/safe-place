@@ -10,7 +10,7 @@
     <%= javascript_importmap_tags %>
   </head>
   <body id="body" class="d-flex flex-column min-vh-100 ">
-    <%#= render "shared/flash"%>
+    <%= render "shared/flash"%>
     <div class="d-flex color_admins" id="wrapper">
       <%= render 'layouts/admins_layout/partials/leftmenu' %>
       <!-- Page content wrapper-->
@@ -18,7 +18,7 @@
         <!-- Top navigation-->
         <%= render 'layouts/admins_layout/partials/header' %>
         <!-- Page content-->
-        <div class="container-fluid" style="height: 100vh">
+        <div class="container-fluid" style="min-height: 100vh">
           <%= yield %>
         </div>
       </div>

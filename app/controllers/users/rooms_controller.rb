@@ -7,16 +7,16 @@ module Users
 
     def index
       @q = Room.includes(:user).where(status: :enable).ransack(params[:q])
-      @rooms = @q.result().order(id: :desc).page params[:page]
+      @rooms = @q.result.order(id: :desc).page params[:page]
     end
 
     def show
-      if current_user.type == "User"
-        @room = Room.find_by(id: params[:id], user_id: current_user.id)
-      else
-        @room = Room.find_by(id: params[:id], counselor_id: current_user.id)
-      end
-      render layout: "blank_layout/user_blank"
+      @room = if current_user.type == 'User'
+                Room.find_by(id: params[:id], user_id: current_user.id)
+              else
+                Room.find_by(id: params[:id], counselor_id: current_user.id)
+              end
+      render layout: 'blank_layout/user_blank'
     end
 
     def join_room
@@ -41,7 +41,7 @@ module Users
     #                                                partial: 'users/rooms/partials/room_chat',
     #                                                locals: { room: @room },
     #                                                target: "button_join_#{@room.id}")
-                                    
+
     #   else
     #     render json: { error: 'Failed to out room.' }, status: :unprocessable_entity
     #   end

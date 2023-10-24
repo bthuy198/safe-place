@@ -9,7 +9,7 @@ module Users
       if @conversation.save
         Turbo::StreamsChannel.broadcast_append_to "room_#{@room.id}",
                                                   partial: 'users/conversations/partials/conversation',
-                                                  locals: { conversation: @conversation},
+                                                  locals: { conversation: @conversation },
                                                   target: 'conversations'
         Turbo::StreamsChannel.broadcast_append_to [@conversation.conversationable&.to_gid_param],
                                                   target: "controls_conversation_#{@conversation.id}",

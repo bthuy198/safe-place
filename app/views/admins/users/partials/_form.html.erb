@@ -42,8 +42,8 @@
           <%= user_info_fields.date_field :date_of_birth, class: 'form-control' %>
         </div>
         <div class="col">
-          <%= user_info_fields.label :gender %>
-          <%= user_info_fields.select :gender, UserInfo.genders, {}, class: 'form-select', "aria-label":"Default select example" %>
+          <%= user_info_fields.label :gender, 'Gender' %>
+          <%= user_info_fields.select :gender, UserInfo.genders, {selected: user_info_fields.object.gender}, class: 'form-select' %>
         </div>
       </div>
       <div class="row mb-1 gy-2 gx-3 ">
@@ -53,7 +53,7 @@
         </div>
         <div class="col">
           <%= form.label :status, "Status" %>
-          <%= form.select :status, User.statuses,{}, class: 'form-select', "aria-label":"Default select example" %>
+          <%= form.select :status, User.statuses,{}, class: 'form-select'%>
         </div>
       </div>
       <div class="row mb-1 gy-2 gx-3 ">
@@ -64,7 +64,7 @@
       </div>
     <% end %>
     <div class="form-actions text-center">
-      <%= form.submit "Submit", class: "btn btn-success btn-lg mt-2 btn-submit" %>
+      <%= form.submit "Submit", class: "btn btn-lg mt-2 border_button_green bg_button_green bg_button_green_hover text-white" %>
     </div>
   <% end %>
 </div>

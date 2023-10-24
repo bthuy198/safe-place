@@ -5,3 +5,4 @@
     </script>
 <% end %>
 <%= turbo_stream.update 'room_model', partial: "admins/rooms/partials/form", locals: {room: Room.new} %>
+<%= render_turbo_stream_flash_messages %>

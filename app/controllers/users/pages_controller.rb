@@ -7,7 +7,7 @@ module Users
 
     def home
       @confession_url ||= session[:confession_url]
-      @home ||= session[:podcast_url]
+      @home ||= session[:main_url]
     end
 
     def contact; end

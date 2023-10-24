@@ -34,7 +34,9 @@
         </tbody>
       </table>
       <div class="d-flex justify-content-end" id="paginate-element">
-        <%= paginate @podcast_albums, theme: 'bootstrap-5' %>
+        <nav aria-label="Page navigation example">
+          <%= paginate @podcast_albums, theme: 'bootstrap-5' %>
+        </nav>
       </div>
     </div>
   </div>
@@ -46,7 +48,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title text_green">Create</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="$('#modalCreateAlbum form').trigger('reset')"></button>
+        <button type="button" id="closeModalCreateAlbum" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="alert alert-danger" role="alert" style="display:none;">
       </div>
@@ -92,5 +94,13 @@
 <script type="module">
     $('#btnShowCreateModal').on('click', () => {
         $('#modalCreateAlbum').modal('show');
+    })
+    $('#closeModalCreateAlbum').on('click', () => {
+        $('#album_img').attr('src', "../assets/podcast.jpg");
+        $('#modalCreateAlbum form').trigger('reset');
+    })
+    $("#modalCreateAlbum").on('hidden.bs.modal', () => {
+        $('#album_img').attr('src', "../assets/podcast.jpg");
+        $('#modalCreateAlbum form').trigger('reset');
     })
 </script>
