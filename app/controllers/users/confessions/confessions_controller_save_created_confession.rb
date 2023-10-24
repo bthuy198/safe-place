@@ -15,6 +15,11 @@ module Users
                                         target: 'confessions',
                                         partial: 'users/confessions/confession_index',
                                         locals: { user: current_user, confession: @confession })
+          Turbo::StreamsChannel
+            .broadcast_prepend_later_to('not_signed_in_confessions_index_channel',
+                                        target: 'confessions',
+                                        partial: 'users/confessions/not_signed_in_confession_index',
+                                        locals: { confession: @confession })
         end
 
         def handle_failed_create_confession

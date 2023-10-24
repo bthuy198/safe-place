@@ -18,7 +18,11 @@
             <i class="fa-solid fa-spinner fa-spin-pulse fa-2xl"></i>
           </div>
         <% end %>
-        <%= turbo_stream_from "confessions_index_channel" %>
+        <% if user_signed_in? %>
+          <%= turbo_stream_from "confessions_index_channel" %>
+        <% else %>
+          <%= turbo_stream_from "not_signed_in_confessions_index_channel" %>
+        <% end %>
         <%= turbo_stream_from "confessions_show_channel" %>
         <%= turbo_frame_tag "board", src: (@confession_url.nil? ? users_confessions_path : @confession_url), loading: :lazy do %>
           <div class="centered_container centered_board">
