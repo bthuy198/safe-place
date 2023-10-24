@@ -29,7 +29,7 @@ module Admins
 
       respond_to do |format|
         if @podcast.save
-          format.json { render json: @podcast, status: :created}
+          format.json { render json: @podcast, status: :created }
         else
           format.json { render json: @podcast.errors, status: :unprocessable_entity }
         end
@@ -72,7 +72,5 @@ module Admins
     def create_podcast_params
       params.permit(:name, :author_name, :episode_number, :image, :audio, :podcast_album_id)
     end
-
-
   end
 end

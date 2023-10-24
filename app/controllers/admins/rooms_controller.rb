@@ -25,7 +25,7 @@ module Admins
       @room.status = 'disable'
       respond_to do |format|
         if @room.save
-          format.turbo_stream {flash.now[:notice] = 'Room created.'}
+          format.turbo_stream { flash.now[:notice] = 'Room created.' }
           format.json { render :show, status: :created, location: @room }
         else
           flash[:alert] = @room.errors.full_messages.join(', ')
@@ -70,10 +70,8 @@ module Admins
       @room = Room.find(params[:id])
       @room.destroy
       respond_to do |format|
-        
         format.html { redirect_to admins_rooms_url, notice: 'User was successfully destroyed.' }
         format.json { head :no_content }
-        
       end
     end
 
