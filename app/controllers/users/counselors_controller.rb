@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Users
+  # class counselors
   class CounselorsController < UsersLayoutController
     before_action :authenticate_user!
     def index

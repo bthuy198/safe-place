@@ -33,20 +33,6 @@ module Users
       end
     end
 
-    # def out_room
-    #   @room = Room.find(params[:id])
-    #   if @room.update(user_id: nil)
-    #     redirect_to users_counselors_path
-    #     Turbo::StreamsChannel.broadcast_replace_to('room',
-    #                                                partial: 'users/rooms/partials/room_chat',
-    #                                                locals: { room: @room },
-    #                                                target: "button_join_#{@room.id}")
-
-    #   else
-    #     render json: { error: 'Failed to out room.' }, status: :unprocessable_entity
-    #   end
-    # end
-
     private
 
     def room_params
