@@ -10,6 +10,13 @@ module Users
         private
 
         # for set_confessions method
+        def id_search
+          Confession
+            .eager_load(:rich_text_content, :user, :likes)
+            .ransack(id_eq: @q).result
+        end
+
+        # for set_confessions method
         def tag_search
           Confession
             .eager_load(:rich_text_content, :user, :likes)
@@ -29,13 +36,6 @@ module Users
           Confession
             .eager_load(:rich_text_content, :user, :likes)
             .where('action_text_rich_texts.body LIKE ?', "%#{@q}%")
-        end
-
-        # for set_confessions method
-        def set_paging_variable
-          @current_page = @confessions.current_page
-          @total_pages = @confessions.total_pages
-          @has_next_page = @current_page < @total_pages
         end
       end
     end

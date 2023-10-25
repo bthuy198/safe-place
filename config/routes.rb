@@ -56,7 +56,7 @@ Rails.application.routes.draw do
       member do
         post 'toggle_bookmark'
         post 'toggle_like'
-        patch'set_duration'
+        patch 'set_duration'
       end
     end
     resources :podcast_albums do
@@ -65,7 +65,7 @@ Rails.application.routes.draw do
         post 'like'
       end
     end
-    resources :album_homepages, only: [:index, :show] do
+    resources :album_homepages, only: %i[index show] do
       collection do
         get 'all', to: 'album_homepages#all_album'
       end
@@ -90,7 +90,7 @@ Rails.application.routes.draw do
     end
   end
 
-  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

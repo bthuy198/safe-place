@@ -17,9 +17,14 @@
     <% else %>
       <button type="button" class="btn btn-light custom_button" disabled><i class="fa-solid fa-heart-crack"></i></button>
     <% end %>
-    <button type="button" class="btn btn-light custom_button" data-bs-target="#<%= "#{dom_id(confession)}_show_modal" %>" data-bs-toggle="modal">
+    <button type="button" class="btn btn-light custom_button" data-bs-target="#<%= "#{dom_id(confession)}_show_modal" %>" data-bs-toggle="modal" id="<%= "#{dom_id(confession)}_show_button" %>">
       <i class='fa-regular fa-message'></i>
     </button>
+    <% if params[:confession_url] == users_confession_url(confession) %>
+      <script>
+        document.getElementById('<%= "#{dom_id(confession)}_show_button" %>').click();
+      </script>
+    <% end %>
     <div class="modal fade" id="<%= "#{dom_id(confession)}_show_modal" %>" aria-hidden="true" aria-labelledby="<%= "#{dom_id(confession)}_show_modal_label" %>" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content custom_modal">
