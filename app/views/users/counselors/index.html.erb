@@ -64,7 +64,9 @@
                         <% else %>
                           <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp" alt="avatar 1" class="counselor_avt">
                         <% end %>
-                        <p class="counselor_name"><%= room.name%></p>
+                        <p class="counselor_name">
+                          <%= room.name = room.name.length > 10 ?  room.name[0, 7] + '...' : room.name %>
+                          </p>
                         <%= link_to 'Chat', users_room_path(room), data: { turbo_frame: "_top" } , class: 'btn btn-primary btn_join join_counselor_button custom_link_to' %>
                       </div>
                     </div>
