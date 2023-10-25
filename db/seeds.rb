@@ -5,7 +5,7 @@ require 'faker'
     User.create!(
         email: Faker::Internet.email,
         user_name: Faker::Name.name,
-        password: "123123", 
+        password: "123123",
         password_confirmation: "123123",
         type: %w[User Counselor].sample,
         user_info_attributes: {
@@ -57,7 +57,7 @@ end
             podcast_album_id: album.id,
             author_name: Faker::Music.band,
             episode_number: Faker::Number.between(from: 1, to: 100),
-            audio: File.open("/home/msi/Downloads/file_example_MP3_700KB.mp3") # change path for another file
+            audio: File.open("/Users/nkhphuc/downloads/sample4.mp3") # change path for another file
         )
     end
 
