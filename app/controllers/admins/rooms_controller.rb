@@ -25,12 +25,10 @@ module Admins
       @room.status = 'disable'
       respond_to do |format|
         if @room.save
-          format.turbo_stream { flash.now[:notice] = 'Room created.' }
-          format.json { render :show, status: :created, location: @room }
+          flash.now[:notice] = 'Room created.'
+          format.turbo_stream
         else
-          flash[:alert] = @room.errors.full_messages.join(', ')
           format.html { render :new, status: :unprocessable_entity }
-          format.json { render json: @room.errors, status: :unprocessable_entity }
         end
       end
     end
@@ -39,7 +37,6 @@ module Admins
       @room = Room.find(params[:id])
       if @room.status.nil? || (@room.status == 'disable')
         @room.update(status: 'enable')
-        # flash[:notice] = 'Room status changed successfully.'
       else
         @room.update(status: 'disable')
       end
@@ -51,18 +48,12 @@ module Admins
     def update
       @room = Room.find(params[:id])
 
-      respond_to do |format|
-        if @room.update(room_params)
-          # format.turbo_stream
-          format.html do
-            redirect_to admins_rooms_path, notice: 'Room was successfully updated.'
-          end
-          format.json { render :show, status: :ok, location: @user }
-        else
-          flash[:alert] = @room.errors.full_messages.join(', ')
-          format.html { render :edit, status: :unprocessable_entity }
-          format.json { render json: @user.errors, status: :unprocessable_entity }
-        end
+      if @room.update(room_params)
+        flash[:notice] = 'Room was successfully updated.'
+        redirect_to admins_rooms_path
+      else
+        flash.now[:alert] = @room.errors.full_messages.join(', ')
+        render :edit, status: :unprocessable_entity
       end
     end
 
