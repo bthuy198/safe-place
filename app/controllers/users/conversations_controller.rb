@@ -38,7 +38,6 @@ module Users
           format.turbo_stream { flash.now[:alert] = 'Error! Something went wrong' }
         end
       end
-      
     end
   end
 end

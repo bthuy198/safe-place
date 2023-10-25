@@ -41,10 +41,10 @@ module Users
     end
 
     def destroy
-      if @podcast_album.destroy
-        respond_to do |format|
-          format.turbo_stream { flash.now[:notice] = 'Album was successfully deleted.' }
-        end
+      return unless @podcast_album.destroy
+
+      respond_to do |format|
+        format.turbo_stream { flash.now[:notice] = 'Album was successfully deleted.' }
       end
     end
 
