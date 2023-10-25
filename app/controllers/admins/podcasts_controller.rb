@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Admins
+  # PodcastsController
   class PodcastsController < AdminsLayoutController
     before_action :set_podcast, only: %i[show edit update destroy]
 
