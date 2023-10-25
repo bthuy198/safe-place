@@ -24,7 +24,7 @@ module Users
             @confessions = Confession
                            .eager_load(:rich_text_content, :user, :likes)
                            .order(created_at: :desc)
-                           .page(params[:page]).per(3)
+                           .page(params[:page]).per(3).load_async
           end
           set_paging_variable
         end
