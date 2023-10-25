@@ -28,18 +28,17 @@ module Users
     def destroy
       @room = Room.find(params[:room_id])
       @conversation = @room.conversations.find(params[:id])
-      if current_user == @conversation.conversationable
-        if @conversation.destroy
-          Turbo::StreamsChannel.broadcast_remove_to("room_#{@room.id}", target: "conversation_#{@conversation.id}")
-          respond_to do |format|
+      respond_to do |format|
+        if current_user == @conversation.conversationable
+          if @conversation.destroy
+            Turbo::StreamsChannel.broadcast_remove_to("room_#{@room.id}", target: "conversation_#{@conversation.id}")
             format.turbo_stream { flash.now[:notice] = 'Successfully removed' }
           end
-        end
-      else
-        respond_to do |format|
+        else
           format.turbo_stream { flash.now[:alert] = 'Error! Something went wrong' }
         end
       end
+      
     end
   end
 end

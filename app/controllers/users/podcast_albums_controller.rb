@@ -24,11 +24,8 @@ module Users
       respond_to do |format|
         if @podcast_album.save
           format.turbo_stream { flash.now[:notice] = 'Album created successfully' }
-          format.html { redirect_to users_podcasts_path, notice: 'Podcast album was' }
         else
-          format.turbo_stream do
-            flash.now[:alert] = "<ul><li>#{@podcast_album.errors.full_messages.join('</li><li>')}</li><ul>".html_safe
-          end
+          format.turbo_stream { flash.now[:alert] = helpers.sanitize(@podcast_album.errors.full_messages.join('<br>')) }
         end
       end
     end
@@ -37,22 +34,16 @@ module Users
       respond_to do |format|
         if @podcast_album.update(podcast_album_params)
           format.turbo_stream { flash.now[:notice] = 'Album was successfully updated.' }
-          format.json { render :show, status: :ok, location: @podcast_album }
         else
-          format.turbo_stream do
-            flash.now[:alert] = "<ul><li>#{@podcast_album.errors.full_messages.join('</li><li>')}</li><ul>".html_safe
-          end
-          format.json { render json: @podcast_album.errors, status: :unprocessable_entity }
+          format.turbo_stream { flash.now[:alert] = helpers.sanitize(@podcast_album.errors.full_messages.join('<br>')) }
         end
       end
     end
 
     def destroy
       @podcast_album.destroy
-
       respond_to do |format|
         format.html { redirect_to home_path, notice: 'Album was successfully destroyed.' }
-        format.json { head :no_content }
       end
     end
 
