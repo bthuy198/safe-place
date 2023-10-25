@@ -25,10 +25,12 @@ module Admins
       @room.status = 'disable'
       respond_to do |format|
         if @room.save
-          flash.now[:notice] = 'Room created.'
-          format.turbo_stream
+          format.turbo_stream { flash.now[:notice] = 'Room created.' }
         else
-          format.html { render :new, status: :unprocessable_entity }
+          format.turbo_stream do
+             flash.now[:alert] = 'Room not created.'
+             render status: :bad_request
+          end
         end
       end
     end
@@ -49,8 +51,10 @@ module Admins
       @room = Room.find(params[:id])
 
       if @room.update(room_params)
-        flash[:notice] = 'Room was successfully updated.'
-        redirect_to admins_rooms_path
+        flash.now[:notice] = 'Room was successfully updated.'
+        respond_to do |format|
+          format.turbo_stream
+        end
       else
         flash.now[:alert] = @room.errors.full_messages.join(', ')
         render :edit, status: :unprocessable_entity

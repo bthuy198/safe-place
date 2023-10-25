@@ -1,8 +1,13 @@
-<%= turbo_stream.prepend "room_table" do %>
+<% if @room.errors.any? %>
+  <%= turbo_stream.update "room_model", partial: "admins/rooms/partials/form",
+        locals: { room: @room } %>
+<% else %>
+  <%= turbo_stream.prepend "room_table" do %>
     <%= render partial: "admins/rooms/partials/room_table", locals: { room: @room } %>
-    <script>
-      $("#exampleModal2").modal('hide');
-    </script>
+  <% end %>
+  <%= turbo_stream.update 'room_model', partial: "admins/rooms/partials/form", locals: {room: Room.new} %>
 <% end %>
-<%= turbo_stream.update 'room_model', partial: "admins/rooms/partials/form", locals: {room: Room.new} %>
+
 <%= render_turbo_stream_flash_messages %>
+
+
