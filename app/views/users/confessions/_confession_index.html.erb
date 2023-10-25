@@ -6,8 +6,8 @@
     <%= render "users/confessions/confession_card_tag", confession: confession %>
   </div>
   <div class="d-flex justify-content-between px-3">
-    <div id="<%= dom_id(confession) %>_count_like"><%= render 'users/shared/count_like', confession: confession %></div>
-    <div id="<%= dom_id(confession) %>_count_comment"><%= render 'users/shared/count_comment', confession: confession %></div>
+    <div id="<%= dom_id(confession) %>_count_likes"><%= render 'users/shared/count_likes', likeable: confession %></div>
+    <div id="<%= dom_id(confession) %>_count_comments"><%= render 'users/shared/count_comments', commentable: confession %></div>
   </div>
   <div class="btn-group" role="group" aria-label="confession_group">
     <% if user %>
@@ -85,6 +85,8 @@
         </div>
       </div>
     </div>
-    <button type="button" class="btn btn-light custom_button" disabled><i class="fa-solid fa-envelope-circle-check"></i></button>
+    <button type="button" class="btn btn-light custom_button" disabled>
+      <i class="fa-regular fa-eye"></i>
+    </button>
   </div>
 </div>
