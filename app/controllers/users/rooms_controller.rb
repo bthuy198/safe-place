@@ -12,9 +12,9 @@ module Users
 
     def show
       @room = if current_user.type == 'User'
-                Room.find_by(id: params[:id], user_id: current_user.id)
+                Room.where(status: 'enable').find_by(id: params[:id], user_id: current_user.id)
               else
-                Room.find_by(id: params[:id], counselor_id: current_user.id)
+                Room.where(status: 'enable').find_by(id: params[:id], counselor_id: current_user.id)
               end
       render layout: 'blank_layout/user_blank'
     end
