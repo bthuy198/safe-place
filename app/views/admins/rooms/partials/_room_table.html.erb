@@ -19,7 +19,9 @@
       </div>
   </td>
   <td>
-      <%= link_to "Edit ", edit_admins_room_path(room), class: "btn btn-success me-2 no-underline custom-link width_btn_room"%>
+      <button class="button_hidden " data-bs-toggle="modal" data-bs-target="#exampleModal2">
+        <%= link_to "Edit ", edit_admins_room_path(room), class: "btn btn-success no-underline custom-link width_btn_room ", data: {turbo_frame: "custom_room"} %>
+      </button>
       <%= link_to "Delete ", admins_room_path(room), data: { turbo_method: "delete", turbo_confirm: "Are you sure ?" }, class: "no-underline custom-link  btn btn-danger width_btn_room " %>
   </td>
 </tr>

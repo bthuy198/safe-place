@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Admins
+  # PodcastAlbumsController
   class PodcastAlbumsController < AdminsLayoutController
     before_action :set_podcast_album, only: %i[show edit update destroy]
     before_action :set_default_result

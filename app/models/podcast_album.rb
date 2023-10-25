@@ -23,6 +23,7 @@ class PodcastAlbum < ApplicationRecord
   belongs_to :user
   has_many :podcasts, dependent: :destroy
   has_many :likes, as: :likeable, dependent: :destroy
+  has_many :bookmarks, as: :bookmarkable, dependent: :destroy
   max_paginates_per 10
   mount_uploader :image, ImageUploader
   validates :name, :user_id, presence: { message: 'not null' }
