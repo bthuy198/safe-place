@@ -1,14 +1,22 @@
 # frozen_string_literal: true
 
-# Module TimeFormattingHelper
+# A module for formatting time durations.
 module TimeFormattingHelper
   def formatted_duration(duration)
-    return '0' if duration.blank? || duration.zero?
+    return '0' if duration.nil? || duration.zero?
 
     hours = duration / 3600
     minutes = (duration % 3600) / 60
     seconds = duration % 60
 
+    formatted_time = build_formatted_time(hours, minutes, seconds)
+
+    formatted_time.join
+  end
+
+  private
+
+  def build_formatted_time(hours, minutes, seconds)
     formatted_time = []
 
     if hours.positive?
@@ -21,6 +29,6 @@ module TimeFormattingHelper
       formatted_time << "#{seconds}s"
     end
 
-    formatted_time.join
+    formatted_time
   end
 end

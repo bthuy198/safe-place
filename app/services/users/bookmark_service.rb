@@ -1,18 +1,16 @@
 # frozen_string_literal: true
 
 module Users
+  # A service class for handling bookmarks
   class BookmarkService < ApplicationService
     def initialize(user, bookmarkable)
       @user = user
       @bookmarkable = bookmarkable
+      super()
     end
 
     def call
-      if exists?
-        destroy
-      else
-        create
-      end
+      exists? ? destroy : create
     end
 
     def create

@@ -8,10 +8,5 @@
   <% else %>
     <%= turbo_stream.remove "counselor-#{@counselor.id}" %>
   <% end %>
-  <%# turbo_stream.update "close_model_counselor" do %>
-    <%# <script>
-      $("#exampleModal1").modal('hide');
-    </script> %>
-  <%# end %>
 <% end %>
 <%= render_turbo_stream_flash_messages %>

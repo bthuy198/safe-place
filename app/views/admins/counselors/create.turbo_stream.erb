@@ -4,11 +4,6 @@
   <% end %>
 <% else %>
   <%= turbo_stream.prepend "counselors-tbody", partial: "admins/counselors/partials/counselor",
-        locals: { counselor: @counselor } if @counselor.type == 'Counselor' && params[:counselor][:page] == '1' %>
-  <%# turbo_stream.update "close_model_counselor" do %>
-    <%# <script>
-      $("#exampleModal1").modal('hide');
-    </script> %>
-  <%# end %>
+        locals: { counselor: @counselor } if @counselor.type == 'Counselor' && params[:page] == '1' %>
 <% end %>
 <%= render_turbo_stream_flash_messages %>
