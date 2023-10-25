@@ -9,7 +9,7 @@ module Users
         @q = Counselor.ransack(params[:q])
         @counselors = @q.result(distinct: true).order(id: :desc).page params[:page]
       else
-        @q = Room.joins(:counselor).where(counselor_id: current_user.id).ransack(params[:q])
+        @q = Room.joins(:counselor).where(counselor_id: current_user.id, status: 'enable').ransack(params[:q])
         @rooms = @q.result(distinct: true).order(id: :desc).page params[:page]
       end
     end
