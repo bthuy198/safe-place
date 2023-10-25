@@ -1,10 +1,7 @@
-<% if @podcast_album.errors.any? %>
-  <%= render_turbo_stream_flash_messages %>
-<% else %>
-    <%= turbo_stream.replace "#{dom_id(@podcast_album)}" do  %>
-      <%= render partial: "users/podcasts/podcast_album", locals: { podcast_album: @podcast_album }%>
-      <script>
-          $("#podcastAlbumModal").modal("hide")
-      </script>
-    <% end %>
+<%= turbo_stream.replace "#{dom_id(@podcast_album)}" do  %>
+<%= render partial: "users/podcasts/podcast_album", locals: { podcast_album: @podcast_album }%>
+<script>
+    $("#podcastAlbumModal").modal("hide")
+</script>
 <% end %>
+<%= render_turbo_stream_flash_messages %>
