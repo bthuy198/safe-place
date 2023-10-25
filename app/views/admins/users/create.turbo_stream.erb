@@ -4,6 +4,6 @@
   <% end %>
 <% else %>
   <%= (turbo_stream.prepend "users-tbody", partial: "admins/users/partials/user", 
-      locals: { user: @user }) if @user.type == 'User' && params[:user][:page] == '1' %>
+      locals: { user: @user }) if @user.type == 'User' && params[:page] == '1' %>
 <% end %>
 <%= render_turbo_stream_flash_messages %>
