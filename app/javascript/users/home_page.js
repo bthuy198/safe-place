@@ -27,9 +27,8 @@ document.addEventListener("turbo:before-stream-render", (event) => {
     let target_id = event.detail.newStream.getAttribute("target")
     if(target_id.includes("confession")) {
       let target = document.getElementById(target_id)
-      console.log(target)
-    let modal = target.children[3].children[2]
-    $(modal).modal("hide")
+      let modal = target.querySelector(".confession_modal")
+      $(modal).modal("hide")
     }
   }
 })

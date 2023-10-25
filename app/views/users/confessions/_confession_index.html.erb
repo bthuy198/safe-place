@@ -25,7 +25,7 @@
         document.getElementById('<%= "#{dom_id(confession)}_show_button" %>').click();
       </script>
     <% end %>
-    <div class="modal fade" id="<%= "#{dom_id(confession)}_show_modal" %>" aria-hidden="true" aria-labelledby="<%= "#{dom_id(confession)}_show_modal_label" %>" tabindex="-1">
+    <div class="modal fade confession_modal" id="<%= "#{dom_id(confession)}_show_modal" %>" aria-hidden="true" aria-labelledby="<%= "#{dom_id(confession)}_show_modal_label" %>" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content custom_modal">
           <div class="modal-header">
