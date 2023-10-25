@@ -36,7 +36,7 @@
         </div>
         <div class="row">
             <% if podcast.persisted? %>
-              <%= link_to "Delete", users_podcast_path(podcast), class: "col btn btn-danger button_close", method: :delete %>
+              <%= link_to "Delete", users_podcast_path(podcast), id: "deleteButton", class: "col btn btn-danger button_close", data: {turbo_method: :delete} %>
             <% end %>
             <%= f.submit class: "col btn button_add", style: "background-color: #1F7564; color: #fff; border: 2px solid #1F7564; font-size: 18px; margin: 10px 10px 25px 10px;" %>
         </div>
@@ -45,4 +45,5 @@
   </div>
 </div>
 
+<%= javascript_include_tag 'users/podcasts/close_podcast_modal'%>
 <%= javascript_include_tag 'users/podcasts/podcast' %>

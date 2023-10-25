@@ -127,6 +127,10 @@
       font-size: 20px;
       font-weight: bold;
       margin-bottom: 3px;
+      max-width: 11rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .podcast_author {
       font-size: 20px;
