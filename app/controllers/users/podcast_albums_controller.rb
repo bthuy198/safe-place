@@ -41,9 +41,10 @@ module Users
     end
 
     def destroy
-      @podcast_album.destroy
-      respond_to do |format|
-        format.html { redirect_to home_path, notice: 'Album was successfully destroyed.' }
+      if @podcast_album.destroy
+        respond_to do |format|
+          format.turbo_stream { flash.now[:notice] = 'Album was successfully deleted.' }
+        end
       end
     end
 
