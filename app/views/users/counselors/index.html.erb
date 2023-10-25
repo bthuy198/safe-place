@@ -26,7 +26,9 @@
                         <% else %>
                           <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp" alt="avatar 1" class="counselor_avt">
                         <% end %>
-                        <p class="counselor_name"><%= counselor.user_name%></p>
+                        <label class="counselor_name">
+                          <%= counselor.user_name = counselor.user_name.length > 10 ? counselor.user_name[0, 7] + '...' : counselor.user_name%>
+                        </label>
                         <%= link_to 'Chat', join_counseler_room_users_counselor_path(counselor), method: :patch, class: 'btn btn-primary btn_join join_counselor_button custom_link_to' %>
                       </div>
                     </div>
