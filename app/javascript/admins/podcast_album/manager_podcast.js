@@ -84,6 +84,7 @@ function cancelEdit(podcastId){
 
 function openModalCreatePodcast(album_id){
     $('#modalCreatePodcast').modal('show');
+    $('#modalShowAlbum').removeClass('modal')
     podcast_album_id = album_id
 }
 
@@ -101,10 +102,6 @@ function createPodcast(){
     formData.append("audio", audioFile);
     formData.append("podcast_album_id", album_id)
 
-    console.log(name)
-    console.log(imageFile)
-    console.log(formData)
-
     $.ajax({
         type: 'POST',
         url: podcast_url,
@@ -117,6 +114,7 @@ function createPodcast(){
             let str = renderPodcast(data)
             alert("Create successful")
             $('#modalCreatePodcast').modal('hide');
+            $('#modalShowAlbum').addClass('modal');
             let count = $("#all_podcast tr").length;
             console.log(count)
             if (count === 0){
@@ -140,7 +138,7 @@ function createPodcast(){
 function renderPodcast(podcast){
     return `<tr id="podcast-${podcast.id}">
         <td>${podcast.id}</td>
-        ${podcast.image ? `<td><img src="${podcast.image.url}" alt="Podcast Avatar" class="" style="width: 80px; height: 80px; border-radius: 50%"></td>` : `<td><img src="podcast.jpg" alt="Album Avatar" class="" style="height: 80px; border-radius: 50%"></td>`}
+        ${podcast.image.url != null ? `<td><img src="${podcast.image.url}" alt="Podcast Avatar" class="" style="width: 80px; height: 80px; border-radius: 50%"></td>` : `<td><img src="../assets/podcast.jpg" alt="Album Avatar" class="" style="height: 80px; border-radius: 50%"></td>`}
         <td id="podcast_name_${podcast.id}" data-id="${podcast.id}"><input class="form-control" type='text' value='${podcast.name}' id='input_name_podcast_${podcast.id}'></td>
         <td class="text-end"><button class="btn btn-warning button_cancel" data-id="${podcast.id}" onclick="cancelEdit(${podcast.id})"><i class="fa-solid fa-arrow-rotate-left"></i></button></td>
         <td class="text-center"><button class="btn btn-danger delete_podcast" data-id="${podcast.id}" onclick="deletePodcast(${podcast.id})"><i class="fa-solid fa-trash"></i></button></td>
@@ -164,7 +162,9 @@ $('#modalCreatePodcast').on('hidden.bs.modal', () => {
     $("#createPodcastForm")[0].reset();
     $('.alert_create_podcast').attr("style", "display:none");
     $('.alert_create_podcast').empty();
+    $('#modalShowAlbum').addClass('modal');
 })
+
 
 $('#crePodcastImage').change(function(e){
     var imageName = e.target.files[0].name;

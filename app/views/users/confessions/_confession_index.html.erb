@@ -6,8 +6,8 @@
     <%= render "users/confessions/confession_card_tag", confession: confession %>
   </div>
   <div class="d-flex justify-content-between px-3">
-    <div><%= confession.likes.size %> likes</div>
-    <div><%= confession.comments.size %> comments</div>
+    <div id="<%= dom_id(confession) %>_count_likes"><%= render 'users/shared/count_likes', likeable: confession %></div>
+    <div id="<%= dom_id(confession) %>_count_comments"><%= render 'users/shared/count_comments', commentable: confession %></div>
   </div>
   <div class="btn-group" role="group" aria-label="confession_group">
     <% if user %>
@@ -25,7 +25,7 @@
         document.getElementById('<%= "#{dom_id(confession)}_show_button" %>').click();
       </script>
     <% end %>
-    <div class="modal fade" id="<%= "#{dom_id(confession)}_show_modal" %>" aria-hidden="true" aria-labelledby="<%= "#{dom_id(confession)}_show_modal_label" %>" tabindex="-1">
+    <div class="modal fade confession_modal" id="<%= "#{dom_id(confession)}_show_modal" %>" aria-hidden="true" aria-labelledby="<%= "#{dom_id(confession)}_show_modal_label" %>" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content custom_modal">
           <div class="modal-header">
@@ -85,6 +85,8 @@
         </div>
       </div>
     </div>
-    <button type="button" class="btn btn-light custom_button" disabled><i class="fa-solid fa-envelope-circle-check"></i></button>
+    <button type="button" class="btn btn-light custom_button" disabled>
+      <i class="fa-regular fa-eye"></i>
+    </button>
   </div>
 </div>

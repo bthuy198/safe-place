@@ -13,14 +13,14 @@ module Users
         def id_search
           Confession
             .eager_load(:rich_text_content, :user, :likes)
-            .ransack(id_eq: @q).result
+            .ransack(id_eq: @q).result.load_async
         end
 
         # for set_confessions method
         def tag_search
           Confession
             .eager_load(:rich_text_content, :user, :likes)
-            .ransack(tags_cont: @q).result
+            .ransack(tags_cont: @q).result.load_async
         end
 
         # for set_confessions method
@@ -28,14 +28,14 @@ module Users
           Confession
             .eager_load(:rich_text_content, :user, :likes)
             .where(anonymous: false)
-            .ransack(user_user_name_cont: @q).result
+            .ransack(user_user_name_cont: @q).result.load_async
         end
 
         # for set_confessions method
         def content_search
           Confession
             .eager_load(:rich_text_content, :user, :likes)
-            .where('action_text_rich_texts.body LIKE ?', "%#{@q}%")
+            .where('action_text_rich_texts.body LIKE ?', "%#{@q}%").load_async
         end
       end
     end

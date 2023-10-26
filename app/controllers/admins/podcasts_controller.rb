@@ -27,7 +27,6 @@ module Admins
     # POST /podcasts or /podcasts.json
     def create
       @podcast = Podcast.new(create_podcast_params)
-
       respond_to do |format|
         if @podcast.save
           format.json { render json: @podcast, status: :created }
