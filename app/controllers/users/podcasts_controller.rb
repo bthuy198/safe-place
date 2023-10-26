@@ -34,10 +34,10 @@ module Users
     end
 
     def destroy
-      if @podcast.destroy
-        respond_to do |format|
-          format.turbo_stream { flash.now[:notice] = 'Podcast was successfully deleted.' }
-        end
+      return unless @podcast.destroy
+
+      respond_to do |format|
+        format.turbo_stream { flash.now[:notice] = 'Podcast was successfully deleted.' }
       end
     end
 
