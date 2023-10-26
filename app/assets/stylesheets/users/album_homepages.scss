@@ -4,6 +4,7 @@
   .card {
     height: 47.2rem;
     .card-body {
+      scrollbar-width: none;
       overflow-y: scroll;
     }
   }
