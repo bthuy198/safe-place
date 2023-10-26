@@ -1,7 +1,7 @@
 <%= link_to root_path do %>
   <i class="fa-solid fa-angle-left button_back_user_info"></i>
 <% end %>
-<div class="container-fluid user_infos_container">
+<div class="container-fluid user_infos_container" id="user-<%= @user.id %>" data-anonymous="<%= @user.anonymous ? '1' : '0' %>">
   <div class = "row justify-content-center">
     <div class="col-lg-6">
         <div class="user_infos_title">Account Overview</div>
@@ -13,6 +13,18 @@
         </div>
         <div class="card mb-4 ">
           <div class="card-body ">
+          <div class="row">
+              <div class="text-muted col-sm-7">
+                <p class="mb-0 form_user_infos_label">Anonymous</p>
+              </div>
+              <div class="col-sm-5">
+                <div class="form-check form-switch d-flex">
+                <%= check_box_tag "user_anonymous_#{@user.id}", "1", @user.anonymous, class: "form-check-input user-change-anonymous-switch", id: "user_change_anonymous_#{@user.id}" %>
+                <label class="form-check-label" for="user_change_anonymous_<%= @user.id %>"></label>
+                </div>
+              </div>
+            </div>
+            <hr>
             <div class="row">
               <div class="text-muted col-sm-7">
                 <p class="mb-0 form_user_infos_label">Email</p>
@@ -103,7 +115,7 @@
 </div>
 <%= render "users/user_infos/modal_password"%>
 <%= render "users/user_infos/modal", user: @user%>
-
+<%= javascript_include_tag 'users/user_change_anonymous' %>
 
 
 

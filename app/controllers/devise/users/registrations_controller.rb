@@ -46,6 +46,11 @@ module Devise
         end
       end
 
+      def change_status
+        current_user.update(anonymous: params[:anonymous])
+        render json: { message: "The 'Anonymous' status has been successfully updated." }
+      end
+
       # DELETE /resource
       # def destroy
       #   super
@@ -81,6 +86,10 @@ module Devise
       def user_params
         params.require(:user).permit(:email, :password, :user_name,
                                      user_info_attributes: %i[address date_of_birth profile_name gender])
+      end
+
+      def user_status
+        params.require(:user).permit(:status)
       end
 
       def user_password_params

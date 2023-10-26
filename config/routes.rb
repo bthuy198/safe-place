@@ -22,7 +22,7 @@ Rails.application.routes.draw do
       passwords: 'devise/users/passwords',
       registrations: 'devise/users/registrations',
       sessions: 'devise/users/sessions',
-      unlocks: 'devise/users/unlocks'
+      unlocks: 'devise/users/unlocks',
     }
   end
   devise_scope :user do
@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     post 'sign_in', to: 'devise/users/sessions#create'
     delete 'sign_out', to: 'devise/users/sessions#destroy'
     get 'sign_up', to: 'devise/users/registrations#new'
+    patch 'change_status', to: 'devise/users/registrations#change_status'
   end
 
   namespace :admins do
