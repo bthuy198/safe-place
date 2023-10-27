@@ -53,12 +53,6 @@ module Users
       end
     end
 
-    # def set_duration
-    #   @podcast = Podcast.find_by(id: params[:id])
-    #   @podcast.duration = params[:duration]
-    #   @podcast.save
-    # end
-
     def toggle_bookmark
       @podcast = Podcast.find_by(id: params[:id])
       Users::BookmarkService.call(current_user, @podcast)

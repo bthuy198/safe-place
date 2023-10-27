@@ -22,5 +22,11 @@ module Users
     def all_album
       @albums = PodcastAlbum.all
     end
+
+    def search_podcasts
+      @q = PodcastAlbum.ransack(podcasts_author_name_or_podcasts_name_cont: params[:q])
+      @albums = @q.result.includes(:user)
+      render layout: false, action: :index
+    end
   end
 end

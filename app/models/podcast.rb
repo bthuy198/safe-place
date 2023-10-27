@@ -31,4 +31,13 @@ class Podcast < ApplicationRecord
 
   mount_uploader :audio, AudioUploader
   mount_uploader :image, ImageUploader
+
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[audio author_name created_at duration episode_number id image name podcast_album_id
+       updated_at]
+  end
+
+  def self.ransackable_associations(_auth_object = nil)
+    %w[bookmarks likes podcast_album]
+  end
 end
