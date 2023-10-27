@@ -1,22 +1,6 @@
 <% if !@podcast.errors.any? %>
-    <%= turbo_stream.prepend 'recent_podcasts_frame' do  %>
-        <%= render partial: 'podcast', locals: { podcast: @podcast }%>
-        <%= audio_tag @podcast.audio_url, controls: true, id:"set_duration_on_create", hidden:true %>
-        <script>
-        $("#exampleModal").modal("hide")
-        $("#set_duration_on_create").on("loadedmetadata", function() {
-            var audio = $(this)[0];
-            var duration = audio.duration;
-            $.ajax({
-                type: 'PATCH',
-                url: '/users/podcasts/<%= @podcast.id %>/set_duration',
-                data: { duration: duration },
-            });
-            });
-        </script>
-    <% end %>
+  <%= turbo_stream.prepend 'recent_podcasts_frame' do  %>
+    <%= render partial: 'podcast', locals: { podcast: @podcast }%>
+  <% end %>
 <% end %>
 <%= render_turbo_stream_flash_messages %>
-
-
-

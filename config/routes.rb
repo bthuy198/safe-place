@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     post 'sign_in', to: 'devise/users/sessions#create'
     delete 'sign_out', to: 'devise/users/sessions#destroy'
     get 'sign_up', to: 'devise/users/registrations#new'
+    patch 'change_status', to: 'devise/users/registrations#change_status'
   end
 
   namespace :admins do
@@ -67,6 +68,7 @@ Rails.application.routes.draw do
     end
     resources :album_homepages, only: %i[index show] do
       collection do
+        get 'search_podcasts', to: 'album_homepages#search_podcasts'
         get 'all', to: 'album_homepages#all_album'
       end
     end

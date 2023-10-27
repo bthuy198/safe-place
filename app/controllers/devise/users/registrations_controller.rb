@@ -46,6 +46,11 @@ module Devise
         end
       end
 
+      def change_status
+        current_user.update(anonymous: params[:anonymous])
+        render json: { message: "The 'Anonymous' status has been successfully updated." }
+      end
+
       # DELETE /resource
       # def destroy
       #   super
