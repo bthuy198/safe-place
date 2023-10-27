@@ -6,12 +6,13 @@ var listBookmarkedPodcastItem = $("input[name='bookmarked_podcast']").map(functi
 
 listPodcastItem.on("click", function () {
   let index = listPodcastItem.index(this);
-  if (!checkIfIncludeAudio(currentPodcast, listPodcastItem)) {
-    loadNewPlaylistPodcast(listPodcastItemArrays, index);
+  if (!checkIfIncludeAudio(podcasts[currentPodcastIndex], listPodcastItem)) {
+    loadNewPlaylistPodcast(listPodcastItemArrays, index, listLikedPodcastItem, listBookmarkedPodcastItem);
   } else {
     loadPodcast(index);
     playPodcast();
   }
+  isPlaying = true;
   playPauseIconAlbum
     .removeClass("fa-circle-play play")
     .addClass("fa-circle-pause pause");
@@ -19,15 +20,17 @@ listPodcastItem.on("click", function () {
 
 playPauseIconAlbum.on("click", function () {
   if (playPauseIconAlbum.hasClass("play")) {
-    if (!checkIfIncludeAudio(currentPodcast, listPodcastItem)) {
-      loadNewPlaylistPodcast(listPodcastItemArrays, 0);
+    if (!checkIfIncludeAudio(podcasts[currentPodcastIndex], listPodcastItem)) {
+      loadNewPlaylistPodcast(listPodcastItemArrays, 0, listLikedPodcastItem, listBookmarkedPodcastItem);
     } else {
       playPodcast();
     }
+    isPlaying = true;
     playPauseIconAlbum
       .removeClass("fa-circle-play play")
       .addClass("fa-circle-pause pause");
   } else {
+    isPlaying = false;
     pausePodcast();
     playPauseIconAlbum
       .removeClass("fa-circle-pause pause")
@@ -44,7 +47,7 @@ $(".heart_podcast_albums").on("click", function () {
 });
 
 function updatePlayPauseAblumIcon() {
-  if (checkIfIncludeAudio(currentPodcast, listPodcastItem) && !audioPlayer.paused) {
+  if (checkIfIncludeAudio(podcasts[currentPodcastIndex], listPodcastItem) && !audioPlayer.paused) {
     playPauseIconAlbum
       .removeClass("fa-circle-play play")
       .addClass("fa-circle-pause pause");
