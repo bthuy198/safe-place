@@ -8,11 +8,11 @@
       <%= form.label :path_usersconfessions, "Search confessions", class: "form-check-label" %>
     </div>
     <div class="form-check">
-      <%= form.radio_button :path, users_album_homepages_path, class: "form-check-input", type: "radio", data: { search_form_target: "option" } %>
+      <%= form.radio_button :path, users_album_homepages_path(search: "album"), class: "form-check-input", type: "radio", data: { search_form_target: "option" } %>
       <%= form.label :path_usersalbum_homepages, "Search podcast albums", class: "form-check-label" %>
     </div>
     <div class="form-check">
-      <%= form.radio_button :path, search_podcasts_users_album_homepages_path, class: "form-check-input", type: "radio", data: { search_form_target: "option" } %>
+      <%= form.radio_button :path, users_album_homepages_path(search: "podcast"), class: "form-check-input", type: "radio", data: { search_form_target: "option" } %>
       <%= form.label :path_userspodcasts, "Search podcasts", class: "form-check-label" %>
     </div>
   </div>
