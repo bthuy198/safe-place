@@ -10,7 +10,9 @@
         </p>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
           <li>
-            <%= link_to "Profile", "#", class:"btn btn-link button_delete"%>
+            <button class="btn btn-link button_delete">
+              Profile
+            </button>
           </li>
           <li>
             <%= turbo_frame_tag(["controls", dom_id(conversation)]) %>

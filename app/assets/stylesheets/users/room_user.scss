@@ -104,62 +104,6 @@ nav {
   float: left;
 }
 
-.box_chat_room{
-  margin-top: 40px;
-  height: 90vh;
-  width: 40vw;
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  .card {
-    border: none;
-  }
-  #conversations {
-    height: 70vh;
-    width: 100%;
-    overflow-y: auto;
-    .his_bg {
-      padding: 10px 20px;
-      max-width: 20vw;
-    }
-    .comment_content {
-      font-size: 18px;
-      word-wrap: break-word;
-    }
-    .img-hover{
-      width: 45px; 
-      height: 45px;
-      border-radius: 50%;
-    }
-    .button_delete {
-      color: #16594b;
-      text-decoration: none;
-    }
-    .message-time {
-      opacity: 0;
-      transition: opacity 0.2s;
-      margin: 15px;
-    }
-
-    .content_hover:hover .message-time {
-      opacity: 1;
-      transition: opacity 0.2s;
-    }
-
-  }
-  #form_comment {
-    .comment_textfield{
-      padding: 7px 15px;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-      height: 8vh;
-      width: 100%;
-      overflow-y: auto;
-    }
-    .comment_submit {
-      margin-top: 10px;
-    }
-  }
-}
 .custom_link_to {
   color: #fff; 
   text-decoration: none;
@@ -174,4 +118,126 @@ nav {
   height: 38.7rem;
   overflow-y: auto;
 }
+
+.show_message_container {
+  margin-top: 50px;
+  .list_room {
+    width: 27rem;
+    border: 0.5px solid #d2d2d2;
+    border-radius: 7px;
+    padding: 15px;
+  }
+  .button_show_room {
+    width: 25rem;
+    height: 5rem;
+    transition: background-color 0.3s, color 0.3s; 
+    &:hover {
+      background-color: #eceff2;
+    }
+  }
+  .box_chat_room{
+    height: 90vh;
+    width: 40vw;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 5px 5px 15px;
+    .card {
+      height: 100%;
+      border: none;
+      .card-header {
+        background-color: #fff;
+        .btn {
+          font-size: 0.875rem;
+          font-weight: 400 !important;
+          border-radius: 0.4rem;
+          border-width: 1px;
+          border-style: solid;
+          border-color: transparent;
+          border-image: initial;
+          padding: 0.5rem 1rem;
+        }
+        .btn.btn-icon {
+          height: calc(1.5em + 1.2rem);
+          width: calc(1.5em + 1.2rem);
+          color: rgb(255, 255, 255);
+          display: inline-flex;
+          -webkit-box-align: center;
+          align-items: center;
+          -webkit-box-pack: center;
+          justify-content: center;
+          cursor: pointer;
+          padding: 0px;
+        }
+        .text-center {
+          margin: 0px;
+          font-size: 18px;
+          font-weight: bold;
+          color: #fff;
+        }
+      }
+      .card-body {
+        background-color: #eceff2;
+        border: none;
+      }
+      .card-footer {
+        background-color: #f1f2fa;;
+      }
+    }
+    #conversations {
+      height: 70vh;
+      width: 100%;
+      overflow-y: auto;
+      .his_bg {
+        background-color: #fff;
+        padding: 10px 20px;
+        max-width: 20vw;
+      }
+      .comment_content {
+        font-size: 18px;
+        word-wrap: break-word;
+      }
+      .img-hover{
+        width: 45px; 
+        height: 45px;
+        border-radius: 50%;
+      }
+      .button_delete {
+        color: #16594b;
+        text-decoration: none;
+      }
+      .message-time {
+        font-size: 11px;
+        opacity: 0;
+        transition: opacity 0.2s;
+        margin: 15px;
+      }
+
+      .content_hover:hover .message-time {
+        opacity: 1;
+        transition: opacity 0.2s;
+      }
+
+    }
+    #form_comment {
+      .comment_textfield{
+        border: none;
+        padding: 0px 10px;
+        margin: 8px 5px;
+        border-radius: 7px;
+        height: 5vh;
+        width: 100%;
+        overflow-y: auto;
+      }
+      .button_send_message {
+        margin: 9px 5px;
+        height: 43px;
+      }
+    }
+    .room_text {
+      font-size: 23px;
+    }
+  }
+}
+
+
+
 
