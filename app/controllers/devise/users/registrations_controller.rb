@@ -88,10 +88,6 @@ module Devise
                                      user_info_attributes: %i[address date_of_birth profile_name gender])
       end
 
-      def user_status
-        params.require(:user).permit(:status)
-      end
-
       def user_password_params
         params.require(:user).permit(:email, :password, :password_confirmation, :current_password)
       end

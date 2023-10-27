@@ -22,7 +22,7 @@ Rails.application.routes.draw do
       passwords: 'devise/users/passwords',
       registrations: 'devise/users/registrations',
       sessions: 'devise/users/sessions',
-      unlocks: 'devise/users/unlocks',
+      unlocks: 'devise/users/unlocks'
     }
   end
   devise_scope :user do
