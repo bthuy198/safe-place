@@ -68,6 +68,7 @@ Rails.application.routes.draw do
     end
     resources :album_homepages, only: %i[index show] do
       collection do
+        get 'search_podcasts', to: 'album_homepages#search_podcasts'
         get 'all', to: 'album_homepages#all_album'
       end
     end

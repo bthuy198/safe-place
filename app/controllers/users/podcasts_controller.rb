@@ -24,6 +24,8 @@ module Users
 
     def create
       @podcast = Podcast.new(podcast_params)
+      @podcast.duration = MediaManager::DurationService.call(podcast_params[:audio].tempfile)
+
       respond_to do |format|
         if @podcast.save
           format.turbo_stream { flash.now[:notice] = 'Podcast created successfully' }
@@ -49,12 +51,6 @@ module Users
           format.turbo_stream { flash.now[:alert] = helpers.sanitize(@podcast.errors.full_messages.join('<br>')) }
         end
       end
-    end
-
-    def set_duration
-      @podcast = Podcast.find_by(id: params[:id])
-      @podcast.duration = params[:duration]
-      @podcast.save
     end
 
     def toggle_bookmark
