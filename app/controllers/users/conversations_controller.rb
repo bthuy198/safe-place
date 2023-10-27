@@ -16,11 +16,11 @@ module Users
                                                   partial: 'users/conversations/partials/display_controls',
                                                   locals: { conversation: @conversation, user: current_user }
         respond_to do |format|
-          format.turbo_stream
+          format.turbo_stream 
         end
       else
         respond_to do |format|
-          format.turbo_stream { flash.now[:alert] = 'Error! Something went wrong' }
+          format.turbo_stream { flash.now[:alert] = helpers.sanitize(@conversation.errors.full_messages.join('<br>')) }
         end
       end
     end

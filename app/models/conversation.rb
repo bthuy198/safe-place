@@ -24,4 +24,6 @@ class Conversation < ApplicationRecord
   belongs_to :room
   belongs_to :conversationable, polymorphic: true
   has_rich_text :content
+
+  validates :content, presence: { message: "Content can't be null" }
 end
